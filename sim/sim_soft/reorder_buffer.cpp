@@ -96,7 +96,7 @@ bool ReorderBuffer::full()  const { return count_ == size_; }
 
 
 /** @brief Return @c true if no ROB slots are occupied. */
-bool ReorderBuffer::empty() const {}
+bool ReorderBuffer::empty() const { return count_ == 0; }
 
 
 /**
