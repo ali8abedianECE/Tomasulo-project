@@ -85,7 +85,10 @@ ROBEntry ReorderBuffer::commit() {
  *
  * @return Const reference to the requested ROBEntry.
  */
-const ROBEntry& ReorderBuffer::peek(int rob_tag) const {}
+const ROBEntry& ReorderBuffer::peek(int rob_tag) const {
+    assert(rob_tag >= 0 && rob_tag < size_);
+    return entries_[rob_tag];
+}
 
 
 /** @brief Return @c true if every ROB slot is occupied. */
