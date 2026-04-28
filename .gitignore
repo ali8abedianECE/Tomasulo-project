@@ -1,0 +1,2 @@
+sim/sim_soft/make/*.o
+sim/sim_soft/make/tomasulo_sim
