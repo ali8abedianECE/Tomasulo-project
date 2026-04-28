@@ -104,7 +104,7 @@ bool ReorderBuffer::empty() const { return count_ == 0; }
  *
  * @return Head index (0 … size-1). Must not be called on an empty ROB.
  */
-int  ReorderBuffer::head_tag() const {}
+int  ReorderBuffer::head_tag() const { assert(!empty()); return head_; }
 
 
 /**
