@@ -56,7 +56,9 @@ void ReorderBuffer::write_result(int rob_tag, uint32_t result) {
  *
  * @return @c true if the ROB is non-empty and the head entry is in the DONE state.
  */
-bool ReorderBuffer::head_ready() const {}
+bool ReorderBuffer::head_ready() const {
+    return !empty() && entries_[head_].state == ROBState::DONE;
+}
 
 
 /**
