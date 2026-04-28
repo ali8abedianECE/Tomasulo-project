@@ -43,7 +43,12 @@ int ReorderBuffer::allocate(const Instruction& instr) {
  * @param[in] rob_tag Index of the ROB entry to update.
  * @param[in] result  Computed 32-bit result value.
  */
-void ReorderBuffer::write_result(int rob_tag, uint32_t result) {}
+void ReorderBuffer::write_result(int rob_tag, uint32_t result) {
+    assert(rob_tag >= 0 && rob_tag < size_);
+    assert(entries_[rob_tag].state == ROBState::IN_FLIGHT);
+    entries_[rob_tag].result = result;
+    entries_[rob_tag].state  = ROBState::DONE;
+}
 
 
 /**
