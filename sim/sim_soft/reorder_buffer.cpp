@@ -92,7 +92,7 @@ const ROBEntry& ReorderBuffer::peek(int rob_tag) const {
 
 
 /** @brief Return @c true if every ROB slot is occupied. */
-bool ReorderBuffer::full()  const {}
+bool ReorderBuffer::full()  const { return count_ == size_; }
 
 
 /** @brief Return @c true if no ROB slots are occupied. */
