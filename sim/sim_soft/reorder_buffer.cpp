@@ -153,7 +153,9 @@ void ReorderBuffer::dump(std::ostream& os, int cycle) const {
 
 
 
-void ReorderBuffer::open_log(const std::string& path) {}
+void ReorderBuffer::open_log(const std::string& path) {
+    log_.open(path, std::ios::out | std::ios::trunc);
+}
 
 
 void ReorderBuffer::log_cycle(int cycle) {}
