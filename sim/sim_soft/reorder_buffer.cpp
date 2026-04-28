@@ -68,7 +68,14 @@ bool ReorderBuffer::head_ready() const {
  *
  * @return A copy of the committed ROBEntry containing the result and metadata.
  */
-ROBEntry ReorderBuffer::commit() {}
+ROBEntry ReorderBuffer::commit() {
+    assert(head_ready());
+    ROBEntry entry   = entries_[head_];
+    entries_[head_]  = ROBEntry{};   /* reset to IDLE */
+    head_            = (head_ + 1) % size_;
+    --count_;
+    return entry;
+}
 
 
 /**
