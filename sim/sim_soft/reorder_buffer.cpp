@@ -21,7 +21,20 @@ ReorderBuffer::ReorderBuffer(int size)
  *
  * @return Index of the newly allocated ROB entry, or -1 if the ROB is full.
  */
-int ReorderBuffer::allocate(const Instruction& instr) {}
+int ReorderBuffer::allocate(const Instruction& instr) {
+    if (full()) return -1;
+    int tag = tail_;
+    ROBEntry& e = entries_[tag];
+    e.state  = ROBState::IN_FLIGHT;
+    e.op     = instr.op;
+    e.rd     = instr.rd;
+    e.rd_fp  = instr.rd_fp;
+    e.result = 0;
+    e.pc     = instr.pc;
+    tail_    = (tail_ + 1) % size_;
+    ++count_;
+    return tag;
+}
 
 
 /**
