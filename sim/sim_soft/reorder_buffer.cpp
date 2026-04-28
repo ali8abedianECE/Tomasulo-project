@@ -135,7 +135,21 @@ static const char* rob_state_str(ROBState s) {
  * @param[in,out] os    Output stream to write to.
  * @param[in]     cycle Current simulation cycle number (for the header line).
  */
-void ReorderBuffer::dump(std::ostream& os, int cycle) const {}
+void ReorderBuffer::dump(std::ostream& os, int cycle) const {
+    os << "[ROB  cycle=" << std::setw(4) << cycle << "]"
+       << " head=" << head_ << " tail=" << tail_
+       << " count=" << count_ << "/" << size_ << "\n";
+    for (int i = 0; i < size_; ++i) {
+        const ROBEntry& e = entries_[i];
+        if (e.state == ROBState::IDLE) continue;
+        os << "  [" << std::setw(2) << i << "] "
+           << rob_state_str(e.state) << " "
+           << opcode_name(e.op)
+           << " rd=" << (e.rd_fp ? "f" : "x") << e.rd
+           << " PC=0x" << std::hex << std::setw(4) << std::setfill('0')
+           << e.pc << std::dec << std::setfill(' ') << "\n";
+    }
+}
 
 
 
