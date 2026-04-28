@@ -1,0 +1,89 @@
+[LSB  cycle=   1] head=0 tail=0 count=0/8
+[LSB  cycle=   2] head=0 tail=0 count=0/8
+[LSB  cycle=   3] head=0 tail=0 count=0/8
+[LSB  cycle=   4] head=0 tail=0 count=0/8
+[LSB  cycle=   5] head=0 tail=0 count=0/8
+[LSB  cycle=   6] head=0 tail=0 count=0/8
+[LSB  cycle=   7] head=0 tail=0 count=0/8
+[LSB  cycle=   8] head=0 tail=0 count=0/8
+[LSB  cycle=   9] head=0 tail=1 count=1/8
+  [ 0] WAIT SW ROB=7 vj=0x0 vk=0x1 PC=0x001c
+[LSB  cycle=  10] head=1 tail=2 count=1/8
+  [ 1] WAIT SW ROB=8 vj=0x0 vk=0x2 PC=0x0020
+[LSB  cycle=  11] head=2 tail=3 count=1/8
+  [ 2] WAIT SW ROB=9 vj=0x0 vk=0x3 PC=0x0024
+[LSB  cycle=  12] head=3 tail=4 count=1/8
+  [ 3] WAIT SW ROB=10 vj=0x0 vk=0x4 PC=0x0028
+[LSB  cycle=  13] head=4 tail=5 count=1/8
+  [ 4] WAIT SW ROB=11 vj=0x0 vk=0x5 PC=0x002c
+[LSB  cycle=  14] head=5 tail=6 count=1/8
+  [ 5] WAIT SW ROB=12 vj=0x0 vk=0x6 PC=0x0030
+[LSB  cycle=  15] head=6 tail=7 count=1/8
+  [ 6] WAIT LW ROB=13 vj=0x0 PC=0x0034
+[LSB  cycle=  16] head=7 tail=0 count=1/8
+  [ 7] WAIT LW ROB=14 vj=0x0 PC=0x0038
+[LSB  cycle=  17] head=0 tail=0 count=0/8
+[LSB  cycle=  18] head=0 tail=0 count=0/8
+[LSB  cycle=  19] head=0 tail=0 count=0/8
+[LSB  cycle=  20] head=0 tail=0 count=0/8
+[LSB  cycle=  21] head=0 tail=0 count=0/8
+[LSB  cycle=  22] head=0 tail=0 count=0/8
+[LSB  cycle=  23] head=0 tail=0 count=0/8
+[LSB  cycle=  24] head=0 tail=0 count=0/8
+[LSB  cycle=  25] head=0 tail=0 count=0/8
+[LSB  cycle=  26] head=0 tail=0 count=0/8
+[LSB  cycle=  27] head=0 tail=0 count=0/8
+[LSB  cycle=  28] head=0 tail=0 count=0/8
+[LSB  cycle=  29] head=0 tail=0 count=0/8
+[LSB  cycle=  30] head=0 tail=0 count=0/8
+[LSB  cycle=  31] head=0 tail=0 count=0/8
+[LSB  cycle=  32] head=0 tail=1 count=1/8
+  [ 0] WAIT LW ROB=14 vj=0x0 PC=0x0054
+[LSB  cycle=  33] head=1 tail=2 count=1/8
+  [ 1] WAIT LW ROB=15 vj=0x0 PC=0x0058
+[LSB  cycle=  34] head=2 tail=2 count=0/8
+[LSB  cycle=  35] head=2 tail=2 count=0/8
+[LSB  cycle=  36] head=2 tail=2 count=0/8
+[LSB  cycle=  37] head=2 tail=2 count=0/8
+[LSB  cycle=  38] head=2 tail=2 count=0/8
+[LSB  cycle=  39] head=2 tail=2 count=0/8
+[LSB  cycle=  40] head=2 tail=2 count=0/8
+[LSB  cycle=  41] head=2 tail=2 count=0/8
+[LSB  cycle=  42] head=2 tail=2 count=0/8
+[LSB  cycle=  43] head=2 tail=2 count=0/8
+[LSB  cycle=  44] head=2 tail=2 count=0/8
+[LSB  cycle=  45] head=2 tail=2 count=0/8
+[LSB  cycle=  46] head=2 tail=2 count=0/8
+[LSB  cycle=  47] head=2 tail=2 count=0/8
+[LSB  cycle=  48] head=2 tail=2 count=0/8
+[LSB  cycle=  49] head=2 tail=2 count=0/8
+[LSB  cycle=  50] head=2 tail=2 count=0/8
+[LSB  cycle=  51] head=2 tail=2 count=0/8
+[LSB  cycle=  52] head=2 tail=2 count=0/8
+[LSB  cycle=  53] head=2 tail=3 count=1/8
+  [ 2] WAIT LW ROB=3 vj=0x0 PC=0x0078
+[LSB  cycle=  54] head=3 tail=4 count=1/8
+  [ 3] WAIT LW ROB=4 vj=0x0 PC=0x007c
+[LSB  cycle=  55] head=4 tail=4 count=0/8
+[LSB  cycle=  56] head=4 tail=4 count=0/8
+[LSB  cycle=  57] head=4 tail=4 count=0/8
+[LSB  cycle=  58] head=4 tail=4 count=0/8
+[LSB  cycle=  59] head=4 tail=4 count=0/8
+[LSB  cycle=  60] head=4 tail=4 count=0/8
+[LSB  cycle=  61] head=4 tail=4 count=0/8
+[LSB  cycle=  62] head=4 tail=4 count=0/8
+[LSB  cycle=  63] head=4 tail=4 count=0/8
+[LSB  cycle=  64] head=4 tail=4 count=0/8
+[LSB  cycle=  65] head=4 tail=4 count=0/8
+[LSB  cycle=  66] head=4 tail=4 count=0/8
+[LSB  cycle=  67] head=4 tail=4 count=0/8
+[LSB  cycle=  68] head=4 tail=4 count=0/8
+[LSB  cycle=  69] head=4 tail=4 count=0/8
+[LSB  cycle=  70] head=4 tail=4 count=0/8
+[LSB  cycle=  71] head=4 tail=4 count=0/8
+[LSB  cycle=  72] head=4 tail=4 count=0/8
+[LSB  cycle=  73] head=4 tail=4 count=0/8
+[LSB  cycle=  74] head=4 tail=4 count=0/8
+[LSB  cycle=  75] head=4 tail=4 count=0/8
+[LSB  cycle=  76] head=4 tail=4 count=0/8
+[LSB  cycle=  77] head=4 tail=4 count=0/8

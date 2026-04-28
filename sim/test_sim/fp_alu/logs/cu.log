@@ -1,0 +1,14 @@
+[CU   cycle=   1] idle
+[CU   cycle=   2] idle
+[CU   cycle=   3] COMMIT ADDI PC=0x0000 x1=0x0
+[CU   cycle=   4] COMMIT ADDI PC=0x0004 x2=0x64
+[CU   cycle=   5] idle
+[CU   cycle=   6] COMMIT FCVT.S.W PC=0x0008 f1=0x42c80000
+[CU   cycle=   7] COMMIT ADDI PC=0x000c x3=0x19
+[CU   cycle=   8] COMMIT FCVT.S.W PC=0x0010 f2=0x41c80000
+[CU   cycle=   9] idle
+[CU   cycle=  10] COMMIT FADD.S PC=0x0014 f3=0x42fa0000
+[CU   cycle=  11] idle
+[CU   cycle=  12] COMMIT FMUL.S PC=0x0018 f4=0x451c4000
+[CU   cycle=  13] COMMIT FSUB.S PC=0x001c f5=0x42960000
+[CU   cycle=  14] COMMIT FCVT.W.S PC=0x0020 x4=0x7d

@@ -1,0 +1,60 @@
+[RAT  cycle=   1]
+  INT:
+  FP: 
+[RAT  cycle=   2]
+  INT: x1->ROB0
+  FP: 
+[RAT  cycle=   3]
+  INT: x2->ROB1
+  FP: 
+[RAT  cycle=   4]
+  INT: x3->ROB2
+  FP: 
+[RAT  cycle=   5]
+  INT: x1->ROB3
+  FP: 
+[RAT  cycle=   6]
+  INT: x2->ROB4
+  FP: 
+[RAT  cycle=   7]
+  INT:
+  FP: 
+[RAT  cycle=   8]
+  INT: x1->ROB6
+  FP: 
+[RAT  cycle=   9]
+  INT: x2->ROB7
+  FP: 
+[RAT  cycle=  10]
+  INT:
+  FP: 
+[RAT  cycle=  11]
+  INT: x1->ROB9
+  FP: 
+[RAT  cycle=  12]
+  INT: x2->ROB10
+  FP: 
+[RAT  cycle=  13]
+  INT:
+  FP: 
+[RAT  cycle=  14]
+  INT: x1->ROB12
+  FP: 
+[RAT  cycle=  15]
+  INT: x2->ROB13
+  FP: 
+[RAT  cycle=  16]
+  INT:
+  FP: 
+[RAT  cycle=  17]
+  INT: x1->ROB15
+  FP: 
+[RAT  cycle=  18]
+  INT: x2->ROB0
+  FP: 
+[RAT  cycle=  19]
+  INT:
+  FP: 
+[RAT  cycle=  20]
+  INT:
+  FP: 

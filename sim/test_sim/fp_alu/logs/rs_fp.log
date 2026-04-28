@@ -1,0 +1,29 @@
+[RS   cycle=   1]
+[RS   cycle=   2]
+[RS   cycle=   3]
+[RS   cycle=   4]
+  [ 0] FCVT.S.W ROB=2 vj=0x64 vk=0x0
+[RS   cycle=   5]
+  [ 0] FCVT.S.W ROB=2 vj=0x64 vk=0x0 rem=1
+[RS   cycle=   6]
+  [ 0] FCVT.S.W ROB=4 vj=0x19 vk=0x0
+[RS   cycle=   7]
+  [ 0] FCVT.S.W ROB=4 vj=0x19 vk=0x0 rem=1
+  [ 1] FADD.S ROB=5 vj=0x42c80000 qk=ROB4
+[RS   cycle=   8]
+  [ 0] FMUL.S ROB=6 vj=0x42c80000 vk=0x41c80000
+  [ 1] FADD.S ROB=5 vj=0x42c80000 vk=0x41c80000
+[RS   cycle=   9]
+  [ 0] FMUL.S ROB=6 vj=0x42c80000 vk=0x41c80000 rem=3
+  [ 1] FADD.S ROB=5 vj=0x42c80000 vk=0x41c80000 rem=1
+  [ 2] FSUB.S ROB=7 vj=0x42c80000 vk=0x41c80000
+[RS   cycle=  10]
+  [ 0] FMUL.S ROB=6 vj=0x42c80000 vk=0x41c80000 rem=2
+  [ 1] FCVT.W.S ROB=8 vj=0x42fa0000 vk=0x0
+  [ 2] FSUB.S ROB=7 vj=0x42c80000 vk=0x41c80000 rem=1
+[RS   cycle=  11]
+  [ 0] FMUL.S ROB=6 vj=0x42c80000 vk=0x41c80000 rem=1
+  [ 1] FCVT.W.S ROB=8 vj=0x42fa0000 vk=0x0 rem=1
+[RS   cycle=  12]
+[RS   cycle=  13]
+[RS   cycle=  14]

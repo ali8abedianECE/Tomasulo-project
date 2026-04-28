@@ -1,0 +1,23 @@
+[RS   cycle=   1]
+[RS   cycle=   2]
+  [ 0] ADDI ROB=0 vj=0x0 vk=0x0
+[RS   cycle=   3]
+  [ 0] ADDI ROB=1 vj=0x0 vk=0x0
+[RS   cycle=   4]
+  [ 0] ADD ROB=2 vj=0xa vk=0x3
+[RS   cycle=   5]
+  [ 0] SUB ROB=3 vj=0xa vk=0x3
+[RS   cycle=   6]
+  [ 0] AND ROB=4 vj=0xa vk=0x3
+[RS   cycle=   7]
+  [ 0] OR ROB=5 vj=0xa vk=0x3
+[RS   cycle=   8]
+  [ 0] XOR ROB=6 vj=0xa vk=0x3
+[RS   cycle=   9]
+  [ 0] SLLI ROB=7 vj=0xa vk=0x0
+[RS   cycle=  10]
+  [ 0] SRLI ROB=8 vj=0xa vk=0x0
+[RS   cycle=  11]
+  [ 0] ADD ROB=9 vj=0xd vk=0x7
+[RS   cycle=  12]
+  [ 0] HALT ROB=10 vj=0x0 vk=0x0

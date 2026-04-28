@@ -1,0 +1,39 @@
+[RS   cycle=   1]
+[RS   cycle=   2]
+  [ 0] ADDI ROB=0 vj=0x0 vk=0x0
+[RS   cycle=   3]
+  [ 0] ADDI ROB=1 vj=0x0 vk=0x0
+[RS   cycle=   4]
+  [ 0] ADDI ROB=2 vj=0x0 vk=0x0
+[RS   cycle=   5]
+  [ 0] ADD ROB=3 vj=0x0 vk=0x5
+[RS   cycle=   6]
+  [ 0] SUB ROB=4 vj=0x5 vk=0x1
+[RS   cycle=   7]
+  [ 0] BNE ROB=5 vj=0x4 vk=0x0
+[RS   cycle=   8]
+  [ 0] ADD ROB=6 vj=0x5 vk=0x4
+[RS   cycle=   9]
+  [ 0] SUB ROB=7 vj=0x4 vk=0x1
+[RS   cycle=  10]
+  [ 0] BNE ROB=8 vj=0x3 vk=0x0
+[RS   cycle=  11]
+  [ 0] ADD ROB=9 vj=0x9 vk=0x3
+[RS   cycle=  12]
+  [ 0] SUB ROB=10 vj=0x3 vk=0x1
+[RS   cycle=  13]
+  [ 0] BNE ROB=11 vj=0x2 vk=0x0
+[RS   cycle=  14]
+  [ 0] ADD ROB=12 vj=0xc vk=0x2
+[RS   cycle=  15]
+  [ 0] SUB ROB=13 vj=0x2 vk=0x1
+[RS   cycle=  16]
+  [ 0] BNE ROB=14 vj=0x1 vk=0x0
+[RS   cycle=  17]
+  [ 0] ADD ROB=15 vj=0xe vk=0x1
+[RS   cycle=  18]
+  [ 0] SUB ROB=0 vj=0x1 vk=0x1
+[RS   cycle=  19]
+  [ 0] BNE ROB=1 vj=0x0 vk=0x0
+[RS   cycle=  20]
+  [ 0] HALT ROB=2 vj=0x0 vk=0x0

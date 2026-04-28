@@ -1,0 +1,77 @@
+[CU   cycle=   1] idle
+[CU   cycle=   2] idle
+[CU   cycle=   3] COMMIT ADDI PC=0x0000 x1=0x1
+[CU   cycle=   4] COMMIT ADDI PC=0x0004 x2=0x2
+[CU   cycle=   5] COMMIT ADDI PC=0x0008 x3=0x3
+[CU   cycle=   6] COMMIT ADDI PC=0x000c x4=0x4
+[CU   cycle=   7] COMMIT ADDI PC=0x0010 x5=0x5
+[CU   cycle=   8] COMMIT ADDI PC=0x0014 x6=0x6
+[CU   cycle=   9] COMMIT ADDI PC=0x0018 x10=0x0
+[CU   cycle=  10] COMMIT SW PC=0x001c
+[CU   cycle=  11] COMMIT SW PC=0x0020
+[CU   cycle=  12] COMMIT SW PC=0x0024
+[CU   cycle=  13] COMMIT SW PC=0x0028
+[CU   cycle=  14] COMMIT SW PC=0x002c
+[CU   cycle=  15] COMMIT SW PC=0x0030
+[CU   cycle=  16] COMMIT LW PC=0x0034 x11=0x1
+[CU   cycle=  17] COMMIT LW PC=0x0038 x14=0x4
+[CU   cycle=  18] COMMIT ADD PC=0x003c x17=0x0
+[CU   cycle=  19] COMMIT ADD PC=0x0040 x17=0x1
+[CU   cycle=  20] COMMIT ADDI PC=0x0044 x18=0x0
+[CU   cycle=  21] COMMIT ADD PC=0x0048 x18=0x1
+[CU   cycle=  22] COMMIT ADDI PC=0x004c x14=0x3
+[CU   cycle=  23] COMMIT BNE PC=0x0050
+[CU   cycle=  24] COMMIT ADD PC=0x0048 x18=0x2
+[CU   cycle=  25] COMMIT ADDI PC=0x004c x14=0x2
+[CU   cycle=  26] COMMIT BNE PC=0x0050
+[CU   cycle=  27] COMMIT ADD PC=0x0048 x18=0x3
+[CU   cycle=  28] COMMIT ADDI PC=0x004c x14=0x1
+[CU   cycle=  29] COMMIT BNE PC=0x0050
+[CU   cycle=  30] COMMIT ADD PC=0x0048 x18=0x4
+[CU   cycle=  31] COMMIT ADDI PC=0x004c x14=0x0
+[CU   cycle=  32] COMMIT BNE PC=0x0050
+[CU   cycle=  33] COMMIT LW PC=0x0054 x12=0x2
+[CU   cycle=  34] COMMIT LW PC=0x0058 x15=0x5
+[CU   cycle=  35] COMMIT ADD PC=0x005c x19=0x2
+[CU   cycle=  36] COMMIT ADDI PC=0x0060 x20=0x0
+[CU   cycle=  37] COMMIT ADDI PC=0x0064 x15=0x5
+[CU   cycle=  38] COMMIT ADD PC=0x0068 x20=0x2
+[CU   cycle=  39] COMMIT ADDI PC=0x006c x15=0x4
+[CU   cycle=  40] COMMIT BNE PC=0x0070
+[CU   cycle=  41] COMMIT ADD PC=0x0068 x20=0x4
+[CU   cycle=  42] COMMIT ADDI PC=0x006c x15=0x3
+[CU   cycle=  43] COMMIT BNE PC=0x0070
+[CU   cycle=  44] COMMIT ADD PC=0x0068 x20=0x6
+[CU   cycle=  45] COMMIT ADDI PC=0x006c x15=0x2
+[CU   cycle=  46] COMMIT BNE PC=0x0070
+[CU   cycle=  47] COMMIT ADD PC=0x0068 x20=0x8
+[CU   cycle=  48] COMMIT ADDI PC=0x006c x15=0x1
+[CU   cycle=  49] COMMIT BNE PC=0x0070
+[CU   cycle=  50] COMMIT ADD PC=0x0068 x20=0xa
+[CU   cycle=  51] COMMIT ADDI PC=0x006c x15=0x0
+[CU   cycle=  52] COMMIT BNE PC=0x0070
+[CU   cycle=  53] COMMIT ADD PC=0x0074 x21=0xe
+[CU   cycle=  54] COMMIT LW PC=0x0078 x13=0x3
+[CU   cycle=  55] COMMIT LW PC=0x007c x16=0x6
+[CU   cycle=  56] COMMIT ADD PC=0x0080 x22=0x3
+[CU   cycle=  57] COMMIT ADDI PC=0x0084 x23=0x0
+[CU   cycle=  58] COMMIT ADDI PC=0x0088 x16=0x6
+[CU   cycle=  59] COMMIT ADD PC=0x008c x23=0x3
+[CU   cycle=  60] COMMIT ADDI PC=0x0090 x16=0x5
+[CU   cycle=  61] COMMIT BNE PC=0x0094
+[CU   cycle=  62] COMMIT ADD PC=0x008c x23=0x6
+[CU   cycle=  63] COMMIT ADDI PC=0x0090 x16=0x4
+[CU   cycle=  64] COMMIT BNE PC=0x0094
+[CU   cycle=  65] COMMIT ADD PC=0x008c x23=0x9
+[CU   cycle=  66] COMMIT ADDI PC=0x0090 x16=0x3
+[CU   cycle=  67] COMMIT BNE PC=0x0094
+[CU   cycle=  68] COMMIT ADD PC=0x008c x23=0xc
+[CU   cycle=  69] COMMIT ADDI PC=0x0090 x16=0x2
+[CU   cycle=  70] COMMIT BNE PC=0x0094
+[CU   cycle=  71] COMMIT ADD PC=0x008c x23=0xf
+[CU   cycle=  72] COMMIT ADDI PC=0x0090 x16=0x1
+[CU   cycle=  73] COMMIT BNE PC=0x0094
+[CU   cycle=  74] COMMIT ADD PC=0x008c x23=0x12
+[CU   cycle=  75] COMMIT ADDI PC=0x0090 x16=0x0
+[CU   cycle=  76] COMMIT BNE PC=0x0094
+[CU   cycle=  77] COMMIT ADD PC=0x0098 x24=0x20

@@ -1,0 +1,30 @@
+[RAT  cycle=   1]
+  INT:
+  FP: 
+[RAT  cycle=   2]
+  INT: x1->ROB0
+  FP: 
+[RAT  cycle=   3]
+  INT: x2->ROB1
+  FP: 
+[RAT  cycle=   4]
+  INT:
+  FP: 
+[RAT  cycle=   5]
+  INT: x3->ROB3
+  FP: 
+[RAT  cycle=   6]
+  INT: x4->ROB4
+  FP: 
+[RAT  cycle=   7]
+  INT:
+  FP: 
+[RAT  cycle=   8]
+  INT: x5->ROB6
+  FP: 
+[RAT  cycle=   9]
+  INT: x6->ROB7
+  FP: 
+[RAT  cycle=  10]
+  INT:
+  FP: 

@@ -1,0 +1,14 @@
+[LSB  cycle=   1] head=0 tail=0 count=0/8
+[LSB  cycle=   2] head=0 tail=0 count=0/8
+[LSB  cycle=   3] head=0 tail=0 count=0/8
+[LSB  cycle=   4] head=0 tail=1 count=1/8
+  [ 0] WAIT SW ROB=2 vj=0x64 vk=0x2a PC=0x0008
+[LSB  cycle=   5] head=1 tail=2 count=1/8
+  [ 1] WAIT LW ROB=3 vj=0x64 PC=0x000c
+[LSB  cycle=   6] head=2 tail=2 count=0/8
+[LSB  cycle=   7] head=2 tail=3 count=1/8
+  [ 2] WAIT SW ROB=5 vj=0x64 vk=0x7 PC=0x0014
+[LSB  cycle=   8] head=3 tail=4 count=1/8
+  [ 3] WAIT LW ROB=6 vj=0x64 PC=0x0018
+[LSB  cycle=   9] head=4 tail=4 count=0/8
+[LSB  cycle=  10] head=4 tail=4 count=0/8

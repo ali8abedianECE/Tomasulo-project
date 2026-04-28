@@ -1,0 +1,20 @@
+[CU   cycle=   1] idle
+[CU   cycle=   2] idle
+[CU   cycle=   3] COMMIT ADDI PC=0x0000 x1=0x0
+[CU   cycle=   4] COMMIT ADDI PC=0x0004 x2=0x5
+[CU   cycle=   5] COMMIT ADDI PC=0x0008 x3=0x1
+[CU   cycle=   6] COMMIT ADD PC=0x000c x1=0x5
+[CU   cycle=   7] COMMIT SUB PC=0x0010 x2=0x4
+[CU   cycle=   8] COMMIT BNE PC=0x0014
+[CU   cycle=   9] COMMIT ADD PC=0x000c x1=0x9
+[CU   cycle=  10] COMMIT SUB PC=0x0010 x2=0x3
+[CU   cycle=  11] COMMIT BNE PC=0x0014
+[CU   cycle=  12] COMMIT ADD PC=0x000c x1=0xc
+[CU   cycle=  13] COMMIT SUB PC=0x0010 x2=0x2
+[CU   cycle=  14] COMMIT BNE PC=0x0014
+[CU   cycle=  15] COMMIT ADD PC=0x000c x1=0xe
+[CU   cycle=  16] COMMIT SUB PC=0x0010 x2=0x1
+[CU   cycle=  17] COMMIT BNE PC=0x0014
+[CU   cycle=  18] COMMIT ADD PC=0x000c x1=0xf
+[CU   cycle=  19] COMMIT SUB PC=0x0010 x2=0x0
+[CU   cycle=  20] COMMIT BNE PC=0x0014

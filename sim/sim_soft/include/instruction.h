@@ -1,9 +1,6 @@
 #pragma once
 #include "config.h"
 #include <cstdint>
-#include <deque>
-#include <ostream>
-#include <vector>
 
 /*
  * RV32IF subset — decoded instruction types.
@@ -61,6 +58,8 @@ struct Instruction {
 
 /* Execution latency in cycles. */
 int latency_of(Opcode op);
+/* True if the FU for this opcode is pipelined (throughput=1 even if latency>1). */
+bool is_pipelined(Opcode op);
 /* Human-readable opcode string for trace output. */
 const char* opcode_name(Opcode op);
 
@@ -77,34 +76,3 @@ inline bool is_fp_op(Opcode op) {
            op == Opcode::FCVT_W_S || op == Opcode::FCVT_S_W;
 }
 
-/*
- * InstructionQueue — in-order fetch buffer between instruction memory and dispatch.
- *
- * Each cycle tick() pulls the next instruction from the loaded program into
- * the buffer if capacity allows.  Dispatch calls can_dispatch() then dispatch()
- * to pop the front entry and send it downstream.
- *
- *   [front/oldest] <- dispatch          fetch -> [back/newest]
- *
- * program_ is indexed by PC >> 2 (word address).
- * Capacity is set from IQ_CAPACITY in config.h by default.
- */
-class InstructionQueue {
-public:
-    explicit InstructionQueue(int capacity = IQ_CAPACITY);
-    void load_program(const std::vector<Instruction>& prog);
-    /* Fetch next instruction into buffer if space allows. */
-    void tick();
-    bool can_dispatch() const;
-    /* Pop and return front instruction. Only call when can_dispatch(). */
-    Instruction dispatch();
-    /* True once all instructions fetched and buffer empty. */
-    bool done() const;
-    void dump(std::ostream& os, int cycle) const;
-
-private:
-    int                      capacity_;
-    std::vector<Instruction> program_;  /* full program, index = PC >> 2 */
-    int                      pc_;       /* index of next instruction to fetch */
-    std::deque<Instruction>  buffer_;
-};

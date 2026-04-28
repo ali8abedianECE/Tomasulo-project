@@ -1,0 +1,12 @@
+[CU   cycle=   1] idle
+[CU   cycle=   2] idle
+[CU   cycle=   3] COMMIT ADDI PC=0x0000 x1=0xa
+[CU   cycle=   4] COMMIT ADDI PC=0x0004 x2=0x3
+[CU   cycle=   5] COMMIT ADD PC=0x0008 x3=0xd
+[CU   cycle=   6] COMMIT SUB PC=0x000c x4=0x7
+[CU   cycle=   7] COMMIT AND PC=0x0010 x5=0x2
+[CU   cycle=   8] COMMIT OR PC=0x0014 x6=0xb
+[CU   cycle=   9] COMMIT XOR PC=0x0018 x7=0x9
+[CU   cycle=  10] COMMIT SLLI PC=0x001c x8=0x28
+[CU   cycle=  11] COMMIT SRLI PC=0x0020 x9=0x5
+[CU   cycle=  12] COMMIT ADD PC=0x0024 x10=0x14

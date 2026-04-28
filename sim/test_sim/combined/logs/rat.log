@@ -1,0 +1,231 @@
+[RAT  cycle=   1]
+  INT:
+  FP: 
+[RAT  cycle=   2]
+  INT: x1->ROB0
+  FP: 
+[RAT  cycle=   3]
+  INT: x2->ROB1
+  FP: 
+[RAT  cycle=   4]
+  INT: x3->ROB2
+  FP: 
+[RAT  cycle=   5]
+  INT: x4->ROB3
+  FP: 
+[RAT  cycle=   6]
+  INT: x5->ROB4
+  FP: 
+[RAT  cycle=   7]
+  INT: x6->ROB5
+  FP: 
+[RAT  cycle=   8]
+  INT: x10->ROB6
+  FP: 
+[RAT  cycle=   9]
+  INT:
+  FP: 
+[RAT  cycle=  10]
+  INT:
+  FP: 
+[RAT  cycle=  11]
+  INT:
+  FP: 
+[RAT  cycle=  12]
+  INT:
+  FP: 
+[RAT  cycle=  13]
+  INT:
+  FP: 
+[RAT  cycle=  14]
+  INT:
+  FP: 
+[RAT  cycle=  15]
+  INT: x11->ROB13
+  FP: 
+[RAT  cycle=  16]
+  INT: x14->ROB14
+  FP: 
+[RAT  cycle=  17]
+  INT: x17->ROB15
+  FP: 
+[RAT  cycle=  18]
+  INT: x17->ROB0
+  FP: 
+[RAT  cycle=  19]
+  INT: x18->ROB1
+  FP: 
+[RAT  cycle=  20]
+  INT: x18->ROB2
+  FP: 
+[RAT  cycle=  21]
+  INT: x14->ROB3
+  FP: 
+[RAT  cycle=  22]
+  INT:
+  FP: 
+[RAT  cycle=  23]
+  INT: x18->ROB5
+  FP: 
+[RAT  cycle=  24]
+  INT: x14->ROB6
+  FP: 
+[RAT  cycle=  25]
+  INT:
+  FP: 
+[RAT  cycle=  26]
+  INT: x18->ROB8
+  FP: 
+[RAT  cycle=  27]
+  INT: x14->ROB9
+  FP: 
+[RAT  cycle=  28]
+  INT:
+  FP: 
+[RAT  cycle=  29]
+  INT: x18->ROB11
+  FP: 
+[RAT  cycle=  30]
+  INT: x14->ROB12
+  FP: 
+[RAT  cycle=  31]
+  INT:
+  FP: 
+[RAT  cycle=  32]
+  INT: x12->ROB14
+  FP: 
+[RAT  cycle=  33]
+  INT: x15->ROB15
+  FP: 
+[RAT  cycle=  34]
+  INT: x19->ROB0
+  FP: 
+[RAT  cycle=  35]
+  INT: x20->ROB1
+  FP: 
+[RAT  cycle=  36]
+  INT: x15->ROB2
+  FP: 
+[RAT  cycle=  37]
+  INT: x20->ROB3
+  FP: 
+[RAT  cycle=  38]
+  INT: x15->ROB4
+  FP: 
+[RAT  cycle=  39]
+  INT:
+  FP: 
+[RAT  cycle=  40]
+  INT: x20->ROB6
+  FP: 
+[RAT  cycle=  41]
+  INT: x15->ROB7
+  FP: 
+[RAT  cycle=  42]
+  INT:
+  FP: 
+[RAT  cycle=  43]
+  INT: x20->ROB9
+  FP: 
+[RAT  cycle=  44]
+  INT: x15->ROB10
+  FP: 
+[RAT  cycle=  45]
+  INT:
+  FP: 
+[RAT  cycle=  46]
+  INT: x20->ROB12
+  FP: 
+[RAT  cycle=  47]
+  INT: x15->ROB13
+  FP: 
+[RAT  cycle=  48]
+  INT:
+  FP: 
+[RAT  cycle=  49]
+  INT: x20->ROB15
+  FP: 
+[RAT  cycle=  50]
+  INT: x15->ROB0
+  FP: 
+[RAT  cycle=  51]
+  INT:
+  FP: 
+[RAT  cycle=  52]
+  INT: x21->ROB2
+  FP: 
+[RAT  cycle=  53]
+  INT: x13->ROB3
+  FP: 
+[RAT  cycle=  54]
+  INT: x16->ROB4
+  FP: 
+[RAT  cycle=  55]
+  INT: x22->ROB5
+  FP: 
+[RAT  cycle=  56]
+  INT: x23->ROB6
+  FP: 
+[RAT  cycle=  57]
+  INT: x16->ROB7
+  FP: 
+[RAT  cycle=  58]
+  INT: x23->ROB8
+  FP: 
+[RAT  cycle=  59]
+  INT: x16->ROB9
+  FP: 
+[RAT  cycle=  60]
+  INT:
+  FP: 
+[RAT  cycle=  61]
+  INT: x23->ROB11
+  FP: 
+[RAT  cycle=  62]
+  INT: x16->ROB12
+  FP: 
+[RAT  cycle=  63]
+  INT:
+  FP: 
+[RAT  cycle=  64]
+  INT: x23->ROB14
+  FP: 
+[RAT  cycle=  65]
+  INT: x16->ROB15
+  FP: 
+[RAT  cycle=  66]
+  INT:
+  FP: 
+[RAT  cycle=  67]
+  INT: x23->ROB1
+  FP: 
+[RAT  cycle=  68]
+  INT: x16->ROB2
+  FP: 
+[RAT  cycle=  69]
+  INT:
+  FP: 
+[RAT  cycle=  70]
+  INT: x23->ROB4
+  FP: 
+[RAT  cycle=  71]
+  INT: x16->ROB5
+  FP: 
+[RAT  cycle=  72]
+  INT:
+  FP: 
+[RAT  cycle=  73]
+  INT: x23->ROB7
+  FP: 
+[RAT  cycle=  74]
+  INT: x16->ROB8
+  FP: 
+[RAT  cycle=  75]
+  INT:
+  FP: 
+[RAT  cycle=  76]
+  INT: x24->ROB10
+  FP: 
+[RAT  cycle=  77]
+  INT:
+  FP: 

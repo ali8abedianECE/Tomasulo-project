@@ -36,6 +36,26 @@ int latency_of(Opcode op) {
     }
 }
 
+bool is_pipelined(Opcode op) {
+    switch (op) {
+        case Opcode::FADD_S:   return PIPE_FP_ADDSUB;
+        case Opcode::FSUB_S:   return PIPE_FP_ADDSUB;
+        case Opcode::FMUL_S:   return PIPE_FP_MUL;
+        case Opcode::FDIV_S:   return PIPE_FP_DIV;
+        case Opcode::FLW:      return PIPE_FP_LS;
+        case Opcode::FSW:      return PIPE_FP_LS;
+        case Opcode::FCVT_W_S: return PIPE_FP_CVT;
+        case Opcode::FCVT_S_W: return PIPE_FP_CVT;
+        case Opcode::LW:       return PIPE_INT_LS;
+        case Opcode::SW:       return PIPE_INT_LS;
+        case Opcode::BEQ:      return PIPE_BRANCH;
+        case Opcode::BNE:      return PIPE_BRANCH;
+        case Opcode::BLT:      return PIPE_BRANCH;
+        case Opcode::BGE:      return PIPE_BRANCH;
+        default:               return PIPE_INT_ALU;
+    }
+}
+
 const char* opcode_name(Opcode op) {
     switch (op) {
         case Opcode::ADD:      return "ADD";
