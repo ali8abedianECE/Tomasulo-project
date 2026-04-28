@@ -8,7 +8,10 @@
  * @param[in] size Total number of ROB entries (must be >= 1).
  */
 ReorderBuffer::ReorderBuffer(int size)
-    : size_(size), head_(0), tail_(0), count_(0) {}
+    : size_(size), head_(0), tail_(0), count_(0) {
+    assert(size >= 1);
+    entries_.resize(size_);
+}
 
 
 /**
