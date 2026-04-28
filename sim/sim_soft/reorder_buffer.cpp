@@ -112,7 +112,12 @@ int  ReorderBuffer::head_tag() const { assert(!empty()); return head_; }
  *
  * Called on a branch misprediction flush to discard all in-flight work.
  */
-void ReorderBuffer::flush() {}
+void ReorderBuffer::flush() {
+    entries_.assign(size_, ROBEntry{});
+    head_  = 0;
+    tail_  = 0;
+    count_ = 0;
+}
 
 
 static const char* rob_state_str(ROBState s) {
