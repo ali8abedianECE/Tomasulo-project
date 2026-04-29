@@ -214,7 +214,7 @@ bool ReservationStation::full()  const { return count_ == size_; }
 
 
 /** @brief Return @c true if no RS slots are occupied. */
-bool ReservationStation::empty() const {}
+bool ReservationStation::empty() const { return count_ == 0; }
 
 
 /**
