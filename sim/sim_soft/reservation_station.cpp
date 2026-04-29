@@ -70,7 +70,9 @@ static uint32_t execute_op(const RSEntry& e) {
  *
  * @param[in] size Total number of RS entries available.
  */
-ReservationStation::ReservationStation(int size) : size_(size), count_(0) {}
+ReservationStation::ReservationStation(int size) : size_(size), count_(0) {
+    entries_.resize(size_);
+}
 
 
 /**
