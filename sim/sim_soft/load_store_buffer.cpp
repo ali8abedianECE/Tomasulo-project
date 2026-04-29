@@ -9,7 +9,10 @@
  * @param[in] size Total number of LSB entries (must be >= 1).
  */
 LoadStoreBuffer::LoadStoreBuffer(int size)
-    : size_(size), head_(0), tail_(0), count_(0) {}
+    : size_(size), head_(0), tail_(0), count_(0) {
+    assert(size >= 1);
+    entries_.resize(size_);
+}
 
 
 /**
