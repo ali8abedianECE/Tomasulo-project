@@ -141,7 +141,39 @@ void ReservationStation::snoop(const CommonDataBus& cdb) {
  * 2. Start newly ready entries (all operands resolved, not yet executing),
  *    respecting non-pipelined FU exclusivity.
  */
-void ReservationStation::tick() {}
+void ReservationStation::tick() {
+    /* Decrement executing entries; mark done when countdown reaches zero. */
+    for (auto& e : entries_) {
+        if (!e.busy || e.done || e.cycles_rem == 0) continue;
+        if (--e.cycles_rem == 0) { e.result = execute_op(e); e.done = true; }
+    }
+
+    /* Start READY entries (qj==-1, qk==-1, cycles_rem==0, not done). */
+    for (auto& e : entries_) {
+        if (!e.busy || e.done || e.qj != -1 || e.qk != -1 || e.cycles_rem != 0) continue;
+
+        /* Non-pipelined FU: block if another entry with the same op is executing. */
+        if (!is_pipelined(e.op)) {
+            bool fu_busy = false;
+            for (const auto& other : entries_)
+                if (&other != &e && other.busy && !other.done &&
+                    other.op == e.op && other.cycles_rem > 0) {
+                    fu_busy = true; break;
+                }
+            if (fu_busy) continue;
+        }
+
+        int lat = latency_of(e.op);
+        if (lat <= 1) {
+            /* Single-cycle: compute immediately and mark done this tick. */
+            e.result = execute_op(e);
+            e.done   = true;
+        } else {
+            e.cycles_rem = lat - 1;  /* -1 because one cycle passes right now */
+        }
+    }
+
+}
 
 
 /**
