@@ -253,7 +253,9 @@ void ReservationStation::dump(std::ostream& os, int cycle) const {
 
 
 
-void ReservationStation::open_log(const std::string& path) {}
+void ReservationStation::open_log(const std::string& path) {
+    log_.open(path, std::ios::out | std::ios::trunc);
+}
 
 
 void ReservationStation::log_cycle(int cycle) {}
