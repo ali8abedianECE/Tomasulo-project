@@ -95,7 +95,10 @@ bool InstructionQueue::done() const {
  *
  * @param[in] byte_pc Byte-addressed target PC to fetch from next.
  */
-void InstructionQueue::seek(uint32_t byte_pc) {}
+void InstructionQueue::seek(uint32_t byte_pc) {
+    buffer_.clear();
+    pc_ = static_cast<int>(byte_pc >> 2);
+}
 
 
 /**
