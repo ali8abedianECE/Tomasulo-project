@@ -125,4 +125,7 @@ void InstructionQueue::open_log(const std::string& path) {
 }
 
 
-void InstructionQueue::log_cycle(int cycle) {}
+void InstructionQueue::log_cycle(int cycle) {
+    if (log_.is_open())
+        dump(log_, cycle);
+}
