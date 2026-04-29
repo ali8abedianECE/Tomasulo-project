@@ -258,4 +258,7 @@ void ReservationStation::open_log(const std::string& path) {
 }
 
 
-void ReservationStation::log_cycle(int cycle) {}
+void ReservationStation::log_cycle(int cycle) {
+    if (log_.is_open())
+        dump(log_, cycle);
+}
