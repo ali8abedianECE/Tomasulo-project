@@ -48,7 +48,9 @@ void InstructionQueue::tick() {
  *
  * @return @c true if the fetch buffer is non-empty.
  */
-bool InstructionQueue::can_dispatch() const {}
+bool InstructionQueue::can_dispatch() const {
+    return !buffer_.empty();
+}
 
 
 /**
