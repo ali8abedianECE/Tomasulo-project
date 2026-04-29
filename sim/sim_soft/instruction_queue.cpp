@@ -120,7 +120,9 @@ void InstructionQueue::dump(std::ostream& os, int cycle) const {
 
 
 
-void InstructionQueue::open_log(const std::string& path) {}
+void InstructionQueue::open_log(const std::string& path) {
+    log_.open(path, std::ios::out | std::ios::trunc);
+}
 
 
 void InstructionQueue::log_cycle(int cycle) {}
