@@ -122,7 +122,15 @@ bool ReservationStation::issue(const Instruction&            instr,
  *
  * @param[in] cdb Common Data Bus carrying results from this cycle.
  */
-void ReservationStation::snoop(const CommonDataBus& cdb) {}
+void ReservationStation::snoop(const CommonDataBus& cdb) {
+    for (const auto& res : cdb.results()) {
+        for (auto& e : entries_) {
+            if (!e.busy || e.done) continue;
+            if (e.qj == res.rob_tag) { e.vj = res.value; e.qj = -1; }
+            if (e.qk == res.rob_tag) { e.vk = res.value; e.qk = -1; }
+        }
+    }
+}
 
 
 /**
