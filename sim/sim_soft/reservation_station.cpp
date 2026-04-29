@@ -234,7 +234,22 @@ void ReservationStation::flush() {
  * @param[in,out] os    Output stream to write to.
  * @param[in]     cycle Current simulation cycle number (for the header line).
  */
-void ReservationStation::dump(std::ostream& os, int cycle) const {}
+void ReservationStation::dump(std::ostream& os, int cycle) const {
+    os << "[RS   cycle=" << std::setw(4) << cycle << "]\n";
+    for (int i = 0; i < size_; ++i) {
+        const RSEntry& e = entries_[i];
+        if (!e.busy) continue;
+        os << "  [" << std::setw(2) << i << "] " << opcode_name(e.op)
+           << " ROB=" << e.rob_tag;
+        if (e.qj != -1) os << " qj=ROB" << e.qj;
+        else            os << " vj=0x"   << std::hex << e.vj << std::dec;
+        if (e.qk != -1) os << " qk=ROB" << e.qk;
+        else            os << " vk=0x"   << std::hex << e.vk << std::dec;
+        if (e.cycles_rem > 0) os << " rem=" << e.cycles_rem;
+        if (e.done)           os << " DONE";
+        os << "\n";
+    }
+}
 
 
 
