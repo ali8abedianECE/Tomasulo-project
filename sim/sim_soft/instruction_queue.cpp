@@ -7,7 +7,9 @@
  *
  * @param[in] capacity Maximum number of instructions held in the fetch buffer.
  */
-InstructionQueue::InstructionQueue(int capacity) : capacity_(capacity), pc_(0) {}
+InstructionQueue::InstructionQueue(int capacity) : capacity_(capacity), pc_(0) {
+    assert(capacity >= 1);
+}
 
 
 /**
