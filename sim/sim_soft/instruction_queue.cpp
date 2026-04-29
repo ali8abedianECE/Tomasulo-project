@@ -83,7 +83,9 @@ Instruction InstructionQueue::dispatch() {
  * @return @c true when all instructions have been consumed from the buffer
  *         and no more remain to be fetched from the program.
  */
-bool InstructionQueue::done() const {}
+bool InstructionQueue::done() const {
+    return pc_ >= static_cast<int>(program_.size()) && buffer_.empty();
+}
 
 
 /**
