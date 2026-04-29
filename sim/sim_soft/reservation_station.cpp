@@ -210,7 +210,7 @@ RSEntry ReservationStation::pop_result() {
 
 
 /** @brief Return @c true if every RS slot is occupied. */
-bool ReservationStation::full()  const {}
+bool ReservationStation::full()  const { return count_ == size_; }
 
 
 /** @brief Return @c true if no RS slots are occupied. */
