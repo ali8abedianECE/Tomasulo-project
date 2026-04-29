@@ -181,7 +181,11 @@ void ReservationStation::tick() {
  *
  * @return @c true if at least one busy entry has its done flag set.
  */
-bool ReservationStation::has_result() const {}
+bool ReservationStation::has_result() const {
+    for (const auto& e : entries_)
+        if (e.busy && e.done) return true;
+    return false;
+}
 
 
 /**
