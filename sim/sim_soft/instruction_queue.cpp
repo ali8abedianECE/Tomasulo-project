@@ -58,7 +58,10 @@ bool InstructionQueue::can_dispatch() const {
  *
  * @return Const reference to the front of the fetch buffer.
  */
-const Instruction& InstructionQueue::peek() const {}
+const Instruction& InstructionQueue::peek() const {
+    assert(can_dispatch());
+    return buffer_.front();
+}
 
 
 /**
