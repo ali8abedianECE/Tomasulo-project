@@ -93,7 +93,25 @@ bool ReservationStation::issue(const Instruction&            instr,
                                 int                           rob_tag,
                                 const RegisterRemappingTable& rat,
                                 const RegisterFile&           rf,
-                                const ReorderBuffer&          rob) {}
+                                const ReorderBuffer&          rob) {
+    for (auto& e : entries_) {
+        if (e.busy) continue;
+        e.busy      = true;
+        e.op        = instr.op;
+        e.rob_tag   = rob_tag;
+        e.imm       = instr.imm;
+        e.rd_fp     = instr.rd_fp;
+        e.done      = false;
+        e.cycles_rem = 0;
+        e.result    = 0;
+        e.pc        = instr.pc;
+        resolve_operand(instr.rs1, instr.rs1_fp, rat, rf, rob, e.vj, e.qj);
+        resolve_operand(instr.rs2, instr.rs2_fp, rat, rf, rob, e.vk, e.qk);
+        ++count_;
+        return true;
+    }
+    return false;
+}
 
 
 /**
