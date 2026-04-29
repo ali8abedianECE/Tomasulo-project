@@ -20,7 +20,14 @@ InstructionQueue::InstructionQueue(int capacity) : capacity_(capacity), pc_(0) {
  *
  * @param[in] prog Flat list of decoded instructions in program order.
  */
-void InstructionQueue::load_program(const std::vector<Instruction>& prog) {}
+void InstructionQueue::load_program(const std::vector<Instruction>& prog) {
+    program_ = prog;
+    /* stamp each instruction with its byte address */
+    for (int i = 0; i < static_cast<int>(program_.size()); ++i)
+        program_[i].pc = static_cast<uint32_t>(i) * 4;
+    pc_ = 0;
+    buffer_.clear();
+}
 
 
 /**
