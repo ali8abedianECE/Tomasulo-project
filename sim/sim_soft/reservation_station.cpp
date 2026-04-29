@@ -222,7 +222,10 @@ bool ReservationStation::empty() const { return count_ == 0; }
  *
  * Called on a branch misprediction flush to discard all in-flight work.
  */
-void ReservationStation::flush() {}
+void ReservationStation::flush() {
+    entries_.assign(size_, RSEntry{});
+    count_ = 0;
+}
 
 
 /**
