@@ -195,7 +195,18 @@ bool ReservationStation::has_result() const {
  *
  * @throws Assertion failure if called when no entry is done.
  */
-RSEntry ReservationStation::pop_result() {}
+RSEntry ReservationStation::pop_result() {
+    for (auto& e : entries_) {
+        if (e.busy && e.done) {
+            RSEntry out = e;
+            e = RSEntry{};
+            --count_;
+            return out;
+        }
+    }
+    assert(false && "pop_result called with no done entry");
+    return RSEntry{};
+}
 
 
 /** @brief Return @c true if every RS slot is occupied. */
