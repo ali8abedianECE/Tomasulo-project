@@ -69,7 +69,12 @@ const Instruction& InstructionQueue::peek() const {
  *
  * @return The front instruction; the buffer shrinks by one entry.
  */
-Instruction InstructionQueue::dispatch() {}
+Instruction InstructionQueue::dispatch() {
+    assert(can_dispatch());
+    Instruction front = buffer_.front();
+    buffer_.pop_front();
+    return front;
+}
 
 
 /**
