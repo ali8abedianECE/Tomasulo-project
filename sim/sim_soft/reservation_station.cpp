@@ -19,7 +19,50 @@
  * @return 32-bit result: arithmetic/logical result, effective address,
  *         or resolved branch target PC.
  */
-static uint32_t execute_op(const RSEntry& e) {}
+static uint32_t execute_op(const RSEntry& e) {
+    const int32_t  sj = static_cast<int32_t>(e.vj);
+    const int32_t  sk = static_cast<int32_t>(e.vk);
+    const uint32_t uj = e.vj;
+    const float    fj = bits_to_float(e.vj);
+    const float    fk = bits_to_float(e.vk);
+
+    switch (e.op) {
+        /* Integer R-type */
+        case Opcode::ADD:  return static_cast<uint32_t>(sj + sk);
+        case Opcode::SUB:  return static_cast<uint32_t>(sj - sk);
+        case Opcode::AND:  return uj & e.vk;
+        case Opcode::OR:   return uj | e.vk;
+        case Opcode::XOR:  return uj ^ e.vk;
+        case Opcode::SLL:  return static_cast<uint32_t>(sj << (e.vk & 0x1F));
+        case Opcode::SRL:  return uj >> (e.vk & 0x1F);
+        case Opcode::SRA:  return static_cast<uint32_t>(sj >> (e.vk & 0x1F));
+        /* Integer I-type */
+        case Opcode::ADDI: return static_cast<uint32_t>(sj + e.imm);
+        case Opcode::ANDI: return uj & static_cast<uint32_t>(e.imm);
+        case Opcode::ORI:  return uj | static_cast<uint32_t>(e.imm);
+        case Opcode::XORI: return uj ^ static_cast<uint32_t>(e.imm);
+        case Opcode::SLLI: return static_cast<uint32_t>(sj << (e.imm & 0x1F));
+        case Opcode::SRLI: return uj >> (e.imm & 0x1F);
+        /* Load/store — produce effective address; memory access is in LSB */
+        case Opcode::LW:
+        case Opcode::FLW:
+        case Opcode::SW:
+        case Opcode::FSW:  return static_cast<uint32_t>(sj + e.imm);
+        /* Branch — result is the resolved target PC (pc+imm if taken, pc+4 if not). */
+        case Opcode::BEQ:  return (sj == sk) ? (e.pc + static_cast<uint32_t>(e.imm)) : (e.pc + 4u);
+        case Opcode::BNE:  return (sj != sk) ? (e.pc + static_cast<uint32_t>(e.imm)) : (e.pc + 4u);
+        case Opcode::BLT:  return (sj <  sk) ? (e.pc + static_cast<uint32_t>(e.imm)) : (e.pc + 4u);
+        case Opcode::BGE:  return (sj >= sk) ? (e.pc + static_cast<uint32_t>(e.imm)) : (e.pc + 4u);
+        /* FP ALU */
+        case Opcode::FADD_S:   return float_to_bits(fj + fk);
+        case Opcode::FSUB_S:   return float_to_bits(fj - fk);
+        case Opcode::FMUL_S:   return float_to_bits(fj * fk);
+        case Opcode::FDIV_S:   return float_to_bits(fj / fk);
+        case Opcode::FCVT_W_S: return static_cast<uint32_t>(static_cast<int32_t>(fj));
+        case Opcode::FCVT_S_W: return float_to_bits(static_cast<float>(sj));
+        default:               return 0;
+    }
+}
 
 
 /**
