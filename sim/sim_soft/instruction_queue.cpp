@@ -107,7 +107,16 @@ void InstructionQueue::seek(uint32_t byte_pc) {
  * @param[in,out] os    Output stream to write to.
  * @param[in]     cycle Current simulation cycle number (for the header line).
  */
-void InstructionQueue::dump(std::ostream& os, int cycle) const {}
+void InstructionQueue::dump(std::ostream& os, int cycle) const {
+    os << "[IQ  cycle=" << std::setw(4) << cycle << "] "
+       << "fetched=" << pc_
+       << " buf=" << buffer_.size() << "/" << capacity_;
+    for (const auto& instr : buffer_)
+        os << "  [PC=0x" << std::hex << std::setw(4) << std::setfill('0')
+           << instr.pc << " " << opcode_name(instr.op) << "]"
+           << std::dec << std::setfill(' ');
+    os << "\n";
+}
 
 
 
