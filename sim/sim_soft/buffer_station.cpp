@@ -39,7 +39,12 @@ bool BufferStation::accept(int rob_tag, uint32_t value) {
  * Shifts each stage one position toward the output end, then clears the
  * input staging slot so a new value may be accepted next cycle.
  */
-void BufferStation::tick() {}
+void BufferStation::tick() {
+    /* Shift stages_[i] ← stages_[i-1], then clear input staging. */
+    for (int i = depth_; i > 0; --i)
+        stages_[i] = stages_[i - 1];
+    stages_[0] = BufSlot{};
+}
 
 
 /**
