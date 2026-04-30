@@ -236,7 +236,7 @@ bool LoadStoreBuffer::full()  const { return count_ == size_; }
 
 
 /** @brief Return @c true if no LSB slots are occupied. */
-bool LoadStoreBuffer::empty() const {}
+bool LoadStoreBuffer::empty() const { return count_ == 0; }
 
 
 /**
