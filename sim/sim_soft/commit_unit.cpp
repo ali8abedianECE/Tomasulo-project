@@ -67,7 +67,17 @@ bool CommitUnit::tick(ReorderBuffer& rob, RegisterFile& rf,
  * @param[in,out] os    Output stream to write to.
  * @param[in]     cycle Current simulation cycle number (for the header line).
  */
-void CommitUnit::dump(std::ostream& os, int cycle) const {}
+void CommitUnit::dump(std::ostream& os, int cycle) const {
+    os << "[CU   cycle=" << std::setw(4) << cycle << "]";
+    if (!last_.valid) { os << " idle\n"; return; }
+    os << " COMMIT " << opcode_name(last_.op)
+       << " PC=0x" << std::hex << std::setw(4) << std::setfill('0')
+       << last_.pc << std::dec << std::setfill(' ');
+    if (last_.rd >= 0)
+        os << " " << (last_.rd_fp ? "f" : "x") << last_.rd
+           << "=0x" << std::hex << last_.result << std::dec;
+    os << "\n";
+}
 
 
 
