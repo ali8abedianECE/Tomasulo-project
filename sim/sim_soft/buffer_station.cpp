@@ -25,7 +25,12 @@ BufferStation::BufferStation(int depth, bool pipelined)
  *         already occupied this cycle or (for non-pipelined mode) if any
  *         stage is still busy.
  */
-bool BufferStation::accept(int rob_tag, uint32_t value) {}
+bool BufferStation::accept(int rob_tag, uint32_t value) {
+    if (!pipelined_ && busy()) return false;
+    if (stages_[0].valid) return false;  /* input port busy this cycle */
+    stages_[0] = {true, rob_tag, value};
+    return true;
+}
 
 
 /**
