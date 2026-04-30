@@ -184,7 +184,11 @@ LSBEntry LoadStoreBuffer::pop_load_result() {
  * @return @c true if the LSB is non-empty, the head entry is DONE, and it is
  *         a store operation.
  */
-bool LoadStoreBuffer::can_commit_store() const {}
+bool LoadStoreBuffer::can_commit_store() const {
+    if (empty()) return false;
+    const LSBEntry& h = entries_[head_];
+    return h.state == LSBState::DONE && is_store(h.op);
+}
 
 
 /**
