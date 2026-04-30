@@ -153,7 +153,11 @@ void LoadStoreBuffer::tick(std::vector<uint32_t>& mem) {
  * @return @c true if the LSB is non-empty, the head entry is in the DONE state,
  *         and the head entry is a load operation.
  */
-bool LoadStoreBuffer::has_load_result() const {}
+bool LoadStoreBuffer::has_load_result() const {
+    if (empty()) return false;
+    const LSBEntry& h = entries_[head_];
+    return h.state == LSBState::DONE && is_load(h.op);
+}
 
 
 /**
