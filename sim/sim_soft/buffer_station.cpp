@@ -108,4 +108,6 @@ void BufferStation::open_log(const std::string& path) {
 }
 
 
-void BufferStation::log_cycle(int cycle) {}
+void BufferStation::log_cycle(int cycle) {
+    if (log_.is_open()) dump(log_, cycle);
+}
