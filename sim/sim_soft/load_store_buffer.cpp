@@ -244,7 +244,12 @@ bool LoadStoreBuffer::empty() const { return count_ == 0; }
  *
  * Called on a branch misprediction flush to discard all pending memory operations.
  */
-void LoadStoreBuffer::flush() {}
+void LoadStoreBuffer::flush() {
+    entries_.assign(size_, LSBEntry{});
+    head_  = 0;
+    tail_  = 0;
+    count_ = 0;
+}
 
 
 static const char* lsb_state_str(LSBState s) {
