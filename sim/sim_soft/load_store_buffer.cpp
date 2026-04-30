@@ -269,7 +269,28 @@ static const char* lsb_state_str(LSBState s) {
  * @param[in,out] os    Output stream to write to.
  * @param[in]     cycle Current simulation cycle number (for the header line).
  */
-void LoadStoreBuffer::dump(std::ostream& os, int cycle) const {}
+void LoadStoreBuffer::dump(std::ostream& os, int cycle) const {
+    os << "[LSB  cycle=" << std::setw(4) << cycle << "]"
+       << " head=" << head_ << " tail=" << tail_
+       << " count=" << count_ << "/" << size_ << "\n";
+    for (int i = 0; i < count_; ++i) {
+        const LSBEntry& e = entries_[phys(i)];
+        os << "  [" << std::setw(2) << phys(i) << "] "
+           << lsb_state_str(e.state) << " " << opcode_name(e.op)
+           << " ROB=" << e.rob_tag;
+        if (e.qj != -1) os << " qj=ROB" << e.qj;
+        else            os << " vj=0x" << std::hex << e.vj << std::dec;
+        if (is_store(e.op)) {
+            if (e.qk != -1) os << " qk=ROB" << e.qk;
+            else            os << " vk=0x" << std::hex << e.vk << std::dec;
+        }
+        if (e.state != LSBState::IDLE && e.state != LSBState::WAITING)
+            os << " addr=0x" << std::hex << e.eff_addr << std::dec;
+        if (e.cycles_rem > 0) os << " rem=" << e.cycles_rem;
+        os << " PC=0x" << std::hex << std::setw(4) << std::setfill('0')
+           << e.pc << std::dec << std::setfill(' ') << "\n";
+    }
+}
 
 
 
