@@ -22,7 +22,43 @@
 bool CommitUnit::tick(ReorderBuffer& rob, RegisterFile& rf,
                       RegisterRemappingTable& rat,
                       LoadStoreBuffer& lsb, std::vector<uint32_t>& mem,
-                      uint32_t& next_pc, bool& halted) {}
+                      uint32_t& next_pc, bool& halted) {
+    last_ = CommitRecord{};
+    if (!rob.head_ready()) return false;
+
+    int      rob_tag = rob.head_tag();
+    ROBEntry entry   = rob.commit();
+
+    last_.valid  = true;
+    last_.op     = entry.op;
+    last_.rd     = entry.rd;
+    last_.rd_fp  = entry.rd_fp;
+    last_.result = entry.result;
+    last_.pc     = entry.pc;
+
+    if (entry.op == Opcode::HALT) { halted = true; return true; }
+
+    if (is_branch(entry.op)) {
+        /* result holds the resolved target PC from execute_op() */
+        next_pc = entry.result;
+        return true;
+    }
+
+    if (is_store(entry.op)) {
+        assert(lsb.can_commit_store());
+        lsb.commit_store(mem);
+        return true;
+    }
+
+    if (entry.rd >= 0) {
+        if (entry.rd_fp)
+            rf.write_fp(entry.rd, bits_to_float(entry.result));
+        else
+            rf.write_int(entry.rd, static_cast<int32_t>(entry.result));
+        rat.commit(entry.rd, entry.rd_fp, rob_tag);
+    }
+    return true;
+}
 
 
 /**
