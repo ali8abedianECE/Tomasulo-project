@@ -62,7 +62,16 @@ bool LoadStoreBuffer::issue(const Instruction&            instr,
  *
  * @param[in] cdb Common Data Bus carrying results from this cycle.
  */
-void LoadStoreBuffer::snoop(const CommonDataBus& cdb) {}
+void LoadStoreBuffer::snoop(const CommonDataBus& cdb) {
+    for (const auto& res : cdb.results()) {
+        for (int i = 0; i < count_; ++i) {
+            LSBEntry& e = entries_[phys(i)];
+            if (e.state == LSBState::IDLE || e.state == LSBState::DONE) continue;
+            if (e.qj == res.rob_tag) { e.vj = res.value; e.qj = -1; }
+            if (e.qk == res.rob_tag) { e.vk = res.value; e.qk = -1; }
+        }
+    }
+}
 
 
 /**
