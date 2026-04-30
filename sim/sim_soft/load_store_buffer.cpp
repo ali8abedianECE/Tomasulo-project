@@ -232,7 +232,7 @@ void LoadStoreBuffer::update_rob(ReorderBuffer& rob) const {
 
 
 /** @brief Return @c true if every LSB slot is occupied. */
-bool LoadStoreBuffer::full()  const {}
+bool LoadStoreBuffer::full()  const { return count_ == size_; }
 
 
 /** @brief Return @c true if no LSB slots are occupied. */
