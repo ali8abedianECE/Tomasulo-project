@@ -294,7 +294,9 @@ void LoadStoreBuffer::dump(std::ostream& os, int cycle) const {
 
 
 
-void LoadStoreBuffer::open_log(const std::string& path) {}
+void LoadStoreBuffer::open_log(const std::string& path) {
+    log_.open(path, std::ios::out | std::ios::trunc);
+}
 
 
 void LoadStoreBuffer::log_cycle(int cycle) {}
