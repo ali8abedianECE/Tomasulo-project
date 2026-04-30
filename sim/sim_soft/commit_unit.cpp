@@ -81,7 +81,9 @@ void CommitUnit::dump(std::ostream& os, int cycle) const {
 
 
 
-void CommitUnit::open_log(const std::string& path) {}
+void CommitUnit::open_log(const std::string& path) {
+    log_.open(path, std::ios::out | std::ios::trunc);
+}
 
 
 void CommitUnit::log_cycle(int cycle) {}
