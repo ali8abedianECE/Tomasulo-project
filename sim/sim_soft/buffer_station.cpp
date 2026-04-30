@@ -103,7 +103,9 @@ void BufferStation::dump(std::ostream& os, int cycle) const {
 
 
 
-void BufferStation::open_log(const std::string& path) {}
+void BufferStation::open_log(const std::string& path) {
+    log_.open(path, std::ios::out | std::ios::trunc);
+}
 
 
 void BufferStation::log_cycle(int cycle) {}
