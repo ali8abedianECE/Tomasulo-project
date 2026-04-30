@@ -221,7 +221,14 @@ void LoadStoreBuffer::commit_store(std::vector<uint32_t>& mem) {
  *
  * @param[in,out] rob Reorder buffer to update.
  */
-void LoadStoreBuffer::update_rob(ReorderBuffer& rob) const {}
+void LoadStoreBuffer::update_rob(ReorderBuffer& rob) const {
+    for (int i = 0; i < count_; ++i) {
+        const LSBEntry& e = entries_[phys(i)];
+        if (is_store(e.op) && e.state == LSBState::DONE &&
+                rob.peek(e.rob_tag).state == ROBState::IN_FLIGHT)
+            rob.write_result(e.rob_tag, 0u);
+    }
+}
 
 
 /** @brief Return @c true if every LSB slot is occupied. */
