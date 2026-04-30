@@ -33,7 +33,25 @@ bool LoadStoreBuffer::issue(const Instruction&            instr,
                              int                           rob_tag,
                              const RegisterRemappingTable& rat,
                              const RegisterFile&           rf,
-                             const ReorderBuffer&          rob) {}
+                             const ReorderBuffer&          rob) {
+    if (full()) return false;
+    LSBEntry& e   = entries_[tail_];
+    e.state       = LSBState::WAITING;
+    e.op          = instr.op;
+    e.rob_tag     = rob_tag;
+    e.imm         = instr.imm;
+    e.rd_fp       = instr.rd_fp;
+    e.cycles_rem  = 0;
+    e.result      = 0;
+    e.pc          = instr.pc;
+    /* rs1 = base address register (always integer) */
+    resolve_operand(instr.rs1, false, rat, rf, rob, e.vj, e.qj);
+    /* rs2 = store data register (only for SW/FSW); rs2_fp tells which file */
+    resolve_operand(instr.rs2, instr.rs2_fp, rat, rf, rob, e.vk, e.qk);
+    tail_  = (tail_ + 1) % size_;
+    ++count_;
+    return true;
+}
 
 
 /**
