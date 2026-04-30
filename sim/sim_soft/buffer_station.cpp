@@ -90,7 +90,16 @@ bool BufferStation::busy() const {
  * @param[in,out] os    Output stream to write to.
  * @param[in]     cycle Current simulation cycle number (for the header line).
  */
-void BufferStation::dump(std::ostream& os, int cycle) const {}
+void BufferStation::dump(std::ostream& os, int cycle) const {
+    os << "[BS   cycle=" << std::setw(4) << cycle
+       << "] depth=" << depth_ << "/" << (pipelined_ ? "pipe" : "nopipe");
+    for (int i = 0; i <= depth_; ++i) {
+        if (!stages_[i].valid) continue;
+        os << " [" << i << "]=ROB" << stages_[i].rob_tag
+           << "=0x" << std::hex << stages_[i].value << std::dec;
+    }
+    os << "\n";
+}
 
 
 
