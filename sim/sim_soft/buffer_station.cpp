@@ -52,7 +52,9 @@ void BufferStation::tick() {
  *
  * @return @c true if the last pipeline stage holds a valid result.
  */
-bool BufferStation::has_output() const {}
+bool BufferStation::has_output() const {
+    return stages_[depth_].valid;
+}
 
 
 /**
