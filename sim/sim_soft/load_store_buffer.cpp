@@ -201,7 +201,16 @@ bool LoadStoreBuffer::can_commit_store() const {
  *
  * @throws Assertion failure if called when can_commit_store() is false.
  */
-void LoadStoreBuffer::commit_store(std::vector<uint32_t>& mem) {}
+void LoadStoreBuffer::commit_store(std::vector<uint32_t>& mem) {
+    assert(can_commit_store());
+    LSBEntry& h  = entries_[head_];
+    uint32_t  wa = h.eff_addr >> 2;
+    if (wa < static_cast<uint32_t>(mem.size()))
+        mem[wa] = h.vk;
+    entries_[head_] = LSBEntry{};
+    head_  = (head_ + 1) % size_;
+    --count_;
+}
 
 
 /**
