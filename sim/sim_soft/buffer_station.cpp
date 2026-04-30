@@ -64,7 +64,12 @@ bool BufferStation::has_output() const {
  *
  * @throws Assertion failure if called when has_output() is false.
  */
-BufSlot BufferStation::pop_output() {}
+BufSlot BufferStation::pop_output() {
+    assert(has_output());
+    BufSlot out     = stages_[depth_];
+    stages_[depth_] = BufSlot{};
+    return out;
+}
 
 
 /**
