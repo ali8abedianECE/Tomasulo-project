@@ -168,7 +168,14 @@ bool LoadStoreBuffer::has_load_result() const {
  *
  * @throws Assertion failure if called when has_load_result() is false.
  */
-LSBEntry LoadStoreBuffer::pop_load_result() {}
+LSBEntry LoadStoreBuffer::pop_load_result() {
+    assert(has_load_result());
+    LSBEntry out    = entries_[head_];
+    entries_[head_] = LSBEntry{};
+    head_  = (head_ + 1) % size_;
+    --count_;
+    return out;
+}
 
 
 /**
