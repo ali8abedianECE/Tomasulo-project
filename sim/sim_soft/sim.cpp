@@ -32,7 +32,17 @@
  *
  * @return Vector of whitespace-separated tokens with no comments or commas.
  */
-static std::vector<std::string> tokenize(const std::string& line) {}
+static std::vector<std::string> tokenize(const std::string& line) {
+    std::string s = line;
+    auto hash = s.find('#');
+    if (hash != std::string::npos) s = s.substr(0, hash);
+    for (char& c : s) if (c == ',') c = ' ';
+    std::vector<std::string> toks;
+    std::istringstream iss(s);
+    std::string t;
+    while (iss >> t) toks.push_back(t);
+    return toks;
+}
 
 
 /**
