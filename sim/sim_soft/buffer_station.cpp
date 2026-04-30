@@ -9,7 +9,10 @@
  *                      if @c false, no new value is accepted until the station drains.
  */
 BufferStation::BufferStation(int depth, bool pipelined)
-    : depth_(depth), pipelined_(pipelined) {}
+    : depth_(depth), pipelined_(pipelined) {
+    assert(depth >= 1);
+    stages_.resize(depth_ + 1);  /* [0]=input staging, [depth_]=output */
+}
 
 
 /**
