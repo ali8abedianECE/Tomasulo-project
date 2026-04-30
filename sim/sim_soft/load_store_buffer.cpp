@@ -86,7 +86,65 @@ void LoadStoreBuffer::snoop(const CommonDataBus& cdb) {
  *
  * @param[in,out] mem Word-addressed memory image used for load execution.
  */
-void LoadStoreBuffer::tick(std::vector<uint32_t>& mem) {}
+void LoadStoreBuffer::tick(std::vector<uint32_t>& mem) {
+    /* Pass 1: WAITING → ADDR_READY when base register (qj) resolved. */
+    for (int i = 0; i < count_; ++i) {
+        LSBEntry& e = entries_[phys(i)];
+        if (e.state != LSBState::WAITING || e.qj != -1) continue;
+        e.eff_addr = static_cast<uint32_t>(static_cast<int32_t>(e.vj) + e.imm);
+        e.state    = LSBState::ADDR_READY;
+    }
+    /* Pass 2: ADDR_READY store → DONE when store data (qk) also resolved. */
+    for (int i = 0; i < count_; ++i) {
+        LSBEntry& e = entries_[phys(i)];
+        if (e.state != LSBState::ADDR_READY || !is_store(e.op) || e.qk != -1) continue;
+        e.state = LSBState::DONE;
+    }
+    /* Pass 3: ADDR_READY load → EXECUTING or DONE.
+     * Block if any earlier unresolved store exists, or if an earlier store
+     * to the same address is not yet DONE. Forward from DONE stores. */
+    for (int i = 0; i < count_; ++i) {
+        LSBEntry& e = entries_[phys(i)];
+        if (e.state != LSBState::ADDR_READY || !is_load(e.op)) continue;
+        bool blocked  = false;
+        int  fwd_slot = -1;
+        for (int j = 0; j < i; ++j) {
+            const LSBEntry& older = entries_[phys(j)];
+            if (!is_store(older.op)) continue;
+            if (older.state == LSBState::WAITING) { blocked = true; fwd_slot = -1; break; }
+            if (older.eff_addr != e.eff_addr) continue;
+            if (older.state == LSBState::DONE)
+                fwd_slot = j;  /* keep scanning for the most recent aliasing DONE store */
+            else
+                { blocked = true; fwd_slot = -1; break; }
+        }
+        if (blocked) continue;
+        if (fwd_slot >= 0) {
+            e.result = entries_[phys(fwd_slot)].vk;
+            e.state  = LSBState::DONE;
+            continue;
+        }
+        int lat = latency_of(e.op);
+        if (lat <= 1) {
+            uint32_t wa = e.eff_addr >> 2;
+            e.result = (wa < static_cast<uint32_t>(mem.size())) ? mem[wa] : 0u;
+            e.state  = LSBState::DONE;
+        } else {
+            e.cycles_rem = lat - 1;
+            e.state      = LSBState::EXECUTING;
+        }
+    }
+    /* Pass 4: Decrement EXECUTING loads; mark DONE when counter hits zero. */
+    for (int i = 0; i < count_; ++i) {
+        LSBEntry& e = entries_[phys(i)];
+        if (e.state != LSBState::EXECUTING) continue;
+        if (--e.cycles_rem == 0) {
+            uint32_t wa = e.eff_addr >> 2;
+            e.result = (wa < static_cast<uint32_t>(mem.size())) ? mem[wa] : 0u;
+            e.state  = LSBState::DONE;
+        }
+    }
+}
 
 
 /**
