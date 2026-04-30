@@ -77,7 +77,11 @@ BufSlot BufferStation::pop_output() {
  *
  * @return @c true if at least one stage holds a valid slot.
  */
-bool BufferStation::busy() const {}
+bool BufferStation::busy() const {
+    for (const auto& s : stages_)
+        if (s.valid) return true;
+    return false;
+}
 
 
 /**
