@@ -86,4 +86,6 @@ void CommitUnit::open_log(const std::string& path) {
 }
 
 
-void CommitUnit::log_cycle(int cycle) {}
+void CommitUnit::log_cycle(int cycle) {
+    if (log_.is_open()) dump(log_, cycle);
+}
