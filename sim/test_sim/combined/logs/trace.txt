@@ -5,11 +5,11 @@
 [RS   cycle=   1]
 [RS   cycle=   1]
 [LSB  cycle=   1] head=0 tail=0 count=0/8
-[CDB  cycle=   1] idle
 [RAT  cycle=   1]
   INT:
   FP: 
 [CU   cycle=   1] idle
+[CDB  cycle=   1] idle
 
 === CYCLE 2 ===
 [IQ  cycle=   2] fetched=1 buf=0/8
@@ -19,11 +19,11 @@
   [ 0] ADDI ROB=0 vj=0x0 vk=0x0
 [RS   cycle=   2]
 [LSB  cycle=   2] head=0 tail=0 count=0/8
-[CDB  cycle=   2] idle
 [RAT  cycle=   2]
   INT: x1->ROB0
   FP: 
 [CU   cycle=   2] idle
+[CDB  cycle=   2] ROB0=0x00000001
 
 === CYCLE 3 ===
 [IQ  cycle=   3] fetched=2 buf=0/8
@@ -33,11 +33,11 @@
   [ 0] ADDI ROB=1 vj=0x0 vk=0x0
 [RS   cycle=   3]
 [LSB  cycle=   3] head=0 tail=0 count=0/8
-[CDB  cycle=   3] idle
 [RAT  cycle=   3]
   INT: x2->ROB1
   FP: 
 [CU   cycle=   3] COMMIT ADDI PC=0x0000 x1=0x1
+[CDB  cycle=   3] ROB1=0x00000002
 
 === CYCLE 4 ===
 [IQ  cycle=   4] fetched=3 buf=0/8
@@ -47,11 +47,11 @@
   [ 0] ADDI ROB=2 vj=0x0 vk=0x0
 [RS   cycle=   4]
 [LSB  cycle=   4] head=0 tail=0 count=0/8
-[CDB  cycle=   4] idle
 [RAT  cycle=   4]
   INT: x3->ROB2
   FP: 
 [CU   cycle=   4] COMMIT ADDI PC=0x0004 x2=0x2
+[CDB  cycle=   4] ROB2=0x00000003
 
 === CYCLE 5 ===
 [IQ  cycle=   5] fetched=4 buf=0/8
@@ -61,11 +61,11 @@
   [ 0] ADDI ROB=3 vj=0x0 vk=0x0
 [RS   cycle=   5]
 [LSB  cycle=   5] head=0 tail=0 count=0/8
-[CDB  cycle=   5] idle
 [RAT  cycle=   5]
   INT: x4->ROB3
   FP: 
 [CU   cycle=   5] COMMIT ADDI PC=0x0008 x3=0x3
+[CDB  cycle=   5] ROB3=0x00000004
 
 === CYCLE 6 ===
 [IQ  cycle=   6] fetched=5 buf=0/8
@@ -75,11 +75,11 @@
   [ 0] ADDI ROB=4 vj=0x0 vk=0x0
 [RS   cycle=   6]
 [LSB  cycle=   6] head=0 tail=0 count=0/8
-[CDB  cycle=   6] idle
 [RAT  cycle=   6]
   INT: x5->ROB4
   FP: 
 [CU   cycle=   6] COMMIT ADDI PC=0x000c x4=0x4
+[CDB  cycle=   6] ROB4=0x00000005
 
 === CYCLE 7 ===
 [IQ  cycle=   7] fetched=6 buf=0/8
@@ -89,11 +89,11 @@
   [ 0] ADDI ROB=5 vj=0x0 vk=0x0
 [RS   cycle=   7]
 [LSB  cycle=   7] head=0 tail=0 count=0/8
-[CDB  cycle=   7] idle
 [RAT  cycle=   7]
   INT: x6->ROB5
   FP: 
 [CU   cycle=   7] COMMIT ADDI PC=0x0010 x5=0x5
+[CDB  cycle=   7] ROB5=0x00000006
 
 === CYCLE 8 ===
 [IQ  cycle=   8] fetched=7 buf=0/8
@@ -103,11 +103,11 @@
   [ 0] ADDI ROB=6 vj=0x0 vk=0x0
 [RS   cycle=   8]
 [LSB  cycle=   8] head=0 tail=0 count=0/8
-[CDB  cycle=   8] idle
 [RAT  cycle=   8]
   INT: x10->ROB6
   FP: 
 [CU   cycle=   8] COMMIT ADDI PC=0x0014 x6=0x6
+[CDB  cycle=   8] ROB6=0x00000000
 
 === CYCLE 9 ===
 [IQ  cycle=   9] fetched=8 buf=0/8
@@ -117,11 +117,11 @@
 [RS   cycle=   9]
 [LSB  cycle=   9] head=0 tail=1 count=1/8
   [ 0] WAIT SW ROB=7 vj=0x0 vk=0x1 PC=0x001c
-[CDB  cycle=   9] idle
 [RAT  cycle=   9]
   INT:
   FP: 
 [CU   cycle=   9] COMMIT ADDI PC=0x0018 x10=0x0
+[CDB  cycle=   9] idle
 
 === CYCLE 10 ===
 [IQ  cycle=  10] fetched=9 buf=0/8
@@ -131,11 +131,11 @@
 [RS   cycle=  10]
 [LSB  cycle=  10] head=1 tail=2 count=1/8
   [ 1] WAIT SW ROB=8 vj=0x0 vk=0x2 PC=0x0020
-[CDB  cycle=  10] idle
 [RAT  cycle=  10]
   INT:
   FP: 
 [CU   cycle=  10] COMMIT SW PC=0x001c
+[CDB  cycle=  10] idle
 
 === CYCLE 11 ===
 [IQ  cycle=  11] fetched=10 buf=0/8
@@ -145,11 +145,11 @@
 [RS   cycle=  11]
 [LSB  cycle=  11] head=2 tail=3 count=1/8
   [ 2] WAIT SW ROB=9 vj=0x0 vk=0x3 PC=0x0024
-[CDB  cycle=  11] idle
 [RAT  cycle=  11]
   INT:
   FP: 
 [CU   cycle=  11] COMMIT SW PC=0x0020
+[CDB  cycle=  11] idle
 
 === CYCLE 12 ===
 [IQ  cycle=  12] fetched=11 buf=0/8
@@ -159,11 +159,11 @@
 [RS   cycle=  12]
 [LSB  cycle=  12] head=3 tail=4 count=1/8
   [ 3] WAIT SW ROB=10 vj=0x0 vk=0x4 PC=0x0028
-[CDB  cycle=  12] idle
 [RAT  cycle=  12]
   INT:
   FP: 
 [CU   cycle=  12] COMMIT SW PC=0x0024
+[CDB  cycle=  12] idle
 
 === CYCLE 13 ===
 [IQ  cycle=  13] fetched=12 buf=0/8
@@ -173,11 +173,11 @@
 [RS   cycle=  13]
 [LSB  cycle=  13] head=4 tail=5 count=1/8
   [ 4] WAIT SW ROB=11 vj=0x0 vk=0x5 PC=0x002c
-[CDB  cycle=  13] idle
 [RAT  cycle=  13]
   INT:
   FP: 
 [CU   cycle=  13] COMMIT SW PC=0x0028
+[CDB  cycle=  13] idle
 
 === CYCLE 14 ===
 [IQ  cycle=  14] fetched=13 buf=0/8
@@ -187,11 +187,11 @@
 [RS   cycle=  14]
 [LSB  cycle=  14] head=5 tail=6 count=1/8
   [ 5] WAIT SW ROB=12 vj=0x0 vk=0x6 PC=0x0030
-[CDB  cycle=  14] idle
 [RAT  cycle=  14]
   INT:
   FP: 
 [CU   cycle=  14] COMMIT SW PC=0x002c
+[CDB  cycle=  14] idle
 
 === CYCLE 15 ===
 [IQ  cycle=  15] fetched=14 buf=0/8
@@ -201,11 +201,11 @@
 [RS   cycle=  15]
 [LSB  cycle=  15] head=6 tail=7 count=1/8
   [ 6] WAIT LW ROB=13 vj=0x0 PC=0x0034
-[CDB  cycle=  15] idle
 [RAT  cycle=  15]
   INT: x11->ROB13
   FP: 
 [CU   cycle=  15] COMMIT SW PC=0x0030
+[CDB  cycle=  15] ROB13=0x00000001
 
 === CYCLE 16 ===
 [IQ  cycle=  16] fetched=15 buf=0/8
@@ -215,11 +215,11 @@
 [RS   cycle=  16]
 [LSB  cycle=  16] head=7 tail=0 count=1/8
   [ 7] WAIT LW ROB=14 vj=0x0 PC=0x0038
-[CDB  cycle=  16] idle
 [RAT  cycle=  16]
   INT: x14->ROB14
   FP: 
 [CU   cycle=  16] COMMIT LW PC=0x0034 x11=0x1
+[CDB  cycle=  16] ROB14=0x00000004
 
 === CYCLE 17 ===
 [IQ  cycle=  17] fetched=16 buf=0/8
@@ -229,11 +229,11 @@
   [ 0] ADD ROB=15 vj=0x0 vk=0x0
 [RS   cycle=  17]
 [LSB  cycle=  17] head=0 tail=0 count=0/8
-[CDB  cycle=  17] idle
 [RAT  cycle=  17]
   INT: x17->ROB15
   FP: 
 [CU   cycle=  17] COMMIT LW PC=0x0038 x14=0x4
+[CDB  cycle=  17] ROB15=0x00000000
 
 === CYCLE 18 ===
 [IQ  cycle=  18] fetched=17 buf=0/8
@@ -243,11 +243,11 @@
   [ 0] ADD ROB=0 vj=0x0 vk=0x1
 [RS   cycle=  18]
 [LSB  cycle=  18] head=0 tail=0 count=0/8
-[CDB  cycle=  18] idle
 [RAT  cycle=  18]
   INT: x17->ROB0
   FP: 
 [CU   cycle=  18] COMMIT ADD PC=0x003c x17=0x0
+[CDB  cycle=  18] ROB0=0x00000001
 
 === CYCLE 19 ===
 [IQ  cycle=  19] fetched=18 buf=0/8
@@ -257,11 +257,11 @@
   [ 0] ADDI ROB=1 vj=0x0 vk=0x0
 [RS   cycle=  19]
 [LSB  cycle=  19] head=0 tail=0 count=0/8
-[CDB  cycle=  19] idle
 [RAT  cycle=  19]
   INT: x18->ROB1
   FP: 
 [CU   cycle=  19] COMMIT ADD PC=0x0040 x17=0x1
+[CDB  cycle=  19] ROB1=0x00000000
 
 === CYCLE 20 ===
 [IQ  cycle=  20] fetched=19 buf=0/8
@@ -271,11 +271,11 @@
   [ 0] ADD ROB=2 vj=0x0 vk=0x1
 [RS   cycle=  20]
 [LSB  cycle=  20] head=0 tail=0 count=0/8
-[CDB  cycle=  20] idle
 [RAT  cycle=  20]
   INT: x18->ROB2
   FP: 
 [CU   cycle=  20] COMMIT ADDI PC=0x0044 x18=0x0
+[CDB  cycle=  20] ROB2=0x00000001
 
 === CYCLE 21 ===
 [IQ  cycle=  21] fetched=20 buf=0/8
@@ -285,11 +285,11 @@
   [ 0] ADDI ROB=3 vj=0x4 vk=0x0
 [RS   cycle=  21]
 [LSB  cycle=  21] head=0 tail=0 count=0/8
-[CDB  cycle=  21] idle
 [RAT  cycle=  21]
   INT: x14->ROB3
   FP: 
 [CU   cycle=  21] COMMIT ADD PC=0x0048 x18=0x1
+[CDB  cycle=  21] ROB3=0x00000003
 
 === CYCLE 22 ===
 [IQ  cycle=  22] fetched=21 buf=0/8
@@ -299,11 +299,11 @@
   [ 0] BNE ROB=4 vj=0x3 vk=0x0
 [RS   cycle=  22]
 [LSB  cycle=  22] head=0 tail=0 count=0/8
-[CDB  cycle=  22] idle
 [RAT  cycle=  22]
   INT:
   FP: 
 [CU   cycle=  22] COMMIT ADDI PC=0x004c x14=0x3
+[CDB  cycle=  22] ROB4=0x00000048
 
 === CYCLE 23 ===
 [IQ  cycle=  23] fetched=19 buf=0/8
@@ -313,11 +313,11 @@
   [ 0] ADD ROB=5 vj=0x1 vk=0x1
 [RS   cycle=  23]
 [LSB  cycle=  23] head=0 tail=0 count=0/8
-[CDB  cycle=  23] idle
 [RAT  cycle=  23]
   INT: x18->ROB5
   FP: 
 [CU   cycle=  23] COMMIT BNE PC=0x0050
+[CDB  cycle=  23] ROB5=0x00000002
 
 === CYCLE 24 ===
 [IQ  cycle=  24] fetched=20 buf=0/8
@@ -327,11 +327,11 @@
   [ 0] ADDI ROB=6 vj=0x3 vk=0x0
 [RS   cycle=  24]
 [LSB  cycle=  24] head=0 tail=0 count=0/8
-[CDB  cycle=  24] idle
 [RAT  cycle=  24]
   INT: x14->ROB6
   FP: 
 [CU   cycle=  24] COMMIT ADD PC=0x0048 x18=0x2
+[CDB  cycle=  24] ROB6=0x00000002
 
 === CYCLE 25 ===
 [IQ  cycle=  25] fetched=21 buf=0/8
@@ -341,11 +341,11 @@
   [ 0] BNE ROB=7 vj=0x2 vk=0x0
 [RS   cycle=  25]
 [LSB  cycle=  25] head=0 tail=0 count=0/8
-[CDB  cycle=  25] idle
 [RAT  cycle=  25]
   INT:
   FP: 
 [CU   cycle=  25] COMMIT ADDI PC=0x004c x14=0x2
+[CDB  cycle=  25] ROB7=0x00000048
 
 === CYCLE 26 ===
 [IQ  cycle=  26] fetched=19 buf=0/8
@@ -355,11 +355,11 @@
   [ 0] ADD ROB=8 vj=0x2 vk=0x1
 [RS   cycle=  26]
 [LSB  cycle=  26] head=0 tail=0 count=0/8
-[CDB  cycle=  26] idle
 [RAT  cycle=  26]
   INT: x18->ROB8
   FP: 
 [CU   cycle=  26] COMMIT BNE PC=0x0050
+[CDB  cycle=  26] ROB8=0x00000003
 
 === CYCLE 27 ===
 [IQ  cycle=  27] fetched=20 buf=0/8
@@ -369,11 +369,11 @@
   [ 0] ADDI ROB=9 vj=0x2 vk=0x0
 [RS   cycle=  27]
 [LSB  cycle=  27] head=0 tail=0 count=0/8
-[CDB  cycle=  27] idle
 [RAT  cycle=  27]
   INT: x14->ROB9
   FP: 
 [CU   cycle=  27] COMMIT ADD PC=0x0048 x18=0x3
+[CDB  cycle=  27] ROB9=0x00000001
 
 === CYCLE 28 ===
 [IQ  cycle=  28] fetched=21 buf=0/8
@@ -383,11 +383,11 @@
   [ 0] BNE ROB=10 vj=0x1 vk=0x0
 [RS   cycle=  28]
 [LSB  cycle=  28] head=0 tail=0 count=0/8
-[CDB  cycle=  28] idle
 [RAT  cycle=  28]
   INT:
   FP: 
 [CU   cycle=  28] COMMIT ADDI PC=0x004c x14=0x1
+[CDB  cycle=  28] ROB10=0x00000048
 
 === CYCLE 29 ===
 [IQ  cycle=  29] fetched=19 buf=0/8
@@ -397,11 +397,11 @@
   [ 0] ADD ROB=11 vj=0x3 vk=0x1
 [RS   cycle=  29]
 [LSB  cycle=  29] head=0 tail=0 count=0/8
-[CDB  cycle=  29] idle
 [RAT  cycle=  29]
   INT: x18->ROB11
   FP: 
 [CU   cycle=  29] COMMIT BNE PC=0x0050
+[CDB  cycle=  29] ROB11=0x00000004
 
 === CYCLE 30 ===
 [IQ  cycle=  30] fetched=20 buf=0/8
@@ -411,11 +411,11 @@
   [ 0] ADDI ROB=12 vj=0x1 vk=0x0
 [RS   cycle=  30]
 [LSB  cycle=  30] head=0 tail=0 count=0/8
-[CDB  cycle=  30] idle
 [RAT  cycle=  30]
   INT: x14->ROB12
   FP: 
 [CU   cycle=  30] COMMIT ADD PC=0x0048 x18=0x4
+[CDB  cycle=  30] ROB12=0x00000000
 
 === CYCLE 31 ===
 [IQ  cycle=  31] fetched=21 buf=0/8
@@ -425,11 +425,11 @@
   [ 0] BNE ROB=13 vj=0x0 vk=0x0
 [RS   cycle=  31]
 [LSB  cycle=  31] head=0 tail=0 count=0/8
-[CDB  cycle=  31] idle
 [RAT  cycle=  31]
   INT:
   FP: 
 [CU   cycle=  31] COMMIT ADDI PC=0x004c x14=0x0
+[CDB  cycle=  31] ROB13=0x00000054
 
 === CYCLE 32 ===
 [IQ  cycle=  32] fetched=22 buf=0/8
@@ -439,11 +439,11 @@
 [RS   cycle=  32]
 [LSB  cycle=  32] head=0 tail=1 count=1/8
   [ 0] WAIT LW ROB=14 vj=0x0 PC=0x0054
-[CDB  cycle=  32] idle
 [RAT  cycle=  32]
   INT: x12->ROB14
   FP: 
 [CU   cycle=  32] COMMIT BNE PC=0x0050
+[CDB  cycle=  32] ROB14=0x00000002
 
 === CYCLE 33 ===
 [IQ  cycle=  33] fetched=23 buf=0/8
@@ -453,11 +453,11 @@
 [RS   cycle=  33]
 [LSB  cycle=  33] head=1 tail=2 count=1/8
   [ 1] WAIT LW ROB=15 vj=0x0 PC=0x0058
-[CDB  cycle=  33] idle
 [RAT  cycle=  33]
   INT: x15->ROB15
   FP: 
 [CU   cycle=  33] COMMIT LW PC=0x0054 x12=0x2
+[CDB  cycle=  33] ROB15=0x00000005
 
 === CYCLE 34 ===
 [IQ  cycle=  34] fetched=24 buf=0/8
@@ -467,11 +467,11 @@
   [ 0] ADD ROB=0 vj=0x0 vk=0x2
 [RS   cycle=  34]
 [LSB  cycle=  34] head=2 tail=2 count=0/8
-[CDB  cycle=  34] idle
 [RAT  cycle=  34]
   INT: x19->ROB0
   FP: 
 [CU   cycle=  34] COMMIT LW PC=0x0058 x15=0x5
+[CDB  cycle=  34] ROB0=0x00000002
 
 === CYCLE 35 ===
 [IQ  cycle=  35] fetched=25 buf=0/8
@@ -481,11 +481,11 @@
   [ 0] ADDI ROB=1 vj=0x0 vk=0x0
 [RS   cycle=  35]
 [LSB  cycle=  35] head=2 tail=2 count=0/8
-[CDB  cycle=  35] idle
 [RAT  cycle=  35]
   INT: x20->ROB1
   FP: 
 [CU   cycle=  35] COMMIT ADD PC=0x005c x19=0x2
+[CDB  cycle=  35] ROB1=0x00000000
 
 === CYCLE 36 ===
 [IQ  cycle=  36] fetched=26 buf=0/8
@@ -495,11 +495,11 @@
   [ 0] ADDI ROB=2 vj=0x5 vk=0x0
 [RS   cycle=  36]
 [LSB  cycle=  36] head=2 tail=2 count=0/8
-[CDB  cycle=  36] idle
 [RAT  cycle=  36]
   INT: x15->ROB2
   FP: 
 [CU   cycle=  36] COMMIT ADDI PC=0x0060 x20=0x0
+[CDB  cycle=  36] ROB2=0x00000005
 
 === CYCLE 37 ===
 [IQ  cycle=  37] fetched=27 buf=0/8
@@ -509,11 +509,11 @@
   [ 0] ADD ROB=3 vj=0x0 vk=0x2
 [RS   cycle=  37]
 [LSB  cycle=  37] head=2 tail=2 count=0/8
-[CDB  cycle=  37] idle
 [RAT  cycle=  37]
   INT: x20->ROB3
   FP: 
 [CU   cycle=  37] COMMIT ADDI PC=0x0064 x15=0x5
+[CDB  cycle=  37] ROB3=0x00000002
 
 === CYCLE 38 ===
 [IQ  cycle=  38] fetched=28 buf=0/8
@@ -523,11 +523,11 @@
   [ 0] ADDI ROB=4 vj=0x5 vk=0x0
 [RS   cycle=  38]
 [LSB  cycle=  38] head=2 tail=2 count=0/8
-[CDB  cycle=  38] idle
 [RAT  cycle=  38]
   INT: x15->ROB4
   FP: 
 [CU   cycle=  38] COMMIT ADD PC=0x0068 x20=0x2
+[CDB  cycle=  38] ROB4=0x00000004
 
 === CYCLE 39 ===
 [IQ  cycle=  39] fetched=29 buf=0/8
@@ -537,11 +537,11 @@
   [ 0] BNE ROB=5 vj=0x4 vk=0x0
 [RS   cycle=  39]
 [LSB  cycle=  39] head=2 tail=2 count=0/8
-[CDB  cycle=  39] idle
 [RAT  cycle=  39]
   INT:
   FP: 
 [CU   cycle=  39] COMMIT ADDI PC=0x006c x15=0x4
+[CDB  cycle=  39] ROB5=0x00000068
 
 === CYCLE 40 ===
 [IQ  cycle=  40] fetched=27 buf=0/8
@@ -551,11 +551,11 @@
   [ 0] ADD ROB=6 vj=0x2 vk=0x2
 [RS   cycle=  40]
 [LSB  cycle=  40] head=2 tail=2 count=0/8
-[CDB  cycle=  40] idle
 [RAT  cycle=  40]
   INT: x20->ROB6
   FP: 
 [CU   cycle=  40] COMMIT BNE PC=0x0070
+[CDB  cycle=  40] ROB6=0x00000004
 
 === CYCLE 41 ===
 [IQ  cycle=  41] fetched=28 buf=0/8
@@ -565,11 +565,11 @@
   [ 0] ADDI ROB=7 vj=0x4 vk=0x0
 [RS   cycle=  41]
 [LSB  cycle=  41] head=2 tail=2 count=0/8
-[CDB  cycle=  41] idle
 [RAT  cycle=  41]
   INT: x15->ROB7
   FP: 
 [CU   cycle=  41] COMMIT ADD PC=0x0068 x20=0x4
+[CDB  cycle=  41] ROB7=0x00000003
 
 === CYCLE 42 ===
 [IQ  cycle=  42] fetched=29 buf=0/8
@@ -579,11 +579,11 @@
   [ 0] BNE ROB=8 vj=0x3 vk=0x0
 [RS   cycle=  42]
 [LSB  cycle=  42] head=2 tail=2 count=0/8
-[CDB  cycle=  42] idle
 [RAT  cycle=  42]
   INT:
   FP: 
 [CU   cycle=  42] COMMIT ADDI PC=0x006c x15=0x3
+[CDB  cycle=  42] ROB8=0x00000068
 
 === CYCLE 43 ===
 [IQ  cycle=  43] fetched=27 buf=0/8
@@ -593,11 +593,11 @@
   [ 0] ADD ROB=9 vj=0x4 vk=0x2
 [RS   cycle=  43]
 [LSB  cycle=  43] head=2 tail=2 count=0/8
-[CDB  cycle=  43] idle
 [RAT  cycle=  43]
   INT: x20->ROB9
   FP: 
 [CU   cycle=  43] COMMIT BNE PC=0x0070
+[CDB  cycle=  43] ROB9=0x00000006
 
 === CYCLE 44 ===
 [IQ  cycle=  44] fetched=28 buf=0/8
@@ -607,11 +607,11 @@
   [ 0] ADDI ROB=10 vj=0x3 vk=0x0
 [RS   cycle=  44]
 [LSB  cycle=  44] head=2 tail=2 count=0/8
-[CDB  cycle=  44] idle
 [RAT  cycle=  44]
   INT: x15->ROB10
   FP: 
 [CU   cycle=  44] COMMIT ADD PC=0x0068 x20=0x6
+[CDB  cycle=  44] ROB10=0x00000002
 
 === CYCLE 45 ===
 [IQ  cycle=  45] fetched=29 buf=0/8
@@ -621,11 +621,11 @@
   [ 0] BNE ROB=11 vj=0x2 vk=0x0
 [RS   cycle=  45]
 [LSB  cycle=  45] head=2 tail=2 count=0/8
-[CDB  cycle=  45] idle
 [RAT  cycle=  45]
   INT:
   FP: 
 [CU   cycle=  45] COMMIT ADDI PC=0x006c x15=0x2
+[CDB  cycle=  45] ROB11=0x00000068
 
 === CYCLE 46 ===
 [IQ  cycle=  46] fetched=27 buf=0/8
@@ -635,11 +635,11 @@
   [ 0] ADD ROB=12 vj=0x6 vk=0x2
 [RS   cycle=  46]
 [LSB  cycle=  46] head=2 tail=2 count=0/8
-[CDB  cycle=  46] idle
 [RAT  cycle=  46]
   INT: x20->ROB12
   FP: 
 [CU   cycle=  46] COMMIT BNE PC=0x0070
+[CDB  cycle=  46] ROB12=0x00000008
 
 === CYCLE 47 ===
 [IQ  cycle=  47] fetched=28 buf=0/8
@@ -649,11 +649,11 @@
   [ 0] ADDI ROB=13 vj=0x2 vk=0x0
 [RS   cycle=  47]
 [LSB  cycle=  47] head=2 tail=2 count=0/8
-[CDB  cycle=  47] idle
 [RAT  cycle=  47]
   INT: x15->ROB13
   FP: 
 [CU   cycle=  47] COMMIT ADD PC=0x0068 x20=0x8
+[CDB  cycle=  47] ROB13=0x00000001
 
 === CYCLE 48 ===
 [IQ  cycle=  48] fetched=29 buf=0/8
@@ -663,11 +663,11 @@
   [ 0] BNE ROB=14 vj=0x1 vk=0x0
 [RS   cycle=  48]
 [LSB  cycle=  48] head=2 tail=2 count=0/8
-[CDB  cycle=  48] idle
 [RAT  cycle=  48]
   INT:
   FP: 
 [CU   cycle=  48] COMMIT ADDI PC=0x006c x15=0x1
+[CDB  cycle=  48] ROB14=0x00000068
 
 === CYCLE 49 ===
 [IQ  cycle=  49] fetched=27 buf=0/8
@@ -677,11 +677,11 @@
   [ 0] ADD ROB=15 vj=0x8 vk=0x2
 [RS   cycle=  49]
 [LSB  cycle=  49] head=2 tail=2 count=0/8
-[CDB  cycle=  49] idle
 [RAT  cycle=  49]
   INT: x20->ROB15
   FP: 
 [CU   cycle=  49] COMMIT BNE PC=0x0070
+[CDB  cycle=  49] ROB15=0x0000000a
 
 === CYCLE 50 ===
 [IQ  cycle=  50] fetched=28 buf=0/8
@@ -691,11 +691,11 @@
   [ 0] ADDI ROB=0 vj=0x1 vk=0x0
 [RS   cycle=  50]
 [LSB  cycle=  50] head=2 tail=2 count=0/8
-[CDB  cycle=  50] idle
 [RAT  cycle=  50]
   INT: x15->ROB0
   FP: 
 [CU   cycle=  50] COMMIT ADD PC=0x0068 x20=0xa
+[CDB  cycle=  50] ROB0=0x00000000
 
 === CYCLE 51 ===
 [IQ  cycle=  51] fetched=29 buf=0/8
@@ -705,11 +705,11 @@
   [ 0] BNE ROB=1 vj=0x0 vk=0x0
 [RS   cycle=  51]
 [LSB  cycle=  51] head=2 tail=2 count=0/8
-[CDB  cycle=  51] idle
 [RAT  cycle=  51]
   INT:
   FP: 
 [CU   cycle=  51] COMMIT ADDI PC=0x006c x15=0x0
+[CDB  cycle=  51] ROB1=0x00000074
 
 === CYCLE 52 ===
 [IQ  cycle=  52] fetched=30 buf=0/8
@@ -719,11 +719,11 @@
   [ 0] ADD ROB=2 vj=0x4 vk=0xa
 [RS   cycle=  52]
 [LSB  cycle=  52] head=2 tail=2 count=0/8
-[CDB  cycle=  52] idle
 [RAT  cycle=  52]
   INT: x21->ROB2
   FP: 
 [CU   cycle=  52] COMMIT BNE PC=0x0070
+[CDB  cycle=  52] ROB2=0x0000000e
 
 === CYCLE 53 ===
 [IQ  cycle=  53] fetched=31 buf=0/8
@@ -733,11 +733,11 @@
 [RS   cycle=  53]
 [LSB  cycle=  53] head=2 tail=3 count=1/8
   [ 2] WAIT LW ROB=3 vj=0x0 PC=0x0078
-[CDB  cycle=  53] idle
 [RAT  cycle=  53]
   INT: x13->ROB3
   FP: 
 [CU   cycle=  53] COMMIT ADD PC=0x0074 x21=0xe
+[CDB  cycle=  53] ROB3=0x00000003
 
 === CYCLE 54 ===
 [IQ  cycle=  54] fetched=32 buf=0/8
@@ -747,11 +747,11 @@
 [RS   cycle=  54]
 [LSB  cycle=  54] head=3 tail=4 count=1/8
   [ 3] WAIT LW ROB=4 vj=0x0 PC=0x007c
-[CDB  cycle=  54] idle
 [RAT  cycle=  54]
   INT: x16->ROB4
   FP: 
 [CU   cycle=  54] COMMIT LW PC=0x0078 x13=0x3
+[CDB  cycle=  54] ROB4=0x00000006
 
 === CYCLE 55 ===
 [IQ  cycle=  55] fetched=33 buf=0/8
@@ -761,11 +761,11 @@
   [ 0] ADD ROB=5 vj=0x0 vk=0x3
 [RS   cycle=  55]
 [LSB  cycle=  55] head=4 tail=4 count=0/8
-[CDB  cycle=  55] idle
 [RAT  cycle=  55]
   INT: x22->ROB5
   FP: 
 [CU   cycle=  55] COMMIT LW PC=0x007c x16=0x6
+[CDB  cycle=  55] ROB5=0x00000003
 
 === CYCLE 56 ===
 [IQ  cycle=  56] fetched=34 buf=0/8
@@ -775,11 +775,11 @@
   [ 0] ADDI ROB=6 vj=0x0 vk=0x0
 [RS   cycle=  56]
 [LSB  cycle=  56] head=4 tail=4 count=0/8
-[CDB  cycle=  56] idle
 [RAT  cycle=  56]
   INT: x23->ROB6
   FP: 
 [CU   cycle=  56] COMMIT ADD PC=0x0080 x22=0x3
+[CDB  cycle=  56] ROB6=0x00000000
 
 === CYCLE 57 ===
 [IQ  cycle=  57] fetched=35 buf=0/8
@@ -789,11 +789,11 @@
   [ 0] ADDI ROB=7 vj=0x6 vk=0x0
 [RS   cycle=  57]
 [LSB  cycle=  57] head=4 tail=4 count=0/8
-[CDB  cycle=  57] idle
 [RAT  cycle=  57]
   INT: x16->ROB7
   FP: 
 [CU   cycle=  57] COMMIT ADDI PC=0x0084 x23=0x0
+[CDB  cycle=  57] ROB7=0x00000006
 
 === CYCLE 58 ===
 [IQ  cycle=  58] fetched=36 buf=0/8
@@ -803,11 +803,11 @@
   [ 0] ADD ROB=8 vj=0x0 vk=0x3
 [RS   cycle=  58]
 [LSB  cycle=  58] head=4 tail=4 count=0/8
-[CDB  cycle=  58] idle
 [RAT  cycle=  58]
   INT: x23->ROB8
   FP: 
 [CU   cycle=  58] COMMIT ADDI PC=0x0088 x16=0x6
+[CDB  cycle=  58] ROB8=0x00000003
 
 === CYCLE 59 ===
 [IQ  cycle=  59] fetched=37 buf=0/8
@@ -817,11 +817,11 @@
   [ 0] ADDI ROB=9 vj=0x6 vk=0x0
 [RS   cycle=  59]
 [LSB  cycle=  59] head=4 tail=4 count=0/8
-[CDB  cycle=  59] idle
 [RAT  cycle=  59]
   INT: x16->ROB9
   FP: 
 [CU   cycle=  59] COMMIT ADD PC=0x008c x23=0x3
+[CDB  cycle=  59] ROB9=0x00000005
 
 === CYCLE 60 ===
 [IQ  cycle=  60] fetched=38 buf=0/8
@@ -831,11 +831,11 @@
   [ 0] BNE ROB=10 vj=0x5 vk=0x0
 [RS   cycle=  60]
 [LSB  cycle=  60] head=4 tail=4 count=0/8
-[CDB  cycle=  60] idle
 [RAT  cycle=  60]
   INT:
   FP: 
 [CU   cycle=  60] COMMIT ADDI PC=0x0090 x16=0x5
+[CDB  cycle=  60] ROB10=0x0000008c
 
 === CYCLE 61 ===
 [IQ  cycle=  61] fetched=36 buf=0/8
@@ -845,11 +845,11 @@
   [ 0] ADD ROB=11 vj=0x3 vk=0x3
 [RS   cycle=  61]
 [LSB  cycle=  61] head=4 tail=4 count=0/8
-[CDB  cycle=  61] idle
 [RAT  cycle=  61]
   INT: x23->ROB11
   FP: 
 [CU   cycle=  61] COMMIT BNE PC=0x0094
+[CDB  cycle=  61] ROB11=0x00000006
 
 === CYCLE 62 ===
 [IQ  cycle=  62] fetched=37 buf=0/8
@@ -859,11 +859,11 @@
   [ 0] ADDI ROB=12 vj=0x5 vk=0x0
 [RS   cycle=  62]
 [LSB  cycle=  62] head=4 tail=4 count=0/8
-[CDB  cycle=  62] idle
 [RAT  cycle=  62]
   INT: x16->ROB12
   FP: 
 [CU   cycle=  62] COMMIT ADD PC=0x008c x23=0x6
+[CDB  cycle=  62] ROB12=0x00000004
 
 === CYCLE 63 ===
 [IQ  cycle=  63] fetched=38 buf=0/8
@@ -873,11 +873,11 @@
   [ 0] BNE ROB=13 vj=0x4 vk=0x0
 [RS   cycle=  63]
 [LSB  cycle=  63] head=4 tail=4 count=0/8
-[CDB  cycle=  63] idle
 [RAT  cycle=  63]
   INT:
   FP: 
 [CU   cycle=  63] COMMIT ADDI PC=0x0090 x16=0x4
+[CDB  cycle=  63] ROB13=0x0000008c
 
 === CYCLE 64 ===
 [IQ  cycle=  64] fetched=36 buf=0/8
@@ -887,11 +887,11 @@
   [ 0] ADD ROB=14 vj=0x6 vk=0x3
 [RS   cycle=  64]
 [LSB  cycle=  64] head=4 tail=4 count=0/8
-[CDB  cycle=  64] idle
 [RAT  cycle=  64]
   INT: x23->ROB14
   FP: 
 [CU   cycle=  64] COMMIT BNE PC=0x0094
+[CDB  cycle=  64] ROB14=0x00000009
 
 === CYCLE 65 ===
 [IQ  cycle=  65] fetched=37 buf=0/8
@@ -901,11 +901,11 @@
   [ 0] ADDI ROB=15 vj=0x4 vk=0x0
 [RS   cycle=  65]
 [LSB  cycle=  65] head=4 tail=4 count=0/8
-[CDB  cycle=  65] idle
 [RAT  cycle=  65]
   INT: x16->ROB15
   FP: 
 [CU   cycle=  65] COMMIT ADD PC=0x008c x23=0x9
+[CDB  cycle=  65] ROB15=0x00000003
 
 === CYCLE 66 ===
 [IQ  cycle=  66] fetched=38 buf=0/8
@@ -915,11 +915,11 @@
   [ 0] BNE ROB=0 vj=0x3 vk=0x0
 [RS   cycle=  66]
 [LSB  cycle=  66] head=4 tail=4 count=0/8
-[CDB  cycle=  66] idle
 [RAT  cycle=  66]
   INT:
   FP: 
 [CU   cycle=  66] COMMIT ADDI PC=0x0090 x16=0x3
+[CDB  cycle=  66] ROB0=0x0000008c
 
 === CYCLE 67 ===
 [IQ  cycle=  67] fetched=36 buf=0/8
@@ -929,11 +929,11 @@
   [ 0] ADD ROB=1 vj=0x9 vk=0x3
 [RS   cycle=  67]
 [LSB  cycle=  67] head=4 tail=4 count=0/8
-[CDB  cycle=  67] idle
 [RAT  cycle=  67]
   INT: x23->ROB1
   FP: 
 [CU   cycle=  67] COMMIT BNE PC=0x0094
+[CDB  cycle=  67] ROB1=0x0000000c
 
 === CYCLE 68 ===
 [IQ  cycle=  68] fetched=37 buf=0/8
@@ -943,11 +943,11 @@
   [ 0] ADDI ROB=2 vj=0x3 vk=0x0
 [RS   cycle=  68]
 [LSB  cycle=  68] head=4 tail=4 count=0/8
-[CDB  cycle=  68] idle
 [RAT  cycle=  68]
   INT: x16->ROB2
   FP: 
 [CU   cycle=  68] COMMIT ADD PC=0x008c x23=0xc
+[CDB  cycle=  68] ROB2=0x00000002
 
 === CYCLE 69 ===
 [IQ  cycle=  69] fetched=38 buf=0/8
@@ -957,11 +957,11 @@
   [ 0] BNE ROB=3 vj=0x2 vk=0x0
 [RS   cycle=  69]
 [LSB  cycle=  69] head=4 tail=4 count=0/8
-[CDB  cycle=  69] idle
 [RAT  cycle=  69]
   INT:
   FP: 
 [CU   cycle=  69] COMMIT ADDI PC=0x0090 x16=0x2
+[CDB  cycle=  69] ROB3=0x0000008c
 
 === CYCLE 70 ===
 [IQ  cycle=  70] fetched=36 buf=0/8
@@ -971,11 +971,11 @@
   [ 0] ADD ROB=4 vj=0xc vk=0x3
 [RS   cycle=  70]
 [LSB  cycle=  70] head=4 tail=4 count=0/8
-[CDB  cycle=  70] idle
 [RAT  cycle=  70]
   INT: x23->ROB4
   FP: 
 [CU   cycle=  70] COMMIT BNE PC=0x0094
+[CDB  cycle=  70] ROB4=0x0000000f
 
 === CYCLE 71 ===
 [IQ  cycle=  71] fetched=37 buf=0/8
@@ -985,11 +985,11 @@
   [ 0] ADDI ROB=5 vj=0x2 vk=0x0
 [RS   cycle=  71]
 [LSB  cycle=  71] head=4 tail=4 count=0/8
-[CDB  cycle=  71] idle
 [RAT  cycle=  71]
   INT: x16->ROB5
   FP: 
 [CU   cycle=  71] COMMIT ADD PC=0x008c x23=0xf
+[CDB  cycle=  71] ROB5=0x00000001
 
 === CYCLE 72 ===
 [IQ  cycle=  72] fetched=38 buf=0/8
@@ -999,11 +999,11 @@
   [ 0] BNE ROB=6 vj=0x1 vk=0x0
 [RS   cycle=  72]
 [LSB  cycle=  72] head=4 tail=4 count=0/8
-[CDB  cycle=  72] idle
 [RAT  cycle=  72]
   INT:
   FP: 
 [CU   cycle=  72] COMMIT ADDI PC=0x0090 x16=0x1
+[CDB  cycle=  72] ROB6=0x0000008c
 
 === CYCLE 73 ===
 [IQ  cycle=  73] fetched=36 buf=0/8
@@ -1013,11 +1013,11 @@
   [ 0] ADD ROB=7 vj=0xf vk=0x3
 [RS   cycle=  73]
 [LSB  cycle=  73] head=4 tail=4 count=0/8
-[CDB  cycle=  73] idle
 [RAT  cycle=  73]
   INT: x23->ROB7
   FP: 
 [CU   cycle=  73] COMMIT BNE PC=0x0094
+[CDB  cycle=  73] ROB7=0x00000012
 
 === CYCLE 74 ===
 [IQ  cycle=  74] fetched=37 buf=0/8
@@ -1027,11 +1027,11 @@
   [ 0] ADDI ROB=8 vj=0x1 vk=0x0
 [RS   cycle=  74]
 [LSB  cycle=  74] head=4 tail=4 count=0/8
-[CDB  cycle=  74] idle
 [RAT  cycle=  74]
   INT: x16->ROB8
   FP: 
 [CU   cycle=  74] COMMIT ADD PC=0x008c x23=0x12
+[CDB  cycle=  74] ROB8=0x00000000
 
 === CYCLE 75 ===
 [IQ  cycle=  75] fetched=38 buf=0/8
@@ -1041,11 +1041,11 @@
   [ 0] BNE ROB=9 vj=0x0 vk=0x0
 [RS   cycle=  75]
 [LSB  cycle=  75] head=4 tail=4 count=0/8
-[CDB  cycle=  75] idle
 [RAT  cycle=  75]
   INT:
   FP: 
 [CU   cycle=  75] COMMIT ADDI PC=0x0090 x16=0x0
+[CDB  cycle=  75] ROB9=0x00000098
 
 === CYCLE 76 ===
 [IQ  cycle=  76] fetched=39 buf=0/8
@@ -1055,11 +1055,11 @@
   [ 0] ADD ROB=10 vj=0xe vk=0x12
 [RS   cycle=  76]
 [LSB  cycle=  76] head=4 tail=4 count=0/8
-[CDB  cycle=  76] idle
 [RAT  cycle=  76]
   INT: x24->ROB10
   FP: 
 [CU   cycle=  76] COMMIT BNE PC=0x0094
+[CDB  cycle=  76] ROB10=0x00000020
 
 === CYCLE 77 ===
 [IQ  cycle=  77] fetched=40 buf=0/8
@@ -1069,11 +1069,11 @@
   [ 0] HALT ROB=11 vj=0x0 vk=0x0
 [RS   cycle=  77]
 [LSB  cycle=  77] head=4 tail=4 count=0/8
-[CDB  cycle=  77] idle
 [RAT  cycle=  77]
   INT:
   FP: 
 [CU   cycle=  77] COMMIT ADD PC=0x0098 x24=0x20
+[CDB  cycle=  77] ROB11=0x00000000
 
 === FINAL STATE (cycle 77) ===
 [RF   cycle=  77]

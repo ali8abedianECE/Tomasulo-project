@@ -1,0 +1,75 @@
+[ROB  cycle=   1] head=0 tail=0 count=0/16
+[ROB  cycle=   2] head=0 tail=1 count=1/16
+  [ 0] INFLT ADDI rd=x1 PC=0x0000
+[ROB  cycle=   3] head=1 tail=2 count=1/16
+  [ 1] INFLT ADDI rd=x2 PC=0x0004
+[ROB  cycle=   4] head=2 tail=3 count=1/16
+  [ 2] INFLT ADD rd=x3 PC=0x0008
+[ROB  cycle=   5] head=3 tail=4 count=1/16
+  [ 3] INFLT SUB rd=x4 PC=0x000c
+[ROB  cycle=   6] head=4 tail=5 count=1/16
+  [ 4] INFLT AND rd=x5 PC=0x0010
+[ROB  cycle=   7] head=5 tail=6 count=1/16
+  [ 5] INFLT OR rd=x6 PC=0x0014
+[ROB  cycle=   8] head=6 tail=7 count=1/16
+  [ 6] INFLT XOR rd=x7 PC=0x0018
+[ROB  cycle=   9] head=7 tail=8 count=1/16
+  [ 7] INFLT SLLI rd=x8 PC=0x001c
+[ROB  cycle=  10] head=8 tail=9 count=1/16
+  [ 8] INFLT SRLI rd=x9 PC=0x0020
+[ROB  cycle=  11] head=9 tail=10 count=1/16
+  [ 9] INFLT ADDI rd=x20 PC=0x0024
+[ROB  cycle=  12] head=10 tail=11 count=1/16
+  [10] INFLT SW rd=x-1 PC=0x0028
+[ROB  cycle=  13] head=11 tail=12 count=1/16
+  [11] INFLT SW rd=x-1 PC=0x002c
+[ROB  cycle=  14] head=12 tail=13 count=1/16
+  [12] INFLT LW rd=x10 PC=0x0030
+[ROB  cycle=  15] head=13 tail=14 count=1/16
+  [13] INFLT LW rd=x11 PC=0x0034
+[ROB  cycle=  16] head=14 tail=15 count=1/16
+  [14] INFLT BNE rd=x-1 PC=0x0038
+[ROB  cycle=  17] head=15 tail=0 count=1/16
+  [15] INFLT ADDI rd=x12 PC=0x0040
+[ROB  cycle=  18] head=0 tail=1 count=1/16
+  [ 0] INFLT ADD rd=x13 PC=0x0044
+[ROB  cycle=  19] head=1 tail=2 count=1/16
+  [ 1] INFLT ADDI rd=x21 PC=0x0048
+[ROB  cycle=  20] head=2 tail=3 count=1/16
+  [ 2] INFLT SW rd=x-1 PC=0x004c
+[ROB  cycle=  21] head=3 tail=4 count=1/16
+  [ 3] INFLT SW rd=x-1 PC=0x0050
+[ROB  cycle=  22] head=4 tail=5 count=1/16
+  [ 4] INFLT FLW rd=f0 PC=0x0054
+[ROB  cycle=  23] head=5 tail=6 count=1/16
+  [ 5] INFLT FLW rd=f1 PC=0x0058
+[ROB  cycle=  24] head=6 tail=7 count=1/16
+  [ 6] INFLT FADD.S rd=f2 PC=0x005c
+[ROB  cycle=  25] head=6 tail=8 count=2/16
+  [ 6] INFLT FADD.S rd=f2 PC=0x005c
+  [ 7] INFLT FSUB.S rd=f3 PC=0x0060
+[ROB  cycle=  26] head=7 tail=9 count=2/16
+  [ 7] INFLT FSUB.S rd=f3 PC=0x0060
+  [ 8] INFLT FMUL.S rd=f4 PC=0x0064
+[ROB  cycle=  27] head=7 tail=10 count=3/16
+  [ 7] INFLT FSUB.S rd=f3 PC=0x0060
+  [ 8] INFLT FMUL.S rd=f4 PC=0x0064
+  [ 9] INFLT FSW rd=x-1 PC=0x0068
+[ROB  cycle=  28] head=8 tail=11 count=3/16
+  [ 8] INFLT FMUL.S rd=f4 PC=0x0064
+  [ 9] DONE FSW rd=x-1 PC=0x0068
+  [10] INFLT FLW rd=f5 PC=0x006c
+[ROB  cycle=  29] head=8 tail=12 count=4/16
+  [ 8] INFLT FMUL.S rd=f4 PC=0x0064
+  [ 9] DONE FSW rd=x-1 PC=0x0068
+  [10] INFLT FLW rd=f5 PC=0x006c
+  [11] INFLT HALT rd=x-1 PC=0x0070
+[ROB  cycle=  30] head=9 tail=12 count=3/16
+  [ 9] DONE FSW rd=x-1 PC=0x0068
+  [10] INFLT FLW rd=f5 PC=0x006c
+  [11] DONE HALT rd=x-1 PC=0x0070
+[ROB  cycle=  31] head=10 tail=12 count=2/16
+  [10] INFLT FLW rd=f5 PC=0x006c
+  [11] DONE HALT rd=x-1 PC=0x0070
+[ROB  cycle=  32] head=11 tail=12 count=1/16
+  [11] DONE HALT rd=x-1 PC=0x0070

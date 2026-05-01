@@ -1,0 +1,41 @@
+[RS   cycle=   1]
+[RS   cycle=   2]
+[RS   cycle=   3]
+[RS   cycle=   4]
+[RS   cycle=   5]
+[RS   cycle=   6]
+[RS   cycle=   7]
+[RS   cycle=   8]
+[RS   cycle=   9]
+[RS   cycle=  10]
+[RS   cycle=  11]
+[RS   cycle=  12]
+[RS   cycle=  13]
+[RS   cycle=  14]
+[RS   cycle=  15]
+[RS   cycle=  16]
+[RS   cycle=  17]
+[RS   cycle=  18]
+[RS   cycle=  19]
+[RS   cycle=  20]
+[RS   cycle=  21]
+[RS   cycle=  22]
+[RS   cycle=  23]
+[RS   cycle=  24]
+  [ 0] FADD.S ROB=6 vj=0xa vk=0x3
+[RS   cycle=  25]
+  [ 0] FADD.S ROB=6 vj=0xa vk=0x3 rem=1
+  [ 1] FSUB.S ROB=7 qj=ROB6 vk=0x3
+[RS   cycle=  26]
+  [ 0] FMUL.S ROB=8 vj=0xa vk=0x3
+  [ 1] FSUB.S ROB=7 vj=0xd vk=0x3
+[RS   cycle=  27]
+  [ 0] FMUL.S ROB=8 vj=0xa vk=0x3 rem=3
+  [ 1] FSUB.S ROB=7 vj=0xd vk=0x3 rem=1
+[RS   cycle=  28]
+  [ 0] FMUL.S ROB=8 vj=0xa vk=0x3 rem=2
+[RS   cycle=  29]
+  [ 0] FMUL.S ROB=8 vj=0xa vk=0x3 rem=1
+[RS   cycle=  30]
+[RS   cycle=  31]
+[RS   cycle=  32]

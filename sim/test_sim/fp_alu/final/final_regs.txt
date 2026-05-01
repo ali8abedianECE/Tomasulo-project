@@ -1,4 +1,4 @@
-# Tomasulo simulation: ../../test_sim/fp_alu/program.asm
+# Tomasulo simulation: /Users/mohammadaliabedian/Downloads/A1_V/sim/test_sim/fp_alu/program.asm
 # Total cycles: 14
 
 [INT_REGS]

@@ -1,14 +1,14 @@
 [CDB  cycle=   1] idle
-[CDB  cycle=   2] idle
-[CDB  cycle=   3] idle
+[CDB  cycle=   2] ROB0=0x00000000
+[CDB  cycle=   3] ROB1=0x00000064
 [CDB  cycle=   4] idle
-[CDB  cycle=   5] idle
+[CDB  cycle=   5] ROB3=0x00000019 ROB2=0x42c80000
 [CDB  cycle=   6] idle
-[CDB  cycle=   7] idle
+[CDB  cycle=   7] ROB4=0x41c80000
 [CDB  cycle=   8] idle
-[CDB  cycle=   9] idle
-[CDB  cycle=  10] idle
-[CDB  cycle=  11] idle
+[CDB  cycle=   9] ROB5=0x42fa0000
+[CDB  cycle=  10] ROB7=0x42960000
+[CDB  cycle=  11] ROB9=0x00000000 ROB6=0x451c4000 ROB8=0x0000007d
 [CDB  cycle=  12] idle
 [CDB  cycle=  13] idle
 [CDB  cycle=  14] idle

@@ -1,4 +1,4 @@
-# Tomasulo simulation: ../../test_sim/load_store/program.asm
+# Tomasulo simulation: /Users/mohammadaliabedian/Downloads/A1_V/sim/test_sim/load_store/program.asm
 # Total cycles: 10
 
 [INT_REGS]

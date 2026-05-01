@@ -1,0 +1,32 @@
+[CU   cycle=   1] idle
+[CU   cycle=   2] idle
+[CU   cycle=   3] COMMIT ADDI PC=0x0000 x1=0xa
+[CU   cycle=   4] COMMIT ADDI PC=0x0004 x2=0x3
+[CU   cycle=   5] COMMIT ADD PC=0x0008 x3=0xd
+[CU   cycle=   6] COMMIT SUB PC=0x000c x4=0x7
+[CU   cycle=   7] COMMIT AND PC=0x0010 x5=0x5
+[CU   cycle=   8] COMMIT OR PC=0x0014 x6=0xf
+[CU   cycle=   9] COMMIT XOR PC=0x0018 x7=0xa
+[CU   cycle=  10] COMMIT SLLI PC=0x001c x8=0x1a
+[CU   cycle=  11] COMMIT SRLI PC=0x0020 x9=0x6
+[CU   cycle=  12] COMMIT ADDI PC=0x0024 x20=0xc8
+[CU   cycle=  13] COMMIT SW PC=0x0028
+[CU   cycle=  14] COMMIT SW PC=0x002c
+[CU   cycle=  15] COMMIT LW PC=0x0030 x10=0xd
+[CU   cycle=  16] COMMIT LW PC=0x0034 x11=0x7
+[CU   cycle=  17] COMMIT BNE PC=0x0038
+[CU   cycle=  18] COMMIT ADDI PC=0x0040 x12=0x1
+[CU   cycle=  19] COMMIT ADD PC=0x0044 x13=0x14
+[CU   cycle=  20] COMMIT ADDI PC=0x0048 x21=0xa0
+[CU   cycle=  21] COMMIT SW PC=0x004c
+[CU   cycle=  22] COMMIT SW PC=0x0050
+[CU   cycle=  23] COMMIT FLW PC=0x0054 f0=0xa
+[CU   cycle=  24] COMMIT FLW PC=0x0058 f1=0x3
+[CU   cycle=  25] idle
+[CU   cycle=  26] COMMIT FADD.S PC=0x005c f2=0xd
+[CU   cycle=  27] idle
+[CU   cycle=  28] COMMIT FSUB.S PC=0x0060 f3=0xa
+[CU   cycle=  29] idle
+[CU   cycle=  30] COMMIT FMUL.S PC=0x0064 f4=0x0
+[CU   cycle=  31] COMMIT FSW PC=0x0068
+[CU   cycle=  32] COMMIT FLW PC=0x006c f5=0xd
