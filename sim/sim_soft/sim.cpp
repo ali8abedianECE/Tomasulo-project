@@ -64,7 +64,12 @@ static int preg(const std::string& s) { return std::stoi(s.substr(1)); }
  * @param[out] imm  Signed byte offset extracted from the token.
  * @param[out] base Integer register index of the base address register.
  */
-static void parse_mem(const std::string& s, int32_t& imm, int& base) {}
+static void parse_mem(const std::string& s, int32_t& imm, int& base) {
+    auto lp = s.find('(');
+    auto rp = s.find(')', lp);
+    imm  = static_cast<int32_t>(std::stoi(s.substr(0, lp)));
+    base = preg(s.substr(lp + 1, rp - lp - 1));
+}
 
 
 /**
