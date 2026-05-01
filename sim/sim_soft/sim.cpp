@@ -86,7 +86,13 @@ static void parse_mem(const std::string& s, int32_t& imm, int& base) {
  */
 static int32_t branch_offset(const std::string& s,
                               const std::unordered_map<std::string, int>& labels,
-                              uint32_t cur_pc) {}
+                              uint32_t cur_pc) {
+    try { return static_cast<int32_t>(std::stoi(s)); }
+    catch (...) {}
+    auto it = labels.find(s);
+    if (it == labels.end()) { std::cerr << "Unknown label: " << s << "\n"; return 0; }
+    return static_cast<int32_t>(it->second) - static_cast<int32_t>(cur_pc);
+}
 
 
 /* assembly parser */
