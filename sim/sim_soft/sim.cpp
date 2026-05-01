@@ -108,7 +108,79 @@ static int32_t branch_offset(const std::string& s,
  *
  * @return Decoded instruction list in program order, or an empty vector on error.
  */
-static std::vector<Instruction> parse_program(const std::string& path) {}
+static std::vector<Instruction> parse_program(const std::string& path) {
+    std::ifstream f(path);
+    if (!f) { std::cerr << "Cannot open program: " << path << "\n"; return {}; }
+
+    std::vector<std::string> raw;
+    std::string line;
+    while (std::getline(f, line)) raw.push_back(line);
+
+    /* First pass: map label names to byte addresses */
+    std::unordered_map<std::string, int> labels;
+    int wpc = 0;
+    for (const auto& l : raw) {
+        auto toks = tokenize(l);
+        if (toks.empty()) continue;
+        if (toks[0].back() == ':')
+            labels[toks[0].substr(0, toks[0].size() - 1)] = wpc * 4;
+        else
+            ++wpc;
+    }
+
+    /* Second pass: decode instructions */
+    std::vector<Instruction> prog;
+    wpc = 0;
+    for (const auto& l : raw) {
+        auto toks = tokenize(l);
+        if (toks.empty() || toks[0].back() == ':') continue;
+
+        Instruction in;
+        in.pc = static_cast<uint32_t>(wpc * 4);
+        const std::string& op = toks[0];
+
+        if      (op=="ADD")  { in.op=Opcode::ADD;  in.rd=preg(toks[1]); in.rs1=preg(toks[2]); in.rs2=preg(toks[3]); }
+        else if (op=="SUB")  { in.op=Opcode::SUB;  in.rd=preg(toks[1]); in.rs1=preg(toks[2]); in.rs2=preg(toks[3]); }
+        else if (op=="AND")  { in.op=Opcode::AND;  in.rd=preg(toks[1]); in.rs1=preg(toks[2]); in.rs2=preg(toks[3]); }
+        else if (op=="OR")   { in.op=Opcode::OR;   in.rd=preg(toks[1]); in.rs1=preg(toks[2]); in.rs2=preg(toks[3]); }
+        else if (op=="XOR")  { in.op=Opcode::XOR;  in.rd=preg(toks[1]); in.rs1=preg(toks[2]); in.rs2=preg(toks[3]); }
+        else if (op=="SLL")  { in.op=Opcode::SLL;  in.rd=preg(toks[1]); in.rs1=preg(toks[2]); in.rs2=preg(toks[3]); }
+        else if (op=="SRL")  { in.op=Opcode::SRL;  in.rd=preg(toks[1]); in.rs1=preg(toks[2]); in.rs2=preg(toks[3]); }
+        else if (op=="SRA")  { in.op=Opcode::SRA;  in.rd=preg(toks[1]); in.rs1=preg(toks[2]); in.rs2=preg(toks[3]); }
+        else if (op=="ADDI") { in.op=Opcode::ADDI; in.rd=preg(toks[1]); in.rs1=preg(toks[2]); in.imm=std::stoi(toks[3]); }
+        else if (op=="ANDI") { in.op=Opcode::ANDI; in.rd=preg(toks[1]); in.rs1=preg(toks[2]); in.imm=std::stoi(toks[3]); }
+        else if (op=="ORI")  { in.op=Opcode::ORI;  in.rd=preg(toks[1]); in.rs1=preg(toks[2]); in.imm=std::stoi(toks[3]); }
+        else if (op=="XORI") { in.op=Opcode::XORI; in.rd=preg(toks[1]); in.rs1=preg(toks[2]); in.imm=std::stoi(toks[3]); }
+        else if (op=="SLLI") { in.op=Opcode::SLLI; in.rd=preg(toks[1]); in.rs1=preg(toks[2]); in.imm=std::stoi(toks[3]); }
+        else if (op=="SRLI") { in.op=Opcode::SRLI; in.rd=preg(toks[1]); in.rs1=preg(toks[2]); in.imm=std::stoi(toks[3]); }
+        /* LW / FLW: rd, imm(rs1) */
+        else if (op=="LW")   { in.op=Opcode::LW;  in.rd=preg(toks[1]); parse_mem(toks[2], in.imm, in.rs1); }
+        else if (op=="FLW")  { in.op=Opcode::FLW; in.rd=preg(toks[1]); in.rd_fp=true; parse_mem(toks[2], in.imm, in.rs1); }
+        /* SW / FSW: rs2, imm(rs1)   — rs2=data, rs1=base, rd=-1 */
+        else if (op=="SW")   { in.op=Opcode::SW;  in.rs2=preg(toks[1]); parse_mem(toks[2], in.imm, in.rs1); }
+        else if (op=="FSW")  { in.op=Opcode::FSW; in.rs2=preg(toks[1]); in.rs2_fp=true; parse_mem(toks[2], in.imm, in.rs1); }
+        /* Branches: rs1, rs2, offset-or-label */
+        else if (op=="BEQ")  { in.op=Opcode::BEQ; in.rs1=preg(toks[1]); in.rs2=preg(toks[2]); in.imm=branch_offset(toks[3],labels,in.pc); }
+        else if (op=="BNE")  { in.op=Opcode::BNE; in.rs1=preg(toks[1]); in.rs2=preg(toks[2]); in.imm=branch_offset(toks[3],labels,in.pc); }
+        else if (op=="BLT")  { in.op=Opcode::BLT; in.rs1=preg(toks[1]); in.rs2=preg(toks[2]); in.imm=branch_offset(toks[3],labels,in.pc); }
+        else if (op=="BGE")  { in.op=Opcode::BGE; in.rs1=preg(toks[1]); in.rs2=preg(toks[2]); in.imm=branch_offset(toks[3],labels,in.pc); }
+        /* FP ALU */
+        else if (op=="FADD.S") { in.op=Opcode::FADD_S; in.rd=preg(toks[1]); in.rd_fp=true; in.rs1=preg(toks[2]); in.rs1_fp=true; in.rs2=preg(toks[3]); in.rs2_fp=true; }
+        else if (op=="FSUB.S") { in.op=Opcode::FSUB_S; in.rd=preg(toks[1]); in.rd_fp=true; in.rs1=preg(toks[2]); in.rs1_fp=true; in.rs2=preg(toks[3]); in.rs2_fp=true; }
+        else if (op=="FMUL.S") { in.op=Opcode::FMUL_S; in.rd=preg(toks[1]); in.rd_fp=true; in.rs1=preg(toks[2]); in.rs1_fp=true; in.rs2=preg(toks[3]); in.rs2_fp=true; }
+        else if (op=="FDIV.S") { in.op=Opcode::FDIV_S; in.rd=preg(toks[1]); in.rd_fp=true; in.rs1=preg(toks[2]); in.rs1_fp=true; in.rs2=preg(toks[3]); in.rs2_fp=true; }
+        /* FP conversions */
+        else if (op=="FCVT.W.S") { in.op=Opcode::FCVT_W_S; in.rd=preg(toks[1]); in.rd_fp=false; in.rs1=preg(toks[2]); in.rs1_fp=true; }
+        else if (op=="FCVT.S.W") { in.op=Opcode::FCVT_S_W; in.rd=preg(toks[1]); in.rd_fp=true;  in.rs1=preg(toks[2]); in.rs1_fp=false; }
+        else if (op=="NOP")  { in.op=Opcode::NOP; }
+        else if (op=="HALT") { in.op=Opcode::HALT; }
+        else { std::cerr << "Unknown opcode '" << op << "' at word " << wpc << "\n"; }
+
+        prog.push_back(in);
+        ++wpc;
+    }
+    return prog;
+}
 
 
 /* dispatch helper */
