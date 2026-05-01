@@ -211,7 +211,43 @@ static bool try_dispatch(InstructionQueue&       iq,
                           ReservationStation&     rs_int,
                           ReservationStation&     rs_fp,
                           LoadStoreBuffer&        lsb,
-                          bool&                   branch_dispatched) {}
+                          bool&                   branch_dispatched) {
+    if (!iq.can_dispatch()) return false;
+    const Instruction instr = iq.peek();  /* copy before any mutation */
+
+    bool full_rob = rob.full();
+    bool issued   = false;
+
+    if (is_load(instr.op) || is_store(instr.op)) {
+        if (!full_rob && !lsb.full()) {
+            int rob_tag = rob.allocate(instr);
+            lsb.issue(instr, rob_tag, rat, rf, rob);        /* resolve on old RAT */
+            if (instr.rd >= 0) rat.map(instr.rd, instr.rd_fp, rob_tag);
+            iq.dispatch();
+            issued = true;
+        }
+    } else if (is_fp_op(instr.op)) {
+        if (!full_rob && !rs_fp.full()) {
+            int rob_tag = rob.allocate(instr);
+            rs_fp.issue(instr, rob_tag, rat, rf, rob);
+            if (instr.rd >= 0) rat.map(instr.rd, instr.rd_fp, rob_tag);
+            iq.dispatch();
+            issued = true;
+        }
+    } else {
+        if (!full_rob && !rs_int.full()) {
+            int rob_tag = rob.allocate(instr);
+            rs_int.issue(instr, rob_tag, rat, rf, rob);
+            if (instr.rd >= 0) rat.map(instr.rd, instr.rd_fp, rob_tag);
+            iq.dispatch();
+            issued = true;
+        }
+    }
+
+    if (issued && is_branch(instr.op))
+        branch_dispatched = true;
+    return issued;
+}
 
 
 /* main */
