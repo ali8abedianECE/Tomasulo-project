@@ -29,7 +29,8 @@ constexpr bool PIPE_FP_CVT    = true;   /* FCVT.W.S FCVT.S.W                */
 constexpr bool PIPE_MISC      = false;  /* NOP HALT                          */
 
 /* Structural sizes — number of entries in each unit. */
-constexpr int IQ_CAPACITY   = 8;   /* instruction fetch buffer depth */
+constexpr int IQ_CAPACITY    = 8;   /* instruction fetch buffer depth    */
+constexpr int IQ_FETCH_WIDTH = 1;   /* instructions fetched per cycle     */
 constexpr int ROB_SIZE      = 16;  /* reorder buffer entries         */
 constexpr int RS_INT_SIZE   = 6;   /* integer reservation stations   */
 constexpr int RS_FP_SIZE    = 4;   /* FP reservation stations        */

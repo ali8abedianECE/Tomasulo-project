@@ -37,7 +37,9 @@ void InstructionQueue::load_program(const std::vector<Instruction>& prog) {
  * has not been fully fetched and the buffer is not at capacity.
  */
 void InstructionQueue::tick() {
-    if (pc_ < static_cast<int>(program_.size()) && static_cast<int>(buffer_.size()) < capacity_) {
+    for (int i = 0; i < IQ_FETCH_WIDTH; ++i) {
+        if (pc_ >= static_cast<int>(program_.size())) break;
+        if (static_cast<int>(buffer_.size()) >= capacity_) break;
         buffer_.push_back(program_[pc_++]);
     }
 }

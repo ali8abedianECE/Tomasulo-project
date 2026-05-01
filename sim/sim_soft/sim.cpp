@@ -331,7 +331,6 @@ int main(int argc, char* argv[]) {
         rs_int.dump(trace, cycle);
         rs_fp.dump(trace, cycle);
         lsb.dump(trace, cycle);
-        cdb.dump(trace, cycle);
         rat.dump(trace, cycle);
         cu.dump(trace, cycle);
 
@@ -341,7 +340,6 @@ int main(int argc, char* argv[]) {
         rs_int.log_cycle(cycle);
         rs_fp.log_cycle(cycle);
         lsb.log_cycle(cycle);
-        cdb.log_cycle(cycle);
         rat.log_cycle(cycle);
         rf.log_cycle(cycle);
         cu.log_cycle(cycle);
@@ -371,6 +369,10 @@ int main(int argc, char* argv[]) {
             cdb.broadcast(r.rob_tag, r.result);
         }
 
+        /* CDB log: written after broadcast so it captures this cycle's results */
+        cdb.dump(trace, cycle);
+        cdb.log_cycle(cycle);
+
         /* Phase 4: snoop CDB — RS entries capture results broadcast this cycle */
         rs_int.snoop(cdb);
         rs_fp.snoop(cdb);
@@ -389,14 +391,14 @@ int main(int argc, char* argv[]) {
         /* Phase 6: fetch then dispatch (stall while a branch is in-flight) */
         if (!branch_in_flight && !halted) {
             iq.tick();
-            /* Save front-of-IQ PC before dispatch consumes the instruction */
-            uint32_t peek_pc = iq.can_dispatch() ? iq.peek().pc : 0u;
-            bool branch_dispatched = false;
-            if (try_dispatch(iq, rob, rat, rf, rs_int, rs_fp, lsb, branch_dispatched)) {
+            for (int _w = 0; _w < IQ_FETCH_WIDTH; ++_w) {
+                uint32_t peek_pc = iq.can_dispatch() ? iq.peek().pc : 0u;
+                bool branch_dispatched = false;
+                if (!try_dispatch(iq, rob, rat, rf, rs_int, rs_fp, lsb, branch_dispatched)) break;
                 if (branch_dispatched) {
                     branch_in_flight = true;
-                    /* Discard any instructions prefetched past the branch */
-                    iq.seek(peek_pc + 4u);  /* will be overridden to real target at commit */
+                    iq.seek(peek_pc + 4u);
+                    break;
                 }
             }
         }
