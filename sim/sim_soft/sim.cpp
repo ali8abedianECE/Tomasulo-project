@@ -268,5 +268,184 @@ static bool try_dispatch(InstructionQueue&       iq,
  *
  * @return 0 on success, 1 on usage or load error.
  */
-int main(int argc, char* argv[]) {}
+int main(int argc, char* argv[]) {
+    if (argc < 3) {
+        std::cerr << "Usage: " << argv[0] << " <program.asm> <output_dir/>\n";
+        return 1;
+    }
+
+    const std::string asm_path = argv[1];
+    const std::string out_dir  = argv[2];
+
+    /* Create output subdirectories */
+    const std::string logs_dir  = out_dir + "/logs";
+    const std::string final_dir = out_dir + "/final";
+    std::filesystem::create_directories(logs_dir);
+    std::filesystem::create_directories(final_dir);
+
+    std::vector<Instruction> program = parse_program(asm_path);
+    if (program.empty()) { std::cerr << "No instructions loaded.\n"; return 1; }
+
+    auto log_path   = [&](const std::string& name) { return logs_dir  + "/" + name; };
+    auto final_path = [&](const std::string& name) { return final_dir + "/" + name; };
+
+    /* Instantiate pipeline units */
+    std::vector<uint32_t>  mem(MEM_SIZE, 0);
+    RegisterFile           rf;
+    RegisterRemappingTable rat;
+    ReorderBuffer          rob(ROB_SIZE);
+    CommonDataBus          cdb;
+    ReservationStation     rs_int(RS_INT_SIZE);
+    ReservationStation     rs_fp(RS_FP_SIZE);
+    LoadStoreBuffer        lsb(LSB_SIZE);
+    InstructionQueue       iq(IQ_CAPACITY);
+    CommitUnit             cu;
+
+    /* Open per-unit cycle logs */
+    iq.open_log(log_path("iq.log"));
+    rob.open_log(log_path("rob.log"));
+    rs_int.open_log(log_path("rs_int.log"));
+    rs_fp.open_log(log_path("rs_fp.log"));
+    lsb.open_log(log_path("lsb.log"));
+    cdb.open_log(log_path("cdb.log"));
+    rat.open_log(log_path("rat.log"));
+    rf.open_log(log_path("rf.log"));
+    cu.open_log(log_path("cu.log"));
+
+    /* Combined per-cycle trace goes in logs/ */
+    std::ofstream trace(log_path("trace.txt"));
+
+    iq.load_program(program);
+
+    bool     halted           = false;
+    bool     branch_in_flight = false;
+    int      cycle            = 1;
+    constexpr int MAX_CYCLES  = 200000;
+
+    while (!halted && cycle <= MAX_CYCLES) {
+
+        /* dump state at start of cycle */
+        trace << "\n=== CYCLE " << cycle << " ===\n";
+        iq.dump(trace, cycle);
+        rob.dump(trace, cycle);
+        rs_int.dump(trace, cycle);
+        rs_fp.dump(trace, cycle);
+        lsb.dump(trace, cycle);
+        cdb.dump(trace, cycle);
+        rat.dump(trace, cycle);
+        cu.dump(trace, cycle);
+
+        /* per-unit logs */
+        iq.log_cycle(cycle);
+        rob.log_cycle(cycle);
+        rs_int.log_cycle(cycle);
+        rs_fp.log_cycle(cycle);
+        lsb.log_cycle(cycle);
+        cdb.log_cycle(cycle);
+        rat.log_cycle(cycle);
+        rf.log_cycle(cycle);
+        cu.log_cycle(cycle);
+
+        /* Phase 1: execute one cycle */
+        rs_int.tick();
+        rs_fp.tick();
+        lsb.tick(mem);
+
+        /* Phase 2: notify ROB about DONE stores (so commit can retire them) */
+        lsb.update_rob(rob);
+
+        /* Phase 3: broadcast execution results → CDB + ROB */
+        while (rs_int.has_result()) {
+            RSEntry r = rs_int.pop_result();
+            rob.write_result(r.rob_tag, r.result);
+            cdb.broadcast(r.rob_tag, r.result);
+        }
+        while (rs_fp.has_result()) {
+            RSEntry r = rs_fp.pop_result();
+            rob.write_result(r.rob_tag, r.result);
+            cdb.broadcast(r.rob_tag, r.result);
+        }
+        while (lsb.has_load_result()) {
+            LSBEntry r = lsb.pop_load_result();
+            rob.write_result(r.rob_tag, r.result);
+            cdb.broadcast(r.rob_tag, r.result);
+        }
+
+        /* Phase 4: snoop CDB — RS entries capture results broadcast this cycle */
+        rs_int.snoop(cdb);
+        rs_fp.snoop(cdb);
+        lsb.snoop(cdb);
+
+        /* Phase 5: in-order commit */
+        uint32_t next_pc = 0;
+        if (cu.tick(rob, rf, rat, lsb, mem, next_pc, halted)) {
+            if (is_branch(cu.last().op)) {
+                /* Seek IQ to the resolved branch target */
+                branch_in_flight = false;
+                iq.seek(next_pc);
+            }
+        }
+
+        /* Phase 6: fetch then dispatch (stall while a branch is in-flight) */
+        if (!branch_in_flight && !halted) {
+            iq.tick();
+            /* Save front-of-IQ PC before dispatch consumes the instruction */
+            uint32_t peek_pc = iq.can_dispatch() ? iq.peek().pc : 0u;
+            bool branch_dispatched = false;
+            if (try_dispatch(iq, rob, rat, rf, rs_int, rs_fp, lsb, branch_dispatched)) {
+                if (branch_dispatched) {
+                    branch_in_flight = true;
+                    /* Discard any instructions prefetched past the branch */
+                    iq.seek(peek_pc + 4u);  /* will be overridden to real target at commit */
+                }
+            }
+        }
+
+        /* Phase 7: flush CDB for the next cycle */
+        cdb.flush();
+
+        ++cycle;
+
+        if (!halted && iq.done() && rob.empty()) break;
+    }
+
+    /* final register state */
+    const int final_cycle = cycle - 1;
+    std::ofstream final_f(final_path("final_regs.txt"));
+    final_f << "# Tomasulo simulation: " << asm_path << "\n";
+    final_f << "# Total cycles: " << final_cycle << "\n\n";
+
+    /* Integer registers — one per line for easy Verilog parsing */
+    final_f << "[INT_REGS]\n";
+    for (int i = 0; i < NUM_INT_REGS; ++i)
+        final_f << "x" << std::setw(2) << std::setfill('0') << i
+                << " 0x" << std::hex << std::setw(8) << std::setfill('0')
+                << static_cast<uint32_t>(rf.read_int(i))
+                << std::dec << std::setfill(' ') << "\n";
+
+    final_f << "\n[FP_REGS]\n";
+    for (int i = 0; i < NUM_FP_REGS; ++i)
+        final_f << "f" << std::setw(2) << std::setfill('0') << i
+                << " 0x" << std::hex << std::setw(8) << std::setfill('0')
+                << float_to_bits(rf.read_fp(i))
+                << std::dec << std::setfill(' ')
+                << " (" << rf.read_fp(i) << "f)\n";
+
+    final_f << "\n[MEM_NONZERO]\n";
+    for (int i = 0; i < MEM_SIZE; ++i) {
+        if (mem[i] == 0) continue;
+        final_f << "mem[" << std::setw(4) << i << "] 0x"
+                << std::hex << std::setw(8) << std::setfill('0')
+                << mem[i] << std::dec << std::setfill(' ') << "\n";
+    }
+
+    /* Also append final state to trace */
+    trace << "\n=== FINAL STATE (cycle " << final_cycle << ") ===\n";
+    rf.dump(trace, final_cycle);
+
+    std::cout << "Done. " << final_cycle << " cycles.\n"
+              << "  logs/  -> " << logs_dir  << "/\n"
+              << "  final/ -> " << final_dir << "/\n";
+    return 0;
+}
 
