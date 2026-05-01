@@ -54,7 +54,7 @@ static std::vector<std::string> tokenize(const std::string& line) {
  *
  * @return Zero-based register index.
  */
-static int preg(const std::string& s) {}
+static int preg(const std::string& s) { return std::stoi(s.substr(1)); }
 
 
 /**
