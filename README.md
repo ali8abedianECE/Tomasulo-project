@@ -42,27 +42,6 @@ The figure below shows the classic block diagram:
 **Other**
 `NOP` `HALT`
 
-## Repo Layout
-
-```
-.
-├── sim/
-│   ├── run_tests.sh          # build + run all tests
-│   ├── sim_soft/             # C++ software simulator
-│   │   ├── include/          # headers + config
-│   │   ├── make/             # Makefile lives here
-│   │   └── *.cpp
-│   ├── sim_hdl/              # SystemVerilog hardware simulator
-│   └── test_sim/             # assembly test programs + expected outputs
-│       ├── int_alu/
-│       ├── fp_alu/
-│       ├── load_store/
-│       ├── branch/
-│       ├── combined/
-│       └── comprehensive/
-└── docs/                     # design docs and figures
-```
-
 ## Quick Start
 
 ```bash
