@@ -42,7 +42,9 @@ The figure below shows the classic block diagram:
 **Other**
 `NOP` `HALT`
 
-## Quick Start
+## Quick Start (Software Simulator)
+
+The hardware sections are still a work in progress. The software simulator is fully working.
 
 ```bash
 # build and run all tests
@@ -54,4 +56,4 @@ make
 ./tomasulo_sim ../../test_sim/int_alu/program.asm /tmp/out/
 ```
 
-Outputs go into `logs/` (one file per pipeline unit, one line per cycle) and `final/final_regs.txt` (architectural register state at halt).
+Outputs go into `logs/` (one file per pipeline unit, one line per cycle) and `final/final_regs.txt` (architectural register state at halt). See the [Software Simulator](docs/software-sim.md) page for a full walkthrough of each log file.
