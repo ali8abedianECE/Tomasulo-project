@@ -5,30 +5,55 @@
 #include <ostream>
 #include <string>
 
-/*
- * RegisterFile — architectural register state, written only at commit.
+/**
+ * @brief Architectural register file — holds committed state only.
  *
  * Two separate banks:
- *   int_regs_[0..31]  x0-x31  int32_t   x0 hardwired to 0 (writes ignored)
- *   fp_regs_ [0..31]  f0-f31  float     single-precision (RV32F)
+ *   - @c int_regs_[0..31]  maps to x0-x31 (int32_t).  x0 is hardwired to 0; writes are ignored.
+ *   - @c fp_regs_ [0..31]  maps to f0-f31 (float, single-precision RV32F).
  *
- * During execution operand values come from the ROB/CDB, not here.
- * The register file is the ground truth only after an instruction commits.
+ * During out-of-order execution operand values come from the ROB and CDB.
+ * The register file is authoritative only after an instruction commits.
  */
 class RegisterFile {
 public:
     RegisterFile();
 
-    /* Integer register access (x0-x31). Write to x0 is silently ignored. */
+    /**
+     * @brief Read an integer register.
+     * @param[in] idx  Register index (0-31).  Reading x0 always returns 0.
+     * @return         Signed 32-bit integer value of register @p idx.
+     */
     int32_t read_int(int idx) const;
+
+    /**
+     * @brief Write an integer register.
+     * @param[in] idx  Register index (0-31).  Writes to x0 are silently ignored.
+     * @param[in] val  Value to store.
+     */
     void    write_int(int idx, int32_t val);
 
-    /* FP register access (f0-f31). */
+    /**
+     * @brief Read a single-precision FP register.
+     * @param[in] idx  Register index (0-31).
+     * @return         Float value of register f@p idx.
+     */
     float   read_fp(int idx) const;
+
+    /**
+     * @brief Write a single-precision FP register.
+     * @param[in] idx  Register index (0-31).
+     * @param[in] val  Float value to store.
+     */
     void    write_fp(int idx, float val);
 
+    /** @brief Print current register state to @p os annotated with @p cycle. */
     void dump(std::ostream& os, int cycle) const;
+
+    /** @brief Open (or create) the cycle-trace log file at @p path. */
     void open_log(const std::string& path);
+
+    /** @brief Append a one-line state snapshot for @p cycle to the log file. */
     void log_cycle(int cycle);
 
 private:
