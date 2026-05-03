@@ -20,24 +20,29 @@ The figure below shows the classic block diagram:
 
 ## Supported Instructions
 
-**Integer ALU**
-`ADD` `SUB` `AND` `OR` `XOR` `SLL` `SRL` `SRA`
-`ADDI` `ANDI` `ORI` `XORI` `SLLI` `SRLI` `SRAI` `SLTI` `SLTIU`
+| Group | Instructions |
+|-------|-------------|
+| **Integer ALU** | `ADD` `SUB` `AND` `OR` `XOR` `SLL` `SRL` `SRA` `ADDI` `ANDI` `ORI` `XORI` `SLLI` `SRLI` `SRAI` `SLTI` `SLTIU` |
+| **Memory** | `LW` `SW` `FLW` `FSW` |
+| **Branch** | `BEQ` `BNE` `BLT` `BGE` `BLTU` `BGEU` |
+| **FP Arithmetic** | `FADD.S` `FSUB.S` `FMUL.S` `FDIV.S` |
+| **FP Convert** | `FCVT.W.S` `FCVT.WU.S` `FCVT.S.W` `FCVT.S.WU` |
+| **Other** | `NOP` `HALT` |
 
-**Memory**
-`LW` `SW` `FLW` `FSW`
+> **Planned — not yet implemented**
+>
+> | Group | Instructions |
+> |-------|-------------|
+> | **Function calls** | `JAL` `JALR` — jump-and-link for subroutine call/return |
+> | **Upper immediate** | `LUI` `AUIPC` — required for full 32-bit address materialization |
+> | **Atomics** | `LR.W` `SC.W` — RV32A load-reserved / store-conditional |
+> | **FP comparisons** | `FEQ.S` `FLT.S` `FLE.S` — float-to-int condition results |
+> | **FP sign injection** | `FSGNJ.S` `FSGNJN.S` `FSGNJX.S` |
+> | **FP min/max** | `FMIN.S` `FMAX.S` |
 
-**Branches**
-`BEQ` `BNE` `BLT` `BGE` `BLTU` `BGEU`
+---
 
-**Floating Point**
-`FADD.S` `FSUB.S` `FMUL.S` `FDIV.S` `FLW` `FSW`
-`FCVT.W.S` `FCVT.WU.S` `FCVT.S.W` `FCVT.S.WU`
-
-**Other**
-`NOP` `HALT`
-
-For encoding diagrams, field-by-field breakdowns, pipeline routing, and timing see **[docs/ISA.md](docs/ISA.md)**.
+> 📄 **[Full ISA reference — encoding diagrams, field tables, pipeline routing, timing →](docs/ISA.md)**
 
 ## Quick Start (Software Simulator)
 
