@@ -196,8 +196,12 @@ static std::vector<Instruction> parse_program(const std::string& path) {
  * @param[in,out] rob                 Reorder buffer to allocate a slot in.
  * @param[in,out] rat                 Register-renaming table to update after dispatch.
  * @param[in]     rf                  Architectural register file for operand lookup.
- * @param[in,out] rs_int              Integer reservation station.
- * @param[in,out] rs_fp               Floating-point reservation station.
+ * @param[in,out] rs_alu              Integer ALU reservation station.
+ * @param[in,out] rs_branch           Branch reservation station.
+ * @param[in,out] rs_fp_addsub        FP add/sub reservation station.
+ * @param[in,out] rs_fp_mul           FP multiply reservation station.
+ * @param[in,out] rs_fp_div           FP divide reservation station.
+ * @param[in,out] rs_fp_cvt           FP conversion reservation station.
  * @param[in,out] lsb                 Load/store buffer.
  * @param[out]    branch_dispatched   Set to @c true if the dispatched instruction is a branch.
  *
@@ -208,40 +212,56 @@ static bool try_dispatch(InstructionQueue&       iq,
                           ReorderBuffer&          rob,
                           RegisterRemappingTable& rat,
                           const RegisterFile&     rf,
-                          ReservationStation&     rs_int,
-                          ReservationStation&     rs_fp,
+                          ReservationStation&     rs_alu,
+                          ReservationStation&     rs_branch,
+                          ReservationStation&     rs_fp_addsub,
+                          ReservationStation&     rs_fp_mul,
+                          ReservationStation&     rs_fp_div,
+                          ReservationStation&     rs_fp_cvt,
                           LoadStoreBuffer&        lsb,
                           bool&                   branch_dispatched) {
     if (!iq.can_dispatch()) return false;
-    const Instruction instr = iq.peek();  /* copy before any mutation */
+    const Instruction instr = iq.peek();
 
     bool full_rob = rob.full();
-    bool issued   = false;
+
+    ReservationStation* target_rs = nullptr;
+    bool to_lsb = false;
 
     if (is_load(instr.op) || is_store(instr.op)) {
+        to_lsb = true;
+    } else if (is_branch(instr.op)) {
+        target_rs = &rs_branch;
+    } else {
+        switch (instr.op) {
+            case Opcode::FADD_S: case Opcode::FSUB_S:
+                target_rs = &rs_fp_addsub; break;
+            case Opcode::FMUL_S:
+                target_rs = &rs_fp_mul;    break;
+            case Opcode::FDIV_S:
+                target_rs = &rs_fp_div;    break;
+            case Opcode::FCVT_W_S: case Opcode::FCVT_S_W:
+                target_rs = &rs_fp_cvt;    break;
+            default:
+                target_rs = &rs_alu;       break;
+        }
+    }
+
+    bool issued = false;
+    if (to_lsb) {
         if (!full_rob && !lsb.full()) {
             int rob_tag = rob.allocate(instr);
-            lsb.issue(instr, rob_tag, rat, rf, rob);        /* resolve on old RAT */
+            lsb.issue(instr, rob_tag, rat, rf, rob);
             if (instr.rd >= 0) rat.map(instr.rd, instr.rd_fp, rob_tag);
             iq.dispatch();
             issued = true;
         }
-    } else if (is_fp_op(instr.op)) {
-        if (!full_rob && !rs_fp.full()) {
-            int rob_tag = rob.allocate(instr);
-            rs_fp.issue(instr, rob_tag, rat, rf, rob);
-            if (instr.rd >= 0) rat.map(instr.rd, instr.rd_fp, rob_tag);
-            iq.dispatch();
-            issued = true;
-        }
-    } else {
-        if (!full_rob && !rs_int.full()) {
-            int rob_tag = rob.allocate(instr);
-            rs_int.issue(instr, rob_tag, rat, rf, rob);
-            if (instr.rd >= 0) rat.map(instr.rd, instr.rd_fp, rob_tag);
-            iq.dispatch();
-            issued = true;
-        }
+    } else if (target_rs && !full_rob && !target_rs->full()) {
+        int rob_tag = rob.allocate(instr);
+        target_rs->issue(instr, rob_tag, rat, rf, rob);
+        if (instr.rd >= 0) rat.map(instr.rd, instr.rd_fp, rob_tag);
+        iq.dispatch();
+        issued = true;
     }
 
     if (issued && is_branch(instr.op))
@@ -295,8 +315,12 @@ int main(int argc, char* argv[]) {
     RegisterRemappingTable rat;
     ReorderBuffer          rob(ROB_SIZE);
     CommonDataBus          cdb;
-    ReservationStation     rs_int(RS_INT_SIZE);
-    ReservationStation     rs_fp(RS_FP_SIZE);
+    ReservationStation     rs_alu(RS_ALU_SIZE);
+    ReservationStation     rs_branch(RS_BRANCH_SIZE);
+    ReservationStation     rs_fp_addsub(RS_FP_ADDSUB_SIZE);
+    ReservationStation     rs_fp_mul(RS_FP_MUL_SIZE);
+    ReservationStation     rs_fp_div(RS_FP_DIV_SIZE);
+    ReservationStation     rs_fp_cvt(RS_FP_CVT_SIZE);
     LoadStoreBuffer        lsb(LSB_SIZE);
     InstructionQueue       iq(IQ_CAPACITY);
     CommitUnit             cu;
@@ -304,8 +328,12 @@ int main(int argc, char* argv[]) {
     /* Open per-unit cycle logs */
     iq.open_log(log_path("iq.log"));
     rob.open_log(log_path("rob.log"));
-    rs_int.open_log(log_path("rs_int.log"));
-    rs_fp.open_log(log_path("rs_fp.log"));
+    rs_alu.open_log(log_path("rs_alu.log"));
+    rs_branch.open_log(log_path("rs_branch.log"));
+    rs_fp_addsub.open_log(log_path("rs_fp_addsub.log"));
+    rs_fp_mul.open_log(log_path("rs_fp_mul.log"));
+    rs_fp_div.open_log(log_path("rs_fp_div.log"));
+    rs_fp_cvt.open_log(log_path("rs_fp_cvt.log"));
     lsb.open_log(log_path("lsb.log"));
     cdb.open_log(log_path("cdb.log"));
     rat.open_log(log_path("rat.log"));
@@ -328,8 +356,12 @@ int main(int argc, char* argv[]) {
         trace << "\n=== CYCLE " << cycle << " ===\n";
         iq.dump(trace, cycle);
         rob.dump(trace, cycle);
-        rs_int.dump(trace, cycle);
-        rs_fp.dump(trace, cycle);
+        rs_alu.dump(trace, cycle);
+        rs_branch.dump(trace, cycle);
+        rs_fp_addsub.dump(trace, cycle);
+        rs_fp_mul.dump(trace, cycle);
+        rs_fp_div.dump(trace, cycle);
+        rs_fp_cvt.dump(trace, cycle);
         lsb.dump(trace, cycle);
         rat.dump(trace, cycle);
         cu.dump(trace, cycle);
@@ -337,31 +369,38 @@ int main(int argc, char* argv[]) {
         /* per-unit logs */
         iq.log_cycle(cycle);
         rob.log_cycle(cycle);
-        rs_int.log_cycle(cycle);
-        rs_fp.log_cycle(cycle);
+        rs_alu.log_cycle(cycle);
+        rs_branch.log_cycle(cycle);
+        rs_fp_addsub.log_cycle(cycle);
+        rs_fp_mul.log_cycle(cycle);
+        rs_fp_div.log_cycle(cycle);
+        rs_fp_cvt.log_cycle(cycle);
         lsb.log_cycle(cycle);
         rat.log_cycle(cycle);
         rf.log_cycle(cycle);
         cu.log_cycle(cycle);
 
         /* Phase 1: execute one cycle */
-        rs_int.tick();
-        rs_fp.tick();
+        rs_alu.tick();
+        rs_branch.tick();
+        rs_fp_addsub.tick();
+        rs_fp_mul.tick();
+        rs_fp_div.tick();
+        rs_fp_cvt.tick();
         lsb.tick(mem);
 
         /* Phase 2: notify ROB about DONE stores (so commit can retire them) */
         lsb.update_rob(rob);
 
         /* Phase 3: broadcast execution results → CDB + ROB */
-        while (rs_int.has_result()) {
-            RSEntry r = rs_int.pop_result();
-            rob.write_result(r.rob_tag, r.result);
-            cdb.broadcast(r.rob_tag, r.result);
-        }
-        while (rs_fp.has_result()) {
-            RSEntry r = rs_fp.pop_result();
-            rob.write_result(r.rob_tag, r.result);
-            cdb.broadcast(r.rob_tag, r.result);
+        for (ReservationStation* rs : {&rs_alu, &rs_branch,
+                                       &rs_fp_addsub, &rs_fp_mul,
+                                       &rs_fp_div, &rs_fp_cvt}) {
+            while (rs->has_result()) {
+                RSEntry r = rs->pop_result();
+                rob.write_result(r.rob_tag, r.result);
+                cdb.broadcast(r.rob_tag, r.result);
+            }
         }
         while (lsb.has_load_result()) {
             LSBEntry r = lsb.pop_load_result();
@@ -374,8 +413,10 @@ int main(int argc, char* argv[]) {
         cdb.log_cycle(cycle);
 
         /* Phase 4: snoop CDB — RS entries capture results broadcast this cycle */
-        rs_int.snoop(cdb);
-        rs_fp.snoop(cdb);
+        for (ReservationStation* rs : {&rs_alu, &rs_branch,
+                                       &rs_fp_addsub, &rs_fp_mul,
+                                       &rs_fp_div, &rs_fp_cvt})
+            rs->snoop(cdb);
         lsb.snoop(cdb);
 
         /* Phase 5: in-order commit */
@@ -394,7 +435,10 @@ int main(int argc, char* argv[]) {
             for (int _w = 0; _w < IQ_FETCH_WIDTH; ++_w) {
                 uint32_t peek_pc = iq.can_dispatch() ? iq.peek().pc : 0u;
                 bool branch_dispatched = false;
-                if (!try_dispatch(iq, rob, rat, rf, rs_int, rs_fp, lsb, branch_dispatched)) break;
+                if (!try_dispatch(iq, rob, rat, rf,
+                                  rs_alu, rs_branch,
+                                  rs_fp_addsub, rs_fp_mul, rs_fp_div, rs_fp_cvt,
+                                  lsb, branch_dispatched)) break;
                 if (branch_dispatched) {
                     branch_in_flight = true;
                     iq.seek(peek_pc + 4u);

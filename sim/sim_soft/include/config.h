@@ -44,10 +44,14 @@ constexpr bool PIPE_MISC      = false;  ///< NOP, HALT.
  */
 constexpr int IQ_CAPACITY    = 8;   ///< Instruction fetch buffer depth (entries).
 constexpr int IQ_FETCH_WIDTH = 1;   ///< Instructions fetched and dispatched per cycle.
-constexpr int ROB_SIZE       = 16;  ///< Reorder buffer entries.
-constexpr int RS_INT_SIZE    = 6;   ///< Integer reservation station slots.
-constexpr int RS_FP_SIZE     = 4;   ///< FP reservation station slots.
-constexpr int LSB_SIZE       = 8;   ///< Load/store buffer entries.
+constexpr int ROB_SIZE            = 16;  ///< Reorder buffer entries.
+constexpr int RS_ALU_SIZE         = 6;   ///< Integer ALU RS slots (ADD/SUB/logic/shift/imm).
+constexpr int RS_BRANCH_SIZE      = 2;   ///< Branch RS slots (BEQ/BNE/BLT/BGE).
+constexpr int RS_FP_ADDSUB_SIZE   = 3;   ///< FP add/sub RS slots (FADD.S, FSUB.S).
+constexpr int RS_FP_MUL_SIZE      = 2;   ///< FP multiply RS slots (FMUL.S).
+constexpr int RS_FP_DIV_SIZE      = 2;   ///< FP divide RS slots (FDIV.S — unpipelined).
+constexpr int RS_FP_CVT_SIZE      = 2;   ///< FP conversion RS slots (FCVT.W.S, FCVT.S.W).
+constexpr int LSB_SIZE            = 8;   ///< Load/store buffer entries.
 /** @} */
 
 /** @defgroup regcounts Register File Dimensions

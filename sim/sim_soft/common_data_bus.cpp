@@ -3,7 +3,9 @@
 #include <iomanip>
 
 CommonDataBus::CommonDataBus() {
-    pending_.reserve(RS_INT_SIZE + RS_FP_SIZE);
+    pending_.reserve(RS_ALU_SIZE + RS_BRANCH_SIZE +
+                     RS_FP_ADDSUB_SIZE + RS_FP_MUL_SIZE +
+                     RS_FP_DIV_SIZE + RS_FP_CVT_SIZE);
 }
 
 void CommonDataBus::broadcast(int rob_tag, uint32_t value) {
