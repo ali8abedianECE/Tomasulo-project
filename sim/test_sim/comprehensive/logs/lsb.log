@@ -46,3 +46,6 @@
 [LSB  cycle=  31] head=1 tail=2 count=1/8
   [ 1] DONE FLW ROB=10 vj=0xa0 addr=0xa8 PC=0x006c
 [LSB  cycle=  32] head=2 tail=2 count=0/8
+[LSB  cycle=  33] head=2 tail=2 count=0/8
+[LSB  cycle=  34] head=2 tail=2 count=0/8
+[LSB  cycle=  35] head=2 tail=2 count=0/8

@@ -519,10 +519,10 @@
   [ 8] INFLT FMUL.S rd=f4 PC=0x0064
   [ 9] DONE FSW rd=x-1 PC=0x0068
   [10] INFLT FLW rd=f5 PC=0x006c
-  [11] INFLT HALT rd=x-1 PC=0x0070
+  [11] INFLT JAL rd=x14 PC=0x0070
 [RS   cycle=  29]
-  [ 0] HALT ROB=11 vj=0x0 vk=0x0
 [RS   cycle=  29]
+  [ 0] JAL ROB=11 vj=0x0 vk=0x0
 [RS   cycle=  29]
 [RS   cycle=  29]
   [ 0] FMUL.S ROB=8 vj=0xa vk=0x3 rem=1
@@ -532,17 +532,17 @@
   [ 0] DONE FSW ROB=9 vj=0xa0 vk=0xd addr=0xa8 PC=0x0068
   [ 1] DONE FLW ROB=10 vj=0xa0 addr=0xa8 PC=0x006c
 [RAT  cycle=  29]
-  INT:
+  INT: x14->ROB11
   FP:  f4->ROB8 f5->ROB10
 [CU   cycle=  29] idle
-[CDB  cycle=  29] ROB11=0x00000000 ROB8=0x00000000
+[CDB  cycle=  29] ROB11=0x00000078 ROB8=0x00000000
 
 === CYCLE 30 ===
 [IQ  cycle=  30] fetched=29 buf=0/8
 [ROB  cycle=  30] head=9 tail=12 count=3/16
   [ 9] DONE FSW rd=x-1 PC=0x0068
   [10] INFLT FLW rd=f5 PC=0x006c
-  [11] DONE HALT rd=x-1 PC=0x0070
+  [11] DONE JAL rd=x14 PC=0x0070
 [RS   cycle=  30]
 [RS   cycle=  30]
 [RS   cycle=  30]
@@ -553,7 +553,7 @@
   [ 0] DONE FSW ROB=9 vj=0xa0 vk=0xd addr=0xa8 PC=0x0068
   [ 1] DONE FLW ROB=10 vj=0xa0 addr=0xa8 PC=0x006c
 [RAT  cycle=  30]
-  INT:
+  INT: x14->ROB11
   FP:  f5->ROB10
 [CU   cycle=  30] COMMIT FMUL.S PC=0x0064 f4=0x0
 [CDB  cycle=  30] idle
@@ -562,7 +562,7 @@
 [IQ  cycle=  31] fetched=29 buf=0/8
 [ROB  cycle=  31] head=10 tail=12 count=2/16
   [10] INFLT FLW rd=f5 PC=0x006c
-  [11] DONE HALT rd=x-1 PC=0x0070
+  [11] DONE JAL rd=x14 PC=0x0070
 [RS   cycle=  31]
 [RS   cycle=  31]
 [RS   cycle=  31]
@@ -572,7 +572,7 @@
 [LSB  cycle=  31] head=1 tail=2 count=1/8
   [ 1] DONE FLW ROB=10 vj=0xa0 addr=0xa8 PC=0x006c
 [RAT  cycle=  31]
-  INT:
+  INT: x14->ROB11
   FP:  f5->ROB10
 [CU   cycle=  31] COMMIT FSW PC=0x0068
 [CDB  cycle=  31] ROB10=0x0000000d
@@ -580,7 +580,7 @@
 === CYCLE 32 ===
 [IQ  cycle=  32] fetched=29 buf=0/8
 [ROB  cycle=  32] head=11 tail=12 count=1/16
-  [11] DONE HALT rd=x-1 PC=0x0070
+  [11] DONE JAL rd=x14 PC=0x0070
 [RS   cycle=  32]
 [RS   cycle=  32]
 [RS   cycle=  32]
@@ -589,12 +589,66 @@
 [RS   cycle=  32]
 [LSB  cycle=  32] head=2 tail=2 count=0/8
 [RAT  cycle=  32]
-  INT:
+  INT: x14->ROB11
   FP: 
 [CU   cycle=  32] COMMIT FLW PC=0x006c f5=0xd
 [CDB  cycle=  32] idle
 
-=== FINAL STATE (cycle 32) ===
-[RF   cycle=  32]
-  INT: x0=0 x1=10 x2=3 x3=13 x4=7 x5=5 x6=15 x7=10 x8=26 x9=6 x10=13 x11=7 x12=1 x13=20 x14=0 x15=0 x16=0 x17=0 x18=0 x19=0 x20=200 x21=160 x22=0 x23=0 x24=0 x25=0 x26=0 x27=0 x28=0 x29=0 x30=0 x31=0
+=== CYCLE 33 ===
+[IQ  cycle=  33] fetched=31 buf=0/8
+[ROB  cycle=  33] head=12 tail=13 count=1/16
+  [12] INFLT ADD rd=x15 PC=0x0078
+[RS   cycle=  33]
+  [ 0] ADD ROB=12 vj=0x1 vk=0x14
+[RS   cycle=  33]
+[RS   cycle=  33]
+[RS   cycle=  33]
+[RS   cycle=  33]
+[RS   cycle=  33]
+[LSB  cycle=  33] head=2 tail=2 count=0/8
+[RAT  cycle=  33]
+  INT: x15->ROB12
+  FP: 
+[CU   cycle=  33] COMMIT JAL PC=0x0070 x14=0x78
+[CDB  cycle=  33] ROB12=0x00000015
+
+=== CYCLE 34 ===
+[IQ  cycle=  34] fetched=32 buf=0/8
+[ROB  cycle=  34] head=13 tail=14 count=1/16
+  [13] INFLT JALR rd=x0 PC=0x007c
+[RS   cycle=  34]
+[RS   cycle=  34]
+  [ 0] JALR ROB=13 vj=0x74 vk=0x0
+[RS   cycle=  34]
+[RS   cycle=  34]
+[RS   cycle=  34]
+[RS   cycle=  34]
+[LSB  cycle=  34] head=2 tail=2 count=0/8
+[RAT  cycle=  34]
+  INT:
+  FP: 
+[CU   cycle=  34] COMMIT ADD PC=0x0078 x15=0x15
+[CDB  cycle=  34] ROB13=0x00000074
+
+=== CYCLE 35 ===
+[IQ  cycle=  35] fetched=30 buf=0/8
+[ROB  cycle=  35] head=14 tail=15 count=1/16
+  [14] INFLT HALT rd=x-1 PC=0x0074
+[RS   cycle=  35]
+  [ 0] HALT ROB=14 vj=0x0 vk=0x0
+[RS   cycle=  35]
+[RS   cycle=  35]
+[RS   cycle=  35]
+[RS   cycle=  35]
+[RS   cycle=  35]
+[LSB  cycle=  35] head=2 tail=2 count=0/8
+[RAT  cycle=  35]
+  INT:
+  FP: 
+[CU   cycle=  35] COMMIT JALR PC=0x007c x0=0x74
+[CDB  cycle=  35] ROB14=0x00000000
+
+=== FINAL STATE (cycle 35) ===
+[RF   cycle=  35]
+  INT: x0=0 x1=10 x2=3 x3=13 x4=7 x5=5 x6=15 x7=10 x8=26 x9=6 x10=13 x11=7 x12=1 x13=20 x14=116 x15=21 x16=0 x17=0 x18=0 x19=0 x20=200 x21=160 x22=0 x23=0 x24=0 x25=0 x26=0 x27=0 x28=0 x29=0 x30=0 x31=0
   FP:  f0=1.4013e-44 f1=4.2039e-45 f2=1.82169e-44 f3=1.4013e-44 f4=0 f5=1.82169e-44 f6=0 f7=0 f8=0 f9=0 f10=0 f11=0 f12=0 f13=0 f14=0 f15=0 f16=0 f17=0 f18=0 f19=0 f20=0 f21=0 f22=0 f23=0 f24=0 f25=0 f26=0 f27=0 f28=0 f29=0 f30=0 f31=0

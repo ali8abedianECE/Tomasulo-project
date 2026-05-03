@@ -1,5 +1,5 @@
 # Tomasulo simulation: sim/test_sim/comprehensive/program.asm
-# Total cycles: 32
+# Total cycles: 35
 
 [INT_REGS]
 x00 0x00000000
@@ -16,8 +16,8 @@ x10 0x0000000d
 x11 0x00000007
 x12 0x00000001
 x13 0x00000014
-x14 0x00000000
-x15 0x00000000
+x14 0x00000074
+x15 0x00000015
 x16 0x00000000
 x17 0x00000000
 x18 0x00000000

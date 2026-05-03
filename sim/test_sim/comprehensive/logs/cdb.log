@@ -26,7 +26,10 @@
 [CDB  cycle=  26] idle
 [CDB  cycle=  27] ROB7=0x0000000a
 [CDB  cycle=  28] idle
-[CDB  cycle=  29] ROB11=0x00000000 ROB8=0x00000000
+[CDB  cycle=  29] ROB11=0x00000078 ROB8=0x00000000
 [CDB  cycle=  30] idle
 [CDB  cycle=  31] ROB10=0x0000000d
 [CDB  cycle=  32] idle
+[CDB  cycle=  33] ROB12=0x00000015
+[CDB  cycle=  34] ROB13=0x00000074
+[CDB  cycle=  35] ROB14=0x00000000

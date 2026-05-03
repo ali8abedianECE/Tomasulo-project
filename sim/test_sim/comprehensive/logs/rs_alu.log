@@ -40,7 +40,11 @@
 [RS   cycle=  27]
 [RS   cycle=  28]
 [RS   cycle=  29]
-  [ 0] HALT ROB=11 vj=0x0 vk=0x0
 [RS   cycle=  30]
 [RS   cycle=  31]
 [RS   cycle=  32]
+[RS   cycle=  33]
+  [ 0] ADD ROB=12 vj=0x1 vk=0x14
+[RS   cycle=  34]
+[RS   cycle=  35]
+  [ 0] HALT ROB=14 vj=0x0 vk=0x0

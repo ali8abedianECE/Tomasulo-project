@@ -30,3 +30,6 @@
 [CU   cycle=  30] COMMIT FMUL.S PC=0x0064 f4=0x0
 [CU   cycle=  31] COMMIT FSW PC=0x0068
 [CU   cycle=  32] COMMIT FLW PC=0x006c f5=0xd
+[CU   cycle=  33] COMMIT JAL PC=0x0070 x14=0x78
+[CU   cycle=  34] COMMIT ADD PC=0x0078 x15=0x15
+[CU   cycle=  35] COMMIT JALR PC=0x007c x0=0x74

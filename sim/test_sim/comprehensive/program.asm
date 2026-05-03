@@ -1,6 +1,7 @@
 # Comprehensive test: exercises every instruction type
 # Covers: int ALU chain, shift, memory store/load forwarding,
-#         taken branch with flush, FP load/store/arith, multi-cycle deps
+#         taken branch with flush, FP load/store/arith, multi-cycle deps,
+#         JAL call + JALR return
 
 # === Integer setup ===
 ADDI x1, x0, 10        # x1 = 10
@@ -43,4 +44,10 @@ FMUL.S f4, f0, f1      # f4 = f0*f1 = 0.0        underflows
 FSW  f2, 8(x21)        # mem[42] = bits(f2)
 FLW  f5, 8(x21)        # f5 = f2  (FP store-to-load forward)
 
-HALT
+# === JAL/JALR: call subroutine, verify return address and result ===
+JAL  x14, fp_done      # x14 = PC+4 = 116; jump to fp_done (PC=120)
+HALT                   # PC=116 — jumped over by JAL, landed here on return
+
+fp_done:
+ADD  x15, x12, x13     # x15 = 1 + 20 = 21   RAW on x12, x13
+JALR x0, x14, 0        # return to x14 = 116 (HALT)
