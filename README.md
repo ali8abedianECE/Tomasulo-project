@@ -22,19 +22,20 @@ The figure below shows the classic block diagram:
 
 | Group | Instructions |
 |-------|-------------|
-| **Integer ALU** | `ADD` `SUB` `AND` `OR` `XOR` `SLL` `SRL` `SRA` `ADDI` `ANDI` `ORI` `XORI` `SLLI` `SRLI` `SRAI` `SLTI` `SLTIU` |
+| **Integer ALU** | `ADD` `SUB` `AND` `OR` `XOR` `SLL` `SRL` `SRA` `ADDI` `ANDI` `ORI` `XORI` `SLLI` `SRLI` |
+| **Upper immediate** | `LUI` |
 | **Memory** | `LW` `SW` `FLW` `FSW` |
-| **Branch** | `BEQ` `BNE` `BLT` `BGE` `BLTU` `BGEU` |
+| **Branch** | `BEQ` `BNE` `BLT` `BGE` |
+| **Jump** | `JAL` `JALR` |
 | **FP Arithmetic** | `FADD.S` `FSUB.S` `FMUL.S` `FDIV.S` |
-| **FP Convert** | `FCVT.W.S` `FCVT.WU.S` `FCVT.S.W` `FCVT.S.WU` |
+| **FP Convert** | `FCVT.W.S` `FCVT.S.W` |
 | **Other** | `NOP` `HALT` |
 
 > **Planned — not yet implemented**
 >
 > | Group | Instructions |
 > |-------|-------------|
-> | **Function calls** | `JAL` `JALR` — jump-and-link for subroutine call/return |
-> | **Upper immediate** | `LUI` `AUIPC` — required for full 32-bit address materialization |
+> | **Upper immediate** | `AUIPC` — PC-relative address materialization |
 > | **Atomics** | `LR.W` `SC.W` — RV32A load-reserved / store-conditional |
 > | **FP comparisons** | `FEQ.S` `FLT.S` `FLE.S` — float-to-int condition results |
 > | **FP sign injection** | `FSGNJ.S` `FSGNJN.S` `FSGNJX.S` |
