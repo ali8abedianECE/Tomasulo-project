@@ -1,0 +1,83 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="700" height="324" viewBox="0 0 700 324">
+  <rect width="700" height="324" fill="#ffffff"/>
+  <rect x="20.0" y="20.0" width="660.0" height="52.0" fill="#1a1a1a" stroke="#1a1a1a" stroke-width="1" rx="4"/>
+  <text x="350.0" y="38.0" font-family="Arial, Helvetica, sans-serif" font-size="14" font-weight="bold" fill="#ffffff" text-anchor="middle">FP Arithmetic  —  R-type  (opcode 0x53)</text>
+  <text x="350.0" y="56.0" font-family="Arial, Helvetica, sans-serif" font-size="9" font-weight="normal" fill="#aaaaaa" text-anchor="middle">FADD.S  FSUB.S  FMUL.S  FDIV.S</text>
+  <rect x="20.0" y="86.0" width="103.1" height="50.0" fill="#f4f4f4" stroke="#aaaaaa" stroke-width="0.8" rx="0"/>
+  <text x="71.6" y="100.0" font-family="Courier New, monospace" font-size="7" font-weight="normal" fill="#777777" text-anchor="middle">31:27</text>
+  <text x="71.6" y="127.0" font-family="Courier New, monospace" font-size="9" font-weight="bold" fill="#111111" text-anchor="middle">funct5</text>
+  <rect x="123.1" y="86.0" width="41.2" height="50.0" fill="#f4f4f4" stroke="#aaaaaa" stroke-width="0.8" rx="0"/>
+  <text x="143.8" y="115.0" font-family="Courier New, monospace" font-size="8" font-weight="normal" fill="#111111" text-anchor="middle">fmt</text>
+  <rect x="164.4" y="86.0" width="103.1" height="50.0" fill="#f4f4f4" stroke="#aaaaaa" stroke-width="0.8" rx="0"/>
+  <text x="215.9" y="100.0" font-family="Courier New, monospace" font-size="7" font-weight="normal" fill="#777777" text-anchor="middle">24:20</text>
+  <text x="215.9" y="127.0" font-family="Courier New, monospace" font-size="9" font-weight="bold" fill="#111111" text-anchor="middle">fs2</text>
+  <rect x="267.5" y="86.0" width="103.1" height="50.0" fill="#f4f4f4" stroke="#aaaaaa" stroke-width="0.8" rx="0"/>
+  <text x="319.1" y="100.0" font-family="Courier New, monospace" font-size="7" font-weight="normal" fill="#777777" text-anchor="middle">19:15</text>
+  <text x="319.1" y="127.0" font-family="Courier New, monospace" font-size="9" font-weight="bold" fill="#111111" text-anchor="middle">fs1</text>
+  <rect x="370.6" y="86.0" width="61.9" height="50.0" fill="#f4f4f4" stroke="#aaaaaa" stroke-width="0.8" rx="0"/>
+  <text x="401.6" y="100.0" font-family="Courier New, monospace" font-size="7" font-weight="normal" fill="#777777" text-anchor="middle">14:12</text>
+  <text x="401.6" y="127.0" font-family="Courier New, monospace" font-size="9" font-weight="bold" fill="#111111" text-anchor="middle">rm</text>
+  <rect x="432.5" y="86.0" width="103.1" height="50.0" fill="#f4f4f4" stroke="#aaaaaa" stroke-width="0.8" rx="0"/>
+  <text x="484.1" y="100.0" font-family="Courier New, monospace" font-size="7" font-weight="normal" fill="#777777" text-anchor="middle">11:7</text>
+  <text x="484.1" y="127.0" font-family="Courier New, monospace" font-size="9" font-weight="bold" fill="#111111" text-anchor="middle">fd</text>
+  <rect x="535.6" y="86.0" width="144.4" height="50.0" fill="#f4f4f4" stroke="#aaaaaa" stroke-width="0.8" rx="0"/>
+  <text x="607.8" y="100.0" font-family="Courier New, monospace" font-size="7" font-weight="normal" fill="#777777" text-anchor="middle">6:0</text>
+  <text x="607.8" y="127.0" font-family="Courier New, monospace" font-size="9" font-weight="bold" fill="#111111" text-anchor="middle">opcode</text>
+  <rect x="20.0" y="150.0" width="660.0" height="22.0" fill="#1a1a1a" stroke="#aaaaaa" stroke-width="0.5" rx="0"/>
+  <text x="125.6" y="165.0" font-family="Courier New, monospace" font-size="9" font-weight="bold" fill="#ffffff" text-anchor="middle">Instruction</text>
+  <text x="270.8" y="165.0" font-family="Courier New, monospace" font-size="9" font-weight="bold" fill="#ffffff" text-anchor="middle">funct5</text>
+  <text x="336.8" y="165.0" font-family="Courier New, monospace" font-size="9" font-weight="bold" fill="#ffffff" text-anchor="middle">fmt</text>
+  <text x="396.2" y="165.0" font-family="Courier New, monospace" font-size="9" font-weight="bold" fill="#ffffff" text-anchor="middle">rm</text>
+  <text x="488.6" y="165.0" font-family="Courier New, monospace" font-size="9" font-weight="bold" fill="#ffffff" text-anchor="middle">Latency</text>
+  <text x="614.0" y="165.0" font-family="Courier New, monospace" font-size="9" font-weight="bold" fill="#ffffff" text-anchor="middle">Pipelined</text>
+  <rect x="20.0" y="172.0" width="660.0" height="22.0" fill="#ffffff" stroke="#aaaaaa" stroke-width="0.5" rx="0"/>
+  <text x="125.6" y="187.0" font-family="Courier New, monospace" font-size="9" font-weight="normal" fill="#111111" text-anchor="middle">FADD.S  fd,fs1,fs2</text>
+  <line x1="231.2" y1="172.0" x2="231.2" y2="194.0" stroke="#aaaaaa" stroke-width="0.5"/>
+  <text x="270.8" y="187.0" font-family="Courier New, monospace" font-size="9" font-weight="normal" fill="#111111" text-anchor="middle">00000</text>
+  <line x1="310.4" y1="172.0" x2="310.4" y2="194.0" stroke="#aaaaaa" stroke-width="0.5"/>
+  <text x="336.8" y="187.0" font-family="Courier New, monospace" font-size="9" font-weight="normal" fill="#111111" text-anchor="middle">00</text>
+  <line x1="363.2" y1="172.0" x2="363.2" y2="194.0" stroke="#aaaaaa" stroke-width="0.5"/>
+  <text x="396.2" y="187.0" font-family="Courier New, monospace" font-size="9" font-weight="normal" fill="#111111" text-anchor="middle">rm</text>
+  <line x1="429.2" y1="172.0" x2="429.2" y2="194.0" stroke="#aaaaaa" stroke-width="0.5"/>
+  <text x="488.6" y="187.0" font-family="Courier New, monospace" font-size="9" font-weight="normal" fill="#111111" text-anchor="middle"></text>
+  <line x1="548.0" y1="172.0" x2="548.0" y2="194.0" stroke="#aaaaaa" stroke-width="0.5"/>
+  <text x="614.0" y="187.0" font-family="Courier New, monospace" font-size="9" font-weight="normal" fill="#111111" text-anchor="middle"></text>
+  <rect x="20.0" y="194.0" width="660.0" height="22.0" fill="#f8f8f8" stroke="#aaaaaa" stroke-width="0.5" rx="0"/>
+  <text x="125.6" y="209.0" font-family="Courier New, monospace" font-size="9" font-weight="normal" fill="#111111" text-anchor="middle">FSUB.S  fd,fs1,fs2</text>
+  <line x1="231.2" y1="194.0" x2="231.2" y2="216.0" stroke="#aaaaaa" stroke-width="0.5"/>
+  <text x="270.8" y="209.0" font-family="Courier New, monospace" font-size="9" font-weight="normal" fill="#111111" text-anchor="middle">00001</text>
+  <line x1="310.4" y1="194.0" x2="310.4" y2="216.0" stroke="#aaaaaa" stroke-width="0.5"/>
+  <text x="336.8" y="209.0" font-family="Courier New, monospace" font-size="9" font-weight="normal" fill="#111111" text-anchor="middle">00</text>
+  <line x1="363.2" y1="194.0" x2="363.2" y2="216.0" stroke="#aaaaaa" stroke-width="0.5"/>
+  <text x="396.2" y="209.0" font-family="Courier New, monospace" font-size="9" font-weight="normal" fill="#111111" text-anchor="middle">rm</text>
+  <line x1="429.2" y1="194.0" x2="429.2" y2="216.0" stroke="#aaaaaa" stroke-width="0.5"/>
+  <text x="488.6" y="209.0" font-family="Courier New, monospace" font-size="9" font-weight="normal" fill="#111111" text-anchor="middle"></text>
+  <line x1="548.0" y1="194.0" x2="548.0" y2="216.0" stroke="#aaaaaa" stroke-width="0.5"/>
+  <text x="614.0" y="209.0" font-family="Courier New, monospace" font-size="9" font-weight="normal" fill="#111111" text-anchor="middle"></text>
+  <rect x="20.0" y="216.0" width="660.0" height="22.0" fill="#ffffff" stroke="#aaaaaa" stroke-width="0.5" rx="0"/>
+  <text x="125.6" y="231.0" font-family="Courier New, monospace" font-size="9" font-weight="normal" fill="#111111" text-anchor="middle">FMUL.S  fd,fs1,fs2</text>
+  <line x1="231.2" y1="216.0" x2="231.2" y2="238.0" stroke="#aaaaaa" stroke-width="0.5"/>
+  <text x="270.8" y="231.0" font-family="Courier New, monospace" font-size="9" font-weight="normal" fill="#111111" text-anchor="middle">00010</text>
+  <line x1="310.4" y1="216.0" x2="310.4" y2="238.0" stroke="#aaaaaa" stroke-width="0.5"/>
+  <text x="336.8" y="231.0" font-family="Courier New, monospace" font-size="9" font-weight="normal" fill="#111111" text-anchor="middle">00</text>
+  <line x1="363.2" y1="216.0" x2="363.2" y2="238.0" stroke="#aaaaaa" stroke-width="0.5"/>
+  <text x="396.2" y="231.0" font-family="Courier New, monospace" font-size="9" font-weight="normal" fill="#111111" text-anchor="middle">rm</text>
+  <line x1="429.2" y1="216.0" x2="429.2" y2="238.0" stroke="#aaaaaa" stroke-width="0.5"/>
+  <text x="488.6" y="231.0" font-family="Courier New, monospace" font-size="9" font-weight="normal" fill="#111111" text-anchor="middle"></text>
+  <line x1="548.0" y1="216.0" x2="548.0" y2="238.0" stroke="#aaaaaa" stroke-width="0.5"/>
+  <text x="614.0" y="231.0" font-family="Courier New, monospace" font-size="9" font-weight="normal" fill="#111111" text-anchor="middle"></text>
+  <rect x="20.0" y="238.0" width="660.0" height="22.0" fill="#f8f8f8" stroke="#aaaaaa" stroke-width="0.5" rx="0"/>
+  <text x="125.6" y="253.0" font-family="Courier New, monospace" font-size="9" font-weight="normal" fill="#111111" text-anchor="middle">FDIV.S  fd,fs1,fs2</text>
+  <line x1="231.2" y1="238.0" x2="231.2" y2="260.0" stroke="#aaaaaa" stroke-width="0.5"/>
+  <text x="270.8" y="253.0" font-family="Courier New, monospace" font-size="9" font-weight="normal" fill="#111111" text-anchor="middle">00011</text>
+  <line x1="310.4" y1="238.0" x2="310.4" y2="260.0" stroke="#aaaaaa" stroke-width="0.5"/>
+  <text x="336.8" y="253.0" font-family="Courier New, monospace" font-size="9" font-weight="normal" fill="#111111" text-anchor="middle">00</text>
+  <line x1="363.2" y1="238.0" x2="363.2" y2="260.0" stroke="#aaaaaa" stroke-width="0.5"/>
+  <text x="396.2" y="253.0" font-family="Courier New, monospace" font-size="9" font-weight="normal" fill="#111111" text-anchor="middle">rm</text>
+  <line x1="429.2" y1="238.0" x2="429.2" y2="260.0" stroke="#aaaaaa" stroke-width="0.5"/>
+  <text x="488.6" y="253.0" font-family="Courier New, monospace" font-size="9" font-weight="normal" fill="#111111" text-anchor="middle"></text>
+  <line x1="548.0" y1="238.0" x2="548.0" y2="260.0" stroke="#aaaaaa" stroke-width="0.5"/>
+  <text x="614.0" y="253.0" font-family="Courier New, monospace" font-size="9" font-weight="normal" fill="#111111" text-anchor="middle"></text>
+  <text x="20.0" y="283.0" font-family="Arial, Helvetica, sans-serif" font-size="9" font-weight="normal" fill="#777777" text-anchor="start">fmt = 00 = single-precision (S).  rm = rounding mode (000 = RNE).</text>
+  <text x="20.0" y="299.0" font-family="Arial, Helvetica, sans-serif" font-size="9" font-weight="normal" fill="#777777" text-anchor="start">FDIV is unpipelined  —  a new divide cannot issue until the current one completes.</text>
+</svg>

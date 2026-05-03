@@ -22,25 +22,22 @@ The figure below shows the classic block diagram:
 
 **Integer ALU**
 `ADD` `SUB` `AND` `OR` `XOR` `SLL` `SRL` `SRA`
-`ADDI` `ANDI` `ORI` `XORI` `SLLI` `SRLI`
+`ADDI` `ANDI` `ORI` `XORI` `SLLI` `SRLI` `SRAI` `SLTI` `SLTIU`
 
 **Memory**
-`LW` `SW`
+`LW` `SW` `FLW` `FSW`
 
 **Branches**
-`BEQ` `BNE` `BLT` `BGE`
+`BEQ` `BNE` `BLT` `BGE` `BLTU` `BGEU`
 
-**Floating Point ALU**
-`FADD.S` `FSUB.S` `FMUL.S` `FDIV.S`
-
-**Floating Point Memory**
-`FLW` `FSW`
-
-**Conversion**
-`FCVT.W.S` `FCVT.S.W`
+**Floating Point**
+`FADD.S` `FSUB.S` `FMUL.S` `FDIV.S` `FLW` `FSW`
+`FCVT.W.S` `FCVT.WU.S` `FCVT.S.W` `FCVT.S.WU`
 
 **Other**
 `NOP` `HALT`
+
+For encoding diagrams, field-by-field breakdowns, pipeline routing, and timing see **[docs/ISA.md](docs/ISA.md)**.
 
 ## Quick Start (Software Simulator)
 
