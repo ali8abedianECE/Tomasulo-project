@@ -42,7 +42,7 @@ The figure below shows the classic block diagram:
 
 ---
 
-> 📄 **[Full ISA reference — encoding diagrams, field tables, pipeline routing, timing →](docs/ISA.md)**
+> **[Full ISA reference](docs/ISA.md)**
 
 ## Quick Start (Software Simulator)
 
