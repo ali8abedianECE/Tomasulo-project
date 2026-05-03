@@ -13,6 +13,7 @@ int latency_of(Opcode op) {
         case Opcode::SRL:      return LAT_INT_ALU;
         case Opcode::SRA:      return LAT_INT_ALU;
         case Opcode::ADDI:     return LAT_INT_ALU;
+        case Opcode::LUI:      return LAT_INT_ALU;
         case Opcode::ANDI:     return LAT_INT_ALU;
         case Opcode::ORI:      return LAT_INT_ALU;
         case Opcode::XORI:     return LAT_INT_ALU;
@@ -71,6 +72,7 @@ const char* opcode_name(Opcode op) {
         case Opcode::SRL:      return "SRL";
         case Opcode::SRA:      return "SRA";
         case Opcode::ADDI:     return "ADDI";
+        case Opcode::LUI:      return "LUI";
         case Opcode::ANDI:     return "ANDI";
         case Opcode::ORI:      return "ORI";
         case Opcode::XORI:     return "XORI";

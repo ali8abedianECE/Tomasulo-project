@@ -44,6 +44,10 @@ FMUL.S f4, f0, f1      # f4 = f0*f1 = 0.0        underflows
 FSW  f2, 8(x21)        # mem[42] = bits(f2)
 FLW  f5, 8(x21)        # f5 = f2  (FP store-to-load forward)
 
+# === LUI: load upper immediate ===
+LUI  x16, 1            # x16 = 1 << 12 = 4096 = 0x1000
+LUI  x17, 0xABCDE      # x17 = 0xABCDE000
+
 # === JAL/JALR: call subroutine, verify return address and result ===
 JAL  x14, fp_done      # x14 = PC+4 = 116; jump to fp_done (PC=120)
 HALT                   # PC=116 — jumped over by JAL, landed here on return

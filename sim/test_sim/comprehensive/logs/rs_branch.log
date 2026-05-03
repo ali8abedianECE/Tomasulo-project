@@ -28,11 +28,13 @@
 [RS   cycle=  27]
 [RS   cycle=  28]
 [RS   cycle=  29]
-  [ 0] JAL ROB=11 vj=0x0 vk=0x0
 [RS   cycle=  30]
 [RS   cycle=  31]
+  [ 0] JAL ROB=13 vj=0x0 vk=0x0
 [RS   cycle=  32]
 [RS   cycle=  33]
 [RS   cycle=  34]
-  [ 0] JALR ROB=13 vj=0x74 vk=0x0
 [RS   cycle=  35]
+[RS   cycle=  36]
+  [ 0] JALR ROB=15 vj=0x7c vk=0x0
+[RS   cycle=  37]

@@ -27,9 +27,11 @@
 [IQ  cycle=  27] fetched=27 buf=0/8
 [IQ  cycle=  28] fetched=28 buf=0/8
 [IQ  cycle=  29] fetched=29 buf=0/8
-[IQ  cycle=  30] fetched=29 buf=0/8
-[IQ  cycle=  31] fetched=29 buf=0/8
-[IQ  cycle=  32] fetched=29 buf=0/8
+[IQ  cycle=  30] fetched=30 buf=0/8
+[IQ  cycle=  31] fetched=31 buf=0/8
+[IQ  cycle=  32] fetched=31 buf=0/8
 [IQ  cycle=  33] fetched=31 buf=0/8
-[IQ  cycle=  34] fetched=32 buf=0/8
-[IQ  cycle=  35] fetched=30 buf=0/8
+[IQ  cycle=  34] fetched=31 buf=0/8
+[IQ  cycle=  35] fetched=33 buf=0/8
+[IQ  cycle=  36] fetched=34 buf=0/8
+[IQ  cycle=  37] fetched=32 buf=0/8

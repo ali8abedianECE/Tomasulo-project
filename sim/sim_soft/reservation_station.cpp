@@ -38,6 +38,7 @@ static uint32_t execute_op(const RSEntry& e) {
         case Opcode::SRA:  return static_cast<uint32_t>(sj >> (e.vk & 0x1F));
         /* Integer I-type */
         case Opcode::ADDI: return static_cast<uint32_t>(sj + e.imm);
+        case Opcode::LUI:  return static_cast<uint32_t>(e.imm) << 12;
         case Opcode::ANDI: return uj & static_cast<uint32_t>(e.imm);
         case Opcode::ORI:  return uj | static_cast<uint32_t>(e.imm);
         case Opcode::XORI: return uj ^ static_cast<uint32_t>(e.imm);

@@ -18,6 +18,9 @@ enum class Opcode : uint8_t {
     ADD, SUB, AND, OR, XOR, SLL, SRL, SRA,
     /* Integer I-type  (imm[11:0] sign-extended to 32 bits) */
     ADDI, ANDI, ORI, XORI, SLLI, SRLI,
+    /* U-type  (imm[31:12], no source registers)
+     * LUI : rd = imm << 12 */
+    LUI,
     /* Integer load/store
      * LW : rd = Mem[rs1+imm]           I-type imm[11:0]
      * SW : Mem[rs1+imm] = rs2          S-type imm[11:0] split */

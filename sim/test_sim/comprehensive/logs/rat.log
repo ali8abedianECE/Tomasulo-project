@@ -83,23 +83,29 @@
   INT:
   FP:  f4->ROB8 f5->ROB10
 [RAT  cycle=  29]
-  INT: x14->ROB11
+  INT: x16->ROB11
   FP:  f4->ROB8 f5->ROB10
 [RAT  cycle=  30]
-  INT: x14->ROB11
+  INT: x16->ROB11 x17->ROB12
   FP:  f5->ROB10
 [RAT  cycle=  31]
-  INT: x14->ROB11
+  INT: x14->ROB13 x16->ROB11 x17->ROB12
   FP:  f5->ROB10
 [RAT  cycle=  32]
-  INT: x14->ROB11
+  INT: x14->ROB13 x16->ROB11 x17->ROB12
   FP: 
 [RAT  cycle=  33]
-  INT: x15->ROB12
+  INT: x14->ROB13 x17->ROB12
   FP: 
 [RAT  cycle=  34]
-  INT:
+  INT: x14->ROB13
   FP: 
 [RAT  cycle=  35]
+  INT: x15->ROB14
+  FP: 
+[RAT  cycle=  36]
+  INT:
+  FP: 
+[RAT  cycle=  37]
   INT:
   FP: 

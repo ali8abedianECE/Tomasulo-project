@@ -148,6 +148,7 @@ static std::vector<Instruction> parse_program(const std::string& path) {
         else if (op=="SRL")  { in.op=Opcode::SRL;  in.rd=preg(toks[1]); in.rs1=preg(toks[2]); in.rs2=preg(toks[3]); }
         else if (op=="SRA")  { in.op=Opcode::SRA;  in.rd=preg(toks[1]); in.rs1=preg(toks[2]); in.rs2=preg(toks[3]); }
         else if (op=="ADDI") { in.op=Opcode::ADDI; in.rd=preg(toks[1]); in.rs1=preg(toks[2]); in.imm=std::stoi(toks[3]); }
+        else if (op=="LUI")  { in.op=Opcode::LUI;  in.rd=preg(toks[1]); in.imm=static_cast<int32_t>(std::stoul(toks[2], nullptr, 0)); }
         else if (op=="ANDI") { in.op=Opcode::ANDI; in.rd=preg(toks[1]); in.rs1=preg(toks[2]); in.imm=std::stoi(toks[3]); }
         else if (op=="ORI")  { in.op=Opcode::ORI;  in.rd=preg(toks[1]); in.rs1=preg(toks[2]); in.imm=std::stoi(toks[3]); }
         else if (op=="XORI") { in.op=Opcode::XORI; in.rd=preg(toks[1]); in.rs1=preg(toks[2]); in.imm=std::stoi(toks[3]); }

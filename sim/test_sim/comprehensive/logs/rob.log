@@ -63,19 +63,29 @@
   [ 8] INFLT FMUL.S rd=f4 PC=0x0064
   [ 9] DONE FSW rd=x-1 PC=0x0068
   [10] INFLT FLW rd=f5 PC=0x006c
-  [11] INFLT JAL rd=x14 PC=0x0070
-[ROB  cycle=  30] head=9 tail=12 count=3/16
+  [11] INFLT LUI rd=x16 PC=0x0070
+[ROB  cycle=  30] head=9 tail=13 count=4/16
   [ 9] DONE FSW rd=x-1 PC=0x0068
   [10] INFLT FLW rd=f5 PC=0x006c
-  [11] DONE JAL rd=x14 PC=0x0070
-[ROB  cycle=  31] head=10 tail=12 count=2/16
+  [11] DONE LUI rd=x16 PC=0x0070
+  [12] INFLT LUI rd=x17 PC=0x0074
+[ROB  cycle=  31] head=10 tail=14 count=4/16
   [10] INFLT FLW rd=f5 PC=0x006c
-  [11] DONE JAL rd=x14 PC=0x0070
-[ROB  cycle=  32] head=11 tail=12 count=1/16
-  [11] DONE JAL rd=x14 PC=0x0070
-[ROB  cycle=  33] head=12 tail=13 count=1/16
-  [12] INFLT ADD rd=x15 PC=0x0078
+  [11] DONE LUI rd=x16 PC=0x0070
+  [12] DONE LUI rd=x17 PC=0x0074
+  [13] INFLT JAL rd=x14 PC=0x0078
+[ROB  cycle=  32] head=11 tail=14 count=3/16
+  [11] DONE LUI rd=x16 PC=0x0070
+  [12] DONE LUI rd=x17 PC=0x0074
+  [13] DONE JAL rd=x14 PC=0x0078
+[ROB  cycle=  33] head=12 tail=14 count=2/16
+  [12] DONE LUI rd=x17 PC=0x0074
+  [13] DONE JAL rd=x14 PC=0x0078
 [ROB  cycle=  34] head=13 tail=14 count=1/16
-  [13] INFLT JALR rd=x0 PC=0x007c
+  [13] DONE JAL rd=x14 PC=0x0078
 [ROB  cycle=  35] head=14 tail=15 count=1/16
-  [14] INFLT HALT rd=x-1 PC=0x0074
+  [14] INFLT ADD rd=x15 PC=0x0080
+[ROB  cycle=  36] head=15 tail=0 count=1/16
+  [15] INFLT JALR rd=x0 PC=0x0084
+[ROB  cycle=  37] head=0 tail=1 count=1/16
+  [ 0] INFLT HALT rd=x-1 PC=0x007c
