@@ -44,6 +44,16 @@ bool CommitUnit::tick(ReorderBuffer& rob, RegisterFile& rf,
         return true;
     }
 
+    if (is_jump(entry.op)) {
+        /* result = jump target from execute_op(); rd = return address (PC+4). */
+        next_pc = entry.result;
+        if (entry.rd >= 0) {
+            rf.write_int(entry.rd, static_cast<int32_t>(entry.pc + 4u));
+            rat.commit(entry.rd, false, rob_tag);
+        }
+        return true;
+    }
+
     if (is_store(entry.op)) {
         assert(lsb.can_commit_store());
         lsb.commit_store(mem);

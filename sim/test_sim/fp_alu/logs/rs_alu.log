@@ -1,0 +1,18 @@
+[RS   cycle=   1]
+[RS   cycle=   2]
+  [ 0] ADDI ROB=0 vj=0x0 vk=0x0
+[RS   cycle=   3]
+  [ 0] ADDI ROB=1 vj=0x0 vk=0x0
+[RS   cycle=   4]
+[RS   cycle=   5]
+  [ 0] ADDI ROB=3 vj=0x0 vk=0x0
+[RS   cycle=   6]
+[RS   cycle=   7]
+[RS   cycle=   8]
+[RS   cycle=   9]
+[RS   cycle=  10]
+[RS   cycle=  11]
+  [ 0] HALT ROB=9 vj=0x0 vk=0x0
+[RS   cycle=  12]
+[RS   cycle=  13]
+[RS   cycle=  14]

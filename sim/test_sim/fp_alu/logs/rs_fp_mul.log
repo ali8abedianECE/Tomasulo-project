@@ -1,0 +1,18 @@
+[RS   cycle=   1]
+[RS   cycle=   2]
+[RS   cycle=   3]
+[RS   cycle=   4]
+[RS   cycle=   5]
+[RS   cycle=   6]
+[RS   cycle=   7]
+[RS   cycle=   8]
+  [ 0] FMUL.S ROB=6 vj=0x42c80000 vk=0x41c80000
+[RS   cycle=   9]
+  [ 0] FMUL.S ROB=6 vj=0x42c80000 vk=0x41c80000 rem=3
+[RS   cycle=  10]
+  [ 0] FMUL.S ROB=6 vj=0x42c80000 vk=0x41c80000 rem=2
+[RS   cycle=  11]
+  [ 0] FMUL.S ROB=6 vj=0x42c80000 vk=0x41c80000 rem=1
+[RS   cycle=  12]
+[RS   cycle=  13]
+[RS   cycle=  14]

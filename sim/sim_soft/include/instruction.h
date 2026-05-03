@@ -24,6 +24,10 @@ enum class Opcode : uint8_t {
     LW, SW,
     /* Branch (B-type, imm = sign-extended byte offset, target = PC+imm) */
     BEQ, BNE, BLT, BGE,
+    /* Jump-and-link
+     * JAL  : rd = PC+4;  PC = PC + imm          J-type, PC-relative, no register source
+     * JALR : rd = PC+4;  PC = (rs1 + imm) & ~1  I-type, register-indirect */
+    JAL, JALR,
     /* FP ALU single-precision R-type (funct7 distinguishes op) */
     FADD_S, FSUB_S, FMUL_S, FDIV_S,
     /* FP load/store — same addressing as LW/SW, dest/src is f-register
@@ -86,6 +90,11 @@ const char* opcode_name(Opcode op);
 inline bool is_branch(Opcode op) {
     return op == Opcode::BEQ || op == Opcode::BNE ||
            op == Opcode::BLT || op == Opcode::BGE;
+}
+
+/** @brief True if @p op is an unconditional jump-and-link (JAL, JALR). */
+inline bool is_jump(Opcode op) {
+    return op == Opcode::JAL || op == Opcode::JALR;
 }
 
 /** @brief True if @p op reads from memory (LW, FLW). */

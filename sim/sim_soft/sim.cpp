@@ -164,6 +164,17 @@ static std::vector<Instruction> parse_program(const std::string& path) {
         else if (op=="BNE")  { in.op=Opcode::BNE; in.rs1=preg(toks[1]); in.rs2=preg(toks[2]); in.imm=branch_offset(toks[3],labels,in.pc); }
         else if (op=="BLT")  { in.op=Opcode::BLT; in.rs1=preg(toks[1]); in.rs2=preg(toks[2]); in.imm=branch_offset(toks[3],labels,in.pc); }
         else if (op=="BGE")  { in.op=Opcode::BGE; in.rs1=preg(toks[1]); in.rs2=preg(toks[2]); in.imm=branch_offset(toks[3],labels,in.pc); }
+        /* JAL rd, label-or-offset  (J-type, no register source) */
+        else if (op=="JAL")  { in.op=Opcode::JAL; in.rd=preg(toks[1]); in.imm=branch_offset(toks[2],labels,in.pc); }
+        /* JALR rd, rs1, imm  or  JALR rd, imm(rs1) */
+        else if (op=="JALR") {
+            in.op=Opcode::JALR; in.rd=preg(toks[1]);
+            if (toks[2].find('(') != std::string::npos) {
+                parse_mem(toks[2], in.imm, in.rs1);
+            } else {
+                in.rs1=preg(toks[2]); in.imm=std::stoi(toks[3]);
+            }
+        }
         /* FP ALU */
         else if (op=="FADD.S") { in.op=Opcode::FADD_S; in.rd=preg(toks[1]); in.rd_fp=true; in.rs1=preg(toks[2]); in.rs1_fp=true; in.rs2=preg(toks[3]); in.rs2_fp=true; }
         else if (op=="FSUB.S") { in.op=Opcode::FSUB_S; in.rd=preg(toks[1]); in.rd_fp=true; in.rs1=preg(toks[2]); in.rs1_fp=true; in.rs2=preg(toks[3]); in.rs2_fp=true; }
@@ -230,7 +241,7 @@ static bool try_dispatch(InstructionQueue&       iq,
 
     if (is_load(instr.op) || is_store(instr.op)) {
         to_lsb = true;
-    } else if (is_branch(instr.op)) {
+    } else if (is_branch(instr.op) || is_jump(instr.op)) {
         target_rs = &rs_branch;
     } else {
         switch (instr.op) {
@@ -264,7 +275,7 @@ static bool try_dispatch(InstructionQueue&       iq,
         issued = true;
     }
 
-    if (issued && is_branch(instr.op))
+    if (issued && (is_branch(instr.op) || is_jump(instr.op)))
         branch_dispatched = true;
     return issued;
 }
@@ -422,8 +433,7 @@ int main(int argc, char* argv[]) {
         /* Phase 5: in-order commit */
         uint32_t next_pc = 0;
         if (cu.tick(rob, rf, rat, lsb, mem, next_pc, halted)) {
-            if (is_branch(cu.last().op)) {
-                /* Seek IQ to the resolved branch target */
+            if (is_branch(cu.last().op) || is_jump(cu.last().op)) {
                 branch_in_flight = false;
                 iq.seek(next_pc);
             }

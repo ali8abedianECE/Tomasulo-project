@@ -53,6 +53,9 @@ static uint32_t execute_op(const RSEntry& e) {
         case Opcode::BNE:  return (sj != sk) ? (e.pc + static_cast<uint32_t>(e.imm)) : (e.pc + 4u);
         case Opcode::BLT:  return (sj <  sk) ? (e.pc + static_cast<uint32_t>(e.imm)) : (e.pc + 4u);
         case Opcode::BGE:  return (sj >= sk) ? (e.pc + static_cast<uint32_t>(e.imm)) : (e.pc + 4u);
+        /* Jump-and-link — result is the jump target PC; commit writes PC+4 to rd separately. */
+        case Opcode::JAL:  return e.pc + static_cast<uint32_t>(e.imm);
+        case Opcode::JALR: return (static_cast<uint32_t>(sj + e.imm)) & ~1u;
         /* FP ALU */
         case Opcode::FADD_S:   return float_to_bits(fj + fk);
         case Opcode::FSUB_S:   return float_to_bits(fj - fk);

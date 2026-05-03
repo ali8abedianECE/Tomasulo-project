@@ -4,6 +4,10 @@
 [ROB  cycle=   1] head=0 tail=0 count=0/16
 [RS   cycle=   1]
 [RS   cycle=   1]
+[RS   cycle=   1]
+[RS   cycle=   1]
+[RS   cycle=   1]
+[RS   cycle=   1]
 [LSB  cycle=   1] head=0 tail=0 count=0/8
 [RAT  cycle=   1]
   INT:
@@ -17,6 +21,10 @@
   [ 0] INFLT ADDI rd=x1 PC=0x0000
 [RS   cycle=   2]
   [ 0] ADDI ROB=0 vj=0x0 vk=0x0
+[RS   cycle=   2]
+[RS   cycle=   2]
+[RS   cycle=   2]
+[RS   cycle=   2]
 [RS   cycle=   2]
 [LSB  cycle=   2] head=0 tail=0 count=0/8
 [RAT  cycle=   2]
@@ -32,6 +40,10 @@
 [RS   cycle=   3]
   [ 0] ADDI ROB=1 vj=0x0 vk=0x0
 [RS   cycle=   3]
+[RS   cycle=   3]
+[RS   cycle=   3]
+[RS   cycle=   3]
+[RS   cycle=   3]
 [LSB  cycle=   3] head=0 tail=0 count=0/8
 [RAT  cycle=   3]
   INT: x2->ROB1
@@ -45,6 +57,10 @@
   [ 2] INFLT ADDI rd=x3 PC=0x0008
 [RS   cycle=   4]
   [ 0] ADDI ROB=2 vj=0x0 vk=0x0
+[RS   cycle=   4]
+[RS   cycle=   4]
+[RS   cycle=   4]
+[RS   cycle=   4]
 [RS   cycle=   4]
 [LSB  cycle=   4] head=0 tail=0 count=0/8
 [RAT  cycle=   4]
@@ -60,6 +76,10 @@
 [RS   cycle=   5]
   [ 0] ADDI ROB=3 vj=0x0 vk=0x0
 [RS   cycle=   5]
+[RS   cycle=   5]
+[RS   cycle=   5]
+[RS   cycle=   5]
+[RS   cycle=   5]
 [LSB  cycle=   5] head=0 tail=0 count=0/8
 [RAT  cycle=   5]
   INT: x4->ROB3
@@ -73,6 +93,10 @@
   [ 4] INFLT ADDI rd=x5 PC=0x0010
 [RS   cycle=   6]
   [ 0] ADDI ROB=4 vj=0x0 vk=0x0
+[RS   cycle=   6]
+[RS   cycle=   6]
+[RS   cycle=   6]
+[RS   cycle=   6]
 [RS   cycle=   6]
 [LSB  cycle=   6] head=0 tail=0 count=0/8
 [RAT  cycle=   6]
@@ -88,6 +112,10 @@
 [RS   cycle=   7]
   [ 0] ADDI ROB=5 vj=0x0 vk=0x0
 [RS   cycle=   7]
+[RS   cycle=   7]
+[RS   cycle=   7]
+[RS   cycle=   7]
+[RS   cycle=   7]
 [LSB  cycle=   7] head=0 tail=0 count=0/8
 [RAT  cycle=   7]
   INT: x6->ROB5
@@ -102,6 +130,10 @@
 [RS   cycle=   8]
   [ 0] ADDI ROB=6 vj=0x0 vk=0x0
 [RS   cycle=   8]
+[RS   cycle=   8]
+[RS   cycle=   8]
+[RS   cycle=   8]
+[RS   cycle=   8]
 [LSB  cycle=   8] head=0 tail=0 count=0/8
 [RAT  cycle=   8]
   INT: x10->ROB6
@@ -113,6 +145,10 @@
 [IQ  cycle=   9] fetched=8 buf=0/8
 [ROB  cycle=   9] head=7 tail=8 count=1/16
   [ 7] INFLT SW rd=x-1 PC=0x001c
+[RS   cycle=   9]
+[RS   cycle=   9]
+[RS   cycle=   9]
+[RS   cycle=   9]
 [RS   cycle=   9]
 [RS   cycle=   9]
 [LSB  cycle=   9] head=0 tail=1 count=1/8
@@ -129,6 +165,10 @@
   [ 8] INFLT SW rd=x-1 PC=0x0020
 [RS   cycle=  10]
 [RS   cycle=  10]
+[RS   cycle=  10]
+[RS   cycle=  10]
+[RS   cycle=  10]
+[RS   cycle=  10]
 [LSB  cycle=  10] head=1 tail=2 count=1/8
   [ 1] WAIT SW ROB=8 vj=0x0 vk=0x2 PC=0x0020
 [RAT  cycle=  10]
@@ -141,6 +181,10 @@
 [IQ  cycle=  11] fetched=10 buf=0/8
 [ROB  cycle=  11] head=9 tail=10 count=1/16
   [ 9] INFLT SW rd=x-1 PC=0x0024
+[RS   cycle=  11]
+[RS   cycle=  11]
+[RS   cycle=  11]
+[RS   cycle=  11]
 [RS   cycle=  11]
 [RS   cycle=  11]
 [LSB  cycle=  11] head=2 tail=3 count=1/8
@@ -157,6 +201,10 @@
   [10] INFLT SW rd=x-1 PC=0x0028
 [RS   cycle=  12]
 [RS   cycle=  12]
+[RS   cycle=  12]
+[RS   cycle=  12]
+[RS   cycle=  12]
+[RS   cycle=  12]
 [LSB  cycle=  12] head=3 tail=4 count=1/8
   [ 3] WAIT SW ROB=10 vj=0x0 vk=0x4 PC=0x0028
 [RAT  cycle=  12]
@@ -169,6 +217,10 @@
 [IQ  cycle=  13] fetched=12 buf=0/8
 [ROB  cycle=  13] head=11 tail=12 count=1/16
   [11] INFLT SW rd=x-1 PC=0x002c
+[RS   cycle=  13]
+[RS   cycle=  13]
+[RS   cycle=  13]
+[RS   cycle=  13]
 [RS   cycle=  13]
 [RS   cycle=  13]
 [LSB  cycle=  13] head=4 tail=5 count=1/8
@@ -185,6 +237,10 @@
   [12] INFLT SW rd=x-1 PC=0x0030
 [RS   cycle=  14]
 [RS   cycle=  14]
+[RS   cycle=  14]
+[RS   cycle=  14]
+[RS   cycle=  14]
+[RS   cycle=  14]
 [LSB  cycle=  14] head=5 tail=6 count=1/8
   [ 5] WAIT SW ROB=12 vj=0x0 vk=0x6 PC=0x0030
 [RAT  cycle=  14]
@@ -199,6 +255,10 @@
   [13] INFLT LW rd=x11 PC=0x0034
 [RS   cycle=  15]
 [RS   cycle=  15]
+[RS   cycle=  15]
+[RS   cycle=  15]
+[RS   cycle=  15]
+[RS   cycle=  15]
 [LSB  cycle=  15] head=6 tail=7 count=1/8
   [ 6] WAIT LW ROB=13 vj=0x0 PC=0x0034
 [RAT  cycle=  15]
@@ -211,6 +271,10 @@
 [IQ  cycle=  16] fetched=15 buf=0/8
 [ROB  cycle=  16] head=14 tail=15 count=1/16
   [14] INFLT LW rd=x14 PC=0x0038
+[RS   cycle=  16]
+[RS   cycle=  16]
+[RS   cycle=  16]
+[RS   cycle=  16]
 [RS   cycle=  16]
 [RS   cycle=  16]
 [LSB  cycle=  16] head=7 tail=0 count=1/8
@@ -228,6 +292,10 @@
 [RS   cycle=  17]
   [ 0] ADD ROB=15 vj=0x0 vk=0x0
 [RS   cycle=  17]
+[RS   cycle=  17]
+[RS   cycle=  17]
+[RS   cycle=  17]
+[RS   cycle=  17]
 [LSB  cycle=  17] head=0 tail=0 count=0/8
 [RAT  cycle=  17]
   INT: x17->ROB15
@@ -241,6 +309,10 @@
   [ 0] INFLT ADD rd=x17 PC=0x0040
 [RS   cycle=  18]
   [ 0] ADD ROB=0 vj=0x0 vk=0x1
+[RS   cycle=  18]
+[RS   cycle=  18]
+[RS   cycle=  18]
+[RS   cycle=  18]
 [RS   cycle=  18]
 [LSB  cycle=  18] head=0 tail=0 count=0/8
 [RAT  cycle=  18]
@@ -256,6 +328,10 @@
 [RS   cycle=  19]
   [ 0] ADDI ROB=1 vj=0x0 vk=0x0
 [RS   cycle=  19]
+[RS   cycle=  19]
+[RS   cycle=  19]
+[RS   cycle=  19]
+[RS   cycle=  19]
 [LSB  cycle=  19] head=0 tail=0 count=0/8
 [RAT  cycle=  19]
   INT: x18->ROB1
@@ -269,6 +345,10 @@
   [ 2] INFLT ADD rd=x18 PC=0x0048
 [RS   cycle=  20]
   [ 0] ADD ROB=2 vj=0x0 vk=0x1
+[RS   cycle=  20]
+[RS   cycle=  20]
+[RS   cycle=  20]
+[RS   cycle=  20]
 [RS   cycle=  20]
 [LSB  cycle=  20] head=0 tail=0 count=0/8
 [RAT  cycle=  20]
@@ -284,6 +364,10 @@
 [RS   cycle=  21]
   [ 0] ADDI ROB=3 vj=0x4 vk=0x0
 [RS   cycle=  21]
+[RS   cycle=  21]
+[RS   cycle=  21]
+[RS   cycle=  21]
+[RS   cycle=  21]
 [LSB  cycle=  21] head=0 tail=0 count=0/8
 [RAT  cycle=  21]
   INT: x14->ROB3
@@ -296,7 +380,11 @@
 [ROB  cycle=  22] head=4 tail=5 count=1/16
   [ 4] INFLT BNE rd=x-1 PC=0x0050
 [RS   cycle=  22]
+[RS   cycle=  22]
   [ 0] BNE ROB=4 vj=0x3 vk=0x0
+[RS   cycle=  22]
+[RS   cycle=  22]
+[RS   cycle=  22]
 [RS   cycle=  22]
 [LSB  cycle=  22] head=0 tail=0 count=0/8
 [RAT  cycle=  22]
@@ -312,6 +400,10 @@
 [RS   cycle=  23]
   [ 0] ADD ROB=5 vj=0x1 vk=0x1
 [RS   cycle=  23]
+[RS   cycle=  23]
+[RS   cycle=  23]
+[RS   cycle=  23]
+[RS   cycle=  23]
 [LSB  cycle=  23] head=0 tail=0 count=0/8
 [RAT  cycle=  23]
   INT: x18->ROB5
@@ -326,6 +418,10 @@
 [RS   cycle=  24]
   [ 0] ADDI ROB=6 vj=0x3 vk=0x0
 [RS   cycle=  24]
+[RS   cycle=  24]
+[RS   cycle=  24]
+[RS   cycle=  24]
+[RS   cycle=  24]
 [LSB  cycle=  24] head=0 tail=0 count=0/8
 [RAT  cycle=  24]
   INT: x14->ROB6
@@ -338,7 +434,11 @@
 [ROB  cycle=  25] head=7 tail=8 count=1/16
   [ 7] INFLT BNE rd=x-1 PC=0x0050
 [RS   cycle=  25]
+[RS   cycle=  25]
   [ 0] BNE ROB=7 vj=0x2 vk=0x0
+[RS   cycle=  25]
+[RS   cycle=  25]
+[RS   cycle=  25]
 [RS   cycle=  25]
 [LSB  cycle=  25] head=0 tail=0 count=0/8
 [RAT  cycle=  25]
@@ -354,6 +454,10 @@
 [RS   cycle=  26]
   [ 0] ADD ROB=8 vj=0x2 vk=0x1
 [RS   cycle=  26]
+[RS   cycle=  26]
+[RS   cycle=  26]
+[RS   cycle=  26]
+[RS   cycle=  26]
 [LSB  cycle=  26] head=0 tail=0 count=0/8
 [RAT  cycle=  26]
   INT: x18->ROB8
@@ -368,6 +472,10 @@
 [RS   cycle=  27]
   [ 0] ADDI ROB=9 vj=0x2 vk=0x0
 [RS   cycle=  27]
+[RS   cycle=  27]
+[RS   cycle=  27]
+[RS   cycle=  27]
+[RS   cycle=  27]
 [LSB  cycle=  27] head=0 tail=0 count=0/8
 [RAT  cycle=  27]
   INT: x14->ROB9
@@ -380,7 +488,11 @@
 [ROB  cycle=  28] head=10 tail=11 count=1/16
   [10] INFLT BNE rd=x-1 PC=0x0050
 [RS   cycle=  28]
+[RS   cycle=  28]
   [ 0] BNE ROB=10 vj=0x1 vk=0x0
+[RS   cycle=  28]
+[RS   cycle=  28]
+[RS   cycle=  28]
 [RS   cycle=  28]
 [LSB  cycle=  28] head=0 tail=0 count=0/8
 [RAT  cycle=  28]
@@ -396,6 +508,10 @@
 [RS   cycle=  29]
   [ 0] ADD ROB=11 vj=0x3 vk=0x1
 [RS   cycle=  29]
+[RS   cycle=  29]
+[RS   cycle=  29]
+[RS   cycle=  29]
+[RS   cycle=  29]
 [LSB  cycle=  29] head=0 tail=0 count=0/8
 [RAT  cycle=  29]
   INT: x18->ROB11
@@ -410,6 +526,10 @@
 [RS   cycle=  30]
   [ 0] ADDI ROB=12 vj=0x1 vk=0x0
 [RS   cycle=  30]
+[RS   cycle=  30]
+[RS   cycle=  30]
+[RS   cycle=  30]
+[RS   cycle=  30]
 [LSB  cycle=  30] head=0 tail=0 count=0/8
 [RAT  cycle=  30]
   INT: x14->ROB12
@@ -422,7 +542,11 @@
 [ROB  cycle=  31] head=13 tail=14 count=1/16
   [13] INFLT BNE rd=x-1 PC=0x0050
 [RS   cycle=  31]
+[RS   cycle=  31]
   [ 0] BNE ROB=13 vj=0x0 vk=0x0
+[RS   cycle=  31]
+[RS   cycle=  31]
+[RS   cycle=  31]
 [RS   cycle=  31]
 [LSB  cycle=  31] head=0 tail=0 count=0/8
 [RAT  cycle=  31]
@@ -437,6 +561,10 @@
   [14] INFLT LW rd=x12 PC=0x0054
 [RS   cycle=  32]
 [RS   cycle=  32]
+[RS   cycle=  32]
+[RS   cycle=  32]
+[RS   cycle=  32]
+[RS   cycle=  32]
 [LSB  cycle=  32] head=0 tail=1 count=1/8
   [ 0] WAIT LW ROB=14 vj=0x0 PC=0x0054
 [RAT  cycle=  32]
@@ -449,6 +577,10 @@
 [IQ  cycle=  33] fetched=23 buf=0/8
 [ROB  cycle=  33] head=15 tail=0 count=1/16
   [15] INFLT LW rd=x15 PC=0x0058
+[RS   cycle=  33]
+[RS   cycle=  33]
+[RS   cycle=  33]
+[RS   cycle=  33]
 [RS   cycle=  33]
 [RS   cycle=  33]
 [LSB  cycle=  33] head=1 tail=2 count=1/8
@@ -466,6 +598,10 @@
 [RS   cycle=  34]
   [ 0] ADD ROB=0 vj=0x0 vk=0x2
 [RS   cycle=  34]
+[RS   cycle=  34]
+[RS   cycle=  34]
+[RS   cycle=  34]
+[RS   cycle=  34]
 [LSB  cycle=  34] head=2 tail=2 count=0/8
 [RAT  cycle=  34]
   INT: x19->ROB0
@@ -479,6 +615,10 @@
   [ 1] INFLT ADDI rd=x20 PC=0x0060
 [RS   cycle=  35]
   [ 0] ADDI ROB=1 vj=0x0 vk=0x0
+[RS   cycle=  35]
+[RS   cycle=  35]
+[RS   cycle=  35]
+[RS   cycle=  35]
 [RS   cycle=  35]
 [LSB  cycle=  35] head=2 tail=2 count=0/8
 [RAT  cycle=  35]
@@ -494,6 +634,10 @@
 [RS   cycle=  36]
   [ 0] ADDI ROB=2 vj=0x5 vk=0x0
 [RS   cycle=  36]
+[RS   cycle=  36]
+[RS   cycle=  36]
+[RS   cycle=  36]
+[RS   cycle=  36]
 [LSB  cycle=  36] head=2 tail=2 count=0/8
 [RAT  cycle=  36]
   INT: x15->ROB2
@@ -507,6 +651,10 @@
   [ 3] INFLT ADD rd=x20 PC=0x0068
 [RS   cycle=  37]
   [ 0] ADD ROB=3 vj=0x0 vk=0x2
+[RS   cycle=  37]
+[RS   cycle=  37]
+[RS   cycle=  37]
+[RS   cycle=  37]
 [RS   cycle=  37]
 [LSB  cycle=  37] head=2 tail=2 count=0/8
 [RAT  cycle=  37]
@@ -522,6 +670,10 @@
 [RS   cycle=  38]
   [ 0] ADDI ROB=4 vj=0x5 vk=0x0
 [RS   cycle=  38]
+[RS   cycle=  38]
+[RS   cycle=  38]
+[RS   cycle=  38]
+[RS   cycle=  38]
 [LSB  cycle=  38] head=2 tail=2 count=0/8
 [RAT  cycle=  38]
   INT: x15->ROB4
@@ -534,7 +686,11 @@
 [ROB  cycle=  39] head=5 tail=6 count=1/16
   [ 5] INFLT BNE rd=x-1 PC=0x0070
 [RS   cycle=  39]
+[RS   cycle=  39]
   [ 0] BNE ROB=5 vj=0x4 vk=0x0
+[RS   cycle=  39]
+[RS   cycle=  39]
+[RS   cycle=  39]
 [RS   cycle=  39]
 [LSB  cycle=  39] head=2 tail=2 count=0/8
 [RAT  cycle=  39]
@@ -550,6 +706,10 @@
 [RS   cycle=  40]
   [ 0] ADD ROB=6 vj=0x2 vk=0x2
 [RS   cycle=  40]
+[RS   cycle=  40]
+[RS   cycle=  40]
+[RS   cycle=  40]
+[RS   cycle=  40]
 [LSB  cycle=  40] head=2 tail=2 count=0/8
 [RAT  cycle=  40]
   INT: x20->ROB6
@@ -564,6 +724,10 @@
 [RS   cycle=  41]
   [ 0] ADDI ROB=7 vj=0x4 vk=0x0
 [RS   cycle=  41]
+[RS   cycle=  41]
+[RS   cycle=  41]
+[RS   cycle=  41]
+[RS   cycle=  41]
 [LSB  cycle=  41] head=2 tail=2 count=0/8
 [RAT  cycle=  41]
   INT: x15->ROB7
@@ -576,7 +740,11 @@
 [ROB  cycle=  42] head=8 tail=9 count=1/16
   [ 8] INFLT BNE rd=x-1 PC=0x0070
 [RS   cycle=  42]
+[RS   cycle=  42]
   [ 0] BNE ROB=8 vj=0x3 vk=0x0
+[RS   cycle=  42]
+[RS   cycle=  42]
+[RS   cycle=  42]
 [RS   cycle=  42]
 [LSB  cycle=  42] head=2 tail=2 count=0/8
 [RAT  cycle=  42]
@@ -592,6 +760,10 @@
 [RS   cycle=  43]
   [ 0] ADD ROB=9 vj=0x4 vk=0x2
 [RS   cycle=  43]
+[RS   cycle=  43]
+[RS   cycle=  43]
+[RS   cycle=  43]
+[RS   cycle=  43]
 [LSB  cycle=  43] head=2 tail=2 count=0/8
 [RAT  cycle=  43]
   INT: x20->ROB9
@@ -606,6 +778,10 @@
 [RS   cycle=  44]
   [ 0] ADDI ROB=10 vj=0x3 vk=0x0
 [RS   cycle=  44]
+[RS   cycle=  44]
+[RS   cycle=  44]
+[RS   cycle=  44]
+[RS   cycle=  44]
 [LSB  cycle=  44] head=2 tail=2 count=0/8
 [RAT  cycle=  44]
   INT: x15->ROB10
@@ -618,7 +794,11 @@
 [ROB  cycle=  45] head=11 tail=12 count=1/16
   [11] INFLT BNE rd=x-1 PC=0x0070
 [RS   cycle=  45]
+[RS   cycle=  45]
   [ 0] BNE ROB=11 vj=0x2 vk=0x0
+[RS   cycle=  45]
+[RS   cycle=  45]
+[RS   cycle=  45]
 [RS   cycle=  45]
 [LSB  cycle=  45] head=2 tail=2 count=0/8
 [RAT  cycle=  45]
@@ -634,6 +814,10 @@
 [RS   cycle=  46]
   [ 0] ADD ROB=12 vj=0x6 vk=0x2
 [RS   cycle=  46]
+[RS   cycle=  46]
+[RS   cycle=  46]
+[RS   cycle=  46]
+[RS   cycle=  46]
 [LSB  cycle=  46] head=2 tail=2 count=0/8
 [RAT  cycle=  46]
   INT: x20->ROB12
@@ -648,6 +832,10 @@
 [RS   cycle=  47]
   [ 0] ADDI ROB=13 vj=0x2 vk=0x0
 [RS   cycle=  47]
+[RS   cycle=  47]
+[RS   cycle=  47]
+[RS   cycle=  47]
+[RS   cycle=  47]
 [LSB  cycle=  47] head=2 tail=2 count=0/8
 [RAT  cycle=  47]
   INT: x15->ROB13
@@ -660,7 +848,11 @@
 [ROB  cycle=  48] head=14 tail=15 count=1/16
   [14] INFLT BNE rd=x-1 PC=0x0070
 [RS   cycle=  48]
+[RS   cycle=  48]
   [ 0] BNE ROB=14 vj=0x1 vk=0x0
+[RS   cycle=  48]
+[RS   cycle=  48]
+[RS   cycle=  48]
 [RS   cycle=  48]
 [LSB  cycle=  48] head=2 tail=2 count=0/8
 [RAT  cycle=  48]
@@ -676,6 +868,10 @@
 [RS   cycle=  49]
   [ 0] ADD ROB=15 vj=0x8 vk=0x2
 [RS   cycle=  49]
+[RS   cycle=  49]
+[RS   cycle=  49]
+[RS   cycle=  49]
+[RS   cycle=  49]
 [LSB  cycle=  49] head=2 tail=2 count=0/8
 [RAT  cycle=  49]
   INT: x20->ROB15
@@ -690,6 +886,10 @@
 [RS   cycle=  50]
   [ 0] ADDI ROB=0 vj=0x1 vk=0x0
 [RS   cycle=  50]
+[RS   cycle=  50]
+[RS   cycle=  50]
+[RS   cycle=  50]
+[RS   cycle=  50]
 [LSB  cycle=  50] head=2 tail=2 count=0/8
 [RAT  cycle=  50]
   INT: x15->ROB0
@@ -702,7 +902,11 @@
 [ROB  cycle=  51] head=1 tail=2 count=1/16
   [ 1] INFLT BNE rd=x-1 PC=0x0070
 [RS   cycle=  51]
+[RS   cycle=  51]
   [ 0] BNE ROB=1 vj=0x0 vk=0x0
+[RS   cycle=  51]
+[RS   cycle=  51]
+[RS   cycle=  51]
 [RS   cycle=  51]
 [LSB  cycle=  51] head=2 tail=2 count=0/8
 [RAT  cycle=  51]
@@ -718,6 +922,10 @@
 [RS   cycle=  52]
   [ 0] ADD ROB=2 vj=0x4 vk=0xa
 [RS   cycle=  52]
+[RS   cycle=  52]
+[RS   cycle=  52]
+[RS   cycle=  52]
+[RS   cycle=  52]
 [LSB  cycle=  52] head=2 tail=2 count=0/8
 [RAT  cycle=  52]
   INT: x21->ROB2
@@ -729,6 +937,10 @@
 [IQ  cycle=  53] fetched=31 buf=0/8
 [ROB  cycle=  53] head=3 tail=4 count=1/16
   [ 3] INFLT LW rd=x13 PC=0x0078
+[RS   cycle=  53]
+[RS   cycle=  53]
+[RS   cycle=  53]
+[RS   cycle=  53]
 [RS   cycle=  53]
 [RS   cycle=  53]
 [LSB  cycle=  53] head=2 tail=3 count=1/8
@@ -743,6 +955,10 @@
 [IQ  cycle=  54] fetched=32 buf=0/8
 [ROB  cycle=  54] head=4 tail=5 count=1/16
   [ 4] INFLT LW rd=x16 PC=0x007c
+[RS   cycle=  54]
+[RS   cycle=  54]
+[RS   cycle=  54]
+[RS   cycle=  54]
 [RS   cycle=  54]
 [RS   cycle=  54]
 [LSB  cycle=  54] head=3 tail=4 count=1/8
@@ -760,6 +976,10 @@
 [RS   cycle=  55]
   [ 0] ADD ROB=5 vj=0x0 vk=0x3
 [RS   cycle=  55]
+[RS   cycle=  55]
+[RS   cycle=  55]
+[RS   cycle=  55]
+[RS   cycle=  55]
 [LSB  cycle=  55] head=4 tail=4 count=0/8
 [RAT  cycle=  55]
   INT: x22->ROB5
@@ -773,6 +993,10 @@
   [ 6] INFLT ADDI rd=x23 PC=0x0084
 [RS   cycle=  56]
   [ 0] ADDI ROB=6 vj=0x0 vk=0x0
+[RS   cycle=  56]
+[RS   cycle=  56]
+[RS   cycle=  56]
+[RS   cycle=  56]
 [RS   cycle=  56]
 [LSB  cycle=  56] head=4 tail=4 count=0/8
 [RAT  cycle=  56]
@@ -788,6 +1012,10 @@
 [RS   cycle=  57]
   [ 0] ADDI ROB=7 vj=0x6 vk=0x0
 [RS   cycle=  57]
+[RS   cycle=  57]
+[RS   cycle=  57]
+[RS   cycle=  57]
+[RS   cycle=  57]
 [LSB  cycle=  57] head=4 tail=4 count=0/8
 [RAT  cycle=  57]
   INT: x16->ROB7
@@ -801,6 +1029,10 @@
   [ 8] INFLT ADD rd=x23 PC=0x008c
 [RS   cycle=  58]
   [ 0] ADD ROB=8 vj=0x0 vk=0x3
+[RS   cycle=  58]
+[RS   cycle=  58]
+[RS   cycle=  58]
+[RS   cycle=  58]
 [RS   cycle=  58]
 [LSB  cycle=  58] head=4 tail=4 count=0/8
 [RAT  cycle=  58]
@@ -816,6 +1048,10 @@
 [RS   cycle=  59]
   [ 0] ADDI ROB=9 vj=0x6 vk=0x0
 [RS   cycle=  59]
+[RS   cycle=  59]
+[RS   cycle=  59]
+[RS   cycle=  59]
+[RS   cycle=  59]
 [LSB  cycle=  59] head=4 tail=4 count=0/8
 [RAT  cycle=  59]
   INT: x16->ROB9
@@ -828,7 +1064,11 @@
 [ROB  cycle=  60] head=10 tail=11 count=1/16
   [10] INFLT BNE rd=x-1 PC=0x0094
 [RS   cycle=  60]
+[RS   cycle=  60]
   [ 0] BNE ROB=10 vj=0x5 vk=0x0
+[RS   cycle=  60]
+[RS   cycle=  60]
+[RS   cycle=  60]
 [RS   cycle=  60]
 [LSB  cycle=  60] head=4 tail=4 count=0/8
 [RAT  cycle=  60]
@@ -844,6 +1084,10 @@
 [RS   cycle=  61]
   [ 0] ADD ROB=11 vj=0x3 vk=0x3
 [RS   cycle=  61]
+[RS   cycle=  61]
+[RS   cycle=  61]
+[RS   cycle=  61]
+[RS   cycle=  61]
 [LSB  cycle=  61] head=4 tail=4 count=0/8
 [RAT  cycle=  61]
   INT: x23->ROB11
@@ -858,6 +1102,10 @@
 [RS   cycle=  62]
   [ 0] ADDI ROB=12 vj=0x5 vk=0x0
 [RS   cycle=  62]
+[RS   cycle=  62]
+[RS   cycle=  62]
+[RS   cycle=  62]
+[RS   cycle=  62]
 [LSB  cycle=  62] head=4 tail=4 count=0/8
 [RAT  cycle=  62]
   INT: x16->ROB12
@@ -870,7 +1118,11 @@
 [ROB  cycle=  63] head=13 tail=14 count=1/16
   [13] INFLT BNE rd=x-1 PC=0x0094
 [RS   cycle=  63]
+[RS   cycle=  63]
   [ 0] BNE ROB=13 vj=0x4 vk=0x0
+[RS   cycle=  63]
+[RS   cycle=  63]
+[RS   cycle=  63]
 [RS   cycle=  63]
 [LSB  cycle=  63] head=4 tail=4 count=0/8
 [RAT  cycle=  63]
@@ -886,6 +1138,10 @@
 [RS   cycle=  64]
   [ 0] ADD ROB=14 vj=0x6 vk=0x3
 [RS   cycle=  64]
+[RS   cycle=  64]
+[RS   cycle=  64]
+[RS   cycle=  64]
+[RS   cycle=  64]
 [LSB  cycle=  64] head=4 tail=4 count=0/8
 [RAT  cycle=  64]
   INT: x23->ROB14
@@ -900,6 +1156,10 @@
 [RS   cycle=  65]
   [ 0] ADDI ROB=15 vj=0x4 vk=0x0
 [RS   cycle=  65]
+[RS   cycle=  65]
+[RS   cycle=  65]
+[RS   cycle=  65]
+[RS   cycle=  65]
 [LSB  cycle=  65] head=4 tail=4 count=0/8
 [RAT  cycle=  65]
   INT: x16->ROB15
@@ -912,7 +1172,11 @@
 [ROB  cycle=  66] head=0 tail=1 count=1/16
   [ 0] INFLT BNE rd=x-1 PC=0x0094
 [RS   cycle=  66]
+[RS   cycle=  66]
   [ 0] BNE ROB=0 vj=0x3 vk=0x0
+[RS   cycle=  66]
+[RS   cycle=  66]
+[RS   cycle=  66]
 [RS   cycle=  66]
 [LSB  cycle=  66] head=4 tail=4 count=0/8
 [RAT  cycle=  66]
@@ -928,6 +1192,10 @@
 [RS   cycle=  67]
   [ 0] ADD ROB=1 vj=0x9 vk=0x3
 [RS   cycle=  67]
+[RS   cycle=  67]
+[RS   cycle=  67]
+[RS   cycle=  67]
+[RS   cycle=  67]
 [LSB  cycle=  67] head=4 tail=4 count=0/8
 [RAT  cycle=  67]
   INT: x23->ROB1
@@ -942,6 +1210,10 @@
 [RS   cycle=  68]
   [ 0] ADDI ROB=2 vj=0x3 vk=0x0
 [RS   cycle=  68]
+[RS   cycle=  68]
+[RS   cycle=  68]
+[RS   cycle=  68]
+[RS   cycle=  68]
 [LSB  cycle=  68] head=4 tail=4 count=0/8
 [RAT  cycle=  68]
   INT: x16->ROB2
@@ -954,7 +1226,11 @@
 [ROB  cycle=  69] head=3 tail=4 count=1/16
   [ 3] INFLT BNE rd=x-1 PC=0x0094
 [RS   cycle=  69]
+[RS   cycle=  69]
   [ 0] BNE ROB=3 vj=0x2 vk=0x0
+[RS   cycle=  69]
+[RS   cycle=  69]
+[RS   cycle=  69]
 [RS   cycle=  69]
 [LSB  cycle=  69] head=4 tail=4 count=0/8
 [RAT  cycle=  69]
@@ -970,6 +1246,10 @@
 [RS   cycle=  70]
   [ 0] ADD ROB=4 vj=0xc vk=0x3
 [RS   cycle=  70]
+[RS   cycle=  70]
+[RS   cycle=  70]
+[RS   cycle=  70]
+[RS   cycle=  70]
 [LSB  cycle=  70] head=4 tail=4 count=0/8
 [RAT  cycle=  70]
   INT: x23->ROB4
@@ -984,6 +1264,10 @@
 [RS   cycle=  71]
   [ 0] ADDI ROB=5 vj=0x2 vk=0x0
 [RS   cycle=  71]
+[RS   cycle=  71]
+[RS   cycle=  71]
+[RS   cycle=  71]
+[RS   cycle=  71]
 [LSB  cycle=  71] head=4 tail=4 count=0/8
 [RAT  cycle=  71]
   INT: x16->ROB5
@@ -996,7 +1280,11 @@
 [ROB  cycle=  72] head=6 tail=7 count=1/16
   [ 6] INFLT BNE rd=x-1 PC=0x0094
 [RS   cycle=  72]
+[RS   cycle=  72]
   [ 0] BNE ROB=6 vj=0x1 vk=0x0
+[RS   cycle=  72]
+[RS   cycle=  72]
+[RS   cycle=  72]
 [RS   cycle=  72]
 [LSB  cycle=  72] head=4 tail=4 count=0/8
 [RAT  cycle=  72]
@@ -1012,6 +1300,10 @@
 [RS   cycle=  73]
   [ 0] ADD ROB=7 vj=0xf vk=0x3
 [RS   cycle=  73]
+[RS   cycle=  73]
+[RS   cycle=  73]
+[RS   cycle=  73]
+[RS   cycle=  73]
 [LSB  cycle=  73] head=4 tail=4 count=0/8
 [RAT  cycle=  73]
   INT: x23->ROB7
@@ -1026,6 +1318,10 @@
 [RS   cycle=  74]
   [ 0] ADDI ROB=8 vj=0x1 vk=0x0
 [RS   cycle=  74]
+[RS   cycle=  74]
+[RS   cycle=  74]
+[RS   cycle=  74]
+[RS   cycle=  74]
 [LSB  cycle=  74] head=4 tail=4 count=0/8
 [RAT  cycle=  74]
   INT: x16->ROB8
@@ -1038,7 +1334,11 @@
 [ROB  cycle=  75] head=9 tail=10 count=1/16
   [ 9] INFLT BNE rd=x-1 PC=0x0094
 [RS   cycle=  75]
+[RS   cycle=  75]
   [ 0] BNE ROB=9 vj=0x0 vk=0x0
+[RS   cycle=  75]
+[RS   cycle=  75]
+[RS   cycle=  75]
 [RS   cycle=  75]
 [LSB  cycle=  75] head=4 tail=4 count=0/8
 [RAT  cycle=  75]
@@ -1054,6 +1354,10 @@
 [RS   cycle=  76]
   [ 0] ADD ROB=10 vj=0xe vk=0x12
 [RS   cycle=  76]
+[RS   cycle=  76]
+[RS   cycle=  76]
+[RS   cycle=  76]
+[RS   cycle=  76]
 [LSB  cycle=  76] head=4 tail=4 count=0/8
 [RAT  cycle=  76]
   INT: x24->ROB10
@@ -1067,6 +1371,10 @@
   [11] INFLT HALT rd=x-1 PC=0x009c
 [RS   cycle=  77]
   [ 0] HALT ROB=11 vj=0x0 vk=0x0
+[RS   cycle=  77]
+[RS   cycle=  77]
+[RS   cycle=  77]
+[RS   cycle=  77]
 [RS   cycle=  77]
 [LSB  cycle=  77] head=4 tail=4 count=0/8
 [RAT  cycle=  77]

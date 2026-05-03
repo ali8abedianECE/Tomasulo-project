@@ -24,6 +24,8 @@ int latency_of(Opcode op) {
         case Opcode::BNE:      return LAT_BRANCH;
         case Opcode::BLT:      return LAT_BRANCH;
         case Opcode::BGE:      return LAT_BRANCH;
+        case Opcode::JAL:      return LAT_BRANCH;
+        case Opcode::JALR:     return LAT_BRANCH;
         case Opcode::FADD_S:   return LAT_FP_ADDSUB;
         case Opcode::FSUB_S:   return LAT_FP_ADDSUB;
         case Opcode::FMUL_S:   return LAT_FP_MUL;
@@ -52,6 +54,8 @@ bool is_pipelined(Opcode op) {
         case Opcode::BNE:      return PIPE_BRANCH;
         case Opcode::BLT:      return PIPE_BRANCH;
         case Opcode::BGE:      return PIPE_BRANCH;
+        case Opcode::JAL:      return PIPE_BRANCH;
+        case Opcode::JALR:     return PIPE_BRANCH;
         default:               return PIPE_INT_ALU;
     }
 }
@@ -86,6 +90,8 @@ const char* opcode_name(Opcode op) {
         case Opcode::FSW:      return "FSW";
         case Opcode::FCVT_W_S: return "FCVT.W.S";
         case Opcode::FCVT_S_W: return "FCVT.S.W";
+        case Opcode::JAL:      return "JAL";
+        case Opcode::JALR:     return "JALR";
         case Opcode::NOP:      return "NOP";
         case Opcode::HALT:     return "HALT";
         default:               return "???";

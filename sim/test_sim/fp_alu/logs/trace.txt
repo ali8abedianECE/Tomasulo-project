@@ -4,6 +4,10 @@
 [ROB  cycle=   1] head=0 tail=0 count=0/16
 [RS   cycle=   1]
 [RS   cycle=   1]
+[RS   cycle=   1]
+[RS   cycle=   1]
+[RS   cycle=   1]
+[RS   cycle=   1]
 [LSB  cycle=   1] head=0 tail=0 count=0/8
 [RAT  cycle=   1]
   INT:
@@ -17,6 +21,10 @@
   [ 0] INFLT ADDI rd=x1 PC=0x0000
 [RS   cycle=   2]
   [ 0] ADDI ROB=0 vj=0x0 vk=0x0
+[RS   cycle=   2]
+[RS   cycle=   2]
+[RS   cycle=   2]
+[RS   cycle=   2]
 [RS   cycle=   2]
 [LSB  cycle=   2] head=0 tail=0 count=0/8
 [RAT  cycle=   2]
@@ -32,6 +40,10 @@
 [RS   cycle=   3]
   [ 0] ADDI ROB=1 vj=0x0 vk=0x0
 [RS   cycle=   3]
+[RS   cycle=   3]
+[RS   cycle=   3]
+[RS   cycle=   3]
+[RS   cycle=   3]
 [LSB  cycle=   3] head=0 tail=0 count=0/8
 [RAT  cycle=   3]
   INT: x2->ROB1
@@ -43,6 +55,10 @@
 [IQ  cycle=   4] fetched=3 buf=0/8
 [ROB  cycle=   4] head=2 tail=3 count=1/16
   [ 2] INFLT FCVT.S.W rd=f1 PC=0x0008
+[RS   cycle=   4]
+[RS   cycle=   4]
+[RS   cycle=   4]
+[RS   cycle=   4]
 [RS   cycle=   4]
 [RS   cycle=   4]
   [ 0] FCVT.S.W ROB=2 vj=0x64 vk=0x0
@@ -61,6 +77,10 @@
 [RS   cycle=   5]
   [ 0] ADDI ROB=3 vj=0x0 vk=0x0
 [RS   cycle=   5]
+[RS   cycle=   5]
+[RS   cycle=   5]
+[RS   cycle=   5]
+[RS   cycle=   5]
   [ 0] FCVT.S.W ROB=2 vj=0x64 vk=0x0 rem=1
 [LSB  cycle=   5] head=0 tail=0 count=0/8
 [RAT  cycle=   5]
@@ -74,6 +94,10 @@
 [ROB  cycle=   6] head=3 tail=5 count=2/16
   [ 3] DONE ADDI rd=x3 PC=0x000c
   [ 4] INFLT FCVT.S.W rd=f2 PC=0x0010
+[RS   cycle=   6]
+[RS   cycle=   6]
+[RS   cycle=   6]
+[RS   cycle=   6]
 [RS   cycle=   6]
 [RS   cycle=   6]
   [ 0] FCVT.S.W ROB=4 vj=0x19 vk=0x0
@@ -91,8 +115,12 @@
   [ 5] INFLT FADD.S rd=f3 PC=0x0014
 [RS   cycle=   7]
 [RS   cycle=   7]
+[RS   cycle=   7]
+  [ 0] FADD.S ROB=5 vj=0x42c80000 qk=ROB4
+[RS   cycle=   7]
+[RS   cycle=   7]
+[RS   cycle=   7]
   [ 0] FCVT.S.W ROB=4 vj=0x19 vk=0x0 rem=1
-  [ 1] FADD.S ROB=5 vj=0x42c80000 qk=ROB4
 [LSB  cycle=   7] head=0 tail=0 count=0/8
 [RAT  cycle=   7]
   INT:
@@ -107,8 +135,12 @@
   [ 6] INFLT FMUL.S rd=f4 PC=0x0018
 [RS   cycle=   8]
 [RS   cycle=   8]
+[RS   cycle=   8]
+  [ 0] FADD.S ROB=5 vj=0x42c80000 vk=0x41c80000
+[RS   cycle=   8]
   [ 0] FMUL.S ROB=6 vj=0x42c80000 vk=0x41c80000
-  [ 1] FADD.S ROB=5 vj=0x42c80000 vk=0x41c80000
+[RS   cycle=   8]
+[RS   cycle=   8]
 [LSB  cycle=   8] head=0 tail=0 count=0/8
 [RAT  cycle=   8]
   INT:
@@ -124,9 +156,13 @@
   [ 7] INFLT FSUB.S rd=f5 PC=0x001c
 [RS   cycle=   9]
 [RS   cycle=   9]
+[RS   cycle=   9]
+  [ 0] FADD.S ROB=5 vj=0x42c80000 vk=0x41c80000 rem=1
+  [ 1] FSUB.S ROB=7 vj=0x42c80000 vk=0x41c80000
+[RS   cycle=   9]
   [ 0] FMUL.S ROB=6 vj=0x42c80000 vk=0x41c80000 rem=3
-  [ 1] FADD.S ROB=5 vj=0x42c80000 vk=0x41c80000 rem=1
-  [ 2] FSUB.S ROB=7 vj=0x42c80000 vk=0x41c80000
+[RS   cycle=   9]
+[RS   cycle=   9]
 [LSB  cycle=   9] head=0 tail=0 count=0/8
 [RAT  cycle=   9]
   INT:
@@ -142,9 +178,13 @@
   [ 8] INFLT FCVT.W.S rd=x4 PC=0x0020
 [RS   cycle=  10]
 [RS   cycle=  10]
+[RS   cycle=  10]
+  [ 1] FSUB.S ROB=7 vj=0x42c80000 vk=0x41c80000 rem=1
+[RS   cycle=  10]
   [ 0] FMUL.S ROB=6 vj=0x42c80000 vk=0x41c80000 rem=2
-  [ 1] FCVT.W.S ROB=8 vj=0x42fa0000 vk=0x0
-  [ 2] FSUB.S ROB=7 vj=0x42c80000 vk=0x41c80000 rem=1
+[RS   cycle=  10]
+[RS   cycle=  10]
+  [ 0] FCVT.W.S ROB=8 vj=0x42fa0000 vk=0x0
 [LSB  cycle=  10] head=0 tail=0 count=0/8
 [RAT  cycle=  10]
   INT: x4->ROB8
@@ -162,8 +202,12 @@
 [RS   cycle=  11]
   [ 0] HALT ROB=9 vj=0x0 vk=0x0
 [RS   cycle=  11]
+[RS   cycle=  11]
+[RS   cycle=  11]
   [ 0] FMUL.S ROB=6 vj=0x42c80000 vk=0x41c80000 rem=1
-  [ 1] FCVT.W.S ROB=8 vj=0x42fa0000 vk=0x0 rem=1
+[RS   cycle=  11]
+[RS   cycle=  11]
+  [ 0] FCVT.W.S ROB=8 vj=0x42fa0000 vk=0x0 rem=1
 [LSB  cycle=  11] head=0 tail=0 count=0/8
 [RAT  cycle=  11]
   INT: x4->ROB8
@@ -177,6 +221,10 @@
   [ 7] DONE FSUB.S rd=f5 PC=0x001c
   [ 8] DONE FCVT.W.S rd=x4 PC=0x0020
   [ 9] DONE HALT rd=x-1 PC=0x0024
+[RS   cycle=  12]
+[RS   cycle=  12]
+[RS   cycle=  12]
+[RS   cycle=  12]
 [RS   cycle=  12]
 [RS   cycle=  12]
 [LSB  cycle=  12] head=0 tail=0 count=0/8
@@ -193,6 +241,10 @@
   [ 9] DONE HALT rd=x-1 PC=0x0024
 [RS   cycle=  13]
 [RS   cycle=  13]
+[RS   cycle=  13]
+[RS   cycle=  13]
+[RS   cycle=  13]
+[RS   cycle=  13]
 [LSB  cycle=  13] head=0 tail=0 count=0/8
 [RAT  cycle=  13]
   INT: x4->ROB8
@@ -204,6 +256,10 @@
 [IQ  cycle=  14] fetched=10 buf=0/8
 [ROB  cycle=  14] head=9 tail=10 count=1/16
   [ 9] DONE HALT rd=x-1 PC=0x0024
+[RS   cycle=  14]
+[RS   cycle=  14]
+[RS   cycle=  14]
+[RS   cycle=  14]
 [RS   cycle=  14]
 [RS   cycle=  14]
 [LSB  cycle=  14] head=0 tail=0 count=0/8
