@@ -2,7 +2,7 @@
   <rect width="760" height="548" fill="#ffffff"/>
   <rect x="20.0" y="20.0" width="720.0" height="52.0" fill="#1a1a1a" stroke="#1a1a1a" stroke-width="1" rx="4"/>
   <text x="380.0" y="38.0" font-family="Arial, Helvetica, sans-serif" font-size="14" font-weight="bold" fill="#ffffff" text-anchor="middle">RV32IF Instruction Formats</text>
-  <text x="380.0" y="56.0" font-family="Arial, Helvetica, sans-serif" font-size="9" font-weight="normal" fill="#aaaaaa" text-anchor="middle">All encoding layouts  —  32-bit fixed-width</text>
+  <text x="380.0" y="56.0" font-family="Arial, Helvetica, sans-serif" font-size="9" font-weight="normal" fill="#aaaaaa" text-anchor="middle">All encoding layouts  -  32-bit fixed-width</text>
   <text x="62.0" y="115.0" font-family="Arial, Helvetica, sans-serif" font-size="10" font-weight="bold" fill="#111111" text-anchor="middle">R-type</text>
   <rect x="104.0" y="86.0" width="139.1" height="50.0" fill="#f4f4f4" stroke="#aaaaaa" stroke-width="0.8" rx="0"/>
   <text x="173.6" y="100.0" font-family="Courier New, monospace" font-size="7" font-weight="normal" fill="#777777" text-anchor="middle">31:25</text>
@@ -128,6 +128,6 @@
   <rect x="600.9" y="434.0" width="139.1" height="50.0" fill="#f4f4f4" stroke="#aaaaaa" stroke-width="0.8" rx="0"/>
   <text x="670.4" y="448.0" font-family="Courier New, monospace" font-size="7" font-weight="normal" fill="#777777" text-anchor="middle">6:0</text>
   <text x="670.4" y="475.0" font-family="Courier New, monospace" font-size="9" font-weight="bold" fill="#111111" text-anchor="middle">opcode</text>
-  <text x="20.0" y="507.0" font-family="Arial, Helvetica, sans-serif" font-size="9" font-weight="normal" fill="#777777" text-anchor="start">B-type: imm bits are scrambled across [31], [30:25], [11:8], [7] so the sign is always at bit 31 and bits 30:25 align with other formats — hardware can decode faster.</text>
-  <text x="20.0" y="523.0" font-family="Arial, Helvetica, sans-serif" font-size="9" font-weight="normal" fill="#777777" text-anchor="start">J-type: same principle — imm[20|10:1|11|19:12] packed into bits [31:12]. Narrow cells above show the bit index only (too small for the field name).</text>
+  <text x="20.0" y="507.0" font-family="Arial, Helvetica, sans-serif" font-size="9" font-weight="normal" fill="#777777" text-anchor="start">B-type: imm bits are scrambled across [31], [30:25], [11:8], [7] so the sign is always at bit 31 and bits 30:25 align with other formats - hardware can decode faster.</text>
+  <text x="20.0" y="523.0" font-family="Arial, Helvetica, sans-serif" font-size="9" font-weight="normal" fill="#777777" text-anchor="start">J-type: same principle - imm[20|10:1|11|19:12] packed into bits [31:12]. Narrow cells above show the bit index only (too small for the field name).</text>
 </svg>

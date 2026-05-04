@@ -50,7 +50,7 @@ LUI  x17, 0xABCDE      # x17 = 0xABCDE000
 
 # === JAL/JALR: call subroutine, verify return address and result ===
 JAL  x14, fp_done      # x14 = PC+4 = 116; jump to fp_done (PC=120)
-HALT                   # PC=116 — jumped over by JAL, landed here on return
+HALT                   # PC=116 - jumped over by JAL, landed here on return
 
 fp_done:
 ADD  x15, x12, x13     # x15 = 1 + 20 = 21   RAW on x12, x13

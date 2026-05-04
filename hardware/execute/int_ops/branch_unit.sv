@@ -7,7 +7,7 @@
  * @param clk Rising-edge clock.
  * @param rst_n Active-low reset.
  * @param valid_i Operands ready; this entry wins issue.
- * @param op_i Opcode — OP_BEQ/BNE/BLT/BGE/JAL/JALR.
+ * @param op_i Opcode - OP_BEQ/BNE/BLT/BGE/JAL/JALR.
  * @param tag_i ROB tag echoed to CDB.
  * @param rs1_i Condition LHS / JALR base address.
  * @param rs2_i Condition RHS (unused for JAL/JALR).

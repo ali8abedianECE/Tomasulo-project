@@ -6,7 +6,7 @@
 #include <string>
 
 /**
- * @brief Architectural register file — holds committed state only.
+ * @brief Architectural register file - holds committed state only.
  *
  * Two separate banks:
  *   - @c int_regs_[0..31]  maps to x0-x31 (int32_t).  x0 is hardwired to 0; writes are ignored.

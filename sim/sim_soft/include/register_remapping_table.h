@@ -16,18 +16,18 @@ struct RATEntry {
 };
 
 /**
- * @brief Register renaming table — maps architectural registers to in-flight ROB entries.
+ * @brief Register renaming table - maps architectural registers to in-flight ROB entries.
  *
  * Two separate tables mirror the two register files:
  *   - @c int_rat_[0..31]  for x0-x31
  *   - @c fp_rat_ [0..31]  for f0-f31
  *
  * Key operations:
- *   - map()    — called at dispatch: record that @c rd will be written by @c rob_tag.
- *   - lookup() — called at dispatch: find where rs1/rs2 values come from.
- *   - commit() — called at commit: clear the entry only if @c rob_tag still matches
+ *   - map()    - called at dispatch: record that @c rd will be written by @c rob_tag.
+ *   - lookup() - called at dispatch: find where rs1/rs2 values come from.
+ *   - commit() - called at commit: clear the entry only if @c rob_tag still matches
  *                (a later dispatch may have re-mapped the same register).
- *   - flush()  — called on branch misprediction: invalidate all entries.
+ *   - flush()  - called on branch misprediction: invalidate all entries.
  */
 class RegisterRemappingTable {
 public:

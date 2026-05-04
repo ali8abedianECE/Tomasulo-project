@@ -8,7 +8,7 @@
  * @param clk Rising-edge clock.
  * @param rst_n Active-low reset.
  * @param valid_i Operands ready; this entry wins issue.
- * @param op_i Opcode — OP_ADD/SUB/AND/OR/XOR/SLL/SRL/SRA/ADDI/ANDI/ORI/XORI/SLLI/SRLI/LUI.
+ * @param op_i Opcode - OP_ADD/SUB/AND/OR/XOR/SLL/SRL/SRA/ADDI/ANDI/ORI/XORI/SLLI/SRLI/LUI.
  * @param tag_i ROB tag echoed to CDB.
  * @param rs1_i Source register 1.
  * @param rs2_i Source register 2 (R-type only).

@@ -1,7 +1,7 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="700" height="324" viewBox="0 0 700 324">
   <rect width="700" height="324" fill="#ffffff"/>
   <rect x="20.0" y="20.0" width="660.0" height="52.0" fill="#1a1a1a" stroke="#1a1a1a" stroke-width="1" rx="4"/>
-  <text x="350.0" y="38.0" font-family="Arial, Helvetica, sans-serif" font-size="14" font-weight="bold" fill="#ffffff" text-anchor="middle">FP Convert  —  R-type  (opcode 0x53)</text>
+  <text x="350.0" y="38.0" font-family="Arial, Helvetica, sans-serif" font-size="14" font-weight="bold" fill="#ffffff" text-anchor="middle">FP Convert  -  R-type  (opcode 0x53)</text>
   <text x="350.0" y="56.0" font-family="Arial, Helvetica, sans-serif" font-size="9" font-weight="normal" fill="#aaaaaa" text-anchor="middle">FCVT.W.S  FCVT.WU.S  FCVT.S.W  FCVT.S.WU</text>
   <rect x="20.0" y="86.0" width="103.1" height="50.0" fill="#f4f4f4" stroke="#aaaaaa" stroke-width="0.8" rx="0"/>
   <text x="71.6" y="100.0" font-family="Courier New, monospace" font-size="7" font-weight="normal" fill="#777777" text-anchor="middle">31:27</text>

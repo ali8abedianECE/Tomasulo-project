@@ -1,7 +1,7 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="700" height="394" viewBox="0 0 700 394">
   <rect width="700" height="394" fill="#ffffff"/>
   <rect x="20.0" y="20.0" width="660.0" height="52.0" fill="#1a1a1a" stroke="#1a1a1a" stroke-width="1" rx="4"/>
-  <text x="350.0" y="38.0" font-family="Arial, Helvetica, sans-serif" font-size="14" font-weight="bold" fill="#ffffff" text-anchor="middle">Integer ALU  —  R-type  (opcode 0x33)</text>
+  <text x="350.0" y="38.0" font-family="Arial, Helvetica, sans-serif" font-size="14" font-weight="bold" fill="#ffffff" text-anchor="middle">Integer ALU  -  R-type  (opcode 0x33)</text>
   <text x="350.0" y="56.0" font-family="Arial, Helvetica, sans-serif" font-size="9" font-weight="normal" fill="#aaaaaa" text-anchor="middle">ADD  SUB  AND  OR  XOR  SLL  SRL  SRA</text>
   <rect x="20.0" y="86.0" width="144.4" height="50.0" fill="#f4f4f4" stroke="#aaaaaa" stroke-width="0.8" rx="0"/>
   <text x="92.2" y="100.0" font-family="Courier New, monospace" font-size="7" font-weight="normal" fill="#777777" text-anchor="middle">31:25</text>

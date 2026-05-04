@@ -33,7 +33,7 @@ enum class Opcode : uint8_t {
     JAL, JALR,
     /* FP ALU single-precision R-type (funct7 distinguishes op) */
     FADD_S, FSUB_S, FMUL_S, FDIV_S,
-    /* FP load/store — same addressing as LW/SW, dest/src is f-register
+    /* FP load/store - same addressing as LW/SW, dest/src is f-register
      * FLW : fd = Mem[rs1+imm]
      * FSW : Mem[rs1+imm] = fs2 */
     FLW, FSW,

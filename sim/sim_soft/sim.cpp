@@ -157,7 +157,7 @@ static std::vector<Instruction> parse_program(const std::string& path) {
         /* LW / FLW: rd, imm(rs1) */
         else if (op=="LW")   { in.op=Opcode::LW;  in.rd=preg(toks[1]); parse_mem(toks[2], in.imm, in.rs1); }
         else if (op=="FLW")  { in.op=Opcode::FLW; in.rd=preg(toks[1]); in.rd_fp=true; parse_mem(toks[2], in.imm, in.rs1); }
-        /* SW / FSW: rs2, imm(rs1)   — rs2=data, rs1=base, rd=-1 */
+        /* SW / FSW: rs2, imm(rs1)   - rs2=data, rs1=base, rd=-1 */
         else if (op=="SW")   { in.op=Opcode::SW;  in.rs2=preg(toks[1]); parse_mem(toks[2], in.imm, in.rs1); }
         else if (op=="FSW")  { in.op=Opcode::FSW; in.rs2=preg(toks[1]); in.rs2_fp=true; parse_mem(toks[2], in.imm, in.rs1); }
         /* Branches: rs1, rs2, offset-or-label */
@@ -424,7 +424,7 @@ int main(int argc, char* argv[]) {
         cdb.dump(trace, cycle);
         cdb.log_cycle(cycle);
 
-        /* Phase 4: snoop CDB — RS entries capture results broadcast this cycle */
+        /* Phase 4: snoop CDB - RS entries capture results broadcast this cycle */
         for (ReservationStation* rs : {&rs_alu, &rs_branch,
                                        &rs_fp_addsub, &rs_fp_mul,
                                        &rs_fp_div, &rs_fp_cvt})
@@ -472,7 +472,7 @@ int main(int argc, char* argv[]) {
     final_f << "# Tomasulo simulation: " << asm_path << "\n";
     final_f << "# Total cycles: " << final_cycle << "\n\n";
 
-    /* Integer registers — one per line for easy Verilog parsing */
+    /* Integer registers - one per line for easy Verilog parsing */
     final_f << "[INT_REGS]\n";
     for (int i = 0; i < NUM_INT_REGS; ++i)
         final_f << "x" << std::setw(2) << std::setfill('0') << i

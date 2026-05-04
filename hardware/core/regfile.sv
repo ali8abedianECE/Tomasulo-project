@@ -3,7 +3,7 @@
  *
  * Holds 32×32-bit integer registers (x0–x31) and 32×32-bit FP registers
  * (f0–f31). Reads are combinational; writes are synchronous on the rising
- * edge. x0 is hardwired to zero — writes to it are silently ignored.
+ * edge. x0 is hardwired to zero - writes to it are silently ignored.
  *
  * @param clk Rising-edge clock.
  * @param rst_n Active-low reset; clears all registers to 0.

@@ -22,8 +22,8 @@ struct BufSlot {
  * @c stages_[0] is the input staging area; @c stages_[depth_] is the output.
  *
  * Two throughput modes:
- *   - @c pipelined=true  — accepts one new op every cycle regardless of occupancy.
- *   - @c pipelined=false — rejects new ops while any stage is occupied (throughput = 1/N).
+ *   - @c pipelined=true  - accepts one new op every cycle regardless of occupancy.
+ *   - @c pipelined=false - rejects new ops while any stage is occupied (throughput = 1/N).
  *
  * Caller sequence each cycle:
  *   1. if has_output(): pop_output() and broadcast result on the CDB.

@@ -9,5 +9,5 @@ OR   x6, x1, x2       # x6 = 11  (bitwise OR)
 XOR  x7, x1, x2       # x7 = 9   (bitwise XOR)
 SLLI x8, x1, 2        # x8 = 40  (shift left 2)
 SRLI x9, x1, 1        # x9 = 5   (shift right 1)
-ADD  x10, x3, x4      # x10 = 20 (RAW on x3 and x4 — tests forwarding)
+ADD  x10, x3, x4      # x10 = 20 (RAW on x3 and x4 - tests forwarding)
 HALT

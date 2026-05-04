@@ -31,13 +31,13 @@ The figure below shows the classic block diagram:
 | **FP Convert** | `FCVT.W.S` `FCVT.S.W` |
 | **Other** | `NOP` `HALT` |
 
-> **Planned — not yet implemented**
+> **Planned - not yet implemented**
 >
 > | Group | Instructions |
 > |-------|-------------|
-> | **Upper immediate** | `AUIPC` — PC-relative address materialization |
-> | **Atomics** | `LR.W` `SC.W` — RV32A load-reserved / store-conditional |
-> | **FP comparisons** | `FEQ.S` `FLT.S` `FLE.S` — float-to-int condition results |
+> | **Upper immediate** | `AUIPC` - PC-relative address materialization |
+> | **Atomics** | `LR.W` `SC.W` - RV32A load-reserved / store-conditional |
+> | **FP comparisons** | `FEQ.S` `FLT.S` `FLE.S` - float-to-int condition results |
 > | **FP sign injection** | `FSGNJ.S` `FSGNJN.S` `FSGNJX.S` |
 > | **FP min/max** | `FMIN.S` `FMAX.S` |
 

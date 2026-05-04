@@ -10,11 +10,11 @@
  */
 struct CDBResult {
     int      rob_tag;  ///< ROB index of the instruction that produced this value.
-    uint32_t value;    ///< Result bits — reinterpreted as int32_t or float at writeback.
+    uint32_t value;    ///< Result bits - reinterpreted as int32_t or float at writeback.
 };
 
 /**
- * @brief Common Data Bus — result broadcast bus for Tomasulo's algorithm.
+ * @brief Common Data Bus - result broadcast bus for Tomasulo's algorithm.
  *
  * When an execution unit finishes it calls broadcast(rob_tag, value).
  * At the end of the same cycle every listening unit (RS entries, ROB)

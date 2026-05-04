@@ -23,7 +23,7 @@ struct CommitRecord {
 };
 
 /**
- * @brief Commit unit — retires the ROB head in program order each cycle.
+ * @brief Commit unit - retires the ROB head in program order each cycle.
  *
  * On each tick():
  *   - If the ROB head is not DONE, returns false (stall, nothing commits).

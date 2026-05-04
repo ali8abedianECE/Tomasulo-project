@@ -14,17 +14,17 @@
  * @brief One entry in a reservation station.
  *
  * Operand fields:
- *   - @c vj / @c vk  — source values as uint32_t bits (ready when qj/qk == -1).
- *   - @c qj / @c qk  — ROB tag we are waiting on (-1 means the value is in vj/vk).
+ *   - @c vj / @c vk  - source values as uint32_t bits (ready when qj/qk == -1).
+ *   - @c qj / @c qk  - ROB tag we are waiting on (-1 means the value is in vj/vk).
  *
  * Implicit entry states:
- *   - !busy                              — IDLE
- *   - busy && (qj != -1 || qk != -1)    — WAITING (operand(s) not yet available)
+ *   - !busy                              - IDLE
+ *   - busy && (qj != -1 || qk != -1)    - WAITING (operand(s) not yet available)
  *   - busy && qj == -1 && qk == -1
- *          && cycles_rem == 0           — READY (waiting for FU to pick it up)
+ *          && cycles_rem == 0           - READY (waiting for FU to pick it up)
  *   - busy && qj == -1 && qk == -1
- *          && cycles_rem > 0            — EXECUTING
- *   - busy && done                       — DONE (result ready for the CDB)
+ *          && cycles_rem > 0            - EXECUTING
+ *   - busy && done                       - DONE (result ready for the CDB)
  */
 struct RSEntry {
     bool     busy       = false;
@@ -43,16 +43,16 @@ struct RSEntry {
 };
 
 /**
- * @brief Reservation station — holds dispatched instructions waiting for operands.
+ * @brief Reservation station - holds dispatched instructions waiting for operands.
  *
  * One instance is created per functional unit group (e.g. integer ALU, FP ALU).
  * Load/store ops go to the LoadStoreBuffer instead.
  *
  * Caller ordering each cycle:
- *   1. snoop(cdb)              — capture newly available operands.
- *   2. tick()                  — start READY entries, decrement counters, mark DONE.
- *   3. while has_result(): cdb.broadcast(pop_result())  — post results to the bus.
- *   4. cdb.flush()             — clear the bus after all units have posted.
+ *   1. snoop(cdb)              - capture newly available operands.
+ *   2. tick()                  - start READY entries, decrement counters, mark DONE.
+ *   3. while has_result(): cdb.broadcast(pop_result())  - post results to the bus.
+ *   4. cdb.flush()             - clear the bus after all units have posted.
  */
 class ReservationStation {
 public:

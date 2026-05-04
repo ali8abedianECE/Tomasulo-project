@@ -2,7 +2,7 @@
 
 This page documents every instruction supported by the Tomasulo Engine. For each group you will find the encoding diagram, a field-by-field breakdown, the operation table, and how it flows through the pipeline.
 
-All instructions are 32-bit fixed-width. The engine targets **RV32IF** — the RISC-V 32-bit base integer ISA plus the single-precision floating-point extension.
+All instructions are 32-bit fixed-width. The engine targets **RV32IF** - the RISC-V 32-bit base integer ISA plus the single-precision floating-point extension.
 
 ---
 
@@ -36,7 +36,7 @@ B-type and J-type pack a signed offset into non-contiguous bit slices. This is i
 | Reason | Detail |
 |--------|--------|
 | Sign always at bit 31 | Hardware sign-extends any format without knowing which one it is |
-| Bits 30:25 align | Hold `imm[10:5]` in S, B, and J — one shifter covers all three |
+| Bits 30:25 align | Hold `imm[10:5]` in S, B, and J - one shifter covers all three |
 | `rs1`/`rs2` stay fixed | Bits 19:15 and 24:20 are always source registers; the register file can be read in parallel with decode |
 
 The scrambling only touches the assembler (encoding) and the decoder (reassembly). Execution logic never sees scrambled bits.
@@ -49,7 +49,7 @@ The scrambling only touches the assembler (encoding) and the decoder (reassembly
 | `[11]` | `inst[7]` |
 | `[10:5]` | `inst[30:25]` |
 | `[4:1]` | `inst[11:8]` |
-| `[0]` | always 0 — targets are 2-byte aligned |
+| `[0]` | always 0 - targets are 2-byte aligned |
 
 The narrow cells in the diagram above that show just a number (e.g. `31`, `7`, `20`) are 1-bit fields. At that width there is no room for the field name, so the bit index is shown instead.
 
@@ -57,7 +57,7 @@ The narrow cells in the diagram above that show just a number (e.g. `31`, `7`, `
 
 ## Structural Sizes
 
-All buffer capacities are defined in `sim/sim_soft/include/config.h`. Change any constant and recompile — every component picks up the new value.
+All buffer capacities are defined in `sim/sim_soft/include/config.h`. Change any constant and recompile - every component picks up the new value.
 
 | Buffer | Config constant | Default | Role |
 |--------|----------------|---------|------|
@@ -80,7 +80,7 @@ When an instruction is dispatched from the IQ it immediately resolves its source
 | Priority | Source | Condition | Result |
 |----------|--------|-----------|--------|
 | 1 | Register Remapping Table (RAT) | RAT has a live mapping for this register | The entry's ROB tag is recorded; operand will arrive on CDB |
-| 2 | Reorder Buffer (ROB) forwarding | RAT has a mapping AND that ROB entry is already DONE | The result value is captured directly — no CDB wait |
+| 2 | Reorder Buffer (ROB) forwarding | RAT has a mapping AND that ROB entry is already DONE | The result value is captured directly - no CDB wait |
 | 3 | Architectural register file | No live RAT mapping | The committed register value is used immediately |
 
 This is implemented in `include/dispatch_utils.h` (`resolve_operand`).
@@ -99,11 +99,11 @@ Every instruction passes through the same five stages:
 | **Write-back** | Result broadcast on the Common Data Bus (CDB); every RS and LSB entry watching that ROB tag captures the value |
 | **Commit** | ROB head entry retires in program order; result written to architectural register file; RAT entry cleared |
 
-Stores have a modified path — they reach DONE in the LSB but only write memory at the **Commit** stage when they reach the ROB head.
+Stores have a modified path - they reach DONE in the LSB but only write memory at the **Commit** stage when they reach the ROB head.
 
 ---
 
-## Integer ALU — R-type
+## Integer ALU - R-type
 
 `ADD` `SUB` `AND` `OR` `XOR` `SLL` `SRL` `SRA`
 
@@ -113,7 +113,7 @@ Stores have a modified path — they reach DONE in the LSB but only write memory
 
 | Field | Bits | Purpose |
 |-------|------|---------|
-| `opcode` | 6:0 | `0110011` — integer register-register |
+| `opcode` | 6:0 | `0110011` - integer register-register |
 | `rd` | 11:7 | Destination register |
 | `funct3` | 14:12 | Operation family (add/sub, shift, logical) |
 | `rs1` | 19:15 | First source register |
@@ -140,13 +140,13 @@ Stores have a modified path — they reach DONE in the LSB but only write memory
 | Dispatched to | Integer Reservation Station (`RS_INT_SIZE` slots) |
 | Functional unit | Integer ALU |
 | Latency | 1 cycle |
-| Pipelined | yes — accepts a new op every cycle |
+| Pipelined | yes - accepts a new op every cycle |
 | Result destination | Integer register file (`x0`–`x31`) |
 | `x0` behaviour | Reads always return 0; writes are silently discarded |
 
 ---
 
-## Integer ALU — I-type
+## Integer ALU - I-type
 
 `ADDI` `ANDI` `ORI` `XORI` `SLTI` `SLTIU` `SLLI` `SRLI` `SRAI`
 
@@ -156,7 +156,7 @@ Stores have a modified path — they reach DONE in the LSB but only write memory
 
 | Field | Bits | Purpose |
 |-------|------|---------|
-| `opcode` | 6:0 | `0010011` — integer immediate |
+| `opcode` | 6:0 | `0010011` - integer immediate |
 | `rd` | 11:7 | Destination register |
 | `funct3` | 14:12 | Operation selector |
 | `rs1` | 19:15 | Source register |
@@ -206,8 +206,8 @@ For the shift instructions the immediate field doubles as an encoded sub-opcode 
 | Field | Bits | Purpose |
 |-------|------|---------|
 | `opcode` | 6:0 | `0000011` (LW) or `0000111` (FLW) |
-| `rd` | 11:7 | Destination — integer `rd` for LW, FP `fd` for FLW |
-| `funct3` | 14:12 | `010` — word width |
+| `rd` | 11:7 | Destination - integer `rd` for LW, FP `fd` for FLW |
+| `funct3` | 14:12 | `010` - word width |
 | `rs1` | 19:15 | Base address register |
 | `imm[11:0]` | 31:20 | Signed byte offset |
 
@@ -238,15 +238,15 @@ Reassemble: `imm = { inst[31:25], inst[11:7] }`, then sign-extend.
 | `WAITING` | CDB broadcasts base register value | Operand captured; effective address = `rs1 + sext(imm)` computed |
 | `ADDR_READY` | No earlier store aliases this address (or aliasing store is DONE) | Load begins memory access or forwards data from LSB |
 | `EXECUTING` | `cycles_rem` countdown reaches 0 | Memory word read; result placed in entry |
-| `DONE` | — | Result broadcast on CDB; slot freed after commit |
+| `DONE` | - | Result broadcast on CDB; slot freed after commit |
 
 **Aliasing rules for loads:** when an earlier store is in the LSB with the same effective address, the load checks its state:
 
 | Earlier store state | Load action |
 |--------------------|-------------|
-| `WAITING` — address not yet known | Load is blocked |
-| `ADDR_READY` or `EXECUTING` — address known, data not yet | Load is blocked |
-| `DONE` — address and data both known | Load gets the data directly from the LSB entry (no memory access) |
+| `WAITING` - address not yet known | Load is blocked |
+| `ADDR_READY` or `EXECUTING` - address known, data not yet | Load is blocked |
+| `DONE` - address and data both known | Load gets the data directly from the LSB entry (no memory access) |
 | Non-aliasing address (any state) | Load proceeds |
 
 ### Store lifecycle
@@ -259,7 +259,7 @@ Stores never write memory inside the pipeline. They sit in the LSB until the **C
 |----------|-------|
 | Dispatched to | Load/Store Buffer (`LSB_SIZE` slots, circular, program-order) |
 | Latency | 2 cycles |
-| Pipelined | no — one memory access in flight at a time |
+| Pipelined | no - one memory access in flight at a time |
 | Memory | Word-addressed; byte address = word index x 4; `MEM_SIZE` = 1024 words |
 | Store commit | At ROB head only, via `CommitUnit::commit_store()` |
 
@@ -284,7 +284,7 @@ Stores never write memory inside the pipeline. They sit in the LSB until the **C
 | `imm[10:5]` | 30:25 | offset bits 10:5 |
 | `imm[12]` | 31 | offset sign bit |
 
-Offset bit 0 is always 0 — branch targets must be 2-byte aligned. Full reassembly:
+Offset bit 0 is always 0 - branch targets must be 2-byte aligned. Full reassembly:
 
 ```
 offset = sext({ inst[31], inst[7], inst[30:25], inst[11:8], 1'b0 })
@@ -307,7 +307,7 @@ offset = sext({ inst[31], inst[7], inst[30:25], inst[11:8], 1'b0 })
 |-------|---------|
 | Dispatch | Instruction placed in integer RS; operands resolved normally |
 | Both `rs1` and `rs2` ready | RS computes condition and target `PC + offset` |
-| Prediction | Not-taken — fetch continues sequentially from `PC + 4` |
+| Prediction | Not-taken - fetch continues sequentially from `PC + 4` |
 | Branch not taken (prediction correct) | ROB entry commits silently; no pipeline change |
 | Branch taken (misprediction) | ROB, RS, and LSB fully flushed; PC redirected to target; RAT restored |
 
@@ -389,9 +389,9 @@ offset = sext({ inst[31], inst[7], inst[30:25], inst[11:8], 1'b0 })
 | Field | Bits | Purpose |
 |-------|------|---------|
 | `opcode` | 6:0 | `1010011` |
-| `rd / fd` | 11:7 | Destination — integer file for float-to-int, FP file for int-to-float |
+| `rd / fd` | 11:7 | Destination - integer file for float-to-int, FP file for int-to-float |
 | `rm` | 14:12 | Rounding mode (same encoding as FP arithmetic) |
-| `rs1 / fs1` | 19:15 | Source — FP file for float-to-int, integer file for int-to-float |
+| `rs1 / fs1` | 19:15 | Source - FP file for float-to-int, integer file for int-to-float |
 | `rs2` | 24:20 | Conversion sub-type: `00000` = signed, `00001` = unsigned |
 | `fmt` | 26:25 | `00` = single-precision |
 | `funct5` | 31:27 | Direction: `11000` = float-to-int, `11010` = int-to-float |
@@ -430,11 +430,11 @@ The ROB entry carries a `rd_fp` flag. At commit the `CommitUnit` reads this flag
 
 ## Register Files
 
-### Integer registers — `x0`–`x31`
+### Integer registers - `x0`–`x31`
 
 | Register | ABI name | Conventional role |
 |----------|----------|-------------------|
-| `x0` | `zero` | Hardwired 0 — reads return 0, writes ignored |
+| `x0` | `zero` | Hardwired 0 - reads return 0, writes ignored |
 | `x1` | `ra` | Return address |
 | `x2` | `sp` | Stack pointer |
 | `x3` | `gp` | Global pointer |
@@ -447,7 +447,7 @@ The ROB entry carries a `rd_fp` flag. At commit the `CommitUnit` reads this flag
 
 The simulator accepts both `x`-numbered names and ABI aliases in assembly source.
 
-### FP registers — `f0`–`f31`
+### FP registers - `f0`–`f31`
 
 | Register | ABI name | Conventional role |
 |----------|----------|-------------------|
@@ -462,9 +462,9 @@ All 32 FP registers hold IEEE 754 single-precision values. The simulator stores 
 
 ---
 
-## Timing Summary — Software Simulator
+## Timing Summary - Software Simulator
 
-All values are in clock cycles. Constants are in `sim/sim_soft/include/config.h` — change any value and recompile; every component picks it up automatically.
+All values are in clock cycles. Constants are in `sim/sim_soft/include/config.h` - change any value and recompile; every component picks it up automatically.
 
 | Group | Instructions | Latency | Pipelined | Dispatched to | Result to |
 |-------|-------------|---------|-----------|---------------|-----------|
@@ -477,11 +477,11 @@ All values are in clock cycles. Constants are in `sim/sim_soft/include/config.h`
 | FP multiply | FMUL.S | 4 | yes | FP RS | FP RF |
 | FP divide | FDIV.S | 8 | **no** | FP RS | FP RF |
 | FP convert | FCVT.W.S FCVT.WU.S FCVT.S.W FCVT.S.WU | 2 | yes | FP RS | Int or FP RF |
-| NOP / HALT | NOP HALT | 1 | no | Int RS | — |
+| NOP / HALT | NOP HALT | 1 | no | Int RS | - |
 
 ---
 
-## Timing Summary — Hardware
+## Timing Summary - Hardware
 
 > **Work in progress.** The hardware implementation (SystemVerilog RTL) is not yet complete. This table will be filled in with measured post-synthesis cycle counts once the hardware simulator is functional. See [hardware-sim.md](hardware-sim.md) and [hardware.md](hardware.md) for current status.
 

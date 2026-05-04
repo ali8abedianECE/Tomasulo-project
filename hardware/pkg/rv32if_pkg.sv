@@ -20,7 +20,7 @@ package rv32if_pkg;
   parameter  RS_BRANCH_SIZE = 2; ///< Branch RS slots (BEQ/BNE/BLT/BGE/JAL/JALR).
   parameter  RS_FP_ADDSUB_SIZE = 3; ///< FP add/sub RS slots (FADD.S, FSUB.S).
   parameter  RS_FP_MUL_SIZE = 2; ///< FP multiply RS slots (FMUL.S).
-  parameter  RS_FP_DIV_SIZE = 2; ///< FP divide RS slots (FDIV.S — unpipelined).
+  parameter  RS_FP_DIV_SIZE = 2; ///< FP divide RS slots (FDIV.S - unpipelined).
   parameter  RS_FP_CVT_SIZE = 2; ///< FP conversion RS slots (FCVT.W.S, FCVT.S.W).
   parameter  LSB_SIZE = 8; ///< Load/store buffer entries.
   parameter  NUM_INT_REGS = 32; ///< Integer architectural registers (x0-x31).
@@ -31,7 +31,7 @@ package rv32if_pkg;
   // Bit widths 
   parameter  DATA_W = 32; ///< Data path width in bits.
   parameter  ARCH_W = 5; ///< Architectural register index width (log2 of 32).
-  parameter  TAG_W = 4; ///< ROB tag width — 4 bits supports ROB_SIZE up to 16.
+  parameter  TAG_W = 4; ///< ROB tag width - 4 bits supports ROB_SIZE up to 16.
   parameter  PC_W = 32; ///< Program counter width in bits.
 
   // Execution latencies 
@@ -40,11 +40,11 @@ package rv32if_pkg;
    *  @{
    */
   parameter  LAT_INT_ALU = 1; ///< ADD, SUB, AND, OR, XOR, shifts, ADDI variants.
-  parameter  LAT_INT_LS = 2; ///< LW, SW — single memory-access stage.
+  parameter  LAT_INT_LS = 2; ///< LW, SW - single memory-access stage.
   parameter  LAT_BRANCH = 1; ///< BEQ, BNE, BLT, BGE, JAL, JALR.
   parameter  LAT_FP_ADDSUB = 2; ///< FADD.S, FSUB.S.
   parameter  LAT_FP_MUL = 4; ///< FMUL.S.
-  parameter  LAT_FP_DIV = 8; ///< FDIV.S — unpipelined; stalls the FP divide unit.
+  parameter  LAT_FP_DIV = 8; ///< FDIV.S - unpipelined; stalls the FP divide unit.
   parameter  LAT_FP_LS= 2; ///< FLW, FSW.
   parameter  LAT_FP_CVT = 2; ///< FCVT.W.S, FCVT.S.W.
   /** @} */
@@ -87,8 +87,8 @@ package rv32if_pkg;
     OP_FDIV_S = 6'd26, ///< fd = fs1 / fs2  (unpipelined)
     OP_FLW = 6'd27, ///< fd = Mem[rs1 + imm]  (float load)
     OP_FSW = 6'd28, ///< Mem[rs1 + imm] = fs2  (float store)
-    OP_FCVT_W_S = 6'd29, ///< rd = (int32_t) fs1   — f-reg src, x-reg dst
-    OP_FCVT_S_W = 6'd30, ///< fd = (float)   rs1   — x-reg src, f-reg dst
+    OP_FCVT_W_S = 6'd29, ///< rd = (int32_t) fs1   - f-reg src, x-reg dst
+    OP_FCVT_S_W = 6'd30, ///< fd = (float)   rs1   - x-reg src, f-reg dst
     OP_NOP = 6'd62, ///< No operation.
     OP_HALT= 6'd63 ///< Stop simulation / pipeline drain.
   } opcode_e;
@@ -124,7 +124,7 @@ package rv32if_pkg;
    */
   typedef struct packed {
     logic [TAG_W-1:0]  tag; ///< ROB index of the completing instruction.
-    logic [DATA_W-1:0] value; ///< Result bits — int32 or float, reinterpreted at writeback.
+    logic [DATA_W-1:0] value; ///< Result bits - int32 or float, reinterpreted at writeback.
     logic valid; ///< 1 -> this slot carries a live result this cycle.
   } cdb_t;
 

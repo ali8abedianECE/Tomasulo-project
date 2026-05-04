@@ -31,7 +31,7 @@ struct ROBEntry {
 };
 
 /**
- * @brief Reorder buffer — tracks all in-flight instructions in program order.
+ * @brief Reorder buffer - tracks all in-flight instructions in program order.
  *
  * Implemented as a circular buffer of ROB_SIZE entries (from config.h).
  * The ROB tag returned by allocate() is the stable array index and is used
@@ -85,7 +85,7 @@ public:
     /**
      * @brief Read an entry by tag without removing it.
      *
-     * Used at dispatch for operand forwarding — callers check the entry state
+     * Used at dispatch for operand forwarding - callers check the entry state
      * before using the result.
      *
      * @param[in] rob_tag  ROB index to inspect.

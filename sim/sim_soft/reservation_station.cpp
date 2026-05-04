@@ -44,17 +44,17 @@ static uint32_t execute_op(const RSEntry& e) {
         case Opcode::XORI: return uj ^ static_cast<uint32_t>(e.imm);
         case Opcode::SLLI: return static_cast<uint32_t>(sj << (e.imm & 0x1F));
         case Opcode::SRLI: return uj >> (e.imm & 0x1F);
-        /* Load/store — produce effective address; memory access is in LSB */
+        /* Load/store - produce effective address; memory access is in LSB */
         case Opcode::LW:
         case Opcode::FLW:
         case Opcode::SW:
         case Opcode::FSW:  return static_cast<uint32_t>(sj + e.imm);
-        /* Branch — result is the resolved target PC (pc+imm if taken, pc+4 if not). */
+        /* Branch - result is the resolved target PC (pc+imm if taken, pc+4 if not). */
         case Opcode::BEQ:  return (sj == sk) ? (e.pc + static_cast<uint32_t>(e.imm)) : (e.pc + 4u);
         case Opcode::BNE:  return (sj != sk) ? (e.pc + static_cast<uint32_t>(e.imm)) : (e.pc + 4u);
         case Opcode::BLT:  return (sj <  sk) ? (e.pc + static_cast<uint32_t>(e.imm)) : (e.pc + 4u);
         case Opcode::BGE:  return (sj >= sk) ? (e.pc + static_cast<uint32_t>(e.imm)) : (e.pc + 4u);
-        /* Jump-and-link — result is the jump target PC; commit writes PC+4 to rd separately. */
+        /* Jump-and-link - result is the jump target PC; commit writes PC+4 to rd separately. */
         case Opcode::JAL:  return e.pc + static_cast<uint32_t>(e.imm);
         case Opcode::JALR: return (static_cast<uint32_t>(sj + e.imm)) & ~1u;
         /* FP ALU */

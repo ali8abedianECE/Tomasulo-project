@@ -43,7 +43,7 @@ struct LSBEntry {
 };
 
 /**
- * @brief Load/store buffer — ordered queue for all memory operations.
+ * @brief Load/store buffer - ordered queue for all memory operations.
  *
  * Implemented as a circular buffer so program order is preserved.  Only load and
  * store instructions go here; ALU ops go to the ReservationStation.
@@ -51,7 +51,7 @@ struct LSBEntry {
  * Memory ordering:
  *   A load may execute once its address is known AND every earlier store in the
  *   LSB either has a known non-aliasing address or can forward its data directly.
- *   Stores never write memory here — commit_store() is called by the CommitUnit
+ *   Stores never write memory here - commit_store() is called by the CommitUnit
  *   when the store reaches the ROB head, preserving in-order memory writes.
  */
 class LoadStoreBuffer {
