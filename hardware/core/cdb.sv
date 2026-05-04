@@ -30,29 +30,36 @@ module cdb(clk, rst_n, fu_results_i, cdb_o, fu_grant_o);
     output cdb_t cdb_o;  ///< Winning broadcast this cycle.
     output logic [NUM_FU-1:0] fu_grant_o; ///< 1-hot: tells each FU it was served this cycle.
 
-    logic [NUM_FU-1:0]              valid_vec;   ///< Valid bits packed from fu_results_i.
-    logic [NUM_FU-1:0]              grant_vec;   ///< 1-hot grant from arbiter.
-    logic [NUM_FU-1:0]              base;        ///< 1-hot start: slot after last_grant.
-    logic [NUM_FU-1:0]              last_grant;  ///< 1-hot last winner (registered).
-    logic [$clog2(NUM_FU)-1:0]      grant_idx;   ///< Binary index of winning FU.
-    logic                           grant_valid; ///< At least one FU has a result.
+    localparam IDX_W = $clog2(NUM_FU);
 
-    assign valid_vec   = {fu_results_i[6].valid, fu_results_i[5].valid,
-                          fu_results_i[4].valid, fu_results_i[3].valid,
-                          fu_results_i[2].valid, fu_results_i[1].valid,
-                          fu_results_i[0].valid};
+    logic [NUM_FU-1:0] valid_vec;           ///< Valid bits packed from fu_results_i.
+    logic [NUM_FU-1:0] grant_vec;           ///< 1-hot grant from arbiter.
+    logic [NUM_FU-1:0] base;                ///< 1-hot start: slot after last_grant.
+    logic [NUM_FU-1:0] last_grant;          ///< 1-hot last winner (registered).
+    logic [IDX_W-1:0]  grant_idx;           ///< Binary index of winning FU.
+    logic              grant_valid;         ///< At least one FU has a result.
+    logic [IDX_W-1:0]  idx_terms   [NUM_FU]; ///< Per-FU masked index (non-zero only for winner).
+    logic [IDX_W-1:0]  idx_reduce  [NUM_FU]; ///< Prefix-OR chain; last entry is grant_idx.
+
     assign base        = {last_grant[NUM_FU-2:0], last_grant[NUM_FU-1]};
     assign fu_grant_o  = grant_vec;
     assign grant_valid = |grant_vec;
 
-    // 1-hot to binary: only one term contributes since grant_vec is 1-hot
-    assign grant_idx = ({3{grant_vec[6]}} & 3'd6) |
-                       ({3{grant_vec[5]}} & 3'd5) |
-                       ({3{grant_vec[4]}} & 3'd4) |
-                       ({3{grant_vec[3]}} & 3'd3) |
-                       ({3{grant_vec[2]}} & 3'd2) |
-                       ({3{grant_vec[1]}} & 3'd1) |
-                       ({3{grant_vec[0]}} & 3'd0);
+    // 1-hot to binary via genvar: mask each slot's index, then prefix-OR reduce
+    genvar i;
+    generate
+        for (i = 0; i < NUM_FU; i++) begin : gen_terms
+            assign valid_vec[i] = fu_results_i[i].valid;
+            assign idx_terms[i] = {IDX_W{grant_vec[i]}} & IDX_W'(i);
+        end
+
+        assign idx_reduce[0] = idx_terms[0];
+        for (i = 1; i < NUM_FU; i++) begin : gen_reduce
+            assign idx_reduce[i] = idx_reduce[i-1] | idx_terms[i];
+        end
+    endgenerate
+
+    assign grant_idx = idx_reduce[NUM_FU-1];
 
     arbiter #(.WIDTH(NUM_FU)) u_arb(.req(valid_vec), .grant(grant_vec), .base(base));
 
