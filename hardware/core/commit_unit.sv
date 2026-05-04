@@ -1,12 +1,12 @@
 module commit_unit(
-                    commit_valid_i, commit_entry_i, 
-                    commit_en_o, 
+                    commit_valid_i, commit_entry_i, commit_tag_i,
+                    commit_en_o,
 
                     // Integer reg file commit interface
                     x_wr_en_o, x_wr_addr_o, x_wr_val_o,
 
                     // FP reg file commit interface
-                    f_wr_en_o, f_wr_addr_o, f_wr_val_o
+                    f_wr_en_o, f_wr_addr_o, f_wr_val_o,
 
                     // RAT clear (INT)
                     x_commit_en_o, x_commit_addr_o, x_commit_tag_o,
@@ -16,38 +16,88 @@ module commit_unit(
 
                     // Branch misprediction interface
                     flush_o, redirect_pc_o
-                    ); 
+                    );
     import rv32if_pkg::*;
 
     input logic commit_valid_i; ///< Indicates that the head entry of the ROB is valid and can be committed.
-    input rob_entry_t commit_entry_i; ///< Tag of the head entry being committed.
+    input rob_entry_t commit_entry_i; ///< Full ROB head entry to retire.
+    input logic [TAG_W-1:0] commit_tag_i; ///< ROB tag (head index) of the committing entry.
 
-    output logic commit_en_o; ///< Enable signal for committing the head entry of the ROB.
+    output logic commit_en_o; ///< Pulses high to tell ROB to advance its head.
 
     // Integer reg file commit interface
     output logic x_wr_en_o; ///< Write enable signal for the integer register file.
-    output logic [ARCH_W-1:0] x_wr_addr_o; ///< Address of the destination register for integer write operations.
-    output logic [DATA_W-1:0] x_wr_val_o; ///< Value to be written to the integer register file when write enable is active.
+    output logic [ARCH_W-1:0] x_wr_addr_o; ///< Destination register address for integer write.
+    output logic [DATA_W-1:0] x_wr_val_o; ///< Value to write to the integer register file.
 
     // FP reg file commit interface
     output logic f_wr_en_o; ///< Write enable signal for the floating-point register file.
-    output logic [ARCH_W-1:0] f_wr_addr_o; ///< Address of the destination register for floating-point write operations.
-    output logic [DATA_W-1:0] f_wr_val_o; ///< Value to be written to the floating-point register file when write enable is active.
+    output logic [ARCH_W-1:0] f_wr_addr_o; ///< Destination register address for FP write.
+    output logic [DATA_W-1:0] f_wr_val_o; ///< Value to write to the floating-point register file.
 
     // RAT clear (INT)
-    output logic x_commit_en_o; ///< Enable signal for committing an integer register mapping.
-    output logic [ARCH_W-1:0] x_commit_addr_o; ///< Address of the integer register to be committed.
-    output logic [TAG_W-1:0] x_commit_tag_o; ///< Tag associated with the integer register mapping to be committed.
+    output logic x_commit_en_o; ///< Enable signal for clearing integer RAT mapping.
+    output logic [ARCH_W-1:0] x_commit_addr_o; ///< Integer register address to clear in RAT.
+    output logic [TAG_W-1:0] x_commit_tag_o; ///< Tag to match before clearing integer RAT entry.
 
     // RAT clear (FP)
-    output logic f_commit_en_o; ///< Enable signal for committing a floating-point register mapping.
-    output logic [ARCH_W-1:0] f_commit_addr_o; ///< Address of the floating-point register to be committed.
-    output logic [TAG_W-1:0] f_commit_tag_o; ///< Tag associated with the floating-point register mapping to be committed.
+    output logic f_commit_en_o; ///< Enable signal for clearing FP RAT mapping.
+    output logic [ARCH_W-1:0] f_commit_addr_o; ///< FP register address to clear in RAT.
+    output logic [TAG_W-1:0] f_commit_tag_o; ///< Tag to match before clearing FP RAT entry.
 
     // Branch misprediction interface
-    output logic flush_o; ///< Signal to flush the pipeline, typically on branch misprediction or exception.
-    output logic [PC_W-1:0] redirect_pc_o; ///< Target address for redirecting the program counter on branch misprediction.
+    output logic flush_o; ///< Flush the pipeline on branch misprediction (predict not-taken).
+    output logic [PC_W-1:0] redirect_pc_o; ///< Redirect PC to resolved branch target on flush.
 
-    
+    always_comb begin
+        commit_en_o = commit_valid_i;
+
+        // defaults
+        x_wr_en_o = 1'b0; 
+        x_wr_addr_o = '0; 
+        x_wr_val_o = '0;
+
+        f_wr_en_o = 1'b0; 
+        f_wr_addr_o = '0; 
+        f_wr_val_o = '0;
+
+        x_commit_en_o = 1'b0; 
+        x_commit_addr_o = '0; 
+        x_commit_tag_o = '0;
+
+        f_commit_en_o = 1'b0; 
+        f_commit_addr_o = '0; 
+        f_commit_tag_o = '0;
+
+        flush_o = 1'b0;
+        redirect_pc_o = '0;
+        if (commit_valid_i) begin
+            // write to integer regfile and clear INT RAT mapping
+            if (commit_entry_i.rd_valid && ~commit_entry_i.rd_fp) begin
+                x_wr_en_o = 1'b1;
+                x_wr_addr_o = commit_entry_i.rd;
+                x_wr_val_o = commit_entry_i.result;
+                x_commit_en_o = 1'b1;
+                x_commit_addr_o = commit_entry_i.rd;
+                x_commit_tag_o = commit_tag_i;
+            end
+
+            // write to FP regfile and clear FP RAT mapping
+            if (commit_entry_i.rd_valid && commit_entry_i.rd_fp) begin
+                f_wr_en_o = 1'b1;
+                f_wr_addr_o = commit_entry_i.rd;
+                f_wr_val_o = commit_entry_i.result;
+                f_commit_en_o = 1'b1;
+                f_commit_addr_o = commit_entry_i.rd;
+                f_commit_tag_o = commit_tag_i;
+            end
+
+            // flush on misprediction: predict not-taken, so flush when branch is taken
+            if (commit_entry_i.is_branch && commit_entry_i.branch_taken) begin
+                flush_o = 1'b1;
+                redirect_pc_o = commit_entry_i.branch_target;
+            end
+        end
+    end
 
 endmodule : commit_unit
