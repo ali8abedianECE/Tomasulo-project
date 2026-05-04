@@ -1,3 +1,24 @@
+/**
+ * @brief ROB_SIZE-entry circular reorder buffer for in-order retirement.
+ *
+ * Instructions allocate a slot (tag = tail index) at dispatch and retire in order
+ * from the head. Results arrive out of order via the CDB; branch taken/target arrive
+ * via the br_ port. An entry becomes ROB_DONE when its result is written, and is
+ * retired only when it reaches the head. A (TAG_W+1)-bit count distinguishes full
+ * from empty when head == tail. Flush clears all entries synchronously.
+ *
+ * @param clk Rising-edge clock.
+ * @param rst_n Active-low async reset.
+ * @param flush_i Synchronous flush.
+ * @param alloc_en_i / alloc_instr_i Dispatch allocation request and instruction.
+ * @param alloc_tag_o Assigned ROB tag (tail index).
+ * @param full_o Stall dispatch when all ROB_SIZE slots are occupied.
+ * @param cdb_i CDB broadcast - writes result and sets ROB_DONE on tag match.
+ * @param br_valid_i / br_tag_i / br_taken_i / br_target_i Branch resolution.
+ * @param commit_en_i Commit unit acknowledges retirement, advances head.
+ * @param commit_valid_o Head entry is ROB_DONE and ready to retire.
+ * @param commit_entry_o Full head entry for the commit unit to consume.
+ */
 module rob_unit(clk, rst_n, flush_i, 
                 
                 // Dispatch interface
