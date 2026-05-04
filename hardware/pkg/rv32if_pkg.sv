@@ -166,6 +166,28 @@ package rv32if_pkg;
     logic [PC_W-1:0]branch_target; ///< Resolved branch target PC.
   } rob_entry_t;
 
+  // RS dispatch entry
+  /**
+   * @brief Payload written into a reservation station slot at dispatch.
+   *
+   * Dispatch resolves each source register against the RAT: if the register
+   * is ready (no in-flight write) rs1_ready/rs2_ready is set and the value is
+   * read from the register file. Otherwise the ROB tag is stored and the RS
+   * snoops the CDB each cycle until the tag matches.
+   */
+  typedef struct packed {
+    opcode_e           op;        ///< Decoded opcode.
+    logic [TAG_W-1:0]  rob_tag;   ///< ROB slot assigned to this instruction.
+    logic              rs1_ready; ///< 1 -> rs1_val is valid now; 0 -> waiting on rs1_tag.
+    logic [DATA_W-1:0] rs1_val;   ///< Source 1 value (valid when rs1_ready).
+    logic [TAG_W-1:0]  rs1_tag;   ///< ROB tag to snoop for source 1 (valid when !rs1_ready).
+    logic              rs2_ready; ///< 1 -> rs2_val is valid now; 0 -> waiting on rs2_tag.
+    logic [DATA_W-1:0] rs2_val;   ///< Source 2 value (valid when rs2_ready).
+    logic [TAG_W-1:0]  rs2_tag;   ///< ROB tag to snoop for source 2 (valid when !rs2_ready).
+    logic [DATA_W-1:0] imm;       ///< Sign-extended immediate.
+    logic [PC_W-1:0]   pc;        ///< Instruction byte address.
+  } rs_entry_t;
+
   // Helper functions
 
   /** @brief True if @p op is a conditional branch (BEQ, BNE, BLT, BGE). */
