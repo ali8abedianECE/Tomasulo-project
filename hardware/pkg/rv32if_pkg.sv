@@ -14,39 +14,39 @@ package rv32if_pkg;
    *  up the new value automatically.  Mirrors config.h.
    *  @{
    */
-  parameter int IQ_DEPTH = 8; ///< Instruction queue depth (entries).
-  parameter int ROB_SIZE = 16; ///< Reorder buffer entries.
-  parameter int RS_ALU_SIZE = 6; ///< Integer ALU RS slots (ADD/SUB/logic/shift/imm).
-  parameter int RS_BRANCH_SIZE = 2; ///< Branch RS slots (BEQ/BNE/BLT/BGE/JAL/JALR).
-  parameter int RS_FP_ADDSUB_SIZE = 3; ///< FP add/sub RS slots (FADD.S, FSUB.S).
-  parameter int RS_FP_MUL_SIZE = 2; ///< FP multiply RS slots (FMUL.S).
-  parameter int RS_FP_DIV_SIZE = 2; ///< FP divide RS slots (FDIV.S — unpipelined).
-  parameter int RS_FP_CVT_SIZE = 2; ///< FP conversion RS slots (FCVT.W.S, FCVT.S.W).
-  parameter int LSB_SIZE = 8; ///< Load/store buffer entries.
-  parameter int NUM_INT_REGS = 32; ///< Integer architectural registers (x0-x31).
-  parameter int NUM_FP_REGS = 32; ///< FP architectural registers (f0-f31).
-  parameter int MEM_SIZE = 1024; ///< Data memory capacity in 32-bit words.
+  parameter  IQ_DEPTH = 8; ///< Instruction queue depth (entries).
+  parameter  ROB_SIZE = 16; ///< Reorder buffer entries.
+  parameter  RS_ALU_SIZE = 6; ///< Integer ALU RS slots (ADD/SUB/logic/shift/imm).
+  parameter  RS_BRANCH_SIZE = 2; ///< Branch RS slots (BEQ/BNE/BLT/BGE/JAL/JALR).
+  parameter  RS_FP_ADDSUB_SIZE = 3; ///< FP add/sub RS slots (FADD.S, FSUB.S).
+  parameter  RS_FP_MUL_SIZE = 2; ///< FP multiply RS slots (FMUL.S).
+  parameter  RS_FP_DIV_SIZE = 2; ///< FP divide RS slots (FDIV.S — unpipelined).
+  parameter  RS_FP_CVT_SIZE = 2; ///< FP conversion RS slots (FCVT.W.S, FCVT.S.W).
+  parameter  LSB_SIZE = 8; ///< Load/store buffer entries.
+  parameter  NUM_INT_REGS = 32; ///< Integer architectural registers (x0-x31).
+  parameter  NUM_FP_REGS = 32; ///< FP architectural registers (f0-f31).
+  parameter  MEM_SIZE = 1024; ///< Data memory capacity in 32-bit words.
   /** @} */
 
   // Bit widths 
-  parameter int DATA_W = 32; ///< Data path width in bits.
-  parameter int ARCH_W = 5; ///< Architectural register index width (log2 of 32).
-  parameter int TAG_W = 4; ///< ROB tag width — 4 bits supports ROB_SIZE up to 16.
-  parameter int PC_W = 32; ///< Program counter width in bits.
+  parameter  DATA_W = 32; ///< Data path width in bits.
+  parameter  ARCH_W = 5; ///< Architectural register index width (log2 of 32).
+  parameter  TAG_W = 4; ///< ROB tag width — 4 bits supports ROB_SIZE up to 16.
+  parameter  PC_W = 32; ///< Program counter width in bits.
 
   // Execution latencies 
   /** @defgroup latencies Execution Latencies
    *  Pipeline depth for each functional unit, in cycles.  Mirrors config.h.
    *  @{
    */
-  parameter int LAT_INT_ALU = 1; ///< ADD, SUB, AND, OR, XOR, shifts, ADDI variants.
-  parameter int LAT_INT_LS = 2; ///< LW, SW — single memory-access stage.
-  parameter int LAT_BRANCH = 1; ///< BEQ, BNE, BLT, BGE, JAL, JALR.
-  parameter int LAT_FP_ADDSUB = 2; ///< FADD.S, FSUB.S.
-  parameter int LAT_FP_MUL = 4; ///< FMUL.S.
-  parameter int LAT_FP_DIV = 8; ///< FDIV.S — unpipelined; stalls the FP divide unit.
-  parameter int LAT_FP_LS= 2; ///< FLW, FSW.
-  parameter int LAT_FP_CVT = 2; ///< FCVT.W.S, FCVT.S.W.
+  parameter  LAT_INT_ALU = 1; ///< ADD, SUB, AND, OR, XOR, shifts, ADDI variants.
+  parameter  LAT_INT_LS = 2; ///< LW, SW — single memory-access stage.
+  parameter  LAT_BRANCH = 1; ///< BEQ, BNE, BLT, BGE, JAL, JALR.
+  parameter  LAT_FP_ADDSUB = 2; ///< FADD.S, FSUB.S.
+  parameter  LAT_FP_MUL = 4; ///< FMUL.S.
+  parameter  LAT_FP_DIV = 8; ///< FDIV.S — unpipelined; stalls the FP divide unit.
+  parameter  LAT_FP_LS= 2; ///< FLW, FSW.
+  parameter  LAT_FP_CVT = 2; ///< FCVT.W.S, FCVT.S.W.
   /** @} */
 
   //  Opcode enum 
