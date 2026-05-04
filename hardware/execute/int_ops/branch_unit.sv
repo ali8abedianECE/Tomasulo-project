@@ -4,19 +4,19 @@
  * Resolves the next PC and taken flag. target_o goes to the CDB; the commit
  * unit redirects the IQ and writes the JAL/JALR return address at retirement.
  *
- * @param clk      Rising-edge clock.
- * @param rst_n    Active-low reset.
- * @param valid_i  Operands ready; this entry wins issue.
- * @param op_i     Opcode — OP_BEQ/BNE/BLT/BGE/JAL/JALR.
- * @param tag_i    ROB tag echoed to CDB.
- * @param rs1_i    Condition LHS / JALR base address.
- * @param rs2_i    Condition RHS (unused for JAL/JALR).
- * @param imm_i    Sign-extended branch/jump offset.
- * @param pc_i     Byte address of this instruction.
- * @param valid_o  High for one cycle when outputs are valid.
- * @param tag_o    ROB tag forwarded alongside the result.
+ * @param clk Rising-edge clock.
+ * @param rst_n Active-low reset.
+ * @param valid_i Operands ready; this entry wins issue.
+ * @param op_i Opcode — OP_BEQ/BNE/BLT/BGE/JAL/JALR.
+ * @param tag_i ROB tag echoed to CDB.
+ * @param rs1_i Condition LHS / JALR base address.
+ * @param rs2_i Condition RHS (unused for JAL/JALR).
+ * @param imm_i Sign-extended branch/jump offset.
+ * @param pc_i Byte address of this instruction.
+ * @param valid_o High for one cycle when outputs are valid.
+ * @param tag_o ROB tag forwarded alongside the result.
  * @param target_o Resolved next PC (target if taken, PC+4 if not).
- * @param taken_o  1 = taken or unconditional jump; 0 = not taken.
+ * @param taken_o 1 = taken or unconditional jump; 0 = not taken.
  */
 module branch_unit(clk, rst_n,
                     valid_i, op_i, tag_i, 
