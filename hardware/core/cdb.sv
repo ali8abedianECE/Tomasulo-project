@@ -24,37 +24,42 @@
 module cdb(clk, rst_n, fu_results_i, cdb_o, fu_grant_o);
     import rv32if_pkg::*;
 
-    input  logic clk;
-    input  logic rst_n;
-    input  cdb_t fu_results_i [NUM_FU]; ///< Results from each functional unit.
-    output cdb_t cdb_o;                 ///< Winning broadcast this cycle.
+    input logic clk;
+    input logic rst_n;
+    input cdb_t fu_results_i [NUM_FU]; ///< Results from each functional unit.
+    output cdb_t cdb_o;  ///< Winning broadcast this cycle.
     output logic [NUM_FU-1:0] fu_grant_o; ///< 1-hot: tells each FU it was served this cycle.
 
-    logic [NUM_FU-1:0] valid_vec;   ///< Valid bits packed from fu_results_i.
-    logic [NUM_FU-1:0] grant_vec;   ///< 1-hot grant from arbiter.
-    logic [NUM_FU-1:0] base;        ///< 1-hot start: slot after last_grant.
-    logic [NUM_FU-1:0] last_grant;  ///< 1-hot last winner (registered).
+    logic [NUM_FU-1:0]              valid_vec;   ///< Valid bits packed from fu_results_i.
+    logic [NUM_FU-1:0]              grant_vec;   ///< 1-hot grant from arbiter.
+    logic [NUM_FU-1:0]              base;        ///< 1-hot start: slot after last_grant.
+    logic [NUM_FU-1:0]              last_grant;  ///< 1-hot last winner (registered).
+    logic [$clog2(NUM_FU)-1:0]      grant_idx;   ///< Binary index of winning FU.
+    logic                           grant_valid; ///< At least one FU has a result.
 
-    // Pack valid bits using genvar
-    genvar i;
-    generate
-        for (i = 0; i < NUM_FU; i++) begin : gen_valid
-            assign valid_vec[i] = fu_results_i[i].valid;
-        end
-    endgenerate
+    assign valid_vec   = {fu_results_i[6].valid, fu_results_i[5].valid,
+                          fu_results_i[4].valid, fu_results_i[3].valid,
+                          fu_results_i[2].valid, fu_results_i[1].valid,
+                          fu_results_i[0].valid};
+    assign base        = {last_grant[NUM_FU-2:0], last_grant[NUM_FU-1]};
+    assign fu_grant_o  = grant_vec;
+    assign grant_valid = |grant_vec;
 
-    // Rotate last_grant left by 1 to get next start position
-    assign base      = {last_grant[NUM_FU-2:0], last_grant[NUM_FU-1]};
-    assign fu_grant_o = grant_vec;
+    // 1-hot to binary: only one term contributes since grant_vec is 1-hot
+    assign grant_idx = ({3{grant_vec[6]}} & 3'd6) |
+                       ({3{grant_vec[5]}} & 3'd5) |
+                       ({3{grant_vec[4]}} & 3'd4) |
+                       ({3{grant_vec[3]}} & 3'd3) |
+                       ({3{grant_vec[2]}} & 3'd2) |
+                       ({3{grant_vec[1]}} & 3'd1) |
+                       ({3{grant_vec[0]}} & 3'd0);
 
     arbiter #(.WIDTH(NUM_FU)) u_arb(.req(valid_vec), .grant(grant_vec), .base(base));
 
-    // Select winning FU result; grant_vec is 1-hot so last assignment wins correctly
     always_comb begin
         cdb_o = '{valid: 1'b0, tag: '0, value: '0};
-        for (int j = 0; j < NUM_FU; j++) begin
-            if (grant_vec[j]) cdb_o = fu_results_i[j];
-        end
+        if (grant_valid)
+            cdb_o = fu_results_i[grant_idx];
     end
 
     always_ff @(posedge clk or negedge rst_n) begin
