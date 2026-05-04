@@ -12,8 +12,8 @@
  * @param commit_entry_i Full rob_entry_t from the ROB head.
  * @param commit_tag_i ROB tag (head index) used to match the RAT entry.
  * @param commit_en_o Tells the ROB to advance its head pointer.
- * @param x_wr_*/f_wr_* Integer/FP register file write port.
- * @param x_commit_*/f_commit_* RAT clear port - clears mapping if tag matches.
+ * @param x_wr_f_wr_* Integer/FP register file write port.
+ * @param x_commit_*f_commit_* RAT clear port - clears mapping if tag matches.
  * @param flush_o High for one cycle on branch misprediction.
  * @param redirect_pc_o Correct PC to restart fetch from on flush.
  */
