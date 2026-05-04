@@ -1,3 +1,32 @@
+/**
+ * @brief Register Alias Table (RAT) for integer and FP register files.
+ *
+ * Tracks in-flight register writes during out-of-order execution. Each
+ * architectural register has a {valid, tag} pair. When an instruction is
+ * dispatched, its destination register is mapped to a new ROB tag (valid=1).
+ * Source register lookups return the current tag so the RS can snoop the CDB.
+ * At commit, the entry is cleared only if the stored tag still matches the
+ * committing instruction — a newer dispatch to the same register leaves its
+ * mapping intact. Flush (branch misprediction / exception) invalidates all
+ * entries synchronously.
+ *
+ * Priority: map wins over commit when both target the same register in the
+ * same cycle (map block is evaluated after commit in the always_ff body).
+ *
+ * @param clk Rising-edge clock.
+ * @param rst_n Active-low async reset.
+ * @param flush_i Synchronous flush — clears all valid bits and tags.
+ * @param x_rs1_addr_i / x_rs2_addr_i Integer source register addresses (combinational lookup).
+ * @param x_rs1_tag_o / x_rs1_valid_o Tag and valid for integer rs1.
+ * @param x_rs2_tag_o / x_rs2_valid_o Tag and valid for integer rs2.
+ * @param f_rs1_addr_i / f_rs2_addr_i FP source register addresses (combinational lookup).
+ * @param f_rs1_tag_o / f_rs1_valid_o Tag and valid for FP rs1.
+ * @param f_rs2_tag_o / f_rs2_valid_o Tag and valid for FP rs2.
+ * @param x_map_en_i / x_map_addr_i / x_map_tag_i Integer dispatch mapping (writes ignored for x0).
+ * @param f_map_en_i / f_map_addr_i / f_map_tag_i FP dispatch mapping.
+ * @param x_commit_en_i / x_commit_addr_i / x_commit_tag_i Integer commit — clears entry if tag matches.
+ * @param f_commit_en_i / f_commit_addr_i / f_commit_tag_i FP commit — clears entry if tag matches.
+ */
 module rat_table(clk, rst_n, flush_i,
                  //Dispatch lookup for source registers INT
                 x_rs1_addr_i, x_rs1_tag_o, x_rs1_valid_o,
