@@ -1,23 +1,21 @@
 
-/* 
- * @brief ALU unit for integer operations (ADD, SUB, AND, OR, XOR, shifts, ADDI variants).
- * Based upon the opcode and input operands, performs the appropriate computation and produces the result.
- * 
- * Supported operations:
- * - OP_ADD: result_o = rs1_i + rs2_i
- * - OP_SUB: result_o = rs1_i - rs2_i
- * - OP_AND: result_o = rs1_i & rs2_i
- * - OP_OR: result_o = rs1_i | rs2_i
- * - OP_XOR: result_o = rs1_i ^ rs2_i
- * - OP_SLL: result_o = rs1_i << (rs2_i[4:0]) // Shift left logical
- * - OP_SRL: result_o = rs1_i >> (rs2_i[4:0]) // Shift right logical
- * - OP_SRA: result_o = rs1_i >>> (rs2_i[4:0]) // Shift right arithmetic
- * - OP_ADDI: result_o = rs1_i + imm_i
- * - OP_ANDI: result_o = rs1_i & imm_i
- * - OP_ORI: result_o = rs1_i | imm_i
- * - OP_XORI: result_o = rs1_i ^ imm_i
- * - OP_SLLI: result_o = rs1_i << (imm_i[4:0]) // Shift left logical immediate
- * - OP_SRLI: result_o = rs1_i >> (imm_i[4:0]) // Shift right logical immediate
+/**
+ * @brief 1-cycle integer ALU (ADD/SUB/AND/OR/XOR/SLL/SRL/SRA, I-type variants, LUI).
+ *
+ * Combinatorially computes result_next then registers it on the rising edge.
+ * result_o and tag_o are valid the cycle after valid_i is asserted.
+ *
+ * @param clk Rising-edge clock.
+ * @param rst_n Active-low reset.
+ * @param valid_i Operands ready; this entry wins issue.
+ * @param op_i Opcode — OP_ADD/SUB/AND/OR/XOR/SLL/SRL/SRA/ADDI/ANDI/ORI/XORI/SLLI/SRLI/LUI.
+ * @param tag_i ROB tag echoed to CDB.
+ * @param rs1_i Source register 1.
+ * @param rs2_i Source register 2 (R-type only).
+ * @param imm_i Sign-extended immediate (I-type / LUI pre-shifted by decode).
+ * @param valid_o High for one cycle when result_o is valid.
+ * @param tag_o ROB tag forwarded alongside the result.
+ * @param result_o Computed 32-bit result.
  */
 module alu_int(clk, rst_n, 
            op_i, valid_i, 
@@ -74,7 +72,7 @@ module alu_int(clk, rst_n,
     end
 
     always_ff @(posedge clk or negedge rst_n) begin
-        if (!rst_n) begin
+        if (~rst_n) begin
             result_o <= 0;
             valid_o <= 0;
             tag_o <= 0;
@@ -87,4 +85,4 @@ module alu_int(clk, rst_n,
         end
     end
 
-endmodule
+endmodule : alu_int
