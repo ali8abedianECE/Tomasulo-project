@@ -23,6 +23,12 @@ package rv32if_pkg;
   parameter  RS_FP_DIV_SIZE = 2; ///< FP divide RS slots (FDIV.S - unpipelined).
   parameter  RS_FP_CVT_SIZE = 2; ///< FP conversion RS slots (FCVT.W.S, FCVT.S.W).
   parameter  LSB_SIZE = 8; ///< Load/store buffer entries.
+  /**
+   * Number of functional units that can broadcast a result on the CDB.
+   * One slot per unit: INT ALU, Branch, FP add/sub, FP mul, FP div, Load, FP cvt.
+   * Increase this if a new execution unit is added; the CDB arbiter scales automatically.
+   */
+  parameter  NUM_FU = 7;
   parameter  NUM_INT_REGS = 32; ///< Integer architectural registers (x0-x31).
   parameter  NUM_FP_REGS = 32; ///< FP architectural registers (f0-f31).
   parameter  MEM_SIZE = 1024; ///< Data memory capacity in 32-bit words.
