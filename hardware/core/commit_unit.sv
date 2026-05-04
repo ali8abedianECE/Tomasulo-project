@@ -1,3 +1,22 @@
+/**
+ * @brief Combinational in-order retirement unit.
+ *
+ * Each cycle reads the ROB head entry and, if it is ROB_DONE, drives all
+ * retirement signals: writes the result to the architectural register file,
+ * clears the RAT mapping (tag-matched), and pulses commit_en_o to advance
+ * the ROB head. For branch instructions a predict-not-taken policy is used:
+ * if the branch resolved as taken, flush_o fires and redirect_pc_o carries
+ * the resolved target so the fetch stage can restart from the correct PC.
+ *
+ * @param commit_valid_i Head ROB entry is ROB_DONE and ready to retire.
+ * @param commit_entry_i Full rob_entry_t from the ROB head.
+ * @param commit_tag_i ROB tag (head index) used to match the RAT entry.
+ * @param commit_en_o Tells the ROB to advance its head pointer.
+ * @param x_wr_*/f_wr_* Integer/FP register file write port.
+ * @param x_commit_*/f_commit_* RAT clear port - clears mapping if tag matches.
+ * @param flush_o High for one cycle on branch misprediction.
+ * @param redirect_pc_o Correct PC to restart fetch from on flush.
+ */
 module commit_unit(
                     commit_valid_i, commit_entry_i, commit_tag_i,
                     commit_en_o,
