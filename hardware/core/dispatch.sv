@@ -10,8 +10,8 @@
  * @param iq_valid_i / iq_instr_i Instruction at the head of the IQ.
  * @param iq_rd_en_o Pop signal - dequeues the instruction when dispatch succeeds.
  * @param rob_full_i / rob_alloc_en_o / rob_alloc_instr_o / rob_alloc_tag_i ROB allocation.
- * @param x_rs*/f_rs* RAT lookup outputs and regfile values for rs1/rs2.
- * @param x_map*/f_map* RAT write port to map rd to the new ROB tag.
+ * @param x_rsf_rs* RAT lookup outputs and regfile values for rs1/rs2.
+ * @param x_mapf_map* RAT write port to map rd to the new ROB tag.
  * @param *_valid_o / *_full_i / *_entry_o Per-RS dispatch interface.
  */
 module dispatch(// Instruction Queue interface
