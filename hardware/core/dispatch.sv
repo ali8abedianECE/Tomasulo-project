@@ -1,5 +1,5 @@
 /**
- * @brief Combinational dispatch unit - routes IQ head to the correct RS each cycle.
+ * @brief Combinational dispatch unit - - routes IQ head to the correct RS each cycle.
  *
  * Reads the RAT to resolve source operands: if a register is in-flight the RS
  * entry carries the ROB tag to snoop; if ready the register file value is
