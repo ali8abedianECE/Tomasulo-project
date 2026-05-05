@@ -21,24 +21,24 @@ module instr_queue(clk, rst_n, flush_i,
                    pop_en_i, instr_o, valid_o);
     import rv32if_pkg::*;
 
-    input  logic   clk;
-    input  logic   rst_n;
-    input  logic   flush_i;
+    input logic clk;
+    input logic rst_n;
+    input logic flush_i;
 
-    input  logic   push_en_i;
-    input  instr_t push_instr_i;
-    output logic   full_o;
+    input logic push_en_i;
+    input instr_t push_instr_i;
+    output logic full_o;
 
-    input  logic   pop_en_i;
+    input logic pop_en_i;
     output instr_t instr_o;
-    output logic   valid_o;
+    output logic valid_o;
 
     localparam PTR_W = $clog2(IQ_DEPTH);
 
-    instr_t           entries [IQ_DEPTH];
+    instr_t entries [IQ_DEPTH];
     logic [PTR_W-1:0] head;
     logic [PTR_W-1:0] tail;
-    logic [PTR_W:0]   count;
+    logic [PTR_W:0] count;
 
     assign full_o  = (count == IQ_DEPTH);
     assign valid_o = (count != 0);
@@ -46,13 +46,13 @@ module instr_queue(clk, rst_n, flush_i,
 
     always_ff @(posedge clk or negedge rst_n) begin
         if (~rst_n || flush_i) begin
-            head  <= '0;
-            tail  <= '0;
+            head <= '0;
+            tail <= '0;
             count <= '0;
         end else begin
             if (push_en_i && !full_o) begin
                 entries[tail] <= push_instr_i;
-                tail          <= tail + 1;
+                tail <= tail + 1;
             end
 
             if (pop_en_i && valid_o) begin
