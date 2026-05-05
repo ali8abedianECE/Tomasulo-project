@@ -87,12 +87,12 @@ module load_store_buffer(clk, rst_n, flush_i,
     assign any_store_ready  = |store_ready_vec;
     assign store_notify_idx = store_chain[0];
 
-    assign full          = (count == (PTR_W+1)'(LSB_SIZE));
-    assign fu_ready_o    = ~full;
-    assign head_ready    = entries[head].rs1_ready & entries[head].rs2_ready;
-    assign head_is_load  = is_load_op(entries[head].op);
+    assign full = (count == (PTR_W+1)'(LSB_SIZE));
+    assign fu_ready_o = ~full;
+    assign head_ready = entries[head].rs1_ready & entries[head].rs2_ready;
+    assign head_is_load = is_load_op(entries[head].op);
     assign head_is_store = is_store_op(entries[head].op);
-    assign head_addr     = entries[head].rs1_val + entries[head].imm;
+    assign head_addr = entries[head].rs1_val + entries[head].imm;
 
     assign do_pop = (valid[head] & ~load_pending & head_is_load & head_ready) |
                    (valid[head] & head_is_store & store_commit_i &
@@ -106,17 +106,17 @@ module load_store_buffer(clk, rst_n, flush_i,
 
     // Load result has priority over store-ready notification
     assign cdb_valid_o = load_pending | any_store_ready;
-    assign cdb_tag_o   = load_pending ? load_pending_tag : entries[store_notify_idx].rob_tag;
+    assign cdb_tag_o = load_pending ? load_pending_tag : entries[store_notify_idx].rob_tag;
     assign cdb_value_o = load_pending ? mem_rd_data_i    : '0;
 
     always_ff @(posedge clk or negedge rst_n) begin
         if (~rst_n || flush_i) begin
-            valid            <= '0;
-            store_notified   <= '0;
-            head             <= '0;
-            tail             <= '0;
-            count            <= '0;
-            load_pending     <= 1'b0;
+            valid <= '0;
+            store_notified <= '0;
+            head <= '0;
+            tail <= '0;
+            count <= '0;
+            load_pending <= 1'b0;
             load_pending_tag <= '0;
             for (int j = 0; j < LSB_SIZE; j++) entries[j] <= '0;
         end else begin
@@ -132,11 +132,11 @@ module load_store_buffer(clk, rst_n, flush_i,
                     if (valid[j]) begin
                         if (~entries[j].rs1_ready & (entries[j].rs1_tag == cdb_i.tag)) begin
                             entries[j].rs1_ready <= 1'b1;
-                            entries[j].rs1_val   <= cdb_i.value;
+                            entries[j].rs1_val <= cdb_i.value;
                         end
                         if (~entries[j].rs2_ready & (entries[j].rs2_tag == cdb_i.tag)) begin
                             entries[j].rs2_ready <= 1'b1;
-                            entries[j].rs2_val   <= cdb_i.value;
+                            entries[j].rs2_val <= cdb_i.value;
                         end
                     end
                 end
@@ -144,9 +144,9 @@ module load_store_buffer(clk, rst_n, flush_i,
 
             // Head: issue load (address drives mem_rd_addr_o combinationally)
             if (valid[head] & ~load_pending & head_is_load & head_ready) begin
-                load_pending         <= 1'b1;
-                load_pending_tag     <= entries[head].rob_tag;
-                valid[head]          <= 1'b0;
+                load_pending <= 1'b1;
+                load_pending_tag <= entries[head].rob_tag;
+                valid[head] <= 1'b0;
                 store_notified[head] <= 1'b0;
                 head <= head + 1;
             end
@@ -154,15 +154,15 @@ module load_store_buffer(clk, rst_n, flush_i,
             // Head: commit store (wr_en fires combinationally via mem_wr_en_o)
             if (valid[head] & head_is_store & store_commit_i &
                 (entries[head].rob_tag == store_commit_tag_i)) begin
-                valid[head]          <= 1'b0;
+                valid[head] <= 1'b0;
                 store_notified[head] <= 1'b0;
                 head <= head + 1;
             end
 
             // Push new entry
             if (issue_valid_i & ~full) begin
-                entries[tail]        <= issue_entry_i;
-                valid[tail]          <= 1'b1;
+                entries[tail] <= issue_entry_i;
+                valid[tail] <= 1'b1;
                 store_notified[tail] <= 1'b0;
                 tail <= tail + 1;
             end
