@@ -53,8 +53,8 @@ module fp_cvt(clk, rst_n, flush_i,
         logic [31:0] mag;
         logic [4:0]  sh;
         begin
-            fs    = f[31];
-            fe    = f[30:23];
+            fs = f[31];
+            fe = f[30:23];
             fmant = {1'b1, f[22:0]};
 
             if (fe == 8'd0) begin
@@ -85,12 +85,12 @@ module fp_cvt(clk, rst_n, flush_i,
     // extracts bits [30:8] as the 23-bit fractional mantissa field.
     // -------------------------------------------------------------------------
     function automatic logic [31:0] int_to_fp(input logic [31:0] x);
-        logic        xs;
+        logic xs;
         logic [31:0] mag;
-        logic [4:0]  pos;
-        logic [4:0]  sh;
+        logic [4:0] pos;
+        logic [4:0] sh;
         logic [31:0] norm;
-        logic [7:0]  fe;
+        logic [7:0] fe;
         begin
             if (x == 32'd0) begin
                 int_to_fp = 32'h0;
@@ -136,10 +136,10 @@ module fp_cvt(clk, rst_n, flush_i,
     logic [TAG_W-1:0] s2_tag;
     logic [DATA_W-1:0] s2_result;
 
-    assign advance    = ~s2_valid | cdb_grant_i;
+    assign advance = ~s2_valid | cdb_grant_i;
     assign fu_ready_o = advance;
-    assign cdb_valid_o  = s2_valid;
-    assign cdb_tag_o    = s2_tag;
+    assign cdb_valid_o = s2_valid;
+    assign cdb_tag_o = s2_tag;
     assign cdb_result_o = s2_result;
 
     always_ff @(posedge clk or negedge rst_n) begin
@@ -147,11 +147,11 @@ module fp_cvt(clk, rst_n, flush_i,
             s1_valid <= 1'b0; s1_tag <= '0; s1_result <= '0;
             s2_valid <= 1'b0; s2_tag <= '0; s2_result <= '0;
         end else if (advance) begin
-            s2_valid  <= s1_valid;
-            s2_tag    <= s1_tag;
+            s2_valid <= s1_valid;
+            s2_tag <= s1_tag;
             s2_result <= s1_result;
-            s1_valid  <= valid_i;
-            s1_tag    <= tag_i;
+            s1_valid <= valid_i;
+            s1_tag <= tag_i;
             s1_result <= valid_i ? compute_result : '0;
         end
     end
