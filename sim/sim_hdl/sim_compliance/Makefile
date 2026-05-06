@@ -148,13 +148,16 @@ WIN_SV_SOURCES = $(foreach f,$(SV_SOURCES),$(call winpath,$(f)))
 # -----------------------------------------------------------------------
 define run_wine_vsim
 	@echo "  [wine/modelsim] simulating $*..."
+	@printf '[Library]\nwork = work\n[vsim]\nLicenseStartup = nomgc nomti\n' > modelsim.ini
 	@$(WINE_VLIB) work >> $(OUTDIR)/$*.log 2>&1 || true
 	@$(WINE_VLOG) -sv \
 	    +incdir+$(call winpath,$(HW_ROOT)/pkg) \
 	    $(WIN_SV_SOURCES) \
 	    > $(OUTDIR)/$*.log 2>&1 || \
 	    (echo "  [vlog] FAILED -- see $(OUTDIR)/$*.log"; cat $(OUTDIR)/$*.log; exit 1)
-	@$(WINE_VSIM) -c work.sim_compliance \
+	@$(WINE_VSIM) -c \
+	    -modelsimini $(call winpath,modelsim.ini) \
+	    work.sim_compliance \
 	    "+HEX=$(call winpath,$(OUTDIR)/$*.hex)" \
 	    "+SIG_BEGIN=$(word 1,$(RANGE))" \
 	    "+SIG_END=$(word 2,$(RANGE))" \
@@ -169,13 +172,16 @@ endef
 # -----------------------------------------------------------------------
 define run_win_vsim
 	@echo "  [win/modelsim] simulating $*..."
+	@printf '[Library]\nwork = work\n' > modelsim.ini
 	@$(MODELSIM_DIR)/vlib.exe work >> $(OUTDIR)/$*.log 2>&1 || true
 	@$(MODELSIM_DIR)/vlog.exe -sv \
 	    +incdir+$(HW_ROOT)/pkg \
 	    $(SV_SOURCES) \
 	    > $(OUTDIR)/$*.log 2>&1 || \
 	    (echo "  [vlog] FAILED -- see $(OUTDIR)/$*.log"; cat $(OUTDIR)/$*.log; exit 1)
-	@$(MODELSIM_DIR)/vsim.exe -c work.sim_compliance \
+	@$(MODELSIM_DIR)/vsim.exe -c \
+	    -modelsimini modelsim.ini \
+	    work.sim_compliance \
 	    "+HEX=$(OUTDIR)/$*.hex" \
 	    "+SIG_BEGIN=$(word 1,$(RANGE))" \
 	    "+SIG_END=$(word 2,$(RANGE))" \
