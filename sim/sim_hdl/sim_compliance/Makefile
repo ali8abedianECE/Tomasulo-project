@@ -29,8 +29,13 @@ HW_ROOT := ../../../../hardware
 
 # ModelSim ASE installed under Downloads/modelsim_ase
 MODELSIM_DIR ?= $(HOME)/Downloads/modelsim_ase/win32aloem
+WINE_VLIB    := wine $(MODELSIM_DIR)/vlib.exe
 WINE_VLOG    := wine $(MODELSIM_DIR)/vlog.exe
 WINE_VSIM    := wine $(MODELSIM_DIR)/vsim.exe
+
+# Separate directory for ModelSim's compiled library so it doesn't
+# conflict with our work/ output directory (ELFs, hexes, sigs).
+MLIB := msim_lib
 
 CFLAGS := -march=rv32i -mabi=ilp32 -static -nostdlib -nostartfiles \
           -I macros -T link.ld
@@ -145,12 +150,17 @@ WIN_SV_SOURCES = $(foreach f,$(SV_SOURCES),$(call winpath,$(f)))
 # -----------------------------------------------------------------------
 define run_wine_vsim
 	@echo "  [wine/modelsim] simulating $*..."
+	@mkdir -p $(MLIB)
+	@$(WINE_VLIB) $(call winpath,$(MLIB)/work) >> $(OUTDIR)/$*.log 2>&1 || true
 	@$(WINE_VLOG) -sv \
+	    -work $(call winpath,$(MLIB)/work) \
 	    +incdir+$(call winpath,$(HW_ROOT)/pkg) \
 	    $(WIN_SV_SOURCES) \
 	    > $(OUTDIR)/$*.log 2>&1 || \
 	    (echo "  [vlog] FAILED -- see $(OUTDIR)/$*.log"; cat $(OUTDIR)/$*.log; exit 1)
-	@$(WINE_VSIM) -c work.sim_compliance \
+	@$(WINE_VSIM) -c \
+	    -lib $(call winpath,$(MLIB)) \
+	    work.sim_compliance \
 	    "+HEX=$(call winpath,$(OUTDIR)/$*.hex)" \
 	    "+SIG_BEGIN=$(word 1,$(RANGE))" \
 	    "+SIG_END=$(word 2,$(RANGE))" \
@@ -165,12 +175,17 @@ endef
 # -----------------------------------------------------------------------
 define run_win_vsim
 	@echo "  [win/modelsim] simulating $*..."
+	@mkdir -p $(MLIB)
+	@$(MODELSIM_DIR)/vlib.exe $(MLIB)/work >> $(OUTDIR)/$*.log 2>&1 || true
 	@$(MODELSIM_DIR)/vlog.exe -sv \
+	    -work $(MLIB)/work \
 	    +incdir+$(HW_ROOT)/pkg \
 	    $(SV_SOURCES) \
 	    > $(OUTDIR)/$*.log 2>&1 || \
 	    (echo "  [vlog] FAILED -- see $(OUTDIR)/$*.log"; cat $(OUTDIR)/$*.log; exit 1)
-	@$(MODELSIM_DIR)/vsim.exe -c work.sim_compliance \
+	@$(MODELSIM_DIR)/vsim.exe -c \
+	    -lib $(MLIB) \
+	    work.sim_compliance \
 	    "+HEX=$(OUTDIR)/$*.hex" \
 	    "+SIG_BEGIN=$(word 1,$(RANGE))" \
 	    "+SIG_END=$(word 2,$(RANGE))" \
@@ -244,7 +259,7 @@ $(OUTDIR):
 	mkdir -p $@
 
 clean:
-	rm -rf $(OUTDIR) work transcript vsim.wlf modelsim.ini
+	rm -rf $(OUTDIR) $(MLIB) transcript vsim.wlf modelsim.ini
 
 # Single-test shortcut:  make I-ADD-01
 $(TESTS): %: $(OUTDIR)/%.pass
