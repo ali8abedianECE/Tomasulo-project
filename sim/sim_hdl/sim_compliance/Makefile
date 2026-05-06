@@ -154,7 +154,7 @@ WIN_SV_SOURCES = $(foreach f,$(SV_SOURCES),$(call winpath,$(f)))
 # -----------------------------------------------------------------------
 define run_wine_vsim
 	@echo "  [wine/modelsim] simulating $*..."
-	@printf '[Library]\nwork = %s\n[vsim]\nLicenseStartup = nomgc nomti\n' \
+	@printf '[Library]\nwork = %s\n[vsim]\nLicense = nomgc nomti\n' \
 	    '$(call winpath_fwd,$(CURDIR)/work)' > $(MODELSIM_DIR)/modelsim.ini
 	@$(WINE_VLIB) $(call winpath,$(CURDIR)/work) >> $(OUTDIR)/$*.log 2>&1 || true
 	@$(WINE_VLOG) -sv \
@@ -178,7 +178,7 @@ endef
 # -----------------------------------------------------------------------
 define run_win_vsim
 	@echo "  [win/modelsim] simulating $*..."
-	@printf '[Library]\nwork = work\n' > modelsim.ini
+	@printf '[Library]\nwork = work\n[vsim]\nLicense = nomgc nomti\n' > modelsim.ini
 	@$(MODELSIM_DIR)/vlib.exe work >> $(OUTDIR)/$*.log 2>&1 || true
 	@$(MODELSIM_DIR)/vlog.exe -sv \
 	    +incdir+$(HW_ROOT)/pkg \
