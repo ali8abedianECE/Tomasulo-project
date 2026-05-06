@@ -37,7 +37,13 @@ CFLAGS := -march=rv32i -mabi=ilp32 -static -nostdlib -nostartfiles \
           -I macros -T link.ld
 
 # Convert a Unix path to a Wine Windows path (Z:\ prefix, backslashes)
+# Double backslashes are intentional: shell reduces \\ -> \ when the result
+# is used unquoted in a recipe command, giving the single \ that Windows needs.
 winpath = $(shell echo "$(abspath $(1))" | sed 's|^/|Z:/|; s|/|\\\\|g')
+
+# Same conversion but with forward slashes -- safe to embed in INI files
+# without any shell quoting gymnastics.
+winpath_fwd = $(shell echo "$(abspath $(1))" | sed 's|^/|Z:/|')
 
 # Detect OS
 ifeq ($(OS),Windows_NT)
@@ -149,16 +155,14 @@ WIN_SV_SOURCES = $(foreach f,$(SV_SOURCES),$(call winpath,$(f)))
 define run_wine_vsim
 	@echo "  [wine/modelsim] simulating $*..."
 	@printf '[Library]\nwork = %s\n[vsim]\nLicenseStartup = nomgc nomti\n' \
-	    '$(call winpath,$(CURDIR)/work)' > modelsim.ini
+	    '$(call winpath_fwd,$(CURDIR)/work)' > $(MODELSIM_DIR)/modelsim.ini
 	@$(WINE_VLIB) $(call winpath,$(CURDIR)/work) >> $(OUTDIR)/$*.log 2>&1 || true
 	@$(WINE_VLOG) -sv \
-	    -modelsimini $(call winpath,$(CURDIR)/modelsim.ini) \
 	    +incdir+$(call winpath,$(HW_ROOT)/pkg) \
 	    $(WIN_SV_SOURCES) \
 	    > $(OUTDIR)/$*.log 2>&1 || \
 	    (echo "  [vlog] FAILED -- see $(OUTDIR)/$*.log"; cat $(OUTDIR)/$*.log; exit 1)
 	@$(WINE_VSIM) -c \
-	    -modelsimini $(call winpath,$(CURDIR)/modelsim.ini) \
 	    work.sim_compliance \
 	    "+HEX=$(call winpath,$(OUTDIR)/$*.hex)" \
 	    "+SIG_BEGIN=$(word 1,$(RANGE))" \
@@ -260,6 +264,7 @@ $(OUTDIR):
 
 clean:
 	rm -rf $(OUTDIR) work msim_lib transcript vsim.wlf modelsim.ini
+	@rm -f $(MODELSIM_DIR)/modelsim.ini 2>/dev/null || true
 
 # Single-test shortcut:  make I-ADD-01
 $(TESTS): %: $(OUTDIR)/%.pass
