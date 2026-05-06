@@ -47,4 +47,36 @@ begin_signature:
 end_signature:                    \
   .popsection
 
+/* ------------------------------------------------------------------
+ * RV_COMPLIANCE_* macros (used by the Imperas-style test sources).
+ * ------------------------------------------------------------------ */
+
+/* Preamble: declare the ISA level this test targets (no-op for us). */
+#define RV_COMPLIANCE_RV32M
+
+/* Code section: place at 0x0000, define _start entry point. */
+#define RV_COMPLIANCE_CODE_BEGIN  \
+  .section .text.init;            \
+  .align 2;                       \
+  .globl _start;                  \
+_start:
+
+/* ecall (0x00000073) -> OP_HALT in our decoder. */
+#define RV_COMPLIANCE_HALT        \
+  ecall
+
+/* End of code section marker. */
+#define RV_COMPLIANCE_CODE_END
+
+/* Signature start label in the current .data section. */
+#define RV_COMPLIANCE_DATA_BEGIN  \
+  .align 4;                       \
+  .globl begin_signature;         \
+begin_signature:
+
+/* Signature end label. */
+#define RV_COMPLIANCE_DATA_END    \
+  .globl end_signature;           \
+end_signature:
+
 #endif /* COMPLIANCE_TEST_H */

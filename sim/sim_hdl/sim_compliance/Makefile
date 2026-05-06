@@ -55,7 +55,7 @@ $(OUTDIR)/%.elf: $(SRCDIR)/%.S | $(OUTDIR)
 	$(CC) $(CFLAGS) -o $@ $<
 
 $(OUTDIR)/%.hex: $(OUTDIR)/%.elf
-	$(OBJCOPY) -O verilog $< $@
+	$(OBJCOPY) -O verilog --verilog-data-width=4 $< $@
 
 # Extract begin_signature / end_signature word indices from the ELF symbol table
 $(OUTDIR)/%.sig_range: $(OUTDIR)/%.elf
