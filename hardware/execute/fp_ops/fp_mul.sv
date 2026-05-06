@@ -110,7 +110,7 @@ module fp_mul(clk, rst_n, flush_i,
         end else begin
             er = s2_exp;
             if (s2_product[47]) begin
-                er   = s2_exp + 10'd1;
+                er = s2_exp + 10'd1;
                 mant = s2_product[46:24];
             end else begin
                 mant = s2_product[45:23];
