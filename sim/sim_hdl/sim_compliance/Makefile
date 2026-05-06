@@ -12,7 +12,7 @@ SRCDIR := $(SUITE)/src
 REFDIR := $(SUITE)/references
 OUTDIR := work
 
-RISCV_PREFIX ?= riscv32-unknown-elf-
+RISCV_PREFIX ?= riscv64-unknown-elf-
 CC      := $(RISCV_PREFIX)gcc
 OBJCOPY := $(RISCV_PREFIX)objcopy
 NM      := $(RISCV_PREFIX)nm
