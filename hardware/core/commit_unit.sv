@@ -34,7 +34,10 @@ module commit_unit(
                     f_commit_en_o, f_commit_addr_o, f_commit_tag_o,
 
                     // Branch misprediction interface
-                    flush_o, redirect_pc_o
+                    flush_o, redirect_pc_o,
+
+                    // Store commit pulse to LSB
+                    store_commit_o, store_commit_tag_o
                     );
     import rv32if_pkg::*;
 
@@ -68,6 +71,10 @@ module commit_unit(
     output logic flush_o; ///< Flush the pipeline on branch misprediction (predict not-taken).
     output logic [PC_W-1:0] redirect_pc_o; ///< Redirect PC to resolved branch target on flush.
 
+    // Store commit pulse to LSB
+    output logic store_commit_o; ///< Pulses high when a store instruction retires.
+    output logic [TAG_W-1:0] store_commit_tag_o; ///< ROB tag of the retiring store.
+
     always_comb begin
         commit_en_o = commit_valid_i;
 
@@ -90,6 +97,8 @@ module commit_unit(
 
         flush_o = 1'b0;
         redirect_pc_o = '0;
+        store_commit_o = commit_valid_i & is_store_op(commit_entry_i.op);
+        store_commit_tag_o = commit_tag_i;
         if (commit_valid_i) begin
             // write to integer regfile and clear INT RAT mapping
             if (commit_entry_i.rd_valid && ~commit_entry_i.rd_fp) begin
