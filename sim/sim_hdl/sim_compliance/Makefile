@@ -2,23 +2,23 @@
 #
 # Supported simulators (auto-detected, or set SIM= to override):
 #   SIM=wine_vsim  ModelSim ASE via Wine  (auto-detected from MODELSIM_DIR)
+#   SIM=win_vsim   ModelSim ASE on Windows Git Bash (no Wine)
 #   SIM=vsim       Native ModelSim/QuestaSim on PATH
-#   SIM=iverilog   Icarus Verilog         (brew install icarus-verilog)
+#   SIM=iverilog   Icarus Verilog  (brew install icarus-verilog)
 #
 # Usage:
 #   make fetch        Download rv32i test sources and references from GitHub
 #   make all          Build, simulate, and compare all rv32i tests
 #   make I-ADD-01     Run a single test
 #   make clean        Remove generated files
-#
-# Override toolchain prefix if needed:
-#   make I-ADD-01 RISCV_PREFIX=riscv32-unknown-elf-
 
 SHELL := bash
 SUITE  := rv32i
 SRCDIR := $(SUITE)/src
 REFDIR := $(SUITE)/references
-OUTDIR := work
+
+# ELFs, hexes, sigs go here (NOT named "work" -- ModelSim owns that name)
+OUTDIR := build
 
 RISCV_PREFIX ?= riscv64-unknown-elf-
 CC      := $(RISCV_PREFIX)gcc
@@ -27,36 +27,30 @@ NM      := $(RISCV_PREFIX)nm
 
 HW_ROOT := ../../../hardware
 
-# ModelSim ASE installed under Downloads/modelsim_ase
+# ModelSim ASE installed under ~/Downloads/modelsim_ase
 MODELSIM_DIR ?= $(HOME)/Downloads/modelsim_ase/win32aloem
 WINE_VLIB    := wine $(MODELSIM_DIR)/vlib.exe
 WINE_VLOG    := wine $(MODELSIM_DIR)/vlog.exe
 WINE_VSIM    := wine $(MODELSIM_DIR)/vsim.exe
 
-# Separate directory for ModelSim's compiled library so it doesn't
-# conflict with our work/ output directory (ELFs, hexes, sigs).
-MLIB := msim_lib
-
 CFLAGS := -march=rv32i -mabi=ilp32 -static -nostdlib -nostartfiles \
           -I macros -T link.ld
 
-# Wine converts Unix paths: prefix with Z: and flip slashes
+# Convert a Unix path to a Wine Windows path (Z:\ prefix, backslashes)
 winpath = $(shell echo "$(abspath $(1))" | sed 's|^/|Z:/|; s|/|\\\\|g')
 
-# Detect OS so we can choose the right backend on Windows vs Mac/Linux
+# Detect OS
 ifeq ($(OS),Windows_NT)
   ON_WINDOWS := 1
 else
   ON_WINDOWS :=
 endif
 
-# Auto-detect simulator if SIM not set
+# Auto-detect simulator
 ifeq ($(origin SIM),undefined)
   ifdef ON_WINDOWS
-    # Windows (Git Bash / Cygwin): call vlog.exe/vsim.exe directly
     SIM := win_vsim
   else ifneq ($(wildcard $(MODELSIM_DIR)/vsim.exe),)
-    # Mac/Linux: Wine wrapper for the win32 ModelSim ASE download
     SIM := wine_vsim
   else ifneq ($(shell command -v vsim 2>/dev/null),)
     SIM := vsim
@@ -78,7 +72,7 @@ check-sim:
 	    echo "ERROR: No simulator found. Options:"; \
 	    echo "  Mac   - ModelSim via Wine : $(MODELSIM_DIR)/vsim.exe (auto-detected)"; \
 	    echo "  Mac   - Icarus Verilog    : brew install icarus-verilog"; \
-	    echo "  Win   - ModelSim native   : runs automatically in Git Bash"; \
+	    echo "  Win   - ModelSim native   : detected automatically in Git Bash"; \
 	    echo "  Linux - native vsim       : add vsim to PATH"; \
 	    exit 1; \
 	fi
@@ -144,27 +138,23 @@ SV_SOURCES := \
     $(HW_ROOT)/core/tomasulo_core.sv \
     sim_compliance.sv
 
-# Windows-style source list for Wine
 WIN_SV_SOURCES = $(foreach f,$(SV_SOURCES),$(call winpath,$(f)))
 
 # -----------------------------------------------------------------------
-# Simulate: ModelSim ASE via Wine
-#   Step 1: vlog.exe compiles all SV into ./work library
-#   Step 2: vsim.exe runs sim_compliance in batch mode
+# ModelSim ASE via Wine (Mac)
+#
+# ModelSim owns the "work" directory in the current folder.
+# Our outputs (ELFs, hexes, sigs) live in build/ to avoid the name clash.
 # -----------------------------------------------------------------------
 define run_wine_vsim
 	@echo "  [wine/modelsim] simulating $*..."
-	@mkdir -p $(MLIB)
-	@$(WINE_VLIB) $(call winpath,$(MLIB)/work) >> $(OUTDIR)/$*.log 2>&1 || true
+	@$(WINE_VLIB) work >> $(OUTDIR)/$*.log 2>&1 || true
 	@$(WINE_VLOG) -sv \
-	    -work $(call winpath,$(MLIB)/work) \
 	    +incdir+$(call winpath,$(HW_ROOT)/pkg) \
 	    $(WIN_SV_SOURCES) \
 	    > $(OUTDIR)/$*.log 2>&1 || \
 	    (echo "  [vlog] FAILED -- see $(OUTDIR)/$*.log"; cat $(OUTDIR)/$*.log; exit 1)
-	@$(WINE_VSIM) -c \
-	    -lib $(call winpath,$(MLIB)) \
-	    work.sim_compliance \
+	@$(WINE_VSIM) -c work.sim_compliance \
 	    "+HEX=$(call winpath,$(OUTDIR)/$*.hex)" \
 	    "+SIG_BEGIN=$(word 1,$(RANGE))" \
 	    "+SIG_END=$(word 2,$(RANGE))" \
@@ -175,21 +165,17 @@ define run_wine_vsim
 endef
 
 # -----------------------------------------------------------------------
-# Simulate: ModelSim ASE on Windows (Git Bash) -- call exe directly
+# ModelSim ASE on Windows (Git Bash) -- call exe directly, no Wine
 # -----------------------------------------------------------------------
 define run_win_vsim
 	@echo "  [win/modelsim] simulating $*..."
-	@mkdir -p $(MLIB)
-	@$(MODELSIM_DIR)/vlib.exe $(MLIB)/work >> $(OUTDIR)/$*.log 2>&1 || true
+	@$(MODELSIM_DIR)/vlib.exe work >> $(OUTDIR)/$*.log 2>&1 || true
 	@$(MODELSIM_DIR)/vlog.exe -sv \
-	    -work $(MLIB)/work \
 	    +incdir+$(HW_ROOT)/pkg \
 	    $(SV_SOURCES) \
 	    > $(OUTDIR)/$*.log 2>&1 || \
 	    (echo "  [vlog] FAILED -- see $(OUTDIR)/$*.log"; cat $(OUTDIR)/$*.log; exit 1)
-	@$(MODELSIM_DIR)/vsim.exe -c \
-	    -lib $(MLIB) \
-	    work.sim_compliance \
+	@$(MODELSIM_DIR)/vsim.exe -c work.sim_compliance \
 	    "+HEX=$(OUTDIR)/$*.hex" \
 	    "+SIG_BEGIN=$(word 1,$(RANGE))" \
 	    "+SIG_END=$(word 2,$(RANGE))" \
@@ -200,24 +186,26 @@ define run_win_vsim
 endef
 
 # -----------------------------------------------------------------------
-# Simulate: native ModelSim / QuestaSim
+# Native ModelSim / QuestaSim
 # -----------------------------------------------------------------------
 define run_vsim
 	@echo "  [vsim] simulating $*..."
-	@vsim -c -quiet \
-	    -do "vlog -sv +incdir+$(HW_ROOT)/pkg $(SV_SOURCES); \
-	         vsim -c work.sim_compliance \
-	              +HEX=$(OUTDIR)/$*.hex \
-	              +SIG_BEGIN=$(word 1,$(RANGE)) \
-	              +SIG_END=$(word 2,$(RANGE)) \
-	              +SIG_OUT=$(OUTDIR)/$*.sig \
-	              -do 'run -all; quit'; \
-	         quit -f" > $(OUTDIR)/$*.log 2>&1 || \
+	@vlib work >> $(OUTDIR)/$*.log 2>&1 || true
+	@vlog -sv +incdir+$(HW_ROOT)/pkg $(SV_SOURCES) \
+	    > $(OUTDIR)/$*.log 2>&1 || \
+	    (echo "  [vlog] FAILED -- see $(OUTDIR)/$*.log"; cat $(OUTDIR)/$*.log; exit 1)
+	@vsim -c work.sim_compliance \
+	    +HEX=$(OUTDIR)/$*.hex \
+	    +SIG_BEGIN=$(word 1,$(RANGE)) \
+	    +SIG_END=$(word 2,$(RANGE)) \
+	    +SIG_OUT=$(OUTDIR)/$*.sig \
+	    -do "run -all; quit" \
+	    >> $(OUTDIR)/$*.log 2>&1 || \
 	    (echo "  [vsim] FAILED -- see $(OUTDIR)/$*.log"; cat $(OUTDIR)/$*.log; exit 1)
 endef
 
 # -----------------------------------------------------------------------
-# Simulate: Icarus Verilog
+# Icarus Verilog
 # -----------------------------------------------------------------------
 define run_iverilog
 	@echo "  [iverilog] simulating $*..."
@@ -263,7 +251,7 @@ $(OUTDIR):
 	mkdir -p $@
 
 clean:
-	rm -rf $(OUTDIR) $(MLIB) transcript vsim.wlf modelsim.ini
+	rm -rf $(OUTDIR) work msim_lib transcript vsim.wlf modelsim.ini
 
 # Single-test shortcut:  make I-ADD-01
 $(TESTS): %: $(OUTDIR)/%.pass
