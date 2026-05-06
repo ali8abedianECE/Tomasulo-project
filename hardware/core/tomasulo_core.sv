@@ -8,14 +8,16 @@
  * and held until the round-robin CDB arbiter grants them a slot.
  *
  * @param clk/rst_n Standard control.
- * @param fetch_valid_i/fetch_instr_i Decoded instruction from the fetch stage.
- * @param iq_full_o IQ full - stall fetch.
+ * @param fetch_valid_i  Fetch stage has a valid instruction this cycle.
+ * @param fetch_raw_i    Raw 32-bit instruction word from instr_mem.
+ * @param fetch_pc_i     PC of that instruction (registered in cpu.sv).
+ * @param iq_full_o      IQ full - stall fetch.
  * @param flush_o/redirect_pc_o Misprediction flush and restart PC.
  * @param mem_* Data memory ports (connect to data_mem in cpu.sv).
  */
 module tomasulo_core(
     clk, rst_n,
-    fetch_valid_i, fetch_instr_i, iq_full_o,
+    fetch_valid_i, fetch_raw_i, fetch_pc_i, iq_full_o,
     flush_o, redirect_pc_o,
     mem_rd_addr_o, mem_rd_data_i,
     mem_wr_en_o, mem_wr_addr_o, mem_wr_data_o
@@ -26,7 +28,8 @@ module tomasulo_core(
     input  logic        rst_n;
 
     input  logic        fetch_valid_i;
-    input  instr_t      fetch_instr_i;
+    input  logic [DATA_W-1:0] fetch_raw_i;
+    input  logic [PC_W-1:0]   fetch_pc_i;
     output logic        iq_full_o;
 
     output logic        flush_o;
@@ -37,6 +40,108 @@ module tomasulo_core(
     output logic               mem_wr_en_o;
     output logic [PC_W-1:0]   mem_wr_addr_o;
     output logic [DATA_W-1:0] mem_wr_data_o;
+
+    // -------------------------------------------------------------------------
+    // Decode: raw 32-bit instruction -> instr_t
+    // -------------------------------------------------------------------------
+    function automatic instr_t decode(input logic [31:0] raw, input logic [PC_W-1:0] pc);
+        logic [6:0] opcode, funct7;
+        logic [2:0] funct3;
+        logic [4:0] rd, rs1, rs2;
+        instr_t     d;
+        begin
+            opcode = raw[6:0]; rd = raw[11:7]; funct3 = raw[14:12];
+            rs1 = raw[19:15];  rs2 = raw[24:20]; funct7 = raw[31:25];
+
+            d = '{op: OP_NOP, rd: '0, rs1: '0, rs2: '0, imm: '0,
+                  rd_fp: 1'b0, rs1_fp: 1'b0, rs2_fp: 1'b0, rd_valid: 1'b0, pc: pc};
+
+            case (opcode)
+                7'h33: begin // R-type INT
+                    d.rd = rd; d.rs1 = rs1; d.rs2 = rs2; d.rd_valid = 1'b1;
+                    case ({funct7[5], funct3})
+                        4'b0_000: d.op = OP_ADD;  4'b1_000: d.op = OP_SUB;
+                        4'b0_111: d.op = OP_AND;  4'b0_110: d.op = OP_OR;
+                        4'b0_100: d.op = OP_XOR;  4'b0_001: d.op = OP_SLL;
+                        4'b0_101: d.op = OP_SRL;  4'b1_101: d.op = OP_SRA;
+                        default:  d.op = OP_NOP;
+                    endcase
+                end
+                7'h13: begin // I-type INT
+                    d.rd = rd; d.rs1 = rs1; d.rd_valid = 1'b1;
+                    d.imm = {{20{raw[31]}}, raw[31:20]};
+                    case (funct3)
+                        3'b000: d.op = OP_ADDI; 3'b111: d.op = OP_ANDI;
+                        3'b110: d.op = OP_ORI;  3'b100: d.op = OP_XORI;
+                        3'b001: d.op = OP_SLLI; 3'b101: d.op = OP_SRLI;
+                        default: d.op = OP_NOP;
+                    endcase
+                end
+                7'h03: begin // LW
+                    if (funct3 == 3'b010) begin
+                        d.op = OP_LW; d.rd = rd; d.rs1 = rs1; d.rd_valid = 1'b1;
+                        d.imm = {{20{raw[31]}}, raw[31:20]};
+                    end
+                end
+                7'h23: begin // SW
+                    if (funct3 == 3'b010) begin
+                        d.op = OP_SW; d.rs1 = rs1; d.rs2 = rs2;
+                        d.imm = {{20{raw[31]}}, raw[31:25], raw[11:7]};
+                    end
+                end
+                7'h63: begin // branches
+                    d.rs1 = rs1; d.rs2 = rs2;
+                    d.imm = {{19{raw[31]}}, raw[31], raw[7], raw[30:25], raw[11:8], 1'b0};
+                    case (funct3)
+                        3'b000: d.op = OP_BEQ; 3'b001: d.op = OP_BNE;
+                        3'b100: d.op = OP_BLT; 3'b101: d.op = OP_BGE;
+                        default: d.op = OP_NOP;
+                    endcase
+                end
+                7'h6F: begin // JAL
+                    d.op = OP_JAL; d.rd = rd; d.rd_valid = 1'b1;
+                    d.imm = {{11{raw[31]}}, raw[31], raw[19:12], raw[20], raw[30:21], 1'b0};
+                end
+                7'h67: begin // JALR
+                    if (funct3 == 3'b000) begin
+                        d.op = OP_JALR; d.rd = rd; d.rs1 = rs1; d.rd_valid = 1'b1;
+                        d.imm = {{20{raw[31]}}, raw[31:20]};
+                    end
+                end
+                7'h37: begin // LUI
+                    d.op = OP_LUI; d.rd = rd; d.rd_valid = 1'b1;
+                    d.imm = {raw[31:12], 12'b0};
+                end
+                7'h07: begin // FLW
+                    if (funct3 == 3'b010) begin
+                        d.op = OP_FLW; d.rd = rd; d.rs1 = rs1;
+                        d.rd_valid = 1'b1; d.rd_fp = 1'b1;
+                        d.imm = {{20{raw[31]}}, raw[31:20]};
+                    end
+                end
+                7'h27: begin // FSW
+                    if (funct3 == 3'b010) begin
+                        d.op = OP_FSW; d.rs1 = rs1; d.rs2 = rs2; d.rs2_fp = 1'b1;
+                        d.imm = {{20{raw[31]}}, raw[31:25], raw[11:7]};
+                    end
+                end
+                7'h53: begin // FP arithmetic / conversion
+                    case (funct7)
+                        7'b0000000: begin d.op=OP_FADD_S; d.rd=rd; d.rs1=rs1; d.rs2=rs2; d.rd_valid=1'b1; d.rd_fp=1'b1; d.rs1_fp=1'b1; d.rs2_fp=1'b1; end
+                        7'b0000100: begin d.op=OP_FSUB_S; d.rd=rd; d.rs1=rs1; d.rs2=rs2; d.rd_valid=1'b1; d.rd_fp=1'b1; d.rs1_fp=1'b1; d.rs2_fp=1'b1; end
+                        7'b0001000: begin d.op=OP_FMUL_S; d.rd=rd; d.rs1=rs1; d.rs2=rs2; d.rd_valid=1'b1; d.rd_fp=1'b1; d.rs1_fp=1'b1; d.rs2_fp=1'b1; end
+                        7'b0001100: begin d.op=OP_FDIV_S; d.rd=rd; d.rs1=rs1; d.rs2=rs2; d.rd_valid=1'b1; d.rd_fp=1'b1; d.rs1_fp=1'b1; d.rs2_fp=1'b1; end
+                        7'b1100000: begin d.op=OP_FCVT_W_S; d.rd=rd; d.rs1=rs1; d.rd_valid=1'b1; d.rs1_fp=1'b1; end
+                        7'b1101000: begin d.op=OP_FCVT_S_W; d.rd=rd; d.rs1=rs1; d.rd_valid=1'b1; d.rd_fp=1'b1; end
+                        default: d.op = OP_NOP;
+                    endcase
+                end
+                7'h73: d.op = OP_HALT;
+                default: d.op = OP_NOP;
+            endcase
+            decode = d;
+        end
+    endfunction
 
     // -------------------------------------------------------------------------
     // Global signals
@@ -52,11 +157,14 @@ module tomasulo_core(
     // -------------------------------------------------------------------------
     logic   iq_valid_w, iq_pop_w;
     instr_t iq_instr_w;
+    instr_t fetch_decoded_w;
+
+    always_comb fetch_decoded_w = decode(fetch_raw_i, fetch_pc_i);
 
     instr_queue u_iq(
         .clk(clk), .rst_n(rst_n), .flush_i(flush_w),
         .push_en_i(fetch_valid_i & ~iq_full_o),
-        .push_instr_i(fetch_instr_i), .full_o(iq_full_o),
+        .push_instr_i(fetch_decoded_w), .full_o(iq_full_o),
         .pop_en_i(iq_pop_w), .instr_o(iq_instr_w), .valid_o(iq_valid_w)
     );
 
