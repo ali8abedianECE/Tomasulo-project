@@ -123,19 +123,23 @@ $(OUTDIR)/%.sig_range: $(OUTDIR)/%.elf
 SV_SOURCES := \
     $(HW_ROOT)/pkg/rv32if_pkg.sv \
     $(HW_ROOT)/fetch/instr_mem.sv \
-    $(HW_ROOT)/fetch/data_mem.sv \
+    $(HW_ROOT)/fetch/instr_queue.sv \
+    $(HW_ROOT)/execute/lsb/data_mem.sv \
+    $(HW_ROOT)/execute/lsb/load_store_buffer.sv \
     $(HW_ROOT)/execute/int_ops/alu_unit.sv \
+    $(HW_ROOT)/execute/int_ops/branch_unit.sv \
     $(HW_ROOT)/execute/fp_ops/fp_add.sv \
     $(HW_ROOT)/execute/fp_ops/fp_mul.sv \
     $(HW_ROOT)/execute/fp_ops/fp_div.sv \
     $(HW_ROOT)/execute/fp_ops/fp_cvt.sv \
     $(HW_ROOT)/execute/fp_ops/fp_round.sv \
-    $(HW_ROOT)/core/reservation_station.sv \
-    $(HW_ROOT)/core/rob_unit.sv \
+    $(HW_ROOT)/execute/reservation_station.sv \
+    $(HW_ROOT)/core/arbiter.sv \
+    $(HW_ROOT)/core/cdb.sv \
+    $(HW_ROOT)/core/regfile.sv \
     $(HW_ROOT)/core/rat.sv \
-    $(HW_ROOT)/core/dispatch_unit.sv \
-    $(HW_ROOT)/core/lsb.sv \
-    $(HW_ROOT)/core/branch_unit.sv \
+    $(HW_ROOT)/core/rob.sv \
+    $(HW_ROOT)/core/dispatch.sv \
     $(HW_ROOT)/core/commit_unit.sv \
     $(HW_ROOT)/core/tomasulo_core.sv \
     sim_compliance.sv
