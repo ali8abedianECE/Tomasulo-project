@@ -13,14 +13,14 @@
 module cpu(CLOCK_50, KEY, SW, LEDR, HEX0, HEX1, HEX2, HEX3, HEX4, HEX5);
     import rv32if_pkg::*;
 
-    input  logic        CLOCK_50;
-    input  logic [3:0]  KEY;
-    input  logic [9:0]  SW;
-    output logic [9:0]  LEDR;
-    output logic [6:0]  HEX0, HEX1, HEX2, HEX3, HEX4, HEX5;
+    input logic CLOCK_50;
+    input logic [3:0] KEY;
+    input logic [9:0] SW;
+    output logic [9:0] LEDR;
+    output logic [6:0] HEX0, HEX1, HEX2, HEX3, HEX4, HEX5;
 
     logic clk, rst_n;
-    assign clk   = CLOCK_50;
+    assign clk = CLOCK_50;
     assign rst_n = KEY[0];   // KEY[0] active-low
 
     // -------------------------------------------------------------------------
@@ -44,9 +44,9 @@ module cpu(CLOCK_50, KEY, SW, LEDR, HEX0, HEX1, HEX2, HEX3, HEX4, HEX5);
     // Memory
     // -------------------------------------------------------------------------
     logic [DATA_W-1:0] instr_raw;
-    logic [PC_W-1:0]   mem_rd_addr, mem_wr_addr;
+    logic [PC_W-1:0] mem_rd_addr, mem_wr_addr;
     logic [DATA_W-1:0] mem_rd_data, mem_wr_data;
-    logic              mem_wr_en;
+    logic mem_wr_en;
 
     instr_mem #(.FILENAME("program.hex")) u_imem(
         .clk(clk), .pc_i(fetch_pc),
@@ -63,26 +63,26 @@ module cpu(CLOCK_50, KEY, SW, LEDR, HEX0, HEX1, HEX2, HEX3, HEX4, HEX5);
     // -------------------------------------------------------------------------
     // Fetch stage: PC register + 1-cycle bubble after flush
     // -------------------------------------------------------------------------
-    logic [PC_W-1:0] fetch_pc;   // sent to instr_mem this cycle
+    logic [PC_W-1:0] fetch_pc; // sent to instr_mem this cycle
     logic [PC_W-1:0] fetch_pc_d; // PC of the instruction now on instr_mem output
-    logic            fetch_valid; // instr_mem output is valid to push into IQ
-    logic            iq_full;
-    logic            flush;
+    logic fetch_valid; // instr_mem output is valid to push into IQ
+    logic iq_full;
+    logic flush;
     logic [PC_W-1:0] redirect_pc;
 
     always_ff @(posedge clk or negedge rst_n) begin
         if (~rst_n) begin
-            fetch_pc    <= '0;
-            fetch_pc_d  <= '0;
+            fetch_pc <= '0;
+            fetch_pc_d <= '0;
             fetch_valid <= 1'b0;
         end else if (flush) begin
-            fetch_pc    <= redirect_pc;
-            fetch_pc_d  <= redirect_pc;
+            fetch_pc <= redirect_pc;
+            fetch_pc_d <= redirect_pc;
             fetch_valid <= 1'b0;  // 1-cycle bubble: discard next instr_mem output
         end else begin
             fetch_valid <= 1'b1;
             if (!iq_full) begin
-                fetch_pc   <= fetch_pc + 4;
+                fetch_pc <= fetch_pc + 4;
                 fetch_pc_d <= fetch_pc;
             end
         end
@@ -112,7 +112,7 @@ module cpu(CLOCK_50, KEY, SW, LEDR, HEX0, HEX1, HEX2, HEX3, HEX4, HEX5);
     always_ff @(posedge clk or negedge rst_n) begin
         if (~rst_n) begin
             cycle_count <= '0;
-            halted      <= 1'b0;
+            halted <= 1'b0;
         end else begin
             cycle_count <= cycle_count + 32'd1;
         end
@@ -121,8 +121,8 @@ module cpu(CLOCK_50, KEY, SW, LEDR, HEX0, HEX1, HEX2, HEX3, HEX4, HEX5);
     // -------------------------------------------------------------------------
     // Outputs
     // -------------------------------------------------------------------------
-    assign LEDR[8]   = flush;
-    assign LEDR[9]   = 1'b0;
+    assign LEDR[8] = flush;
+    assign LEDR[9] = 1'b0;
     assign LEDR[7:0] = cycle_count[7:0];
 
     assign HEX0 = hex_digit(cycle_count[3:0]);

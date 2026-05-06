@@ -272,22 +272,22 @@ module tomasulo_core(
         .f_map_en_o(f_map_en_w), .f_map_addr_o(f_map_addr_w), .f_map_tag_o(f_map_tag_w),
         .x_rs1_val_i(x_rs1_val_w), .x_rs2_val_i(x_rs2_val_w),
         .f_rs1_val_i(f_rs1_val_w), .f_rs2_val_i(f_rs2_val_w),
-        .alu_valid_o(alu_disp_valid_w),     .alu_full_i(alu_rs_full_w),     .alu_entry_o(alu_disp_entry_w),
-        .br_valid_o(br_disp_valid_w),        .br_full_i(br_rs_full_w),        .br_entry_o(br_disp_entry_w),
-        .fp_add_valid_o(fp_add_disp_valid_w),.fp_add_full_i(fp_add_rs_full_w),.fp_add_entry_o(fp_add_disp_entry_w),
-        .fp_mul_valid_o(fp_mul_disp_valid_w),.fp_mul_full_i(fp_mul_rs_full_w),.fp_mul_entry_o(fp_mul_disp_entry_w),
-        .fp_div_valid_o(fp_div_disp_valid_w),.fp_div_full_i(fp_div_rs_full_w),.fp_div_entry_o(fp_div_disp_entry_w),
-        .lsb_valid_o(lsb_disp_valid_w),      .lsb_full_i(~lsb_ready_w),       .lsb_entry_o(lsb_disp_entry_w),
+        .alu_valid_o(alu_disp_valid_w), .alu_full_i(alu_rs_full_w), .alu_entry_o(alu_disp_entry_w),
+        .br_valid_o(br_disp_valid_w), .br_full_i(br_rs_full_w), .br_entry_o(br_disp_entry_w),
+        .fp_add_valid_o(fp_add_disp_valid_w),.fp_add_full_i(fp_add_rs_full_w), .fp_add_entry_o(fp_add_disp_entry_w),
+        .fp_mul_valid_o(fp_mul_disp_valid_w),.fp_mul_full_i(fp_mul_rs_full_w), .fp_mul_entry_o(fp_mul_disp_entry_w),
+        .fp_div_valid_o(fp_div_disp_valid_w),.fp_div_full_i(fp_div_rs_full_w), .fp_div_entry_o(fp_div_disp_entry_w),
+        .lsb_valid_o(lsb_disp_valid_w), .lsb_full_i(~lsb_ready_w), .lsb_entry_o(lsb_disp_entry_w),
         .fp_cvt_valid_o(fp_cvt_disp_valid_w),.fp_cvt_full_i(fp_cvt_rs_full_w),.fp_cvt_entry_o(fp_cvt_disp_entry_w)
     );
 
     // -------------------------------------------------------------------------
     // Reservation Stations
     // -------------------------------------------------------------------------
-    logic      alu_issue_valid_w,    br_issue_valid_w;
-    logic      fp_add_issue_valid_w, fp_mul_issue_valid_w;
-    logic      fp_div_issue_valid_w, fp_cvt_issue_valid_w;
-    rs_entry_t alu_issue_entry_w,    br_issue_entry_w;
+    logic alu_issue_valid_w, br_issue_valid_w;
+    logic fp_add_issue_valid_w, fp_mul_issue_valid_w;
+    logic fp_div_issue_valid_w, fp_cvt_issue_valid_w;
+    rs_entry_t alu_issue_entry_w, br_issue_entry_w;
     rs_entry_t fp_add_issue_entry_w, fp_mul_issue_entry_w;
     rs_entry_t fp_div_issue_entry_w, fp_cvt_issue_entry_w;
 
@@ -345,8 +345,8 @@ module tomasulo_core(
     // -------------------------------------------------------------------------
     // ALU + result latch (holds until CDB slot 0 is granted)
     // -------------------------------------------------------------------------
-    logic          alu_valid_o;
-    logic [TAG_W-1:0]  alu_tag_o;
+    logic alu_valid_o;
+    logic [TAG_W-1:0] alu_tag_o;
     logic [DATA_W-1:0] alu_result_o;
 
     alu_int u_alu(
@@ -365,8 +365,9 @@ module tomasulo_core(
         if (~rst_n || flush_w)
             alu_cdb <= '{valid: 1'b0, tag: '0, value: '0};
         else begin
-            if (fu_grant_w[0])         alu_cdb.valid <= 1'b0;
-            else if (alu_valid_o) begin
+            if (fu_grant_w[0])  begin 
+                alu_cdb.valid <= 1'b0;
+            end else if (alu_valid_o) begin
                 alu_cdb <= '{valid: 1'b1, tag: alu_tag_o, value: alu_result_o};
             end
         end
@@ -375,16 +376,20 @@ module tomasulo_core(
     // -------------------------------------------------------------------------
     // Branch unit + result latch
     // -------------------------------------------------------------------------
-    logic          br_valid_o, br_taken_o;
-    logic [TAG_W-1:0]  br_tag_o;
-    logic [PC_W-1:0]   br_target_o;
+    logic br_valid_o, br_taken_o;
+    logic [TAG_W-1:0] br_tag_o;
+    logic [PC_W-1:0] br_target_o;
 
     // Delay op/pc by 1 cycle (branch_unit is registered) to compute PC+4
-    opcode_e     br_op_d;
+    opcode_e br_op_d;
     logic [PC_W-1:0] br_pc_d;
     always_ff @(posedge clk or negedge rst_n) begin
-        if (~rst_n) begin br_op_d <= OP_NOP; br_pc_d <= '0; end
-        else        begin br_op_d <= br_issue_entry_w.op; br_pc_d <= br_issue_entry_w.pc; end
+        if (~rst_n) begin 
+            br_op_d <= OP_NOP; br_pc_d <= '0; 
+        end else begin
+            br_op_d <= br_issue_entry_w.op; 
+            br_pc_d <= br_issue_entry_w.pc; 
+        end
     end
 
     branch_unit u_br(
@@ -397,24 +402,24 @@ module tomasulo_core(
         .target_o(br_target_o), .taken_o(br_taken_o)
     );
 
-    assign br_res_valid_w  = br_valid_o;
-    assign br_res_tag_w    = br_tag_o;
-    assign br_res_taken_w  = br_taken_o;
+    assign br_res_valid_w = br_valid_o;
+    assign br_res_tag_w = br_tag_o;
+    assign br_res_taken_w = br_taken_o;
     assign br_res_target_w = br_target_o;
 
     // CDB value: PC+4 (return address) for JAL/JALR; target for branches.
-    wire [DATA_W-1:0] br_cdb_val =
-        ((br_op_d == OP_JAL) || (br_op_d == OP_JALR)) ? (br_pc_d + 32'd4) : br_target_o;
+    wire [DATA_W-1:0] br_cdb_val = ((br_op_d == OP_JAL) || (br_op_d == OP_JALR)) ? (br_pc_d + 32'd4) : br_target_o;
 
     cdb_t br_cdb;
     assign br_rs_fu_ready_w = ~br_cdb.valid | fu_grant_w[1];
 
     always_ff @(posedge clk or negedge rst_n) begin
-        if (~rst_n || flush_w)
+        if (~rst_n || flush_w) begin 
             br_cdb <= '{valid: 1'b0, tag: '0, value: '0};
-        else begin
-            if (fu_grant_w[1])        br_cdb.valid <= 1'b0;
-            else if (br_valid_o) begin
+        end else begin
+            if (fu_grant_w[1]) begin 
+                br_cdb.valid <= 1'b0;
+            end else if (br_valid_o) begin
                 br_cdb <= '{valid: 1'b1, tag: br_tag_o, value: br_cdb_val};
             end
         end
@@ -423,8 +428,8 @@ module tomasulo_core(
     // -------------------------------------------------------------------------
     // FP add (FU 2)
     // -------------------------------------------------------------------------
-    logic          fp_add_cdb_valid_w;
-    logic [TAG_W-1:0]  fp_add_cdb_tag_w;
+    logic fp_add_cdb_valid_w;
+    logic [TAG_W-1:0] fp_add_cdb_tag_w;
     logic [DATA_W-1:0] fp_add_cdb_result_w;
 
     fp_add u_fp_add(
@@ -440,8 +445,8 @@ module tomasulo_core(
     // -------------------------------------------------------------------------
     // FP mul (FU 3)
     // -------------------------------------------------------------------------
-    logic          fp_mul_cdb_valid_w;
-    logic [TAG_W-1:0]  fp_mul_cdb_tag_w;
+    logic fp_mul_cdb_valid_w;
+    logic [TAG_W-1:0] fp_mul_cdb_tag_w;
     logic [DATA_W-1:0] fp_mul_cdb_result_w;
 
     fp_mul u_fp_mul(
@@ -457,8 +462,8 @@ module tomasulo_core(
     // -------------------------------------------------------------------------
     // FP div (FU 4)
     // -------------------------------------------------------------------------
-    logic          fp_div_cdb_valid_w;
-    logic [TAG_W-1:0]  fp_div_cdb_tag_w;
+    logic fp_div_cdb_valid_w;
+    logic [TAG_W-1:0] fp_div_cdb_tag_w;
     logic [DATA_W-1:0] fp_div_cdb_result_w;
 
     fp_div u_fp_div(
@@ -474,11 +479,11 @@ module tomasulo_core(
     // -------------------------------------------------------------------------
     // Load/Store Buffer (RS+FU combined, FU 5)
     // -------------------------------------------------------------------------
-    logic          lsb_cdb_valid_w;
-    logic [TAG_W-1:0]  lsb_cdb_tag_w;
+    logic lsb_cdb_valid_w;
+    logic [TAG_W-1:0] lsb_cdb_tag_w;
     logic [DATA_W-1:0] lsb_cdb_value_w;
-    logic          store_commit_w;
-    logic [TAG_W-1:0]  store_commit_tag_w;
+    logic store_commit_w;
+    logic [TAG_W-1:0] store_commit_tag_w;
 
     load_store_buffer u_lsb(
         .clk(clk), .rst_n(rst_n), .flush_i(flush_w),
@@ -496,8 +501,8 @@ module tomasulo_core(
     // -------------------------------------------------------------------------
     // FP cvt (FU 6)
     // -------------------------------------------------------------------------
-    logic          fp_cvt_cdb_valid_w;
-    logic [TAG_W-1:0]  fp_cvt_cdb_tag_w;
+    logic fp_cvt_cdb_valid_w;
+    logic [TAG_W-1:0] fp_cvt_cdb_tag_w;
     logic [DATA_W-1:0] fp_cvt_cdb_result_w;
 
     fp_cvt u_fp_cvt(
@@ -519,7 +524,7 @@ module tomasulo_core(
     assign fu_results[2] = '{valid: fp_add_cdb_valid_w, tag: fp_add_cdb_tag_w, value: fp_add_cdb_result_w};
     assign fu_results[3] = '{valid: fp_mul_cdb_valid_w, tag: fp_mul_cdb_tag_w, value: fp_mul_cdb_result_w};
     assign fu_results[4] = '{valid: fp_div_cdb_valid_w, tag: fp_div_cdb_tag_w, value: fp_div_cdb_result_w};
-    assign fu_results[5] = '{valid: lsb_cdb_valid_w,    tag: lsb_cdb_tag_w,    value: lsb_cdb_value_w};
+    assign fu_results[5] = '{valid: lsb_cdb_valid_w, tag: lsb_cdb_tag_w, value: lsb_cdb_value_w};
     assign fu_results[6] = '{valid: fp_cvt_cdb_valid_w, tag: fp_cvt_cdb_tag_w, value: fp_cvt_cdb_result_w};
 
     cdb u_cdb(
@@ -536,8 +541,8 @@ module tomasulo_core(
         .commit_entry_i(rob_commit_entry_w),
         .commit_tag_i(rob_head_reg),
         .commit_en_o(commit_en_w),
-        .x_wr_en_o(x_wr_en_w),       .x_wr_addr_o(x_wr_addr_w),       .x_wr_val_o(x_wr_val_w),
-        .f_wr_en_o(f_wr_en_w),        .f_wr_addr_o(f_wr_addr_w),        .f_wr_val_o(f_wr_val_w),
+        .x_wr_en_o(x_wr_en_w), .x_wr_addr_o(x_wr_addr_w), .x_wr_val_o(x_wr_val_w),
+        .f_wr_en_o(f_wr_en_w), .f_wr_addr_o(f_wr_addr_w), .f_wr_val_o(f_wr_val_w),
         .x_commit_en_o(x_commit_en_w),.x_commit_addr_o(x_commit_addr_w),.x_commit_tag_o(x_commit_tag_w),
         .f_commit_en_o(f_commit_en_w),.f_commit_addr_o(f_commit_addr_w),.f_commit_tag_o(f_commit_tag_w),
         .flush_o(flush_w), .redirect_pc_o(redirect_pc_o),
