@@ -54,7 +54,7 @@ module cpu(CLOCK_50, KEY, SW, LEDR, HEX0, HEX1, HEX2, HEX3, HEX4, HEX5);
         .write_en_i(1'b0), .write_addr_i('0), .write_data_i('0)
     );
 
-    data_mem #(.FILENAME("")) u_dmem(
+    data_mem #(.FILENAME("program.hex")) u_dmem(
         .clk(clk),
         .rd_addr_i(mem_rd_addr), .rd_data_o(mem_rd_data),
         .wr_en_i(mem_wr_en), .wr_addr_i(mem_wr_addr), .wr_data_i(mem_wr_data)
