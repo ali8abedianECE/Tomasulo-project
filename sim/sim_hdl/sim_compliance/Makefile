@@ -25,7 +25,7 @@ CC      := $(RISCV_PREFIX)gcc
 OBJCOPY := $(RISCV_PREFIX)objcopy
 NM      := $(RISCV_PREFIX)nm
 
-HW_ROOT := ../../../../hardware
+HW_ROOT := ../../../hardware
 
 # ModelSim ASE installed under Downloads/modelsim_ase
 MODELSIM_DIR ?= $(HOME)/Downloads/modelsim_ase/win32aloem
