@@ -50,11 +50,24 @@ Verify:
 riscv64-unknown-elf-gcc --version
 ```
 
-### 2. ModelSim / QuestaSim
+### 2. ModelSim ASE
 
-Must be on your PATH as `vsim`. If your binary has a different name set it:
+The Makefile auto-detects which platform you are on:
+
+| Platform | What it does |
+|---|---|
+| **Mac** (Wine) | Detects `~/Downloads/modelsim_ase/win32aloem/vsim.exe` and runs it via `wine` |
+| **Windows** (Git Bash) | Calls `vsim.exe` / `vlog.exe` directly (no Wine needed) |
+| **Linux** | Expects native `vsim` on PATH |
+
+On Mac the ModelSim ASE download should be at `~/Downloads/modelsim_ase/`. Override the path if yours differs:
 ```bash
-export VSIM=questasim   # or full path
+make I-ADD-01 MODELSIM_DIR=/path/to/modelsim_ase/win32aloem
+```
+
+On Windows (Git Bash), make sure `MODELSIM_DIR` points to the `win32aloem` folder:
+```bash
+make I-ADD-01 MODELSIM_DIR="C:/intelFPGA/modelsim_ase/win32aloem"
 ```
 
 ### 3. GitHub CLI (`gh`)
