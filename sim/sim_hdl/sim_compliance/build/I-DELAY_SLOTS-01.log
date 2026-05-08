@@ -1,0 +1,704 @@
+../../../hardware/execute/fp_ops/fp_round.sv:47: sorry: constant selects in always_* processes are not fully supported (the process will be sensitive to all bits in 'mant_i[22:0]').
+../../../hardware/execute/fp_ops/fp_round.sv:65: sorry: constant selects in always_* processes are not fully supported (the process will be sensitive to all bits in 'mant_inc[23:0]').
+../../../hardware/execute/fp_ops/fp_round.sv:70: sorry: constant selects in always_* processes are not fully supported (the process will be sensitive to all bits in 'exp_out[8:0]').
+../../../hardware/execute/fp_ops/fp_round.sv:75: sorry: constant selects in always_* processes are not fully supported (the process will be sensitive to all bits in 'exp_out[8:0]').
+../../../hardware/execute/fp_ops/fp_round.sv:75: sorry: constant selects in always_* processes are not fully supported (the process will be sensitive to all bits in 'mant_inc[23:0]').
+:0: sorry: constant selects in always_* processes are not fully supported (the process will be sensitive to all bits in 'head_entry_w[112:0]').
+:0: sorry: constant selects in always_* processes are not fully supported (the process will be sensitive to all bits in 'lookup1_entry_w[112:0]').
+:0: sorry: constant selects in always_* processes are not fully supported (the process will be sensitive to all bits in 'lookup1_entry_w[112:0]').
+:0: sorry: constant selects in always_* processes are not fully supported (the process will be sensitive to all bits in 'lookup2_entry_w[112:0]').
+:0: sorry: constant selects in always_* processes are not fully supported (the process will be sensitive to all bits in 'lookup2_entry_w[112:0]').
+:0: sorry: constant selects in always_* processes are not fully supported (the process will be sensitive to all bits in 'iq_instr_i[88:0]').
+:0: sorry: constant selects in always_* processes are not fully supported (the process will be sensitive to all bits in 'iq_instr_i[88:0]').
+:0: sorry: constant selects in always_* processes are not fully supported (the process will be sensitive to all bits in 'iq_instr_i[88:0]').
+:0: sorry: constant selects in always_* processes are not fully supported (the process will be sensitive to all bits in 'iq_instr_i[88:0]').
+:0: sorry: constant selects in always_* processes are not fully supported (the process will be sensitive to all bits in 'iq_instr_i[88:0]').
+:0: sorry: constant selects in always_* processes are not fully supported (the process will be sensitive to all bits in 'cdb_i[36:0]').
+:0: sorry: constant selects in always_* processes are not fully supported (the process will be sensitive to all bits in 'cdb_i[36:0]').
+:0: sorry: constant selects in always_* processes are not fully supported (the process will be sensitive to all bits in 'cdb_i[36:0]').
+:0: sorry: constant selects in always_* processes are not fully supported (the process will be sensitive to all bits in 'cdb_i[36:0]').
+:0: sorry: constant selects in always_* processes are not fully supported (the process will be sensitive to all bits in 'cdb_i[36:0]').
+:0: sorry: constant selects in always_* processes are not fully supported (the process will be sensitive to all bits in 'cdb_i[36:0]').
+:0: sorry: constant selects in always_* processes are not fully supported (the process will be sensitive to all bits in 'iq_instr_i[88:0]').
+:0: sorry: constant selects in always_* processes are not fully supported (the process will be sensitive to all bits in 'cdb_i[36:0]').
+:0: sorry: constant selects in always_* processes are not fully supported (the process will be sensitive to all bits in 'cdb_i[36:0]').
+:0: sorry: constant selects in always_* processes are not fully supported (the process will be sensitive to all bits in 'cdb_i[36:0]').
+:0: sorry: constant selects in always_* processes are not fully supported (the process will be sensitive to all bits in 'cdb_i[36:0]').
+:0: sorry: constant selects in always_* processes are not fully supported (the process will be sensitive to all bits in 'cdb_i[36:0]').
+:0: sorry: constant selects in always_* processes are not fully supported (the process will be sensitive to all bits in 'cdb_i[36:0]').
+:0: sorry: constant selects in always_* processes are not fully supported (the process will be sensitive to all bits in 'iq_instr_i[88:0]').
+:0: sorry: constant selects in always_* processes are not fully supported (the process will be sensitive to all bits in 'iq_instr_i[88:0]').
+:0: sorry: constant selects in always_* processes are not fully supported (the process will be sensitive to all bits in 'iq_instr_i[88:0]').
+:0: sorry: constant selects in always_* processes are not fully supported (the process will be sensitive to all bits in 'iq_instr_i[88:0]').
+:0: sorry: constant selects in always_* processes are not fully supported (the process will be sensitive to all bits in 'iq_instr_i[88:0]').
+:0: sorry: constant selects in always_* processes are not fully supported (the process will be sensitive to all bits in 'iq_instr_i[88:0]').
+:0: sorry: constant selects in always_* processes are not fully supported (the process will be sensitive to all bits in 'iq_instr_i[88:0]').
+:0: sorry: constant selects in always_* processes are not fully supported (the process will be sensitive to all bits in 'iq_instr_i[88:0]').
+../../../hardware/execute/int_ops/alu_unit.sv:50: sorry: constant selects in always_* processes are not fully supported (the process will be sensitive to all bits in 'rs2_i[31:0]').
+../../../hardware/execute/int_ops/alu_unit.sv:51: sorry: constant selects in always_* processes are not fully supported (the process will be sensitive to all bits in 'rs2_i[31:0]').
+../../../hardware/execute/int_ops/alu_unit.sv:52: sorry: constant selects in always_* processes are not fully supported (the process will be sensitive to all bits in 'rs2_i[31:0]').
+../../../hardware/execute/int_ops/alu_unit.sv:60: sorry: constant selects in always_* processes are not fully supported (the process will be sensitive to all bits in 'imm_i[31:0]').
+../../../hardware/execute/int_ops/alu_unit.sv:61: sorry: constant selects in always_* processes are not fully supported (the process will be sensitive to all bits in 'imm_i[31:0]').
+../../../hardware/execute/int_ops/alu_unit.sv:62: sorry: constant selects in always_* processes are not fully supported (the process will be sensitive to all bits in 'imm_i[31:0]').
+../../../hardware/execute/fp_ops/fp_add.sv:60: sorry: constant selects in always_* processes are not fully supported (the process will be sensitive to all bits in 'a[31:0]').
+../../../hardware/execute/fp_ops/fp_add.sv:60: sorry: constant selects in always_* processes are not fully supported (the process will be sensitive to all bits in 'a[31:0]').
+../../../hardware/execute/fp_ops/fp_add.sv:60: sorry: constant selects in always_* processes are not fully supported (the process will be sensitive to all bits in 'a[31:0]').
+../../../hardware/execute/fp_ops/fp_add.sv:61: sorry: constant selects in always_* processes are not fully supported (the process will be sensitive to all bits in 'b[31:0]').
+../../../hardware/execute/fp_ops/fp_add.sv:62: sorry: constant selects in always_* processes are not fully supported (the process will be sensitive to all bits in 'b[31:0]').
+../../../hardware/execute/fp_ops/fp_add.sv:62: sorry: constant selects in always_* processes are not fully supported (the process will be sensitive to all bits in 'b[31:0]').
+../../../hardware/execute/fp_ops/fp_add.sv:67: sorry: constant selects in always_* processes are not fully supported (the process will be sensitive to all bits in 'b[31:0]').
+../../../hardware/execute/fp_ops/fp_add.sv:80: sorry: constant selects in always_* processes are not fully supported (the process will be sensitive to all bits in 'ediff[7:0]').
+../../../hardware/execute/fp_ops/fp_add.sv:97: sorry: constant selects in always_* processes are not fully supported (the process will be sensitive to all bits in 's[26:0]').
+../../../hardware/execute/fp_ops/fp_add.sv:100: sorry: constant selects in always_* processes are not fully supported (the process will be sensitive to all bits in 's[26:0]').
+../../../hardware/execute/fp_ops/fp_add.sv:108: sorry: constant selects in always_* processes are not fully supported (the process will be sensitive to all bits in 's[26:0]').
+../../../hardware/execute/fp_ops/fp_add.sv:108: sorry: constant selects in always_* processes are not fully supported (the process will be sensitive to all bits in 'sh[7:0]').
+../../../hardware/execute/fp_ops/fp_add.sv:112: sorry: constant selects in always_* processes are not fully supported (the process will be sensitive to all bits in 'norm[25:0]').
+../../../hardware/execute/fp_ops/fp_mul.sv:74: sorry: constant selects in always_* processes are not fully supported (the process will be sensitive to all bits in 'rs1_i[31:0]').
+../../../hardware/execute/fp_ops/fp_mul.sv:74: sorry: constant selects in always_* processes are not fully supported (the process will be sensitive to all bits in 'rs1_i[31:0]').
+../../../hardware/execute/fp_ops/fp_mul.sv:75: sorry: constant selects in always_* processes are not fully supported (the process will be sensitive to all bits in 'rs2_i[31:0]').
+../../../hardware/execute/fp_ops/fp_mul.sv:75: sorry: constant selects in always_* processes are not fully supported (the process will be sensitive to all bits in 'rs2_i[31:0]').
+../../../hardware/execute/fp_ops/fp_mul.sv:77: sorry: constant selects in always_* processes are not fully supported (the process will be sensitive to all bits in 'rs1_i[31:0]').
+../../../hardware/execute/fp_ops/fp_mul.sv:77: sorry: constant selects in always_* processes are not fully supported (the process will be sensitive to all bits in 'rs2_i[31:0]').
+../../../hardware/execute/fp_ops/fp_mul.sv:82: sorry: constant selects in always_* processes are not fully supported (the process will be sensitive to all bits in 'ma[23:0]').
+../../../hardware/execute/fp_ops/fp_mul.sv:82: sorry: constant selects in always_* processes are not fully supported (the process will be sensitive to all bits in 'mb[23:0]').
+../../../hardware/execute/fp_ops/fp_mul.sv:83: sorry: constant selects in always_* processes are not fully supported (the process will be sensitive to all bits in 'ma[23:0]').
+../../../hardware/execute/fp_ops/fp_mul.sv:83: sorry: constant selects in always_* processes are not fully supported (the process will be sensitive to all bits in 'mb[23:0]').
+../../../hardware/execute/fp_ops/fp_mul.sv:84: sorry: constant selects in always_* processes are not fully supported (the process will be sensitive to all bits in 'ma[23:0]').
+../../../hardware/execute/fp_ops/fp_mul.sv:84: sorry: constant selects in always_* processes are not fully supported (the process will be sensitive to all bits in 'mb[23:0]').
+../../../hardware/execute/fp_ops/fp_mul.sv:85: sorry: constant selects in always_* processes are not fully supported (the process will be sensitive to all bits in 'ma[23:0]').
+../../../hardware/execute/fp_ops/fp_mul.sv:85: sorry: constant selects in always_* processes are not fully supported (the process will be sensitive to all bits in 'mb[23:0]').
+../../../hardware/execute/fp_ops/fp_mul.sv:112: sorry: constant selects in always_* processes are not fully supported (the process will be sensitive to all bits in 's2_product[47:0]').
+../../../hardware/execute/fp_ops/fp_mul.sv:114: sorry: constant selects in always_* processes are not fully supported (the process will be sensitive to all bits in 's2_product[47:0]').
+../../../hardware/execute/fp_ops/fp_mul.sv:116: sorry: constant selects in always_* processes are not fully supported (the process will be sensitive to all bits in 's2_product[47:0]').
+../../../hardware/execute/fp_ops/fp_mul.sv:118: sorry: constant selects in always_* processes are not fully supported (the process will be sensitive to all bits in 'er[9:0]').
+../../../hardware/execute/fp_ops/fp_mul.sv:120: sorry: constant selects in always_* processes are not fully supported (the process will be sensitive to all bits in 'er[9:0]').
+../../../hardware/execute/fp_ops/fp_div.sv:138: sorry: constant selects in always_* processes are not fully supported (the process will be sensitive to all bits in 's_exp[9:0]').
+../../../hardware/execute/fp_ops/fp_div.sv:142: sorry: constant selects in always_* processes are not fully supported (the process will be sensitive to all bits in 's_qreg[23:0]').
+../../../hardware/execute/fp_ops/fp_div.sv:143: sorry: constant selects in always_* processes are not fully supported (the process will be sensitive to all bits in 's_exp[9:0]').
+../../../hardware/execute/fp_ops/fp_div.sv:143: sorry: constant selects in always_* processes are not fully supported (the process will be sensitive to all bits in 's_qreg[23:0]').
+../../../hardware/execute/fp_ops/fp_div.sv:147: sorry: constant selects in always_* processes are not fully supported (the process will be sensitive to all bits in 's_exp[9:0]').
+../../../hardware/execute/fp_ops/fp_div.sv:147: sorry: constant selects in always_* processes are not fully supported (the process will be sensitive to all bits in 's_qreg[23:0]').
+../../../hardware/execute/fp_ops/fp_div.sv:165: sorry: constant selects in always_* processes are not fully supported (the process will be sensitive to all bits in 'rs1_i[31:0]').
+../../../hardware/execute/fp_ops/fp_div.sv:165: sorry: constant selects in always_* processes are not fully supported (the process will be sensitive to all bits in 'rs1_i[31:0]').
+../../../hardware/execute/fp_ops/fp_div.sv:166: sorry: constant selects in always_* processes are not fully supported (the process will be sensitive to all bits in 'rs2_i[31:0]').
+../../../hardware/execute/fp_ops/fp_div.sv:166: sorry: constant selects in always_* processes are not fully supported (the process will be sensitive to all bits in 'rs2_i[31:0]').
+../../../hardware/execute/fp_ops/fp_div.sv:167: sorry: constant selects in always_* processes are not fully supported (the process will be sensitive to all bits in 'rs1_i[31:0]').
+../../../hardware/execute/fp_ops/fp_div.sv:167: sorry: constant selects in always_* processes are not fully supported (the process will be sensitive to all bits in 'rs2_i[31:0]').
+:0: sorry: constant selects in always_* processes are not fully supported (the process will be sensitive to all bits in 'head_entry_w[147:0]').
+../../../hardware/execute/lsb/load_store_buffer.sv:121: sorry: constant selects in always_* processes are not fully supported (the process will be sensitive to all bits in 'head_addr[31:0]').
+../../../hardware/execute/lsb/load_store_buffer.sv:122: sorry: constant selects in always_* processes are not fully supported (the process will be sensitive to all bits in 'head_addr[31:0]').
+:0: sorry: constant selects in always_* processes are not fully supported (the process will be sensitive to all bits in 'head_entry_w[147:0]').
+../../../hardware/execute/lsb/load_store_buffer.sv:131: sorry: constant selects in always_* processes are not fully supported (the process will be sensitive to all bits in 'head_entry_w[147:0]').
+../../../hardware/execute/lsb/load_store_buffer.sv:132: sorry: constant selects in always_* processes are not fully supported (the process will be sensitive to all bits in 'head_entry_w[147:0]').
+:0: sorry: constant selects in always_* processes are not fully supported (the process will be sensitive to all bits in 'head_entry_w[147:0]').
+../../../hardware/execute/lsb/load_store_buffer.sv:143: sorry: constant selects in always_* processes are not fully supported (the process will be sensitive to all bits in 'mem_rd_data_i[31:0]').
+../../../hardware/execute/lsb/load_store_buffer.sv:143: sorry: constant selects in always_* processes are not fully supported (the process will be sensitive to all bits in 'mem_rd_data_i[31:0]').
+../../../hardware/execute/lsb/load_store_buffer.sv:144: sorry: constant selects in always_* processes are not fully supported (the process will be sensitive to all bits in 'mem_rd_data_i[31:0]').
+../../../hardware/execute/lsb/load_store_buffer.sv:144: sorry: constant selects in always_* processes are not fully supported (the process will be sensitive to all bits in 'mem_rd_data_i[31:0]').
+../../../hardware/execute/lsb/load_store_buffer.sv:145: sorry: constant selects in always_* processes are not fully supported (the process will be sensitive to all bits in 'mem_rd_data_i[31:0]').
+../../../hardware/execute/lsb/load_store_buffer.sv:145: sorry: constant selects in always_* processes are not fully supported (the process will be sensitive to all bits in 'mem_rd_data_i[31:0]').
+../../../hardware/execute/lsb/load_store_buffer.sv:146: sorry: constant selects in always_* processes are not fully supported (the process will be sensitive to all bits in 'mem_rd_data_i[31:0]').
+../../../hardware/execute/lsb/load_store_buffer.sv:146: sorry: constant selects in always_* processes are not fully supported (the process will be sensitive to all bits in 'mem_rd_data_i[31:0]').
+../../../hardware/execute/lsb/load_store_buffer.sv:151: sorry: constant selects in always_* processes are not fully supported (the process will be sensitive to all bits in 'mem_rd_data_i[31:0]').
+../../../hardware/execute/lsb/load_store_buffer.sv:152: sorry: constant selects in always_* processes are not fully supported (the process will be sensitive to all bits in 'mem_rd_data_i[31:0]').
+../../../hardware/execute/lsb/load_store_buffer.sv:153: sorry: constant selects in always_* processes are not fully supported (the process will be sensitive to all bits in 'mem_rd_data_i[31:0]').
+../../../hardware/execute/lsb/load_store_buffer.sv:154: sorry: constant selects in always_* processes are not fully supported (the process will be sensitive to all bits in 'mem_rd_data_i[31:0]').
+../../../hardware/execute/lsb/load_store_buffer.sv:157: sorry: constant selects in always_* processes are not fully supported (the process will be sensitive to all bits in 'load_pending_byte_sel[1:0]').
+../../../hardware/execute/lsb/load_store_buffer.sv:158: sorry: constant selects in always_* processes are not fully supported (the process will be sensitive to all bits in 'mem_rd_data_i[31:0]').
+../../../hardware/execute/lsb/load_store_buffer.sv:158: sorry: constant selects in always_* processes are not fully supported (the process will be sensitive to all bits in 'mem_rd_data_i[31:0]').
+../../../hardware/execute/lsb/load_store_buffer.sv:159: sorry: constant selects in always_* processes are not fully supported (the process will be sensitive to all bits in 'mem_rd_data_i[31:0]').
+../../../hardware/execute/lsb/load_store_buffer.sv:159: sorry: constant selects in always_* processes are not fully supported (the process will be sensitive to all bits in 'mem_rd_data_i[31:0]').
+../../../hardware/execute/lsb/load_store_buffer.sv:160: sorry: constant selects in always_* processes are not fully supported (the process will be sensitive to all bits in 'load_pending_byte_sel[1:0]').
+../../../hardware/execute/lsb/load_store_buffer.sv:161: sorry: constant selects in always_* processes are not fully supported (the process will be sensitive to all bits in 'mem_rd_data_i[31:0]').
+../../../hardware/execute/lsb/load_store_buffer.sv:162: sorry: constant selects in always_* processes are not fully supported (the process will be sensitive to all bits in 'mem_rd_data_i[31:0]').
+../../../hardware/execute/fp_ops/fp_cvt.sv:56: sorry: constant selects in always_* processes are not fully supported (the process will be sensitive to all bits in 'f[31:0]').
+../../../hardware/execute/fp_ops/fp_cvt.sv:57: sorry: constant selects in always_* processes are not fully supported (the process will be sensitive to all bits in 'f[31:0]').
+../../../hardware/execute/fp_ops/fp_cvt.sv:58: sorry: constant selects in always_* processes are not fully supported (the process will be sensitive to all bits in 'f[31:0]').
+../../../hardware/execute/fp_ops/fp_cvt.sv:98: sorry: constant selects in always_* processes are not fully supported (the process will be sensitive to all bits in 'x[31:0]').
+../../../hardware/execute/fp_ops/fp_cvt.sv:109: sorry: constant selects in always_* processes are not fully supported (the process will be sensitive to all bits in 'norm[31:0]').
+:0: sorry: constant selects in always_* processes are not fully supported (the process will be sensitive to all bits in 'commit_entry_i[112:0]').
+:0: sorry: constant selects in always_* processes are not fully supported (the process will be sensitive to all bits in 'commit_entry_i[112:0]').
+:0: sorry: constant selects in always_* processes are not fully supported (the process will be sensitive to all bits in 'commit_entry_i[112:0]').
+:0: sorry: constant selects in always_* processes are not fully supported (the process will be sensitive to all bits in 'commit_entry_i[112:0]').
+:0: sorry: constant selects in always_* processes are not fully supported (the process will be sensitive to all bits in 'commit_entry_i[112:0]').
+:0: sorry: constant selects in always_* processes are not fully supported (the process will be sensitive to all bits in 'commit_entry_i[112:0]').
+:0: sorry: constant selects in always_* processes are not fully supported (the process will be sensitive to all bits in 'commit_entry_i[112:0]').
+:0: sorry: constant selects in always_* processes are not fully supported (the process will be sensitive to all bits in 'commit_entry_i[112:0]').
+:0: sorry: constant selects in always_* processes are not fully supported (the process will be sensitive to all bits in 'commit_entry_i[112:0]').
+:0: sorry: constant selects in always_* processes are not fully supported (the process will be sensitive to all bits in 'commit_entry_i[112:0]').
+:0: sorry: constant selects in always_* processes are not fully supported (the process will be sensitive to all bits in 'commit_entry_i[112:0]').
+:0: sorry: constant selects in always_* processes are not fully supported (the process will be sensitive to all bits in 'commit_entry_i[112:0]').
+:0: sorry: constant selects in always_* processes are not fully supported (the process will be sensitive to all bits in 'commit_entry_i[112:0]').
+:0: sorry: constant selects in always_* processes are not fully supported (the process will be sensitive to all bits in 'commit_entry_i[112:0]').
+../../../hardware/core/tomasulo_core.sv:54: sorry: constant selects in always_* processes are not fully supported (the process will be sensitive to all bits in 'raw[31:0]').
+../../../hardware/core/tomasulo_core.sv:54: sorry: constant selects in always_* processes are not fully supported (the process will be sensitive to all bits in 'raw[31:0]').
+../../../hardware/core/tomasulo_core.sv:54: sorry: constant selects in always_* processes are not fully supported (the process will be sensitive to all bits in 'raw[31:0]').
+../../../hardware/core/tomasulo_core.sv:55: sorry: constant selects in always_* processes are not fully supported (the process will be sensitive to all bits in 'raw[31:0]').
+../../../hardware/core/tomasulo_core.sv:55: sorry: constant selects in always_* processes are not fully supported (the process will be sensitive to all bits in 'raw[31:0]').
+../../../hardware/core/tomasulo_core.sv:55: sorry: constant selects in always_* processes are not fully supported (the process will be sensitive to all bits in 'raw[31:0]').
+../../../hardware/core/tomasulo_core.sv:71: sorry: constant selects in always_* processes are not fully supported (the process will be sensitive to all bits in 'funct7[6:0]').
+../../../hardware/core/tomasulo_core.sv:82: sorry: constant selects in always_* processes are not fully supported (the process will be sensitive to all bits in 'raw[31:0]').
+../../../hardware/core/tomasulo_core.sv:82: sorry: constant selects in always_* processes are not fully supported (the process will be sensitive to all bits in 'raw[31:0]').
+../../../hardware/core/tomasulo_core.sv:88: sorry: constant selects in always_* processes are not fully supported (the process will be sensitive to all bits in 'funct7[6:0]').
+../../../hardware/core/tomasulo_core.sv:94: sorry: constant selects in always_* processes are not fully supported (the process will be sensitive to all bits in 'raw[31:0]').
+../../../hardware/core/tomasulo_core.sv:94: sorry: constant selects in always_* processes are not fully supported (the process will be sensitive to all bits in 'raw[31:0]').
+../../../hardware/core/tomasulo_core.sv:104: sorry: constant selects in always_* processes are not fully supported (the process will be sensitive to all bits in 'raw[31:0]').
+../../../hardware/core/tomasulo_core.sv:104: sorry: constant selects in always_* processes are not fully supported (the process will be sensitive to all bits in 'raw[31:0]').
+../../../hardware/core/tomasulo_core.sv:104: sorry: constant selects in always_* processes are not fully supported (the process will be sensitive to all bits in 'raw[31:0]').
+../../../hardware/core/tomasulo_core.sv:114: sorry: constant selects in always_* processes are not fully supported (the process will be sensitive to all bits in 'raw[31:0]').
+../../../hardware/core/tomasulo_core.sv:114: sorry: constant selects in always_* processes are not fully supported (the process will be sensitive to all bits in 'raw[31:0]').
+../../../hardware/core/tomasulo_core.sv:114: sorry: constant selects in always_* processes are not fully supported (the process will be sensitive to all bits in 'raw[31:0]').
+../../../hardware/core/tomasulo_core.sv:114: sorry: constant selects in always_* processes are not fully supported (the process will be sensitive to all bits in 'raw[31:0]').
+../../../hardware/core/tomasulo_core.sv:114: sorry: constant selects in always_* processes are not fully supported (the process will be sensitive to all bits in 'raw[31:0]').
+../../../hardware/core/tomasulo_core.sv:124: sorry: constant selects in always_* processes are not fully supported (the process will be sensitive to all bits in 'raw[31:0]').
+../../../hardware/core/tomasulo_core.sv:124: sorry: constant selects in always_* processes are not fully supported (the process will be sensitive to all bits in 'raw[31:0]').
+../../../hardware/core/tomasulo_core.sv:124: sorry: constant selects in always_* processes are not fully supported (the process will be sensitive to all bits in 'raw[31:0]').
+../../../hardware/core/tomasulo_core.sv:124: sorry: constant selects in always_* processes are not fully supported (the process will be sensitive to all bits in 'raw[31:0]').
+../../../hardware/core/tomasulo_core.sv:124: sorry: constant selects in always_* processes are not fully supported (the process will be sensitive to all bits in 'raw[31:0]').
+../../../hardware/core/tomasulo_core.sv:129: sorry: constant selects in always_* processes are not fully supported (the process will be sensitive to all bits in 'raw[31:0]').
+../../../hardware/core/tomasulo_core.sv:129: sorry: constant selects in always_* processes are not fully supported (the process will be sensitive to all bits in 'raw[31:0]').
+../../../hardware/core/tomasulo_core.sv:134: sorry: constant selects in always_* processes are not fully supported (the process will be sensitive to all bits in 'raw[31:0]').
+../../../hardware/core/tomasulo_core.sv:138: sorry: constant selects in always_* processes are not fully supported (the process will be sensitive to all bits in 'raw[31:0]').
+../../../hardware/core/tomasulo_core.sv:144: sorry: constant selects in always_* processes are not fully supported (the process will be sensitive to all bits in 'raw[31:0]').
+../../../hardware/core/tomasulo_core.sv:144: sorry: constant selects in always_* processes are not fully supported (the process will be sensitive to all bits in 'raw[31:0]').
+../../../hardware/core/tomasulo_core.sv:150: sorry: constant selects in always_* processes are not fully supported (the process will be sensitive to all bits in 'raw[31:0]').
+../../../hardware/core/tomasulo_core.sv:150: sorry: constant selects in always_* processes are not fully supported (the process will be sensitive to all bits in 'raw[31:0]').
+../../../hardware/core/tomasulo_core.sv:150: sorry: constant selects in always_* processes are not fully supported (the process will be sensitive to all bits in 'raw[31:0]').
+[tb] loading hex: build/I-DELAY_SLOTS-01.hex
+[tb] hex loaded, entering reset
+[tb] rst_n=0, waiting for 4 clk edges...
+[tb] reset done, rst_n=1
+[F] cyc=1 fetch raw=10000093 pc_d=00000000 fetch_pc=00000004 mem_direct=10000093
+[D] cyc=2 dispatch op=8 pc=00000000 tag=0 raw_iq_imm=00000100 rs1=0
+[F] cyc=2 fetch raw=11111137 pc_d=00000004 fetch_pc=00000008 mem_direct=11111137
+[D] cyc=3 dispatch op=22 pc=00000004 tag=1 raw_iq_imm=11111000 rs1=0
+[F] cyc=3 fetch raw=11110113 pc_d=00000008 fetch_pc=0000000c mem_direct=11110113
+[D] cyc=4 dispatch op=8 pc=00000008 tag=2 raw_iq_imm=00000111 rs1=2
+[F] cyc=4 fetch raw=0080006f pc_d=0000000c fetch_pc=00000010 mem_direct=0080006f
+[D] cyc=5 dispatch op=20 pc=0000000c tag=3 raw_iq_imm=00000008 rs1=0
+[F] cyc=5 fetch raw=00000113 pc_d=00000010 fetch_pc=00000014 mem_direct=00000113
+[C] cyc=5 CDB tag=0 val=00000100
+[D] cyc=6 dispatch op=8 pc=00000010 tag=4 raw_iq_imm=00000000 rs1=0
+[F] cyc=6 fetch raw=0020a023 pc_d=00000014 fetch_pc=00000018 mem_direct=0020a023
+[R] cyc=6 COMMIT op=8 pc=00000000
+[D] cyc=7 dispatch op=15 pc=00000014 tag=5 raw_iq_imm=00000000 rs1=1
+[F] cyc=7 fetch raw=10400093 pc_d=00000018 fetch_pc=0000001c mem_direct=10400093
+[C] cyc=7 CDB tag=1 val=11111000
+[D] cyc=8 dispatch op=8 pc=00000018 tag=6 raw_iq_imm=00000104 rs1=0
+[F] cyc=8 fetch raw=22222137 pc_d=0000001c fetch_pc=00000020 mem_direct=22222137
+[C] cyc=8 CDB tag=3 val=00000010
+[R] cyc=8 COMMIT op=22 pc=00000004
+[D] cyc=9 dispatch op=22 pc=0000001c tag=7 raw_iq_imm=22222000 rs1=0
+[F] cyc=9 fetch raw=22210113 pc_d=00000020 fetch_pc=00000024 mem_direct=22210113
+[C] cyc=9 CDB tag=4 val=00000000
+[D] cyc=10 dispatch op=8 pc=00000020 tag=8 raw_iq_imm=00000222 rs1=2
+[F] cyc=10 fetch raw=00000217 pc_d=00000024 fetch_pc=00000028 mem_direct=00000217
+[C] cyc=10 CDB tag=5 val=00000000
+[D] cyc=11 dispatch op=31 pc=00000024 tag=9 raw_iq_imm=00000000 rs1=0
+[F] cyc=11 fetch raw=01020213 pc_d=00000028 fetch_pc=0000002c mem_direct=01020213
+[C] cyc=11 CDB tag=2 val=11111111
+[D] cyc=12 dispatch op=8 pc=00000028 tag=10 raw_iq_imm=00000010 rs1=4
+[F] cyc=12 fetch raw=00020067 pc_d=0000002c fetch_pc=00000030 mem_direct=00020067
+[R] cyc=12 COMMIT op=8 pc=00000008
+[D] cyc=13 dispatch op=21 pc=0000002c tag=11 raw_iq_imm=00000000 rs1=4
+[F] cyc=13 fetch raw=00000113 pc_d=00000030 fetch_pc=00000034 mem_direct=00000113
+[C] cyc=13 CDB tag=6 val=00000104
+[R] cyc=13 COMMIT op=20 pc=0000000c
+[F] cyc=15 fetch raw=0020a023 pc_d=00000014 fetch_pc=00000018 mem_direct=0020a023
+[C] cyc=15 CDB tag=7 val=22222000
+[D] cyc=16 dispatch op=15 pc=00000014 tag=0 raw_iq_imm=00000000 rs1=1
+[F] cyc=16 fetch raw=10400093 pc_d=00000018 fetch_pc=0000001c mem_direct=10400093
+[D] cyc=17 dispatch op=8 pc=00000018 tag=1 raw_iq_imm=00000104 rs1=0
+[F] cyc=17 fetch raw=22222137 pc_d=0000001c fetch_pc=00000020 mem_direct=22222137
+[C] cyc=17 CDB tag=0 val=00000000
+[D] cyc=18 dispatch op=22 pc=0000001c tag=2 raw_iq_imm=22222000 rs1=0
+[F] cyc=18 fetch raw=22210113 pc_d=00000020 fetch_pc=00000024 mem_direct=22210113
+[R] cyc=18 COMMIT op=15 pc=00000014
+[D] cyc=19 dispatch op=8 pc=00000020 tag=3 raw_iq_imm=00000222 rs1=2
+[F] cyc=19 fetch raw=00000217 pc_d=00000024 fetch_pc=00000028 mem_direct=00000217
+[D] cyc=20 dispatch op=31 pc=00000024 tag=4 raw_iq_imm=00000000 rs1=0
+[F] cyc=20 fetch raw=01020213 pc_d=00000028 fetch_pc=0000002c mem_direct=01020213
+[C] cyc=20 CDB tag=1 val=00000104
+[D] cyc=21 dispatch op=8 pc=00000028 tag=5 raw_iq_imm=00000010 rs1=4
+[F] cyc=21 fetch raw=00020067 pc_d=0000002c fetch_pc=00000030 mem_direct=00020067
+[R] cyc=21 COMMIT op=8 pc=00000018
+[D] cyc=22 dispatch op=21 pc=0000002c tag=6 raw_iq_imm=00000000 rs1=4
+[F] cyc=22 fetch raw=00000113 pc_d=00000030 fetch_pc=00000034 mem_direct=00000113
+[C] cyc=22 CDB tag=2 val=22222000
+[D] cyc=23 dispatch op=8 pc=00000030 tag=7 raw_iq_imm=00000000 rs1=0
+[F] cyc=23 fetch raw=0020a023 pc_d=00000034 fetch_pc=00000038 mem_direct=0020a023
+[R] cyc=23 COMMIT op=22 pc=0000001c
+[D] cyc=24 dispatch op=15 pc=00000034 tag=8 raw_iq_imm=00000000 rs1=1
+[F] cyc=24 fetch raw=10800093 pc_d=00000038 fetch_pc=0000003c mem_direct=10800093
+[C] cyc=24 CDB tag=4 val=00000024
+[D] cyc=25 dispatch op=8 pc=00000038 tag=9 raw_iq_imm=00000108 rs1=0
+[F] cyc=25 fetch raw=00500293 pc_d=0000003c fetch_pc=00000040 mem_direct=00500293
+[D] cyc=26 dispatch op=8 pc=0000003c tag=10 raw_iq_imm=00000005 rs1=0
+[F] cyc=26 fetch raw=00600313 pc_d=00000040 fetch_pc=00000044 mem_direct=00600313
+[C] cyc=26 CDB tag=3 val=22222222
+[D] cyc=27 dispatch op=8 pc=00000040 tag=11 raw_iq_imm=00000006 rs1=0
+[F] cyc=27 fetch raw=33333137 pc_d=00000044 fetch_pc=00000048 mem_direct=33333137
+[R] cyc=27 COMMIT op=8 pc=00000020
+[D] cyc=28 dispatch op=22 pc=00000044 tag=12 raw_iq_imm=33333000 rs1=0
+[F] cyc=28 fetch raw=33310113 pc_d=00000048 fetch_pc=0000004c mem_direct=33310113
+[C] cyc=28 CDB tag=9 val=00000108
+[R] cyc=28 COMMIT op=31 pc=00000024
+[D] cyc=29 dispatch op=8 pc=00000048 tag=13 raw_iq_imm=00000333 rs1=2
+[F] cyc=29 fetch raw=00528463 pc_d=0000004c fetch_pc=00000050 mem_direct=00528463
+[D] cyc=30 dispatch op=16 pc=0000004c tag=14 raw_iq_imm=00000008 rs1=5
+[F] cyc=30 fetch raw=00000113 pc_d=00000050 fetch_pc=00000054 mem_direct=00000113
+[C] cyc=30 CDB tag=11 val=00000006
+[D] cyc=31 dispatch op=8 pc=00000050 tag=15 raw_iq_imm=00000000 rs1=0
+[F] cyc=31 fetch raw=0020a023 pc_d=00000054 fetch_pc=00000058 mem_direct=0020a023
+[D] cyc=32 dispatch op=15 pc=00000054 tag=0 raw_iq_imm=00000000 rs1=1
+[F] cyc=32 fetch raw=10c00093 pc_d=00000058 fetch_pc=0000005c mem_direct=10c00093
+[C] cyc=32 CDB tag=5 val=00000034
+[D] cyc=33 dispatch op=8 pc=00000058 tag=1 raw_iq_imm=0000010c rs1=0
+[F] cyc=33 fetch raw=00500293 pc_d=0000005c fetch_pc=00000060 mem_direct=00500293
+[R] cyc=33 COMMIT op=8 pc=00000028
+[D] cyc=34 dispatch op=8 pc=0000005c tag=2 raw_iq_imm=00000005 rs1=0
+[F] cyc=34 fetch raw=00600313 pc_d=00000060 fetch_pc=00000064 mem_direct=00600313
+[C] cyc=34 CDB tag=15 val=00000000
+[D] cyc=35 dispatch op=8 pc=00000060 tag=3 raw_iq_imm=00000006 rs1=0
+[F] cyc=35 fetch raw=44444137 pc_d=00000064 fetch_pc=00000068 mem_direct=44444137
+[C] cyc=35 CDB tag=6 val=00000030
+[R] cyc=35 COMMIT op=21 pc=0000002c
+[F] cyc=37 fetch raw=0020a023 pc_d=00000034 fetch_pc=00000038 mem_direct=0020a023
+[D] cyc=38 dispatch op=15 pc=00000034 tag=0 raw_iq_imm=00000000 rs1=1
+[F] cyc=38 fetch raw=10800093 pc_d=00000038 fetch_pc=0000003c mem_direct=10800093
+[D] cyc=39 dispatch op=8 pc=00000038 tag=1 raw_iq_imm=00000108 rs1=0
+[F] cyc=39 fetch raw=00500293 pc_d=0000003c fetch_pc=00000040 mem_direct=00500293
+[C] cyc=39 CDB tag=0 val=00000000
+[D] cyc=40 dispatch op=8 pc=0000003c tag=2 raw_iq_imm=00000005 rs1=0
+[F] cyc=40 fetch raw=00600313 pc_d=00000040 fetch_pc=00000044 mem_direct=00600313
+[R] cyc=40 COMMIT op=15 pc=00000034
+[D] cyc=41 dispatch op=8 pc=00000040 tag=3 raw_iq_imm=00000006 rs1=0
+[F] cyc=41 fetch raw=33333137 pc_d=00000044 fetch_pc=00000048 mem_direct=33333137
+[D] cyc=42 dispatch op=22 pc=00000044 tag=4 raw_iq_imm=33333000 rs1=0
+[F] cyc=42 fetch raw=33310113 pc_d=00000048 fetch_pc=0000004c mem_direct=33310113
+[C] cyc=42 CDB tag=1 val=00000108
+[D] cyc=43 dispatch op=8 pc=00000048 tag=5 raw_iq_imm=00000333 rs1=2
+[F] cyc=43 fetch raw=00528463 pc_d=0000004c fetch_pc=00000050 mem_direct=00528463
+[R] cyc=43 COMMIT op=8 pc=00000038
+[D] cyc=44 dispatch op=16 pc=0000004c tag=6 raw_iq_imm=00000008 rs1=5
+[F] cyc=44 fetch raw=00000113 pc_d=00000050 fetch_pc=00000054 mem_direct=00000113
+[C] cyc=44 CDB tag=3 val=00000006
+[D] cyc=45 dispatch op=8 pc=00000050 tag=7 raw_iq_imm=00000000 rs1=0
+[F] cyc=45 fetch raw=0020a023 pc_d=00000054 fetch_pc=00000058 mem_direct=0020a023
+[D] cyc=46 dispatch op=15 pc=00000054 tag=8 raw_iq_imm=00000000 rs1=1
+[F] cyc=46 fetch raw=10c00093 pc_d=00000058 fetch_pc=0000005c mem_direct=10c00093
+[C] cyc=46 CDB tag=2 val=00000005
+[D] cyc=47 dispatch op=8 pc=00000058 tag=9 raw_iq_imm=0000010c rs1=0
+[F] cyc=47 fetch raw=00500293 pc_d=0000005c fetch_pc=00000060 mem_direct=00500293
+[R] cyc=47 COMMIT op=8 pc=0000003c
+[D] cyc=48 dispatch op=8 pc=0000005c tag=10 raw_iq_imm=00000005 rs1=0
+[F] cyc=48 fetch raw=00600313 pc_d=00000060 fetch_pc=00000064 mem_direct=00600313
+[C] cyc=48 CDB tag=7 val=00000000
+[R] cyc=48 COMMIT op=8 pc=00000040
+[D] cyc=49 dispatch op=8 pc=00000060 tag=11 raw_iq_imm=00000006 rs1=0
+[F] cyc=49 fetch raw=44444137 pc_d=00000064 fetch_pc=00000068 mem_direct=44444137
+[C] cyc=49 CDB tag=6 val=00000054
+[D] cyc=50 dispatch op=22 pc=00000064 tag=12 raw_iq_imm=44444000 rs1=0
+[F] cyc=50 fetch raw=44410113 pc_d=00000068 fetch_pc=0000006c mem_direct=44410113
+[C] cyc=50 CDB tag=8 val=00000000
+[D] cyc=51 dispatch op=8 pc=00000068 tag=13 raw_iq_imm=00000444 rs1=2
+[F] cyc=51 fetch raw=00629463 pc_d=0000006c fetch_pc=00000070 mem_direct=00629463
+[C] cyc=51 CDB tag=9 val=0000010c
+[D] cyc=52 dispatch op=17 pc=0000006c tag=14 raw_iq_imm=00000008 rs1=5
+[F] cyc=52 fetch raw=00000113 pc_d=00000070 fetch_pc=00000074 mem_direct=00000113
+[D] cyc=53 dispatch op=8 pc=00000070 tag=15 raw_iq_imm=00000000 rs1=0
+[F] cyc=53 fetch raw=0020a023 pc_d=00000074 fetch_pc=00000078 mem_direct=0020a023
+[C] cyc=53 CDB tag=11 val=00000006
+[D] cyc=54 dispatch op=15 pc=00000074 tag=0 raw_iq_imm=00000000 rs1=1
+[F] cyc=54 fetch raw=11000093 pc_d=00000078 fetch_pc=0000007c mem_direct=11000093
+[D] cyc=55 dispatch op=8 pc=00000078 tag=1 raw_iq_imm=00000110 rs1=0
+[F] cyc=55 fetch raw=00500293 pc_d=0000007c fetch_pc=00000080 mem_direct=00500293
+[C] cyc=55 CDB tag=4 val=33333000
+[D] cyc=56 dispatch op=8 pc=0000007c tag=2 raw_iq_imm=00000005 rs1=0
+[F] cyc=56 fetch raw=00600313 pc_d=00000080 fetch_pc=00000084 mem_direct=00600313
+[R] cyc=56 COMMIT op=22 pc=00000044
+[F] cyc=57 fetch raw=55555137 pc_d=00000084 fetch_pc=00000088 mem_direct=55555137
+[C] cyc=57 CDB tag=15 val=00000000
+[D] cyc=58 dispatch op=8 pc=00000080 tag=3 raw_iq_imm=00000006 rs1=0
+[F] cyc=58 fetch raw=55510113 pc_d=00000088 fetch_pc=0000008c mem_direct=55510113
+[C] cyc=58 CDB tag=0 val=00000000
+[F] cyc=59 fetch raw=0062c463 pc_d=0000008c fetch_pc=00000090 mem_direct=0062c463
+[C] cyc=59 CDB tag=5 val=33333333
+[D] cyc=60 dispatch op=22 pc=00000084 tag=4 raw_iq_imm=55555000 rs1=0
+[F] cyc=60 fetch raw=00000113 pc_d=00000090 fetch_pc=00000094 mem_direct=00000113
+[R] cyc=60 COMMIT op=8 pc=00000048
+[F] cyc=61 fetch raw=0020a023 pc_d=00000094 fetch_pc=00000098 mem_direct=0020a023
+[C] cyc=61 CDB tag=3 val=00000006
+[R] cyc=61 COMMIT op=16 pc=0000004c
+[F] cyc=63 fetch raw=0020a023 pc_d=00000054 fetch_pc=00000058 mem_direct=0020a023
+[C] cyc=63 CDB tag=4 val=55555000
+[D] cyc=64 dispatch op=15 pc=00000054 tag=0 raw_iq_imm=00000000 rs1=1
+[F] cyc=64 fetch raw=10c00093 pc_d=00000058 fetch_pc=0000005c mem_direct=10c00093
+[D] cyc=65 dispatch op=8 pc=00000058 tag=1 raw_iq_imm=0000010c rs1=0
+[F] cyc=65 fetch raw=00500293 pc_d=0000005c fetch_pc=00000060 mem_direct=00500293
+[C] cyc=65 CDB tag=0 val=00000000
+[D] cyc=66 dispatch op=8 pc=0000005c tag=2 raw_iq_imm=00000005 rs1=0
+[F] cyc=66 fetch raw=00600313 pc_d=00000060 fetch_pc=00000064 mem_direct=00600313
+[R] cyc=66 COMMIT op=15 pc=00000054
+[D] cyc=67 dispatch op=8 pc=00000060 tag=3 raw_iq_imm=00000006 rs1=0
+[F] cyc=67 fetch raw=44444137 pc_d=00000064 fetch_pc=00000068 mem_direct=44444137
+[D] cyc=68 dispatch op=22 pc=00000064 tag=4 raw_iq_imm=44444000 rs1=0
+[F] cyc=68 fetch raw=44410113 pc_d=00000068 fetch_pc=0000006c mem_direct=44410113
+[C] cyc=68 CDB tag=1 val=0000010c
+[D] cyc=69 dispatch op=8 pc=00000068 tag=5 raw_iq_imm=00000444 rs1=2
+[F] cyc=69 fetch raw=00629463 pc_d=0000006c fetch_pc=00000070 mem_direct=00629463
+[R] cyc=69 COMMIT op=8 pc=00000058
+[D] cyc=70 dispatch op=17 pc=0000006c tag=6 raw_iq_imm=00000008 rs1=5
+[F] cyc=70 fetch raw=00000113 pc_d=00000070 fetch_pc=00000074 mem_direct=00000113
+[C] cyc=70 CDB tag=3 val=00000006
+[D] cyc=71 dispatch op=8 pc=00000070 tag=7 raw_iq_imm=00000000 rs1=0
+[F] cyc=71 fetch raw=0020a023 pc_d=00000074 fetch_pc=00000078 mem_direct=0020a023
+[D] cyc=72 dispatch op=15 pc=00000074 tag=8 raw_iq_imm=00000000 rs1=1
+[F] cyc=72 fetch raw=11000093 pc_d=00000078 fetch_pc=0000007c mem_direct=11000093
+[C] cyc=72 CDB tag=2 val=00000005
+[D] cyc=73 dispatch op=8 pc=00000078 tag=9 raw_iq_imm=00000110 rs1=0
+[F] cyc=73 fetch raw=00500293 pc_d=0000007c fetch_pc=00000080 mem_direct=00500293
+[R] cyc=73 COMMIT op=8 pc=0000005c
+[D] cyc=74 dispatch op=8 pc=0000007c tag=10 raw_iq_imm=00000005 rs1=0
+[F] cyc=74 fetch raw=00600313 pc_d=00000080 fetch_pc=00000084 mem_direct=00600313
+[C] cyc=74 CDB tag=7 val=00000000
+[R] cyc=74 COMMIT op=8 pc=00000060
+[D] cyc=75 dispatch op=8 pc=00000080 tag=11 raw_iq_imm=00000006 rs1=0
+[F] cyc=75 fetch raw=55555137 pc_d=00000084 fetch_pc=00000088 mem_direct=55555137
+[C] cyc=75 CDB tag=6 val=00000074
+[D] cyc=76 dispatch op=22 pc=00000084 tag=12 raw_iq_imm=55555000 rs1=0
+[F] cyc=76 fetch raw=55510113 pc_d=00000088 fetch_pc=0000008c mem_direct=55510113
+[C] cyc=76 CDB tag=8 val=00000000
+[D] cyc=77 dispatch op=8 pc=00000088 tag=13 raw_iq_imm=00000555 rs1=2
+[F] cyc=77 fetch raw=0062c463 pc_d=0000008c fetch_pc=00000090 mem_direct=0062c463
+[C] cyc=77 CDB tag=9 val=00000110
+[D] cyc=78 dispatch op=18 pc=0000008c tag=14 raw_iq_imm=00000008 rs1=5
+[F] cyc=78 fetch raw=00000113 pc_d=00000090 fetch_pc=00000094 mem_direct=00000113
+[D] cyc=79 dispatch op=8 pc=00000090 tag=15 raw_iq_imm=00000000 rs1=0
+[F] cyc=79 fetch raw=0020a023 pc_d=00000094 fetch_pc=00000098 mem_direct=0020a023
+[C] cyc=79 CDB tag=11 val=00000006
+[D] cyc=80 dispatch op=15 pc=00000094 tag=0 raw_iq_imm=00000000 rs1=1
+[F] cyc=80 fetch raw=11400093 pc_d=00000098 fetch_pc=0000009c mem_direct=11400093
+[D] cyc=81 dispatch op=8 pc=00000098 tag=1 raw_iq_imm=00000114 rs1=0
+[F] cyc=81 fetch raw=00500293 pc_d=0000009c fetch_pc=000000a0 mem_direct=00500293
+[C] cyc=81 CDB tag=4 val=44444000
+[D] cyc=82 dispatch op=8 pc=0000009c tag=2 raw_iq_imm=00000005 rs1=0
+[F] cyc=82 fetch raw=00600313 pc_d=000000a0 fetch_pc=000000a4 mem_direct=00600313
+[R] cyc=82 COMMIT op=22 pc=00000064
+[F] cyc=83 fetch raw=66666137 pc_d=000000a4 fetch_pc=000000a8 mem_direct=66666137
+[C] cyc=83 CDB tag=15 val=00000000
+[D] cyc=84 dispatch op=8 pc=000000a0 tag=3 raw_iq_imm=00000006 rs1=0
+[F] cyc=84 fetch raw=66610113 pc_d=000000a8 fetch_pc=000000ac mem_direct=66610113
+[C] cyc=84 CDB tag=0 val=00000000
+[F] cyc=85 fetch raw=0062e463 pc_d=000000ac fetch_pc=000000b0 mem_direct=0062e463
+[C] cyc=85 CDB tag=5 val=44444444
+[D] cyc=86 dispatch op=22 pc=000000a4 tag=4 raw_iq_imm=66666000 rs1=0
+[F] cyc=86 fetch raw=00000113 pc_d=000000b0 fetch_pc=000000b4 mem_direct=00000113
+[R] cyc=86 COMMIT op=8 pc=00000068
+[F] cyc=87 fetch raw=0020a023 pc_d=000000b4 fetch_pc=000000b8 mem_direct=0020a023
+[C] cyc=87 CDB tag=3 val=00000006
+[R] cyc=87 COMMIT op=17 pc=0000006c
+[F] cyc=89 fetch raw=0020a023 pc_d=00000074 fetch_pc=00000078 mem_direct=0020a023
+[C] cyc=89 CDB tag=4 val=66666000
+[D] cyc=90 dispatch op=15 pc=00000074 tag=0 raw_iq_imm=00000000 rs1=1
+[F] cyc=90 fetch raw=11000093 pc_d=00000078 fetch_pc=0000007c mem_direct=11000093
+[D] cyc=91 dispatch op=8 pc=00000078 tag=1 raw_iq_imm=00000110 rs1=0
+[F] cyc=91 fetch raw=00500293 pc_d=0000007c fetch_pc=00000080 mem_direct=00500293
+[C] cyc=91 CDB tag=0 val=00000000
+[D] cyc=92 dispatch op=8 pc=0000007c tag=2 raw_iq_imm=00000005 rs1=0
+[F] cyc=92 fetch raw=00600313 pc_d=00000080 fetch_pc=00000084 mem_direct=00600313
+[R] cyc=92 COMMIT op=15 pc=00000074
+[D] cyc=93 dispatch op=8 pc=00000080 tag=3 raw_iq_imm=00000006 rs1=0
+[F] cyc=93 fetch raw=55555137 pc_d=00000084 fetch_pc=00000088 mem_direct=55555137
+[D] cyc=94 dispatch op=22 pc=00000084 tag=4 raw_iq_imm=55555000 rs1=0
+[F] cyc=94 fetch raw=55510113 pc_d=00000088 fetch_pc=0000008c mem_direct=55510113
+[C] cyc=94 CDB tag=1 val=00000110
+[D] cyc=95 dispatch op=8 pc=00000088 tag=5 raw_iq_imm=00000555 rs1=2
+[F] cyc=95 fetch raw=0062c463 pc_d=0000008c fetch_pc=00000090 mem_direct=0062c463
+[R] cyc=95 COMMIT op=8 pc=00000078
+[D] cyc=96 dispatch op=18 pc=0000008c tag=6 raw_iq_imm=00000008 rs1=5
+[F] cyc=96 fetch raw=00000113 pc_d=00000090 fetch_pc=00000094 mem_direct=00000113
+[C] cyc=96 CDB tag=3 val=00000006
+[D] cyc=97 dispatch op=8 pc=00000090 tag=7 raw_iq_imm=00000000 rs1=0
+[F] cyc=97 fetch raw=0020a023 pc_d=00000094 fetch_pc=00000098 mem_direct=0020a023
+[D] cyc=98 dispatch op=15 pc=00000094 tag=8 raw_iq_imm=00000000 rs1=1
+[F] cyc=98 fetch raw=11400093 pc_d=00000098 fetch_pc=0000009c mem_direct=11400093
+[C] cyc=98 CDB tag=2 val=00000005
+[D] cyc=99 dispatch op=8 pc=00000098 tag=9 raw_iq_imm=00000114 rs1=0
+[F] cyc=99 fetch raw=00500293 pc_d=0000009c fetch_pc=000000a0 mem_direct=00500293
+[R] cyc=99 COMMIT op=8 pc=0000007c
+[D] cyc=100 dispatch op=8 pc=0000009c tag=10 raw_iq_imm=00000005 rs1=0
+[F] cyc=100 fetch raw=00600313 pc_d=000000a0 fetch_pc=000000a4 mem_direct=00600313
+[C] cyc=100 CDB tag=7 val=00000000
+[R] cyc=100 COMMIT op=8 pc=00000080
+[D] cyc=101 dispatch op=8 pc=000000a0 tag=11 raw_iq_imm=00000006 rs1=0
+[F] cyc=101 fetch raw=66666137 pc_d=000000a4 fetch_pc=000000a8 mem_direct=66666137
+[C] cyc=101 CDB tag=6 val=00000094
+[D] cyc=102 dispatch op=22 pc=000000a4 tag=12 raw_iq_imm=66666000 rs1=0
+[F] cyc=102 fetch raw=66610113 pc_d=000000a8 fetch_pc=000000ac mem_direct=66610113
+[C] cyc=102 CDB tag=8 val=00000000
+[D] cyc=103 dispatch op=8 pc=000000a8 tag=13 raw_iq_imm=00000666 rs1=2
+[F] cyc=103 fetch raw=0062e463 pc_d=000000ac fetch_pc=000000b0 mem_direct=0062e463
+[C] cyc=103 CDB tag=9 val=00000114
+[D] cyc=104 dispatch op=43 pc=000000ac tag=14 raw_iq_imm=00000008 rs1=5
+[F] cyc=104 fetch raw=00000113 pc_d=000000b0 fetch_pc=000000b4 mem_direct=00000113
+[D] cyc=105 dispatch op=8 pc=000000b0 tag=15 raw_iq_imm=00000000 rs1=0
+[F] cyc=105 fetch raw=0020a023 pc_d=000000b4 fetch_pc=000000b8 mem_direct=0020a023
+[C] cyc=105 CDB tag=11 val=00000006
+[D] cyc=106 dispatch op=15 pc=000000b4 tag=0 raw_iq_imm=00000000 rs1=1
+[F] cyc=106 fetch raw=11800093 pc_d=000000b8 fetch_pc=000000bc mem_direct=11800093
+[D] cyc=107 dispatch op=8 pc=000000b8 tag=1 raw_iq_imm=00000118 rs1=0
+[F] cyc=107 fetch raw=00500293 pc_d=000000bc fetch_pc=000000c0 mem_direct=00500293
+[C] cyc=107 CDB tag=4 val=55555000
+[D] cyc=108 dispatch op=8 pc=000000bc tag=2 raw_iq_imm=00000005 rs1=0
+[F] cyc=108 fetch raw=00600313 pc_d=000000c0 fetch_pc=000000c4 mem_direct=00600313
+[R] cyc=108 COMMIT op=22 pc=00000084
+[F] cyc=109 fetch raw=77777137 pc_d=000000c4 fetch_pc=000000c8 mem_direct=77777137
+[C] cyc=109 CDB tag=15 val=00000000
+[D] cyc=110 dispatch op=8 pc=000000c0 tag=3 raw_iq_imm=00000006 rs1=0
+[F] cyc=110 fetch raw=77710113 pc_d=000000c8 fetch_pc=000000cc mem_direct=77710113
+[C] cyc=110 CDB tag=0 val=00000000
+[F] cyc=111 fetch raw=00535463 pc_d=000000cc fetch_pc=000000d0 mem_direct=00535463
+[C] cyc=111 CDB tag=5 val=55555555
+[D] cyc=112 dispatch op=22 pc=000000c4 tag=4 raw_iq_imm=77777000 rs1=0
+[F] cyc=112 fetch raw=00000113 pc_d=000000d0 fetch_pc=000000d4 mem_direct=00000113
+[R] cyc=112 COMMIT op=8 pc=00000088
+[F] cyc=113 fetch raw=0020a023 pc_d=000000d4 fetch_pc=000000d8 mem_direct=0020a023
+[C] cyc=113 CDB tag=3 val=00000006
+[R] cyc=113 COMMIT op=18 pc=0000008c
+[F] cyc=115 fetch raw=0020a023 pc_d=00000094 fetch_pc=00000098 mem_direct=0020a023
+[C] cyc=115 CDB tag=4 val=77777000
+[D] cyc=116 dispatch op=15 pc=00000094 tag=0 raw_iq_imm=00000000 rs1=1
+[F] cyc=116 fetch raw=11400093 pc_d=00000098 fetch_pc=0000009c mem_direct=11400093
+[D] cyc=117 dispatch op=8 pc=00000098 tag=1 raw_iq_imm=00000114 rs1=0
+[F] cyc=117 fetch raw=00500293 pc_d=0000009c fetch_pc=000000a0 mem_direct=00500293
+[C] cyc=117 CDB tag=0 val=00000000
+[D] cyc=118 dispatch op=8 pc=0000009c tag=2 raw_iq_imm=00000005 rs1=0
+[F] cyc=118 fetch raw=00600313 pc_d=000000a0 fetch_pc=000000a4 mem_direct=00600313
+[R] cyc=118 COMMIT op=15 pc=00000094
+[D] cyc=119 dispatch op=8 pc=000000a0 tag=3 raw_iq_imm=00000006 rs1=0
+[F] cyc=119 fetch raw=66666137 pc_d=000000a4 fetch_pc=000000a8 mem_direct=66666137
+[D] cyc=120 dispatch op=22 pc=000000a4 tag=4 raw_iq_imm=66666000 rs1=0
+[F] cyc=120 fetch raw=66610113 pc_d=000000a8 fetch_pc=000000ac mem_direct=66610113
+[C] cyc=120 CDB tag=1 val=00000114
+[D] cyc=121 dispatch op=8 pc=000000a8 tag=5 raw_iq_imm=00000666 rs1=2
+[F] cyc=121 fetch raw=0062e463 pc_d=000000ac fetch_pc=000000b0 mem_direct=0062e463
+[R] cyc=121 COMMIT op=8 pc=00000098
+[D] cyc=122 dispatch op=43 pc=000000ac tag=6 raw_iq_imm=00000008 rs1=5
+[F] cyc=122 fetch raw=00000113 pc_d=000000b0 fetch_pc=000000b4 mem_direct=00000113
+[C] cyc=122 CDB tag=3 val=00000006
+[D] cyc=123 dispatch op=8 pc=000000b0 tag=7 raw_iq_imm=00000000 rs1=0
+[F] cyc=123 fetch raw=0020a023 pc_d=000000b4 fetch_pc=000000b8 mem_direct=0020a023
+[D] cyc=124 dispatch op=15 pc=000000b4 tag=8 raw_iq_imm=00000000 rs1=1
+[F] cyc=124 fetch raw=11800093 pc_d=000000b8 fetch_pc=000000bc mem_direct=11800093
+[C] cyc=124 CDB tag=2 val=00000005
+[D] cyc=125 dispatch op=8 pc=000000b8 tag=9 raw_iq_imm=00000118 rs1=0
+[F] cyc=125 fetch raw=00500293 pc_d=000000bc fetch_pc=000000c0 mem_direct=00500293
+[R] cyc=125 COMMIT op=8 pc=0000009c
+[D] cyc=126 dispatch op=8 pc=000000bc tag=10 raw_iq_imm=00000005 rs1=0
+[F] cyc=126 fetch raw=00600313 pc_d=000000c0 fetch_pc=000000c4 mem_direct=00600313
+[C] cyc=126 CDB tag=7 val=00000000
+[R] cyc=126 COMMIT op=8 pc=000000a0
+[D] cyc=127 dispatch op=8 pc=000000c0 tag=11 raw_iq_imm=00000006 rs1=0
+[F] cyc=127 fetch raw=77777137 pc_d=000000c4 fetch_pc=000000c8 mem_direct=77777137
+[C] cyc=127 CDB tag=6 val=000000b4
+[D] cyc=128 dispatch op=22 pc=000000c4 tag=12 raw_iq_imm=77777000 rs1=0
+[F] cyc=128 fetch raw=77710113 pc_d=000000c8 fetch_pc=000000cc mem_direct=77710113
+[C] cyc=128 CDB tag=8 val=00000000
+[D] cyc=129 dispatch op=8 pc=000000c8 tag=13 raw_iq_imm=00000777 rs1=2
+[F] cyc=129 fetch raw=00535463 pc_d=000000cc fetch_pc=000000d0 mem_direct=00535463
+[C] cyc=129 CDB tag=9 val=00000118
+[D] cyc=130 dispatch op=19 pc=000000cc tag=14 raw_iq_imm=00000008 rs1=6
+[F] cyc=130 fetch raw=00000113 pc_d=000000d0 fetch_pc=000000d4 mem_direct=00000113
+[D] cyc=131 dispatch op=8 pc=000000d0 tag=15 raw_iq_imm=00000000 rs1=0
+[F] cyc=131 fetch raw=0020a023 pc_d=000000d4 fetch_pc=000000d8 mem_direct=0020a023
+[C] cyc=131 CDB tag=11 val=00000006
+[D] cyc=132 dispatch op=15 pc=000000d4 tag=0 raw_iq_imm=00000000 rs1=1
+[F] cyc=132 fetch raw=11c00093 pc_d=000000d8 fetch_pc=000000dc mem_direct=11c00093
+[D] cyc=133 dispatch op=8 pc=000000d8 tag=1 raw_iq_imm=0000011c rs1=0
+[F] cyc=133 fetch raw=00500293 pc_d=000000dc fetch_pc=000000e0 mem_direct=00500293
+[C] cyc=133 CDB tag=4 val=66666000
+[D] cyc=134 dispatch op=8 pc=000000dc tag=2 raw_iq_imm=00000005 rs1=0
+[F] cyc=134 fetch raw=00600313 pc_d=000000e0 fetch_pc=000000e4 mem_direct=00600313
+[R] cyc=134 COMMIT op=22 pc=000000a4
+[F] cyc=135 fetch raw=88889137 pc_d=000000e4 fetch_pc=000000e8 mem_direct=88889137
+[C] cyc=135 CDB tag=15 val=00000000
+[D] cyc=136 dispatch op=8 pc=000000e0 tag=3 raw_iq_imm=00000006 rs1=0
+[F] cyc=136 fetch raw=88810113 pc_d=000000e8 fetch_pc=000000ec mem_direct=88810113
+[C] cyc=136 CDB tag=0 val=00000000
+[F] cyc=137 fetch raw=00537463 pc_d=000000ec fetch_pc=000000f0 mem_direct=00537463
+[C] cyc=137 CDB tag=5 val=66666666
+[D] cyc=138 dispatch op=22 pc=000000e4 tag=4 raw_iq_imm=88889000 rs1=0
+[F] cyc=138 fetch raw=00000113 pc_d=000000f0 fetch_pc=000000f4 mem_direct=00000113
+[R] cyc=138 COMMIT op=8 pc=000000a8
+[F] cyc=139 fetch raw=0020a023 pc_d=000000f4 fetch_pc=000000f8 mem_direct=0020a023
+[C] cyc=139 CDB tag=3 val=00000006
+[R] cyc=139 COMMIT op=43 pc=000000ac
+[F] cyc=141 fetch raw=0020a023 pc_d=000000b4 fetch_pc=000000b8 mem_direct=0020a023
+[C] cyc=141 CDB tag=4 val=88889000
+[D] cyc=142 dispatch op=15 pc=000000b4 tag=0 raw_iq_imm=00000000 rs1=1
+[F] cyc=142 fetch raw=11800093 pc_d=000000b8 fetch_pc=000000bc mem_direct=11800093
+[D] cyc=143 dispatch op=8 pc=000000b8 tag=1 raw_iq_imm=00000118 rs1=0
+[F] cyc=143 fetch raw=00500293 pc_d=000000bc fetch_pc=000000c0 mem_direct=00500293
+[C] cyc=143 CDB tag=0 val=00000000
+[D] cyc=144 dispatch op=8 pc=000000bc tag=2 raw_iq_imm=00000005 rs1=0
+[F] cyc=144 fetch raw=00600313 pc_d=000000c0 fetch_pc=000000c4 mem_direct=00600313
+[R] cyc=144 COMMIT op=15 pc=000000b4
+[D] cyc=145 dispatch op=8 pc=000000c0 tag=3 raw_iq_imm=00000006 rs1=0
+[F] cyc=145 fetch raw=77777137 pc_d=000000c4 fetch_pc=000000c8 mem_direct=77777137
+[D] cyc=146 dispatch op=22 pc=000000c4 tag=4 raw_iq_imm=77777000 rs1=0
+[F] cyc=146 fetch raw=77710113 pc_d=000000c8 fetch_pc=000000cc mem_direct=77710113
+[C] cyc=146 CDB tag=1 val=00000118
+[D] cyc=147 dispatch op=8 pc=000000c8 tag=5 raw_iq_imm=00000777 rs1=2
+[F] cyc=147 fetch raw=00535463 pc_d=000000cc fetch_pc=000000d0 mem_direct=00535463
+[R] cyc=147 COMMIT op=8 pc=000000b8
+[D] cyc=148 dispatch op=19 pc=000000cc tag=6 raw_iq_imm=00000008 rs1=6
+[F] cyc=148 fetch raw=00000113 pc_d=000000d0 fetch_pc=000000d4 mem_direct=00000113
+[C] cyc=148 CDB tag=3 val=00000006
+[D] cyc=149 dispatch op=8 pc=000000d0 tag=7 raw_iq_imm=00000000 rs1=0
+[F] cyc=149 fetch raw=0020a023 pc_d=000000d4 fetch_pc=000000d8 mem_direct=0020a023
+[D] cyc=150 dispatch op=15 pc=000000d4 tag=8 raw_iq_imm=00000000 rs1=1
+[F] cyc=150 fetch raw=11c00093 pc_d=000000d8 fetch_pc=000000dc mem_direct=11c00093
+[C] cyc=150 CDB tag=2 val=00000005
+[D] cyc=151 dispatch op=8 pc=000000d8 tag=9 raw_iq_imm=0000011c rs1=0
+[F] cyc=151 fetch raw=00500293 pc_d=000000dc fetch_pc=000000e0 mem_direct=00500293
+[R] cyc=151 COMMIT op=8 pc=000000bc
+[D] cyc=152 dispatch op=8 pc=000000dc tag=10 raw_iq_imm=00000005 rs1=0
+[F] cyc=152 fetch raw=00600313 pc_d=000000e0 fetch_pc=000000e4 mem_direct=00600313
+[C] cyc=152 CDB tag=7 val=00000000
+[R] cyc=152 COMMIT op=8 pc=000000c0
+[D] cyc=153 dispatch op=8 pc=000000e0 tag=11 raw_iq_imm=00000006 rs1=0
+[F] cyc=153 fetch raw=88889137 pc_d=000000e4 fetch_pc=000000e8 mem_direct=88889137
+[C] cyc=153 CDB tag=6 val=000000d4
+[D] cyc=154 dispatch op=22 pc=000000e4 tag=12 raw_iq_imm=88889000 rs1=0
+[F] cyc=154 fetch raw=88810113 pc_d=000000e8 fetch_pc=000000ec mem_direct=88810113
+[C] cyc=154 CDB tag=8 val=00000000
+[D] cyc=155 dispatch op=8 pc=000000e8 tag=13 raw_iq_imm=fffff888 rs1=2
+[F] cyc=155 fetch raw=00537463 pc_d=000000ec fetch_pc=000000f0 mem_direct=00537463
+[C] cyc=155 CDB tag=9 val=0000011c
+[D] cyc=156 dispatch op=44 pc=000000ec tag=14 raw_iq_imm=00000008 rs1=6
+[F] cyc=156 fetch raw=00000113 pc_d=000000f0 fetch_pc=000000f4 mem_direct=00000113
+[D] cyc=157 dispatch op=8 pc=000000f0 tag=15 raw_iq_imm=00000000 rs1=0
+[F] cyc=157 fetch raw=0020a023 pc_d=000000f4 fetch_pc=000000f8 mem_direct=0020a023
+[C] cyc=157 CDB tag=11 val=00000006
+[D] cyc=158 dispatch op=15 pc=000000f4 tag=0 raw_iq_imm=00000000 rs1=1
+[F] cyc=158 fetch raw=00000073 pc_d=000000f8 fetch_pc=000000fc mem_direct=00000073
+[D] cyc=159 dispatch op=63 pc=000000f8 tag=1 raw_iq_imm=00000000 rs1=0
+[F] cyc=159 fetch raw=xxxxxxxx pc_d=000000fc fetch_pc=00000100 mem_direct=xxxxxxxx
+[C] cyc=159 CDB tag=4 val=77777000
+[D] cyc=160 dispatch op=62 pc=000000fc tag=2 raw_iq_imm=00000000 rs1=0
+[F] cyc=160 fetch raw=ffffffff pc_d=00000100 fetch_pc=00000104 mem_direct=ffffffff
+[R] cyc=160 COMMIT op=22 pc=000000c4
+[F] cyc=161 fetch raw=ffffffff pc_d=00000104 fetch_pc=00000108 mem_direct=ffffffff
+[C] cyc=161 CDB tag=15 val=00000000
+[D] cyc=162 dispatch op=62 pc=00000100 tag=3 raw_iq_imm=00000000 rs1=0
+[F] cyc=162 fetch raw=ffffffff pc_d=00000108 fetch_pc=0000010c mem_direct=ffffffff
+[C] cyc=162 CDB tag=0 val=00000000
+[F] cyc=163 fetch raw=ffffffff pc_d=0000010c fetch_pc=00000110 mem_direct=ffffffff
+[C] cyc=163 CDB tag=5 val=77777777
+[D] cyc=164 dispatch op=62 pc=00000104 tag=4 raw_iq_imm=00000000 rs1=0
+[F] cyc=164 fetch raw=ffffffff pc_d=00000110 fetch_pc=00000114 mem_direct=ffffffff
+[R] cyc=164 COMMIT op=8 pc=000000c8
+[F] cyc=165 fetch raw=ffffffff pc_d=00000114 fetch_pc=00000118 mem_direct=ffffffff
+[C] cyc=165 CDB tag=3 val=00000000
+[R] cyc=165 COMMIT op=19 pc=000000cc
+[F] cyc=167 fetch raw=0020a023 pc_d=000000d4 fetch_pc=000000d8 mem_direct=0020a023
+[C] cyc=167 CDB tag=4 val=00000000
+[D] cyc=168 dispatch op=15 pc=000000d4 tag=0 raw_iq_imm=00000000 rs1=1
+[F] cyc=168 fetch raw=11c00093 pc_d=000000d8 fetch_pc=000000dc mem_direct=11c00093
+[D] cyc=169 dispatch op=8 pc=000000d8 tag=1 raw_iq_imm=0000011c rs1=0
+[F] cyc=169 fetch raw=00500293 pc_d=000000dc fetch_pc=000000e0 mem_direct=00500293
+[C] cyc=169 CDB tag=0 val=00000000
+[D] cyc=170 dispatch op=8 pc=000000dc tag=2 raw_iq_imm=00000005 rs1=0
+[F] cyc=170 fetch raw=00600313 pc_d=000000e0 fetch_pc=000000e4 mem_direct=00600313
+[R] cyc=170 COMMIT op=15 pc=000000d4
+[D] cyc=171 dispatch op=8 pc=000000e0 tag=3 raw_iq_imm=00000006 rs1=0
+[F] cyc=171 fetch raw=88889137 pc_d=000000e4 fetch_pc=000000e8 mem_direct=88889137
+[D] cyc=172 dispatch op=22 pc=000000e4 tag=4 raw_iq_imm=88889000 rs1=0
+[F] cyc=172 fetch raw=88810113 pc_d=000000e8 fetch_pc=000000ec mem_direct=88810113
+[C] cyc=172 CDB tag=1 val=0000011c
+[D] cyc=173 dispatch op=8 pc=000000e8 tag=5 raw_iq_imm=fffff888 rs1=2
+[F] cyc=173 fetch raw=00537463 pc_d=000000ec fetch_pc=000000f0 mem_direct=00537463
+[R] cyc=173 COMMIT op=8 pc=000000d8
+[D] cyc=174 dispatch op=44 pc=000000ec tag=6 raw_iq_imm=00000008 rs1=6
+[F] cyc=174 fetch raw=00000113 pc_d=000000f0 fetch_pc=000000f4 mem_direct=00000113
+[C] cyc=174 CDB tag=3 val=00000006
+[D] cyc=175 dispatch op=8 pc=000000f0 tag=7 raw_iq_imm=00000000 rs1=0
+[F] cyc=175 fetch raw=0020a023 pc_d=000000f4 fetch_pc=000000f8 mem_direct=0020a023
+[D] cyc=176 dispatch op=15 pc=000000f4 tag=8 raw_iq_imm=00000000 rs1=1
+[F] cyc=176 fetch raw=00000073 pc_d=000000f8 fetch_pc=000000fc mem_direct=00000073
+[C] cyc=176 CDB tag=2 val=00000005
+[D] cyc=177 dispatch op=63 pc=000000f8 tag=9 raw_iq_imm=00000000 rs1=0
+[F] cyc=177 fetch raw=xxxxxxxx pc_d=000000fc fetch_pc=00000100 mem_direct=xxxxxxxx
+[R] cyc=177 COMMIT op=8 pc=000000dc
+[D] cyc=178 dispatch op=62 pc=000000fc tag=10 raw_iq_imm=00000000 rs1=0
+[F] cyc=178 fetch raw=ffffffff pc_d=00000100 fetch_pc=00000104 mem_direct=ffffffff
+[C] cyc=178 CDB tag=7 val=00000000
+[R] cyc=178 COMMIT op=8 pc=000000e0
+[D] cyc=179 dispatch op=62 pc=00000100 tag=11 raw_iq_imm=00000000 rs1=0
+[F] cyc=179 fetch raw=ffffffff pc_d=00000104 fetch_pc=00000108 mem_direct=ffffffff
+[C] cyc=179 CDB tag=6 val=000000f4
+[D] cyc=180 dispatch op=62 pc=00000104 tag=12 raw_iq_imm=00000000 rs1=0
+[F] cyc=180 fetch raw=ffffffff pc_d=00000108 fetch_pc=0000010c mem_direct=ffffffff
+[C] cyc=180 CDB tag=8 val=00000000
+[D] cyc=181 dispatch op=62 pc=00000108 tag=13 raw_iq_imm=00000000 rs1=0
+[F] cyc=181 fetch raw=ffffffff pc_d=0000010c fetch_pc=00000110 mem_direct=ffffffff
+[C] cyc=181 CDB tag=9 val=00000000
+[D] cyc=182 dispatch op=62 pc=0000010c tag=14 raw_iq_imm=00000000 rs1=0
+[F] cyc=182 fetch raw=ffffffff pc_d=00000110 fetch_pc=00000114 mem_direct=ffffffff
+[F] cyc=183 fetch raw=ffffffff pc_d=00000114 fetch_pc=00000118 mem_direct=ffffffff
+[C] cyc=183 CDB tag=11 val=00000000
+[D] cyc=184 dispatch op=62 pc=00000110 tag=15 raw_iq_imm=00000000 rs1=0
+[F] cyc=184 fetch raw=ffffffff pc_d=00000118 fetch_pc=0000011c mem_direct=ffffffff
+[F] cyc=185 fetch raw=ffffffff pc_d=0000011c fetch_pc=00000120 mem_direct=ffffffff
+[C] cyc=185 CDB tag=14 val=00000000
+[D] cyc=186 dispatch op=62 pc=00000114 tag=0 raw_iq_imm=00000000 rs1=0
+[F] cyc=186 fetch raw=xxxxxxxx pc_d=00000120 fetch_pc=00000124 mem_direct=xxxxxxxx
+[F] cyc=187 fetch raw=xxxxxxxx pc_d=00000124 fetch_pc=00000128 mem_direct=xxxxxxxx
+[C] cyc=187 CDB tag=15 val=00000000
+[D] cyc=188 dispatch op=62 pc=00000118 tag=1 raw_iq_imm=00000000 rs1=0
+[F] cyc=188 fetch raw=xxxxxxxx pc_d=00000128 fetch_pc=0000012c mem_direct=xxxxxxxx
+[F] cyc=189 fetch raw=xxxxxxxx pc_d=0000012c fetch_pc=00000130 mem_direct=xxxxxxxx
+[C] cyc=189 CDB tag=0 val=00000000
+[D] cyc=190 dispatch op=62 pc=0000011c tag=2 raw_iq_imm=00000000 rs1=0
+[F] cyc=190 fetch raw=xxxxxxxx pc_d=00000130 fetch_pc=00000134 mem_direct=xxxxxxxx
+[F] cyc=191 fetch raw=xxxxxxxx pc_d=00000134 fetch_pc=00000138 mem_direct=xxxxxxxx
+[C] cyc=191 CDB tag=1 val=00000000
+[D] cyc=192 dispatch op=62 pc=00000120 tag=3 raw_iq_imm=00000000 rs1=0
+[F] cyc=192 fetch raw=xxxxxxxx pc_d=00000138 fetch_pc=0000013c mem_direct=xxxxxxxx
+[F] cyc=193 fetch raw=xxxxxxxx pc_d=0000013c fetch_pc=00000140 mem_direct=xxxxxxxx
+[C] cyc=193 CDB tag=2 val=00000000
+[F] cyc=194 fetch raw=xxxxxxxx pc_d=00000140 fetch_pc=00000144 mem_direct=xxxxxxxx
+[C] cyc=195 CDB tag=3 val=00000000
+[C] cyc=197 CDB tag=4 val=88889000
+[R] cyc=198 COMMIT op=22 pc=000000e4
+[D] cyc=199 dispatch op=62 pc=00000124 tag=4 raw_iq_imm=00000000 rs1=0
+[C] cyc=199 CDB tag=10 val=00000000
+[F] cyc=200 fetch raw=xxxxxxxx pc_d=00000144 fetch_pc=00000148 mem_direct=xxxxxxxx
+[C] cyc=201 CDB tag=5 val=88888888
+[R] cyc=202 COMMIT op=8 pc=000000e8
+[D] cyc=203 dispatch op=62 pc=00000128 tag=5 raw_iq_imm=00000000 rs1=0
+[C] cyc=203 CDB tag=4 val=00000000
+[R] cyc=203 COMMIT op=44 pc=000000ec
+[F] cyc=205 fetch raw=0020a023 pc_d=000000f4 fetch_pc=000000f8 mem_direct=0020a023
+[C] cyc=205 CDB tag=12 val=00000000
+[D] cyc=206 dispatch op=15 pc=000000f4 tag=0 raw_iq_imm=00000000 rs1=1
+[F] cyc=206 fetch raw=00000073 pc_d=000000f8 fetch_pc=000000fc mem_direct=00000073
+[D] cyc=207 dispatch op=63 pc=000000f8 tag=1 raw_iq_imm=00000000 rs1=0
+[F] cyc=207 fetch raw=xxxxxxxx pc_d=000000fc fetch_pc=00000100 mem_direct=xxxxxxxx
+[C] cyc=207 CDB tag=0 val=00000000
+[D] cyc=208 dispatch op=62 pc=000000fc tag=2 raw_iq_imm=00000000 rs1=0
+[F] cyc=208 fetch raw=ffffffff pc_d=00000100 fetch_pc=00000104 mem_direct=ffffffff
+[R] cyc=208 COMMIT op=15 pc=000000f4
+[D] cyc=209 dispatch op=62 pc=00000100 tag=3 raw_iq_imm=00000000 rs1=0
+[F] cyc=209 fetch raw=ffffffff pc_d=00000104 fetch_pc=00000108 mem_direct=ffffffff
+[D] cyc=210 dispatch op=62 pc=00000104 tag=4 raw_iq_imm=00000000 rs1=0
+[F] cyc=210 fetch raw=ffffffff pc_d=00000108 fetch_pc=0000010c mem_direct=ffffffff
+[C] cyc=210 CDB tag=1 val=00000000
+[D] cyc=211 dispatch op=62 pc=00000108 tag=5 raw_iq_imm=00000000 rs1=0
+[F] cyc=211 fetch raw=ffffffff pc_d=0000010c fetch_pc=00000110 mem_direct=ffffffff
+[R] cyc=211 COMMIT op=63 pc=000000f8
+[D] cyc=212 dispatch op=62 pc=0000010c tag=6 raw_iq_imm=00000000 rs1=0
+[F] cyc=212 fetch raw=ffffffff pc_d=00000110 fetch_pc=00000114 mem_direct=ffffffff
+[C] cyc=212 CDB tag=3 val=00000000
+sim_compliance.sv:159: $finish called at 2355 (1s)

@@ -1,0 +1,2130 @@
+../../../hardware/execute/fp_ops/fp_round.sv:47: sorry: constant selects in always_* processes are not fully supported (the process will be sensitive to all bits in 'mant_i[22:0]').
+../../../hardware/execute/fp_ops/fp_round.sv:65: sorry: constant selects in always_* processes are not fully supported (the process will be sensitive to all bits in 'mant_inc[23:0]').
+../../../hardware/execute/fp_ops/fp_round.sv:70: sorry: constant selects in always_* processes are not fully supported (the process will be sensitive to all bits in 'exp_out[8:0]').
+../../../hardware/execute/fp_ops/fp_round.sv:75: sorry: constant selects in always_* processes are not fully supported (the process will be sensitive to all bits in 'exp_out[8:0]').
+../../../hardware/execute/fp_ops/fp_round.sv:75: sorry: constant selects in always_* processes are not fully supported (the process will be sensitive to all bits in 'mant_inc[23:0]').
+:0: sorry: constant selects in always_* processes are not fully supported (the process will be sensitive to all bits in 'head_entry_w[112:0]').
+:0: sorry: constant selects in always_* processes are not fully supported (the process will be sensitive to all bits in 'lookup1_entry_w[112:0]').
+:0: sorry: constant selects in always_* processes are not fully supported (the process will be sensitive to all bits in 'lookup1_entry_w[112:0]').
+:0: sorry: constant selects in always_* processes are not fully supported (the process will be sensitive to all bits in 'lookup2_entry_w[112:0]').
+:0: sorry: constant selects in always_* processes are not fully supported (the process will be sensitive to all bits in 'lookup2_entry_w[112:0]').
+:0: sorry: constant selects in always_* processes are not fully supported (the process will be sensitive to all bits in 'iq_instr_i[88:0]').
+:0: sorry: constant selects in always_* processes are not fully supported (the process will be sensitive to all bits in 'iq_instr_i[88:0]').
+:0: sorry: constant selects in always_* processes are not fully supported (the process will be sensitive to all bits in 'iq_instr_i[88:0]').
+:0: sorry: constant selects in always_* processes are not fully supported (the process will be sensitive to all bits in 'iq_instr_i[88:0]').
+:0: sorry: constant selects in always_* processes are not fully supported (the process will be sensitive to all bits in 'iq_instr_i[88:0]').
+:0: sorry: constant selects in always_* processes are not fully supported (the process will be sensitive to all bits in 'cdb_i[36:0]').
+:0: sorry: constant selects in always_* processes are not fully supported (the process will be sensitive to all bits in 'cdb_i[36:0]').
+:0: sorry: constant selects in always_* processes are not fully supported (the process will be sensitive to all bits in 'cdb_i[36:0]').
+:0: sorry: constant selects in always_* processes are not fully supported (the process will be sensitive to all bits in 'cdb_i[36:0]').
+:0: sorry: constant selects in always_* processes are not fully supported (the process will be sensitive to all bits in 'cdb_i[36:0]').
+:0: sorry: constant selects in always_* processes are not fully supported (the process will be sensitive to all bits in 'cdb_i[36:0]').
+:0: sorry: constant selects in always_* processes are not fully supported (the process will be sensitive to all bits in 'iq_instr_i[88:0]').
+:0: sorry: constant selects in always_* processes are not fully supported (the process will be sensitive to all bits in 'cdb_i[36:0]').
+:0: sorry: constant selects in always_* processes are not fully supported (the process will be sensitive to all bits in 'cdb_i[36:0]').
+:0: sorry: constant selects in always_* processes are not fully supported (the process will be sensitive to all bits in 'cdb_i[36:0]').
+:0: sorry: constant selects in always_* processes are not fully supported (the process will be sensitive to all bits in 'cdb_i[36:0]').
+:0: sorry: constant selects in always_* processes are not fully supported (the process will be sensitive to all bits in 'cdb_i[36:0]').
+:0: sorry: constant selects in always_* processes are not fully supported (the process will be sensitive to all bits in 'cdb_i[36:0]').
+:0: sorry: constant selects in always_* processes are not fully supported (the process will be sensitive to all bits in 'iq_instr_i[88:0]').
+:0: sorry: constant selects in always_* processes are not fully supported (the process will be sensitive to all bits in 'iq_instr_i[88:0]').
+:0: sorry: constant selects in always_* processes are not fully supported (the process will be sensitive to all bits in 'iq_instr_i[88:0]').
+:0: sorry: constant selects in always_* processes are not fully supported (the process will be sensitive to all bits in 'iq_instr_i[88:0]').
+:0: sorry: constant selects in always_* processes are not fully supported (the process will be sensitive to all bits in 'iq_instr_i[88:0]').
+:0: sorry: constant selects in always_* processes are not fully supported (the process will be sensitive to all bits in 'iq_instr_i[88:0]').
+:0: sorry: constant selects in always_* processes are not fully supported (the process will be sensitive to all bits in 'iq_instr_i[88:0]').
+:0: sorry: constant selects in always_* processes are not fully supported (the process will be sensitive to all bits in 'iq_instr_i[88:0]').
+../../../hardware/execute/int_ops/alu_unit.sv:50: sorry: constant selects in always_* processes are not fully supported (the process will be sensitive to all bits in 'rs2_i[31:0]').
+../../../hardware/execute/int_ops/alu_unit.sv:51: sorry: constant selects in always_* processes are not fully supported (the process will be sensitive to all bits in 'rs2_i[31:0]').
+../../../hardware/execute/int_ops/alu_unit.sv:52: sorry: constant selects in always_* processes are not fully supported (the process will be sensitive to all bits in 'rs2_i[31:0]').
+../../../hardware/execute/int_ops/alu_unit.sv:60: sorry: constant selects in always_* processes are not fully supported (the process will be sensitive to all bits in 'imm_i[31:0]').
+../../../hardware/execute/int_ops/alu_unit.sv:61: sorry: constant selects in always_* processes are not fully supported (the process will be sensitive to all bits in 'imm_i[31:0]').
+../../../hardware/execute/int_ops/alu_unit.sv:62: sorry: constant selects in always_* processes are not fully supported (the process will be sensitive to all bits in 'imm_i[31:0]').
+../../../hardware/execute/fp_ops/fp_add.sv:60: sorry: constant selects in always_* processes are not fully supported (the process will be sensitive to all bits in 'a[31:0]').
+../../../hardware/execute/fp_ops/fp_add.sv:60: sorry: constant selects in always_* processes are not fully supported (the process will be sensitive to all bits in 'a[31:0]').
+../../../hardware/execute/fp_ops/fp_add.sv:60: sorry: constant selects in always_* processes are not fully supported (the process will be sensitive to all bits in 'a[31:0]').
+../../../hardware/execute/fp_ops/fp_add.sv:61: sorry: constant selects in always_* processes are not fully supported (the process will be sensitive to all bits in 'b[31:0]').
+../../../hardware/execute/fp_ops/fp_add.sv:62: sorry: constant selects in always_* processes are not fully supported (the process will be sensitive to all bits in 'b[31:0]').
+../../../hardware/execute/fp_ops/fp_add.sv:62: sorry: constant selects in always_* processes are not fully supported (the process will be sensitive to all bits in 'b[31:0]').
+../../../hardware/execute/fp_ops/fp_add.sv:67: sorry: constant selects in always_* processes are not fully supported (the process will be sensitive to all bits in 'b[31:0]').
+../../../hardware/execute/fp_ops/fp_add.sv:80: sorry: constant selects in always_* processes are not fully supported (the process will be sensitive to all bits in 'ediff[7:0]').
+../../../hardware/execute/fp_ops/fp_add.sv:97: sorry: constant selects in always_* processes are not fully supported (the process will be sensitive to all bits in 's[26:0]').
+../../../hardware/execute/fp_ops/fp_add.sv:100: sorry: constant selects in always_* processes are not fully supported (the process will be sensitive to all bits in 's[26:0]').
+../../../hardware/execute/fp_ops/fp_add.sv:108: sorry: constant selects in always_* processes are not fully supported (the process will be sensitive to all bits in 's[26:0]').
+../../../hardware/execute/fp_ops/fp_add.sv:108: sorry: constant selects in always_* processes are not fully supported (the process will be sensitive to all bits in 'sh[7:0]').
+../../../hardware/execute/fp_ops/fp_add.sv:112: sorry: constant selects in always_* processes are not fully supported (the process will be sensitive to all bits in 'norm[25:0]').
+../../../hardware/execute/fp_ops/fp_mul.sv:74: sorry: constant selects in always_* processes are not fully supported (the process will be sensitive to all bits in 'rs1_i[31:0]').
+../../../hardware/execute/fp_ops/fp_mul.sv:74: sorry: constant selects in always_* processes are not fully supported (the process will be sensitive to all bits in 'rs1_i[31:0]').
+../../../hardware/execute/fp_ops/fp_mul.sv:75: sorry: constant selects in always_* processes are not fully supported (the process will be sensitive to all bits in 'rs2_i[31:0]').
+../../../hardware/execute/fp_ops/fp_mul.sv:75: sorry: constant selects in always_* processes are not fully supported (the process will be sensitive to all bits in 'rs2_i[31:0]').
+../../../hardware/execute/fp_ops/fp_mul.sv:77: sorry: constant selects in always_* processes are not fully supported (the process will be sensitive to all bits in 'rs1_i[31:0]').
+../../../hardware/execute/fp_ops/fp_mul.sv:77: sorry: constant selects in always_* processes are not fully supported (the process will be sensitive to all bits in 'rs2_i[31:0]').
+../../../hardware/execute/fp_ops/fp_mul.sv:82: sorry: constant selects in always_* processes are not fully supported (the process will be sensitive to all bits in 'ma[23:0]').
+../../../hardware/execute/fp_ops/fp_mul.sv:82: sorry: constant selects in always_* processes are not fully supported (the process will be sensitive to all bits in 'mb[23:0]').
+../../../hardware/execute/fp_ops/fp_mul.sv:83: sorry: constant selects in always_* processes are not fully supported (the process will be sensitive to all bits in 'ma[23:0]').
+../../../hardware/execute/fp_ops/fp_mul.sv:83: sorry: constant selects in always_* processes are not fully supported (the process will be sensitive to all bits in 'mb[23:0]').
+../../../hardware/execute/fp_ops/fp_mul.sv:84: sorry: constant selects in always_* processes are not fully supported (the process will be sensitive to all bits in 'ma[23:0]').
+../../../hardware/execute/fp_ops/fp_mul.sv:84: sorry: constant selects in always_* processes are not fully supported (the process will be sensitive to all bits in 'mb[23:0]').
+../../../hardware/execute/fp_ops/fp_mul.sv:85: sorry: constant selects in always_* processes are not fully supported (the process will be sensitive to all bits in 'ma[23:0]').
+../../../hardware/execute/fp_ops/fp_mul.sv:85: sorry: constant selects in always_* processes are not fully supported (the process will be sensitive to all bits in 'mb[23:0]').
+../../../hardware/execute/fp_ops/fp_mul.sv:112: sorry: constant selects in always_* processes are not fully supported (the process will be sensitive to all bits in 's2_product[47:0]').
+../../../hardware/execute/fp_ops/fp_mul.sv:114: sorry: constant selects in always_* processes are not fully supported (the process will be sensitive to all bits in 's2_product[47:0]').
+../../../hardware/execute/fp_ops/fp_mul.sv:116: sorry: constant selects in always_* processes are not fully supported (the process will be sensitive to all bits in 's2_product[47:0]').
+../../../hardware/execute/fp_ops/fp_mul.sv:118: sorry: constant selects in always_* processes are not fully supported (the process will be sensitive to all bits in 'er[9:0]').
+../../../hardware/execute/fp_ops/fp_mul.sv:120: sorry: constant selects in always_* processes are not fully supported (the process will be sensitive to all bits in 'er[9:0]').
+../../../hardware/execute/fp_ops/fp_div.sv:138: sorry: constant selects in always_* processes are not fully supported (the process will be sensitive to all bits in 's_exp[9:0]').
+../../../hardware/execute/fp_ops/fp_div.sv:142: sorry: constant selects in always_* processes are not fully supported (the process will be sensitive to all bits in 's_qreg[23:0]').
+../../../hardware/execute/fp_ops/fp_div.sv:143: sorry: constant selects in always_* processes are not fully supported (the process will be sensitive to all bits in 's_exp[9:0]').
+../../../hardware/execute/fp_ops/fp_div.sv:143: sorry: constant selects in always_* processes are not fully supported (the process will be sensitive to all bits in 's_qreg[23:0]').
+../../../hardware/execute/fp_ops/fp_div.sv:147: sorry: constant selects in always_* processes are not fully supported (the process will be sensitive to all bits in 's_exp[9:0]').
+../../../hardware/execute/fp_ops/fp_div.sv:147: sorry: constant selects in always_* processes are not fully supported (the process will be sensitive to all bits in 's_qreg[23:0]').
+../../../hardware/execute/fp_ops/fp_div.sv:165: sorry: constant selects in always_* processes are not fully supported (the process will be sensitive to all bits in 'rs1_i[31:0]').
+../../../hardware/execute/fp_ops/fp_div.sv:165: sorry: constant selects in always_* processes are not fully supported (the process will be sensitive to all bits in 'rs1_i[31:0]').
+../../../hardware/execute/fp_ops/fp_div.sv:166: sorry: constant selects in always_* processes are not fully supported (the process will be sensitive to all bits in 'rs2_i[31:0]').
+../../../hardware/execute/fp_ops/fp_div.sv:166: sorry: constant selects in always_* processes are not fully supported (the process will be sensitive to all bits in 'rs2_i[31:0]').
+../../../hardware/execute/fp_ops/fp_div.sv:167: sorry: constant selects in always_* processes are not fully supported (the process will be sensitive to all bits in 'rs1_i[31:0]').
+../../../hardware/execute/fp_ops/fp_div.sv:167: sorry: constant selects in always_* processes are not fully supported (the process will be sensitive to all bits in 'rs2_i[31:0]').
+:0: sorry: constant selects in always_* processes are not fully supported (the process will be sensitive to all bits in 'head_entry_w[147:0]').
+../../../hardware/execute/lsb/load_store_buffer.sv:121: sorry: constant selects in always_* processes are not fully supported (the process will be sensitive to all bits in 'head_addr[31:0]').
+../../../hardware/execute/lsb/load_store_buffer.sv:122: sorry: constant selects in always_* processes are not fully supported (the process will be sensitive to all bits in 'head_addr[31:0]').
+:0: sorry: constant selects in always_* processes are not fully supported (the process will be sensitive to all bits in 'head_entry_w[147:0]').
+../../../hardware/execute/lsb/load_store_buffer.sv:131: sorry: constant selects in always_* processes are not fully supported (the process will be sensitive to all bits in 'head_entry_w[147:0]').
+../../../hardware/execute/lsb/load_store_buffer.sv:132: sorry: constant selects in always_* processes are not fully supported (the process will be sensitive to all bits in 'head_entry_w[147:0]').
+:0: sorry: constant selects in always_* processes are not fully supported (the process will be sensitive to all bits in 'head_entry_w[147:0]').
+../../../hardware/execute/lsb/load_store_buffer.sv:143: sorry: constant selects in always_* processes are not fully supported (the process will be sensitive to all bits in 'mem_rd_data_i[31:0]').
+../../../hardware/execute/lsb/load_store_buffer.sv:143: sorry: constant selects in always_* processes are not fully supported (the process will be sensitive to all bits in 'mem_rd_data_i[31:0]').
+../../../hardware/execute/lsb/load_store_buffer.sv:144: sorry: constant selects in always_* processes are not fully supported (the process will be sensitive to all bits in 'mem_rd_data_i[31:0]').
+../../../hardware/execute/lsb/load_store_buffer.sv:144: sorry: constant selects in always_* processes are not fully supported (the process will be sensitive to all bits in 'mem_rd_data_i[31:0]').
+../../../hardware/execute/lsb/load_store_buffer.sv:145: sorry: constant selects in always_* processes are not fully supported (the process will be sensitive to all bits in 'mem_rd_data_i[31:0]').
+../../../hardware/execute/lsb/load_store_buffer.sv:145: sorry: constant selects in always_* processes are not fully supported (the process will be sensitive to all bits in 'mem_rd_data_i[31:0]').
+../../../hardware/execute/lsb/load_store_buffer.sv:146: sorry: constant selects in always_* processes are not fully supported (the process will be sensitive to all bits in 'mem_rd_data_i[31:0]').
+../../../hardware/execute/lsb/load_store_buffer.sv:146: sorry: constant selects in always_* processes are not fully supported (the process will be sensitive to all bits in 'mem_rd_data_i[31:0]').
+../../../hardware/execute/lsb/load_store_buffer.sv:151: sorry: constant selects in always_* processes are not fully supported (the process will be sensitive to all bits in 'mem_rd_data_i[31:0]').
+../../../hardware/execute/lsb/load_store_buffer.sv:152: sorry: constant selects in always_* processes are not fully supported (the process will be sensitive to all bits in 'mem_rd_data_i[31:0]').
+../../../hardware/execute/lsb/load_store_buffer.sv:153: sorry: constant selects in always_* processes are not fully supported (the process will be sensitive to all bits in 'mem_rd_data_i[31:0]').
+../../../hardware/execute/lsb/load_store_buffer.sv:154: sorry: constant selects in always_* processes are not fully supported (the process will be sensitive to all bits in 'mem_rd_data_i[31:0]').
+../../../hardware/execute/lsb/load_store_buffer.sv:157: sorry: constant selects in always_* processes are not fully supported (the process will be sensitive to all bits in 'load_pending_byte_sel[1:0]').
+../../../hardware/execute/lsb/load_store_buffer.sv:158: sorry: constant selects in always_* processes are not fully supported (the process will be sensitive to all bits in 'mem_rd_data_i[31:0]').
+../../../hardware/execute/lsb/load_store_buffer.sv:158: sorry: constant selects in always_* processes are not fully supported (the process will be sensitive to all bits in 'mem_rd_data_i[31:0]').
+../../../hardware/execute/lsb/load_store_buffer.sv:159: sorry: constant selects in always_* processes are not fully supported (the process will be sensitive to all bits in 'mem_rd_data_i[31:0]').
+../../../hardware/execute/lsb/load_store_buffer.sv:159: sorry: constant selects in always_* processes are not fully supported (the process will be sensitive to all bits in 'mem_rd_data_i[31:0]').
+../../../hardware/execute/lsb/load_store_buffer.sv:160: sorry: constant selects in always_* processes are not fully supported (the process will be sensitive to all bits in 'load_pending_byte_sel[1:0]').
+../../../hardware/execute/lsb/load_store_buffer.sv:161: sorry: constant selects in always_* processes are not fully supported (the process will be sensitive to all bits in 'mem_rd_data_i[31:0]').
+../../../hardware/execute/lsb/load_store_buffer.sv:162: sorry: constant selects in always_* processes are not fully supported (the process will be sensitive to all bits in 'mem_rd_data_i[31:0]').
+../../../hardware/execute/fp_ops/fp_cvt.sv:56: sorry: constant selects in always_* processes are not fully supported (the process will be sensitive to all bits in 'f[31:0]').
+../../../hardware/execute/fp_ops/fp_cvt.sv:57: sorry: constant selects in always_* processes are not fully supported (the process will be sensitive to all bits in 'f[31:0]').
+../../../hardware/execute/fp_ops/fp_cvt.sv:58: sorry: constant selects in always_* processes are not fully supported (the process will be sensitive to all bits in 'f[31:0]').
+../../../hardware/execute/fp_ops/fp_cvt.sv:98: sorry: constant selects in always_* processes are not fully supported (the process will be sensitive to all bits in 'x[31:0]').
+../../../hardware/execute/fp_ops/fp_cvt.sv:109: sorry: constant selects in always_* processes are not fully supported (the process will be sensitive to all bits in 'norm[31:0]').
+:0: sorry: constant selects in always_* processes are not fully supported (the process will be sensitive to all bits in 'commit_entry_i[112:0]').
+:0: sorry: constant selects in always_* processes are not fully supported (the process will be sensitive to all bits in 'commit_entry_i[112:0]').
+:0: sorry: constant selects in always_* processes are not fully supported (the process will be sensitive to all bits in 'commit_entry_i[112:0]').
+:0: sorry: constant selects in always_* processes are not fully supported (the process will be sensitive to all bits in 'commit_entry_i[112:0]').
+:0: sorry: constant selects in always_* processes are not fully supported (the process will be sensitive to all bits in 'commit_entry_i[112:0]').
+:0: sorry: constant selects in always_* processes are not fully supported (the process will be sensitive to all bits in 'commit_entry_i[112:0]').
+:0: sorry: constant selects in always_* processes are not fully supported (the process will be sensitive to all bits in 'commit_entry_i[112:0]').
+:0: sorry: constant selects in always_* processes are not fully supported (the process will be sensitive to all bits in 'commit_entry_i[112:0]').
+:0: sorry: constant selects in always_* processes are not fully supported (the process will be sensitive to all bits in 'commit_entry_i[112:0]').
+:0: sorry: constant selects in always_* processes are not fully supported (the process will be sensitive to all bits in 'commit_entry_i[112:0]').
+:0: sorry: constant selects in always_* processes are not fully supported (the process will be sensitive to all bits in 'commit_entry_i[112:0]').
+:0: sorry: constant selects in always_* processes are not fully supported (the process will be sensitive to all bits in 'commit_entry_i[112:0]').
+:0: sorry: constant selects in always_* processes are not fully supported (the process will be sensitive to all bits in 'commit_entry_i[112:0]').
+:0: sorry: constant selects in always_* processes are not fully supported (the process will be sensitive to all bits in 'commit_entry_i[112:0]').
+../../../hardware/core/tomasulo_core.sv:54: sorry: constant selects in always_* processes are not fully supported (the process will be sensitive to all bits in 'raw[31:0]').
+../../../hardware/core/tomasulo_core.sv:54: sorry: constant selects in always_* processes are not fully supported (the process will be sensitive to all bits in 'raw[31:0]').
+../../../hardware/core/tomasulo_core.sv:54: sorry: constant selects in always_* processes are not fully supported (the process will be sensitive to all bits in 'raw[31:0]').
+../../../hardware/core/tomasulo_core.sv:55: sorry: constant selects in always_* processes are not fully supported (the process will be sensitive to all bits in 'raw[31:0]').
+../../../hardware/core/tomasulo_core.sv:55: sorry: constant selects in always_* processes are not fully supported (the process will be sensitive to all bits in 'raw[31:0]').
+../../../hardware/core/tomasulo_core.sv:55: sorry: constant selects in always_* processes are not fully supported (the process will be sensitive to all bits in 'raw[31:0]').
+../../../hardware/core/tomasulo_core.sv:71: sorry: constant selects in always_* processes are not fully supported (the process will be sensitive to all bits in 'funct7[6:0]').
+../../../hardware/core/tomasulo_core.sv:82: sorry: constant selects in always_* processes are not fully supported (the process will be sensitive to all bits in 'raw[31:0]').
+../../../hardware/core/tomasulo_core.sv:82: sorry: constant selects in always_* processes are not fully supported (the process will be sensitive to all bits in 'raw[31:0]').
+../../../hardware/core/tomasulo_core.sv:88: sorry: constant selects in always_* processes are not fully supported (the process will be sensitive to all bits in 'funct7[6:0]').
+../../../hardware/core/tomasulo_core.sv:94: sorry: constant selects in always_* processes are not fully supported (the process will be sensitive to all bits in 'raw[31:0]').
+../../../hardware/core/tomasulo_core.sv:94: sorry: constant selects in always_* processes are not fully supported (the process will be sensitive to all bits in 'raw[31:0]').
+../../../hardware/core/tomasulo_core.sv:104: sorry: constant selects in always_* processes are not fully supported (the process will be sensitive to all bits in 'raw[31:0]').
+../../../hardware/core/tomasulo_core.sv:104: sorry: constant selects in always_* processes are not fully supported (the process will be sensitive to all bits in 'raw[31:0]').
+../../../hardware/core/tomasulo_core.sv:104: sorry: constant selects in always_* processes are not fully supported (the process will be sensitive to all bits in 'raw[31:0]').
+../../../hardware/core/tomasulo_core.sv:114: sorry: constant selects in always_* processes are not fully supported (the process will be sensitive to all bits in 'raw[31:0]').
+../../../hardware/core/tomasulo_core.sv:114: sorry: constant selects in always_* processes are not fully supported (the process will be sensitive to all bits in 'raw[31:0]').
+../../../hardware/core/tomasulo_core.sv:114: sorry: constant selects in always_* processes are not fully supported (the process will be sensitive to all bits in 'raw[31:0]').
+../../../hardware/core/tomasulo_core.sv:114: sorry: constant selects in always_* processes are not fully supported (the process will be sensitive to all bits in 'raw[31:0]').
+../../../hardware/core/tomasulo_core.sv:114: sorry: constant selects in always_* processes are not fully supported (the process will be sensitive to all bits in 'raw[31:0]').
+../../../hardware/core/tomasulo_core.sv:124: sorry: constant selects in always_* processes are not fully supported (the process will be sensitive to all bits in 'raw[31:0]').
+../../../hardware/core/tomasulo_core.sv:124: sorry: constant selects in always_* processes are not fully supported (the process will be sensitive to all bits in 'raw[31:0]').
+../../../hardware/core/tomasulo_core.sv:124: sorry: constant selects in always_* processes are not fully supported (the process will be sensitive to all bits in 'raw[31:0]').
+../../../hardware/core/tomasulo_core.sv:124: sorry: constant selects in always_* processes are not fully supported (the process will be sensitive to all bits in 'raw[31:0]').
+../../../hardware/core/tomasulo_core.sv:124: sorry: constant selects in always_* processes are not fully supported (the process will be sensitive to all bits in 'raw[31:0]').
+../../../hardware/core/tomasulo_core.sv:129: sorry: constant selects in always_* processes are not fully supported (the process will be sensitive to all bits in 'raw[31:0]').
+../../../hardware/core/tomasulo_core.sv:129: sorry: constant selects in always_* processes are not fully supported (the process will be sensitive to all bits in 'raw[31:0]').
+../../../hardware/core/tomasulo_core.sv:134: sorry: constant selects in always_* processes are not fully supported (the process will be sensitive to all bits in 'raw[31:0]').
+../../../hardware/core/tomasulo_core.sv:138: sorry: constant selects in always_* processes are not fully supported (the process will be sensitive to all bits in 'raw[31:0]').
+../../../hardware/core/tomasulo_core.sv:144: sorry: constant selects in always_* processes are not fully supported (the process will be sensitive to all bits in 'raw[31:0]').
+../../../hardware/core/tomasulo_core.sv:144: sorry: constant selects in always_* processes are not fully supported (the process will be sensitive to all bits in 'raw[31:0]').
+../../../hardware/core/tomasulo_core.sv:150: sorry: constant selects in always_* processes are not fully supported (the process will be sensitive to all bits in 'raw[31:0]').
+../../../hardware/core/tomasulo_core.sv:150: sorry: constant selects in always_* processes are not fully supported (the process will be sensitive to all bits in 'raw[31:0]').
+../../../hardware/core/tomasulo_core.sv:150: sorry: constant selects in always_* processes are not fully supported (the process will be sensitive to all bits in 'raw[31:0]').
+[tb] loading hex: build/I-BGE-01.hex
+[tb] hex loaded, entering reset
+[tb] rst_n=0, waiting for 4 clk edges...
+[tb] reset done, rst_n=1
+[F] cyc=1 fetch raw=4a000113 pc_d=00000000 fetch_pc=00000004 mem_direct=4a000113
+[D] cyc=2 dispatch op=8 pc=00000000 tag=0 raw_iq_imm=000004a0 rs1=0
+[F] cyc=2 fetch raw=0000d0b7 pc_d=00000004 fetch_pc=00000008 mem_direct=0000d0b7
+[D] cyc=3 dispatch op=22 pc=00000004 tag=1 raw_iq_imm=0000d000 rs1=0
+[F] cyc=3 fetch raw=ccc08093 pc_d=00000008 fetch_pc=0000000c mem_direct=ccc08093
+[D] cyc=4 dispatch op=8 pc=00000008 tag=2 raw_iq_imm=fffffccc rs1=1
+[F] cyc=4 fetch raw=fff00f93 pc_d=0000000c fetch_pc=00000010 mem_direct=fff00f93
+[D] cyc=5 dispatch op=8 pc=0000000c tag=3 raw_iq_imm=ffffffff rs1=0
+[F] cyc=5 fetch raw=00000813 pc_d=00000010 fetch_pc=00000014 mem_direct=00000813
+[C] cyc=5 CDB tag=0 val=000004a0
+[D] cyc=6 dispatch op=8 pc=00000010 tag=4 raw_iq_imm=00000000 rs1=0
+[F] cyc=6 fetch raw=010fd663 pc_d=00000014 fetch_pc=00000018 mem_direct=010fd663
+[R] cyc=6 COMMIT op=8 pc=00000000
+[D] cyc=7 dispatch op=19 pc=00000014 tag=5 raw_iq_imm=0000000c rs1=31
+[F] cyc=7 fetch raw=000120b7 pc_d=00000018 fetch_pc=0000001c mem_direct=000120b7
+[C] cyc=7 CDB tag=1 val=0000d000
+[D] cyc=8 dispatch op=22 pc=00000018 tag=6 raw_iq_imm=00012000 rs1=0
+[F] cyc=8 fetch raw=3ab08093 pc_d=0000001c fetch_pc=00000020 mem_direct=3ab08093
+[R] cyc=8 COMMIT op=22 pc=00000004
+[D] cyc=9 dispatch op=8 pc=0000001c tag=7 raw_iq_imm=000003ab rs1=1
+[F] cyc=9 fetch raw=00112023 pc_d=00000020 fetch_pc=00000024 mem_direct=00112023
+[C] cyc=9 CDB tag=4 val=00000000
+[D] cyc=10 dispatch op=15 pc=00000020 tag=8 raw_iq_imm=00000000 rs1=2
+[F] cyc=10 fetch raw=0000d0b7 pc_d=00000024 fetch_pc=00000028 mem_direct=0000d0b7
+[D] cyc=11 dispatch op=22 pc=00000024 tag=9 raw_iq_imm=0000d000 rs1=0
+[F] cyc=11 fetch raw=ccc08093 pc_d=00000028 fetch_pc=0000002c mem_direct=ccc08093
+[C] cyc=11 CDB tag=2 val=0000cccc
+[D] cyc=12 dispatch op=8 pc=00000028 tag=10 raw_iq_imm=fffffccc rs1=1
+[F] cyc=12 fetch raw=00100f13 pc_d=0000002c fetch_pc=00000030 mem_direct=00100f13
+[R] cyc=12 COMMIT op=8 pc=00000008
+[D] cyc=13 dispatch op=8 pc=0000002c tag=11 raw_iq_imm=00000001 rs1=0
+[F] cyc=13 fetch raw=80100793 pc_d=00000030 fetch_pc=00000034 mem_direct=80100793
+[C] cyc=13 CDB tag=6 val=00012000
+[D] cyc=14 dispatch op=8 pc=00000030 tag=12 raw_iq_imm=fffff801 rs1=0
+[F] cyc=14 fetch raw=00ff5663 pc_d=00000034 fetch_pc=00000038 mem_direct=00ff5663
+[D] cyc=15 dispatch op=19 pc=00000034 tag=13 raw_iq_imm=0000000c rs1=30
+[F] cyc=15 fetch raw=000120b7 pc_d=00000038 fetch_pc=0000003c mem_direct=000120b7
+[C] cyc=15 CDB tag=9 val=0000d000
+[D] cyc=16 dispatch op=22 pc=00000038 tag=14 raw_iq_imm=00012000 rs1=0
+[F] cyc=16 fetch raw=3ab08093 pc_d=0000003c fetch_pc=00000040 mem_direct=3ab08093
+[D] cyc=17 dispatch op=8 pc=0000003c tag=15 raw_iq_imm=000003ab rs1=1
+[F] cyc=17 fetch raw=00112223 pc_d=00000040 fetch_pc=00000044 mem_direct=00112223
+[C] cyc=17 CDB tag=12 val=fffff801
+[D] cyc=18 dispatch op=15 pc=00000040 tag=0 raw_iq_imm=00000004 rs1=2
+[F] cyc=18 fetch raw=0080006f pc_d=00000044 fetch_pc=00000048 mem_direct=0080006f
+[F] cyc=19 fetch raw=0200006f pc_d=00000048 fetch_pc=0000004c mem_direct=0200006f
+[C] cyc=19 CDB tag=14 val=00012000
+[F] cyc=20 fetch raw=0000d0b7 pc_d=0000004c fetch_pc=00000050 mem_direct=0000d0b7
+[F] cyc=21 fetch raw=ccc08093 pc_d=00000050 fetch_pc=00000054 mem_direct=ccc08093
+[C] cyc=21 CDB tag=10 val=0000cccc
+[F] cyc=22 fetch raw=00000e93 pc_d=00000054 fetch_pc=00000058 mem_direct=00000e93
+[F] cyc=23 fetch raw=fff00713 pc_d=00000058 fetch_pc=0000005c mem_direct=fff00713
+[C] cyc=23 CDB tag=3 val=ffffffff
+[F] cyc=24 fetch raw=feeed6e3 pc_d=0000005c fetch_pc=00000060 mem_direct=feeed6e3
+[R] cyc=24 COMMIT op=8 pc=0000000c
+[D] cyc=25 dispatch op=20 pc=00000044 tag=1 raw_iq_imm=00000008 rs1=0
+[F] cyc=25 fetch raw=000120b7 pc_d=00000060 fetch_pc=00000064 mem_direct=000120b7
+[C] cyc=25 CDB tag=7 val=000123ab
+[R] cyc=25 COMMIT op=8 pc=00000010
+[F] cyc=26 fetch raw=3ab08093 pc_d=00000064 fetch_pc=00000068 mem_direct=3ab08093
+[C] cyc=26 CDB tag=5 val=00000018
+[R] cyc=26 COMMIT op=19 pc=00000014
+[D] cyc=27 dispatch op=20 pc=00000048 tag=2 raw_iq_imm=00000020 rs1=0
+[C] cyc=27 CDB tag=8 val=00000000
+[R] cyc=27 COMMIT op=22 pc=00000018
+[D] cyc=28 dispatch op=22 pc=0000004c tag=3 raw_iq_imm=0000d000 rs1=0
+[F] cyc=28 fetch raw=00112423 pc_d=00000068 fetch_pc=0000006c mem_direct=00112423
+[C] cyc=28 CDB tag=11 val=00000001
+[R] cyc=28 COMMIT op=8 pc=0000001c
+[D] cyc=29 dispatch op=8 pc=00000050 tag=4 raw_iq_imm=fffffccc rs1=1
+[F] cyc=29 fetch raw=0000d0b7 pc_d=0000006c fetch_pc=00000070 mem_direct=0000d0b7
+[C] cyc=29 CDB tag=1 val=00000048
+[R] cyc=29 COMMIT op=15 pc=00000020
+[D] cyc=30 dispatch op=8 pc=00000054 tag=5 raw_iq_imm=00000000 rs1=0
+[F] cyc=30 fetch raw=ccc08093 pc_d=00000070 fetch_pc=00000074 mem_direct=ccc08093
+[C] cyc=30 CDB tag=15 val=000123ab
+[R] cyc=30 COMMIT op=22 pc=00000024
+[D] cyc=31 dispatch op=8 pc=00000058 tag=6 raw_iq_imm=ffffffff rs1=0
+[F] cyc=31 fetch raw=7ff00e13 pc_d=00000074 fetch_pc=00000078 mem_direct=7ff00e13
+[C] cyc=31 CDB tag=2 val=0000004c
+[R] cyc=31 COMMIT op=8 pc=00000028
+[D] cyc=32 dispatch op=19 pc=0000005c tag=7 raw_iq_imm=ffffffec rs1=29
+[F] cyc=32 fetch raw=fffff6b7 pc_d=00000078 fetch_pc=0000007c mem_direct=fffff6b7
+[C] cyc=32 CDB tag=0 val=00000000
+[R] cyc=32 COMMIT op=8 pc=0000002c
+[D] cyc=33 dispatch op=22 pc=00000060 tag=8 raw_iq_imm=00012000 rs1=0
+[F] cyc=33 fetch raw=dcc68693 pc_d=0000007c fetch_pc=00000080 mem_direct=dcc68693
+[C] cyc=33 CDB tag=3 val=0000d000
+[R] cyc=33 COMMIT op=8 pc=00000030
+[D] cyc=34 dispatch op=8 pc=00000064 tag=9 raw_iq_imm=000003ab rs1=1
+[F] cyc=34 fetch raw=00de5663 pc_d=00000080 fetch_pc=00000084 mem_direct=00de5663
+[C] cyc=34 CDB tag=13 val=00000040
+[R] cyc=34 COMMIT op=19 pc=00000034
+[F] cyc=36 fetch raw=00112223 pc_d=00000040 fetch_pc=00000044 mem_direct=00112223
+[D] cyc=37 dispatch op=15 pc=00000040 tag=0 raw_iq_imm=00000004 rs1=2
+[F] cyc=37 fetch raw=0080006f pc_d=00000044 fetch_pc=00000048 mem_direct=0080006f
+[D] cyc=38 dispatch op=20 pc=00000044 tag=1 raw_iq_imm=00000008 rs1=0
+[F] cyc=38 fetch raw=0200006f pc_d=00000048 fetch_pc=0000004c mem_direct=0200006f
+[C] cyc=38 CDB tag=0 val=00000000
+[D] cyc=39 dispatch op=20 pc=00000048 tag=2 raw_iq_imm=00000020 rs1=0
+[F] cyc=39 fetch raw=0000d0b7 pc_d=0000004c fetch_pc=00000050 mem_direct=0000d0b7
+[R] cyc=39 COMMIT op=15 pc=00000040
+[D] cyc=40 dispatch op=22 pc=0000004c tag=3 raw_iq_imm=0000d000 rs1=0
+[F] cyc=40 fetch raw=ccc08093 pc_d=00000050 fetch_pc=00000054 mem_direct=ccc08093
+[D] cyc=41 dispatch op=8 pc=00000050 tag=4 raw_iq_imm=fffffccc rs1=1
+[F] cyc=41 fetch raw=00000e93 pc_d=00000054 fetch_pc=00000058 mem_direct=00000e93
+[C] cyc=41 CDB tag=1 val=00000048
+[R] cyc=41 COMMIT op=20 pc=00000044
+[F] cyc=43 fetch raw=0000d0b7 pc_d=0000004c fetch_pc=00000050 mem_direct=0000d0b7
+[C] cyc=43 CDB tag=3 val=0000d000
+[D] cyc=44 dispatch op=22 pc=0000004c tag=0 raw_iq_imm=0000d000 rs1=0
+[F] cyc=44 fetch raw=ccc08093 pc_d=00000050 fetch_pc=00000054 mem_direct=ccc08093
+[C] cyc=44 CDB tag=2 val=0000004c
+[D] cyc=45 dispatch op=8 pc=00000050 tag=1 raw_iq_imm=fffffccc rs1=1
+[F] cyc=45 fetch raw=00000e93 pc_d=00000054 fetch_pc=00000058 mem_direct=00000e93
+[D] cyc=46 dispatch op=8 pc=00000054 tag=2 raw_iq_imm=00000000 rs1=0
+[F] cyc=46 fetch raw=fff00713 pc_d=00000058 fetch_pc=0000005c mem_direct=fff00713
+[D] cyc=47 dispatch op=8 pc=00000058 tag=3 raw_iq_imm=ffffffff rs1=0
+[F] cyc=47 fetch raw=feeed6e3 pc_d=0000005c fetch_pc=00000060 mem_direct=feeed6e3
+[C] cyc=47 CDB tag=0 val=0000d000
+[D] cyc=48 dispatch op=19 pc=0000005c tag=4 raw_iq_imm=ffffffec rs1=29
+[F] cyc=48 fetch raw=000120b7 pc_d=00000060 fetch_pc=00000064 mem_direct=000120b7
+[R] cyc=48 COMMIT op=22 pc=0000004c
+[D] cyc=49 dispatch op=22 pc=00000060 tag=5 raw_iq_imm=00012000 rs1=0
+[F] cyc=49 fetch raw=3ab08093 pc_d=00000064 fetch_pc=00000068 mem_direct=3ab08093
+[C] cyc=49 CDB tag=2 val=00000000
+[D] cyc=50 dispatch op=8 pc=00000064 tag=6 raw_iq_imm=000003ab rs1=1
+[F] cyc=50 fetch raw=00112423 pc_d=00000068 fetch_pc=0000006c mem_direct=00112423
+[D] cyc=51 dispatch op=15 pc=00000068 tag=7 raw_iq_imm=00000008 rs1=2
+[F] cyc=51 fetch raw=0000d0b7 pc_d=0000006c fetch_pc=00000070 mem_direct=0000d0b7
+[C] cyc=51 CDB tag=1 val=0000cccc
+[D] cyc=52 dispatch op=22 pc=0000006c tag=8 raw_iq_imm=0000d000 rs1=0
+[F] cyc=52 fetch raw=ccc08093 pc_d=00000070 fetch_pc=00000074 mem_direct=ccc08093
+[R] cyc=52 COMMIT op=8 pc=00000050
+[D] cyc=53 dispatch op=8 pc=00000070 tag=9 raw_iq_imm=fffffccc rs1=1
+[F] cyc=53 fetch raw=7ff00e13 pc_d=00000074 fetch_pc=00000078 mem_direct=7ff00e13
+[C] cyc=53 CDB tag=5 val=00012000
+[R] cyc=53 COMMIT op=8 pc=00000054
+[D] cyc=54 dispatch op=8 pc=00000074 tag=10 raw_iq_imm=000007ff rs1=0
+[F] cyc=54 fetch raw=fffff6b7 pc_d=00000078 fetch_pc=0000007c mem_direct=fffff6b7
+[D] cyc=55 dispatch op=22 pc=00000078 tag=11 raw_iq_imm=fffff000 rs1=0
+[F] cyc=55 fetch raw=dcc68693 pc_d=0000007c fetch_pc=00000080 mem_direct=dcc68693
+[C] cyc=55 CDB tag=8 val=0000d000
+[D] cyc=56 dispatch op=8 pc=0000007c tag=12 raw_iq_imm=fffffdcc rs1=13
+[F] cyc=56 fetch raw=00de5663 pc_d=00000080 fetch_pc=00000084 mem_direct=00de5663
+[D] cyc=57 dispatch op=19 pc=00000080 tag=13 raw_iq_imm=0000000c rs1=28
+[F] cyc=57 fetch raw=000120b7 pc_d=00000084 fetch_pc=00000088 mem_direct=000120b7
+[C] cyc=57 CDB tag=10 val=000007ff
+[D] cyc=58 dispatch op=22 pc=00000084 tag=14 raw_iq_imm=00012000 rs1=0
+[F] cyc=58 fetch raw=3ab08093 pc_d=00000088 fetch_pc=0000008c mem_direct=3ab08093
+[D] cyc=59 dispatch op=8 pc=00000088 tag=15 raw_iq_imm=000003ab rs1=1
+[F] cyc=59 fetch raw=00112623 pc_d=0000008c fetch_pc=00000090 mem_direct=00112623
+[C] cyc=59 CDB tag=6 val=000123ab
+[D] cyc=60 dispatch op=15 pc=0000008c tag=0 raw_iq_imm=0000000c rs1=2
+[F] cyc=60 fetch raw=0000d0b7 pc_d=00000090 fetch_pc=00000094 mem_direct=0000d0b7
+[C] cyc=60 CDB tag=7 val=00000000
+[D] cyc=61 dispatch op=22 pc=00000090 tag=1 raw_iq_imm=0000d000 rs1=0
+[F] cyc=61 fetch raw=ccc08093 pc_d=00000094 fetch_pc=00000098 mem_direct=ccc08093
+[C] cyc=61 CDB tag=14 val=00012000
+[D] cyc=62 dispatch op=8 pc=00000094 tag=2 raw_iq_imm=fffffccc rs1=1
+[F] cyc=62 fetch raw=00000d93 pc_d=00000098 fetch_pc=0000009c mem_direct=00000d93
+[F] cyc=63 fetch raw=80000637 pc_d=0000009c fetch_pc=000000a0 mem_direct=80000637
+[C] cyc=63 CDB tag=3 val=ffffffff
+[F] cyc=64 fetch raw=00cdd663 pc_d=000000a0 fetch_pc=000000a4 mem_direct=00cdd663
+[R] cyc=64 COMMIT op=8 pc=00000058
+[D] cyc=65 dispatch op=8 pc=00000098 tag=3 raw_iq_imm=00000000 rs1=0
+[F] cyc=65 fetch raw=000120b7 pc_d=000000a4 fetch_pc=000000a8 mem_direct=000120b7
+[C] cyc=65 CDB tag=1 val=0000d000
+[F] cyc=66 fetch raw=3ab08093 pc_d=000000a8 fetch_pc=000000ac mem_direct=3ab08093
+[C] cyc=66 CDB tag=4 val=00000048
+[R] cyc=66 COMMIT op=19 pc=0000005c
+[F] cyc=68 fetch raw=0200006f pc_d=00000048 fetch_pc=0000004c mem_direct=0200006f
+[D] cyc=69 dispatch op=20 pc=00000048 tag=0 raw_iq_imm=00000020 rs1=0
+[F] cyc=69 fetch raw=0000d0b7 pc_d=0000004c fetch_pc=00000050 mem_direct=0000d0b7
+[D] cyc=70 dispatch op=22 pc=0000004c tag=1 raw_iq_imm=0000d000 rs1=0
+[F] cyc=70 fetch raw=ccc08093 pc_d=00000050 fetch_pc=00000054 mem_direct=ccc08093
+[D] cyc=71 dispatch op=8 pc=00000050 tag=2 raw_iq_imm=fffffccc rs1=1
+[F] cyc=71 fetch raw=00000e93 pc_d=00000054 fetch_pc=00000058 mem_direct=00000e93
+[D] cyc=72 dispatch op=8 pc=00000054 tag=3 raw_iq_imm=00000000 rs1=0
+[F] cyc=72 fetch raw=fff00713 pc_d=00000058 fetch_pc=0000005c mem_direct=fff00713
+[C] cyc=72 CDB tag=0 val=0000004c
+[R] cyc=72 COMMIT op=20 pc=00000048
+[F] cyc=74 fetch raw=00112423 pc_d=00000068 fetch_pc=0000006c mem_direct=00112423
+[D] cyc=75 dispatch op=15 pc=00000068 tag=0 raw_iq_imm=00000008 rs1=2
+[F] cyc=75 fetch raw=0000d0b7 pc_d=0000006c fetch_pc=00000070 mem_direct=0000d0b7
+[D] cyc=76 dispatch op=22 pc=0000006c tag=1 raw_iq_imm=0000d000 rs1=0
+[F] cyc=76 fetch raw=ccc08093 pc_d=00000070 fetch_pc=00000074 mem_direct=ccc08093
+[C] cyc=76 CDB tag=0 val=00000000
+[D] cyc=77 dispatch op=8 pc=00000070 tag=2 raw_iq_imm=fffffccc rs1=1
+[F] cyc=77 fetch raw=7ff00e13 pc_d=00000074 fetch_pc=00000078 mem_direct=7ff00e13
+[R] cyc=77 COMMIT op=15 pc=00000068
+[D] cyc=78 dispatch op=8 pc=00000074 tag=3 raw_iq_imm=000007ff rs1=0
+[F] cyc=78 fetch raw=fffff6b7 pc_d=00000078 fetch_pc=0000007c mem_direct=fffff6b7
+[D] cyc=79 dispatch op=22 pc=00000078 tag=4 raw_iq_imm=fffff000 rs1=0
+[F] cyc=79 fetch raw=dcc68693 pc_d=0000007c fetch_pc=00000080 mem_direct=dcc68693
+[C] cyc=79 CDB tag=1 val=0000d000
+[D] cyc=80 dispatch op=8 pc=0000007c tag=5 raw_iq_imm=fffffdcc rs1=13
+[F] cyc=80 fetch raw=00de5663 pc_d=00000080 fetch_pc=00000084 mem_direct=00de5663
+[R] cyc=80 COMMIT op=22 pc=0000006c
+[D] cyc=81 dispatch op=19 pc=00000080 tag=6 raw_iq_imm=0000000c rs1=28
+[F] cyc=81 fetch raw=000120b7 pc_d=00000084 fetch_pc=00000088 mem_direct=000120b7
+[C] cyc=81 CDB tag=3 val=000007ff
+[D] cyc=82 dispatch op=22 pc=00000084 tag=7 raw_iq_imm=00012000 rs1=0
+[F] cyc=82 fetch raw=3ab08093 pc_d=00000088 fetch_pc=0000008c mem_direct=3ab08093
+[D] cyc=83 dispatch op=8 pc=00000088 tag=8 raw_iq_imm=000003ab rs1=1
+[F] cyc=83 fetch raw=00112623 pc_d=0000008c fetch_pc=00000090 mem_direct=00112623
+[C] cyc=83 CDB tag=2 val=0000cccc
+[D] cyc=84 dispatch op=15 pc=0000008c tag=9 raw_iq_imm=0000000c rs1=2
+[F] cyc=84 fetch raw=0000d0b7 pc_d=00000090 fetch_pc=00000094 mem_direct=0000d0b7
+[R] cyc=84 COMMIT op=8 pc=00000070
+[D] cyc=85 dispatch op=22 pc=00000090 tag=10 raw_iq_imm=0000d000 rs1=0
+[F] cyc=85 fetch raw=ccc08093 pc_d=00000094 fetch_pc=00000098 mem_direct=ccc08093
+[C] cyc=85 CDB tag=7 val=00012000
+[R] cyc=85 COMMIT op=8 pc=00000074
+[D] cyc=86 dispatch op=8 pc=00000094 tag=11 raw_iq_imm=fffffccc rs1=1
+[F] cyc=86 fetch raw=00000d93 pc_d=00000098 fetch_pc=0000009c mem_direct=00000d93
+[D] cyc=87 dispatch op=8 pc=00000098 tag=12 raw_iq_imm=00000000 rs1=0
+[F] cyc=87 fetch raw=80000637 pc_d=0000009c fetch_pc=000000a0 mem_direct=80000637
+[C] cyc=87 CDB tag=4 val=fffff000
+[D] cyc=88 dispatch op=22 pc=0000009c tag=13 raw_iq_imm=80000000 rs1=0
+[F] cyc=88 fetch raw=00cdd663 pc_d=000000a0 fetch_pc=000000a4 mem_direct=00cdd663
+[R] cyc=88 COMMIT op=22 pc=00000078
+[D] cyc=89 dispatch op=19 pc=000000a0 tag=14 raw_iq_imm=0000000c rs1=27
+[F] cyc=89 fetch raw=000120b7 pc_d=000000a4 fetch_pc=000000a8 mem_direct=000120b7
+[C] cyc=89 CDB tag=10 val=0000d000
+[D] cyc=90 dispatch op=22 pc=000000a4 tag=15 raw_iq_imm=00012000 rs1=0
+[F] cyc=90 fetch raw=3ab08093 pc_d=000000a8 fetch_pc=000000ac mem_direct=3ab08093
+[D] cyc=91 dispatch op=8 pc=000000a8 tag=0 raw_iq_imm=000003ab rs1=1
+[F] cyc=91 fetch raw=00112823 pc_d=000000ac fetch_pc=000000b0 mem_direct=00112823
+[C] cyc=91 CDB tag=5 val=ffffedcc
+[D] cyc=92 dispatch op=15 pc=000000ac tag=1 raw_iq_imm=00000010 rs1=2
+[F] cyc=92 fetch raw=4b400113 pc_d=000000b0 fetch_pc=000000b4 mem_direct=4b400113
+[R] cyc=92 COMMIT op=8 pc=0000007c
+[D] cyc=93 dispatch op=8 pc=000000b0 tag=2 raw_iq_imm=000004b4 rs1=0
+[F] cyc=93 fetch raw=0000d0b7 pc_d=000000b4 fetch_pc=000000b8 mem_direct=0000d0b7
+[C] cyc=93 CDB tag=15 val=00012000
+[D] cyc=94 dispatch op=22 pc=000000b4 tag=3 raw_iq_imm=0000d000 rs1=0
+[F] cyc=94 fetch raw=ccc08093 pc_d=000000b8 fetch_pc=000000bc mem_direct=ccc08093
+[C] cyc=94 CDB tag=6 val=0000008c
+[R] cyc=94 COMMIT op=19 pc=00000080
+[F] cyc=96 fetch raw=00112623 pc_d=0000008c fetch_pc=00000090 mem_direct=00112623
+[D] cyc=97 dispatch op=15 pc=0000008c tag=0 raw_iq_imm=0000000c rs1=2
+[F] cyc=97 fetch raw=0000d0b7 pc_d=00000090 fetch_pc=00000094 mem_direct=0000d0b7
+[D] cyc=98 dispatch op=22 pc=00000090 tag=1 raw_iq_imm=0000d000 rs1=0
+[F] cyc=98 fetch raw=ccc08093 pc_d=00000094 fetch_pc=00000098 mem_direct=ccc08093
+[C] cyc=98 CDB tag=0 val=00000000
+[D] cyc=99 dispatch op=8 pc=00000094 tag=2 raw_iq_imm=fffffccc rs1=1
+[F] cyc=99 fetch raw=00000d93 pc_d=00000098 fetch_pc=0000009c mem_direct=00000d93
+[R] cyc=99 COMMIT op=15 pc=0000008c
+[D] cyc=100 dispatch op=8 pc=00000098 tag=3 raw_iq_imm=00000000 rs1=0
+[F] cyc=100 fetch raw=80000637 pc_d=0000009c fetch_pc=000000a0 mem_direct=80000637
+[D] cyc=101 dispatch op=22 pc=0000009c tag=4 raw_iq_imm=80000000 rs1=0
+[F] cyc=101 fetch raw=00cdd663 pc_d=000000a0 fetch_pc=000000a4 mem_direct=00cdd663
+[C] cyc=101 CDB tag=1 val=0000d000
+[D] cyc=102 dispatch op=19 pc=000000a0 tag=5 raw_iq_imm=0000000c rs1=27
+[F] cyc=102 fetch raw=000120b7 pc_d=000000a4 fetch_pc=000000a8 mem_direct=000120b7
+[R] cyc=102 COMMIT op=22 pc=00000090
+[D] cyc=103 dispatch op=22 pc=000000a4 tag=6 raw_iq_imm=00012000 rs1=0
+[F] cyc=103 fetch raw=3ab08093 pc_d=000000a8 fetch_pc=000000ac mem_direct=3ab08093
+[C] cyc=103 CDB tag=3 val=00000000
+[D] cyc=104 dispatch op=8 pc=000000a8 tag=7 raw_iq_imm=000003ab rs1=1
+[F] cyc=104 fetch raw=00112823 pc_d=000000ac fetch_pc=000000b0 mem_direct=00112823
+[D] cyc=105 dispatch op=15 pc=000000ac tag=8 raw_iq_imm=00000010 rs1=2
+[F] cyc=105 fetch raw=4b400113 pc_d=000000b0 fetch_pc=000000b4 mem_direct=4b400113
+[C] cyc=105 CDB tag=2 val=0000cccc
+[D] cyc=106 dispatch op=8 pc=000000b0 tag=9 raw_iq_imm=000004b4 rs1=0
+[F] cyc=106 fetch raw=0000d0b7 pc_d=000000b4 fetch_pc=000000b8 mem_direct=0000d0b7
+[R] cyc=106 COMMIT op=8 pc=00000094
+[D] cyc=107 dispatch op=22 pc=000000b4 tag=10 raw_iq_imm=0000d000 rs1=0
+[F] cyc=107 fetch raw=ccc08093 pc_d=000000b8 fetch_pc=000000bc mem_direct=ccc08093
+[C] cyc=107 CDB tag=6 val=00012000
+[R] cyc=107 COMMIT op=8 pc=00000098
+[D] cyc=108 dispatch op=8 pc=000000b8 tag=11 raw_iq_imm=fffffccc rs1=1
+[F] cyc=108 fetch raw=00001d37 pc_d=000000bc fetch_pc=000000c0 mem_direct=00001d37
+[D] cyc=109 dispatch op=22 pc=000000bc tag=12 raw_iq_imm=00001000 rs1=0
+[F] cyc=109 fetch raw=800d0d13 pc_d=000000c0 fetch_pc=000000c4 mem_direct=800d0d13
+[C] cyc=109 CDB tag=9 val=000004b4
+[D] cyc=110 dispatch op=8 pc=000000c0 tag=13 raw_iq_imm=fffff800 rs1=26
+[F] cyc=110 fetch raw=000015b7 pc_d=000000c4 fetch_pc=000000c8 mem_direct=000015b7
+[D] cyc=111 dispatch op=22 pc=000000c4 tag=14 raw_iq_imm=00001000 rs1=0
+[F] cyc=111 fetch raw=23458593 pc_d=000000c8 fetch_pc=000000cc mem_direct=23458593
+[C] cyc=111 CDB tag=7 val=000123ab
+[D] cyc=112 dispatch op=8 pc=000000c8 tag=15 raw_iq_imm=00000234 rs1=11
+[F] cyc=112 fetch raw=00bd5663 pc_d=000000cc fetch_pc=000000d0 mem_direct=00bd5663
+[C] cyc=112 CDB tag=8 val=00000000
+[D] cyc=113 dispatch op=19 pc=000000cc tag=0 raw_iq_imm=0000000c rs1=26
+[F] cyc=113 fetch raw=000120b7 pc_d=000000d0 fetch_pc=000000d4 mem_direct=000120b7
+[C] cyc=113 CDB tag=4 val=80000000
+[D] cyc=114 dispatch op=22 pc=000000d0 tag=1 raw_iq_imm=00012000 rs1=0
+[F] cyc=114 fetch raw=3ab08093 pc_d=000000d4 fetch_pc=000000d8 mem_direct=3ab08093
+[R] cyc=114 COMMIT op=22 pc=0000009c
+[F] cyc=115 fetch raw=00112023 pc_d=000000d8 fetch_pc=000000dc mem_direct=00112023
+[C] cyc=115 CDB tag=10 val=0000d000
+[D] cyc=116 dispatch op=8 pc=000000d4 tag=2 raw_iq_imm=000003ab rs1=1
+[F] cyc=116 fetch raw=0000d0b7 pc_d=000000dc fetch_pc=000000e0 mem_direct=0000d0b7
+[C] cyc=116 CDB tag=5 val=000000ac
+[R] cyc=116 COMMIT op=19 pc=000000a0
+[F] cyc=118 fetch raw=00112823 pc_d=000000ac fetch_pc=000000b0 mem_direct=00112823
+[D] cyc=119 dispatch op=15 pc=000000ac tag=0 raw_iq_imm=00000010 rs1=2
+[F] cyc=119 fetch raw=4b400113 pc_d=000000b0 fetch_pc=000000b4 mem_direct=4b400113
+[D] cyc=120 dispatch op=8 pc=000000b0 tag=1 raw_iq_imm=000004b4 rs1=0
+[F] cyc=120 fetch raw=0000d0b7 pc_d=000000b4 fetch_pc=000000b8 mem_direct=0000d0b7
+[C] cyc=120 CDB tag=0 val=00000000
+[D] cyc=121 dispatch op=22 pc=000000b4 tag=2 raw_iq_imm=0000d000 rs1=0
+[F] cyc=121 fetch raw=ccc08093 pc_d=000000b8 fetch_pc=000000bc mem_direct=ccc08093
+[R] cyc=121 COMMIT op=15 pc=000000ac
+[D] cyc=122 dispatch op=8 pc=000000b8 tag=3 raw_iq_imm=fffffccc rs1=1
+[F] cyc=122 fetch raw=00001d37 pc_d=000000bc fetch_pc=000000c0 mem_direct=00001d37
+[D] cyc=123 dispatch op=22 pc=000000bc tag=4 raw_iq_imm=00001000 rs1=0
+[F] cyc=123 fetch raw=800d0d13 pc_d=000000c0 fetch_pc=000000c4 mem_direct=800d0d13
+[C] cyc=123 CDB tag=1 val=000004b4
+[D] cyc=124 dispatch op=8 pc=000000c0 tag=5 raw_iq_imm=fffff800 rs1=26
+[F] cyc=124 fetch raw=000015b7 pc_d=000000c4 fetch_pc=000000c8 mem_direct=000015b7
+[R] cyc=124 COMMIT op=8 pc=000000b0
+[D] cyc=125 dispatch op=22 pc=000000c4 tag=6 raw_iq_imm=00001000 rs1=0
+[F] cyc=125 fetch raw=23458593 pc_d=000000c8 fetch_pc=000000cc mem_direct=23458593
+[C] cyc=125 CDB tag=2 val=0000d000
+[D] cyc=126 dispatch op=8 pc=000000c8 tag=7 raw_iq_imm=00000234 rs1=11
+[F] cyc=126 fetch raw=00bd5663 pc_d=000000cc fetch_pc=000000d0 mem_direct=00bd5663
+[R] cyc=126 COMMIT op=22 pc=000000b4
+[D] cyc=127 dispatch op=19 pc=000000cc tag=8 raw_iq_imm=0000000c rs1=26
+[F] cyc=127 fetch raw=000120b7 pc_d=000000d0 fetch_pc=000000d4 mem_direct=000120b7
+[C] cyc=127 CDB tag=4 val=00001000
+[D] cyc=128 dispatch op=22 pc=000000d0 tag=9 raw_iq_imm=00012000 rs1=0
+[F] cyc=128 fetch raw=3ab08093 pc_d=000000d4 fetch_pc=000000d8 mem_direct=3ab08093
+[D] cyc=129 dispatch op=8 pc=000000d4 tag=10 raw_iq_imm=000003ab rs1=1
+[F] cyc=129 fetch raw=00112023 pc_d=000000d8 fetch_pc=000000dc mem_direct=00112023
+[C] cyc=129 CDB tag=3 val=0000cccc
+[D] cyc=130 dispatch op=15 pc=000000d8 tag=11 raw_iq_imm=00000000 rs1=2
+[F] cyc=130 fetch raw=0000d0b7 pc_d=000000dc fetch_pc=000000e0 mem_direct=0000d0b7
+[R] cyc=130 COMMIT op=8 pc=000000b8
+[D] cyc=131 dispatch op=22 pc=000000dc tag=12 raw_iq_imm=0000d000 rs1=0
+[F] cyc=131 fetch raw=ccc08093 pc_d=000000e0 fetch_pc=000000e4 mem_direct=ccc08093
+[C] cyc=131 CDB tag=9 val=00012000
+[R] cyc=131 COMMIT op=22 pc=000000bc
+[D] cyc=132 dispatch op=8 pc=000000e0 tag=13 raw_iq_imm=fffffccc rs1=1
+[F] cyc=132 fetch raw=07654cb7 pc_d=000000e4 fetch_pc=000000e8 mem_direct=07654cb7
+[D] cyc=133 dispatch op=22 pc=000000e4 tag=14 raw_iq_imm=07654000 rs1=0
+[F] cyc=133 fetch raw=321c8c93 pc_d=000000e8 fetch_pc=000000ec mem_direct=321c8c93
+[C] cyc=133 CDB tag=5 val=00000800
+[D] cyc=134 dispatch op=8 pc=000000e8 tag=15 raw_iq_imm=00000321 rs1=25
+[F] cyc=134 fetch raw=fff00513 pc_d=000000ec fetch_pc=000000f0 mem_direct=fff00513
+[R] cyc=134 COMMIT op=8 pc=000000c0
+[F] cyc=135 fetch raw=00acd663 pc_d=000000f0 fetch_pc=000000f4 mem_direct=00acd663
+[C] cyc=135 CDB tag=12 val=0000d000
+[D] cyc=136 dispatch op=8 pc=000000ec tag=0 raw_iq_imm=ffffffff rs1=0
+[F] cyc=136 fetch raw=000120b7 pc_d=000000f4 fetch_pc=000000f8 mem_direct=000120b7
+[D] cyc=137 dispatch op=19 pc=000000f0 tag=1 raw_iq_imm=0000000c rs1=25
+[F] cyc=137 fetch raw=3ab08093 pc_d=000000f8 fetch_pc=000000fc mem_direct=3ab08093
+[C] cyc=137 CDB tag=6 val=00001000
+[D] cyc=138 dispatch op=22 pc=000000f4 tag=2 raw_iq_imm=00012000 rs1=0
+[F] cyc=138 fetch raw=00112223 pc_d=000000fc fetch_pc=00000100 mem_direct=00112223
+[R] cyc=138 COMMIT op=22 pc=000000c4
+[F] cyc=139 fetch raw=0080006f pc_d=00000100 fetch_pc=00000104 mem_direct=0080006f
+[C] cyc=139 CDB tag=13 val=0000cccc
+[D] cyc=140 dispatch op=8 pc=000000f8 tag=3 raw_iq_imm=000003ab rs1=1
+[F] cyc=140 fetch raw=0240006f pc_d=00000104 fetch_pc=00000108 mem_direct=0240006f
+[D] cyc=141 dispatch op=15 pc=000000fc tag=4 raw_iq_imm=00000004 rs1=2
+[F] cyc=141 fetch raw=0000d0b7 pc_d=00000108 fetch_pc=0000010c mem_direct=0000d0b7
+[C] cyc=141 CDB tag=2 val=00012000
+[F] cyc=142 fetch raw=ccc08093 pc_d=0000010c fetch_pc=00000110 mem_direct=ccc08093
+[F] cyc=143 fetch raw=80000c37 pc_d=00000110 fetch_pc=00000114 mem_direct=80000c37
+[C] cyc=143 CDB tag=7 val=00001234
+[F] cyc=144 fetch raw=fffc0c13 pc_d=00000114 fetch_pc=00000118 mem_direct=fffc0c13
+[R] cyc=144 COMMIT op=8 pc=000000c8
+[D] cyc=145 dispatch op=20 pc=00000100 tag=5 raw_iq_imm=00000008 rs1=0
+[F] cyc=145 fetch raw=00100493 pc_d=00000118 fetch_pc=0000011c mem_direct=00100493
+[C] cyc=145 CDB tag=3 val=000123ab
+[F] cyc=146 fetch raw=fe9c54e3 pc_d=0000011c fetch_pc=00000120 mem_direct=fe9c54e3
+[C] cyc=146 CDB tag=8 val=000000d0
+[R] cyc=146 COMMIT op=19 pc=000000cc
+[D] cyc=147 dispatch op=20 pc=00000104 tag=6 raw_iq_imm=00000024 rs1=0
+[F] cyc=147 fetch raw=000120b7 pc_d=00000120 fetch_pc=00000124 mem_direct=000120b7
+[C] cyc=147 CDB tag=4 val=00000000
+[R] cyc=147 COMMIT op=22 pc=000000d0
+[D] cyc=148 dispatch op=22 pc=00000108 tag=7 raw_iq_imm=0000d000 rs1=0
+[F] cyc=148 fetch raw=3ab08093 pc_d=00000124 fetch_pc=00000128 mem_direct=3ab08093
+[C] cyc=148 CDB tag=0 val=ffffffff
+[D] cyc=149 dispatch op=8 pc=0000010c tag=8 raw_iq_imm=fffffccc rs1=1
+[F] cyc=149 fetch raw=00112423 pc_d=00000128 fetch_pc=0000012c mem_direct=00112423
+[C] cyc=149 CDB tag=5 val=00000104
+[D] cyc=150 dispatch op=22 pc=00000110 tag=9 raw_iq_imm=80000000 rs1=0
+[F] cyc=150 fetch raw=0000d0b7 pc_d=0000012c fetch_pc=00000130 mem_direct=0000d0b7
+[C] cyc=150 CDB tag=10 val=000123ab
+[F] cyc=151 fetch raw=ccc08093 pc_d=00000130 fetch_pc=00000134 mem_direct=ccc08093
+[C] cyc=151 CDB tag=6 val=00000108
+[R] cyc=151 COMMIT op=8 pc=000000d4
+[D] cyc=152 dispatch op=8 pc=00000114 tag=10 raw_iq_imm=ffffffff rs1=24
+[C] cyc=152 CDB tag=11 val=00000000
+[F] cyc=153 fetch raw=00100b93 pc_d=00000134 fetch_pc=00000138 mem_direct=00100b93
+[C] cyc=153 CDB tag=7 val=0000d000
+[R] cyc=153 COMMIT op=15 pc=000000d8
+[D] cyc=154 dispatch op=8 pc=00000118 tag=11 raw_iq_imm=00000001 rs1=0
+[R] cyc=154 COMMIT op=22 pc=000000dc
+[D] cyc=155 dispatch op=19 pc=0000011c tag=12 raw_iq_imm=ffffffe8 rs1=24
+[F] cyc=155 fetch raw=80000437 pc_d=00000138 fetch_pc=0000013c mem_direct=80000437
+[C] cyc=155 CDB tag=9 val=80000000
+[R] cyc=155 COMMIT op=8 pc=000000e0
+[D] cyc=156 dispatch op=22 pc=00000120 tag=13 raw_iq_imm=00012000 rs1=0
+[F] cyc=156 fetch raw=fff40413 pc_d=0000013c fetch_pc=00000140 mem_direct=fff40413
+[F] cyc=157 fetch raw=008bd663 pc_d=00000140 fetch_pc=00000144 mem_direct=008bd663
+[C] cyc=157 CDB tag=8 val=0000cccc
+[C] cyc=159 CDB tag=10 val=7fffffff
+[C] cyc=161 CDB tag=13 val=00012000
+[C] cyc=163 CDB tag=11 val=00000001
+[C] cyc=165 CDB tag=14 val=07654000
+[C] cyc=166 CDB tag=12 val=00000104
+[R] cyc=166 COMMIT op=22 pc=000000e4
+[D] cyc=167 dispatch op=8 pc=00000124 tag=14 raw_iq_imm=000003ab rs1=1
+[F] cyc=168 fetch raw=000120b7 pc_d=00000144 fetch_pc=00000148 mem_direct=000120b7
+[C] cyc=168 CDB tag=15 val=07654321
+[R] cyc=169 COMMIT op=8 pc=000000e8
+[D] cyc=170 dispatch op=15 pc=00000128 tag=15 raw_iq_imm=00000008 rs1=2
+[C] cyc=170 CDB tag=14 val=000123ab
+[R] cyc=170 COMMIT op=8 pc=000000ec
+[D] cyc=171 dispatch op=22 pc=0000012c tag=0 raw_iq_imm=0000d000 rs1=0
+[F] cyc=171 fetch raw=3ab08093 pc_d=00000148 fetch_pc=0000014c mem_direct=3ab08093
+[C] cyc=171 CDB tag=1 val=000000fc
+[R] cyc=171 COMMIT op=19 pc=000000f0
+[F] cyc=173 fetch raw=00112223 pc_d=000000fc fetch_pc=00000100 mem_direct=00112223
+[D] cyc=174 dispatch op=15 pc=000000fc tag=0 raw_iq_imm=00000004 rs1=2
+[F] cyc=174 fetch raw=0080006f pc_d=00000100 fetch_pc=00000104 mem_direct=0080006f
+[D] cyc=175 dispatch op=20 pc=00000100 tag=1 raw_iq_imm=00000008 rs1=0
+[F] cyc=175 fetch raw=0240006f pc_d=00000104 fetch_pc=00000108 mem_direct=0240006f
+[C] cyc=175 CDB tag=0 val=00000000
+[D] cyc=176 dispatch op=20 pc=00000104 tag=2 raw_iq_imm=00000024 rs1=0
+[F] cyc=176 fetch raw=0000d0b7 pc_d=00000108 fetch_pc=0000010c mem_direct=0000d0b7
+[R] cyc=176 COMMIT op=15 pc=000000fc
+[D] cyc=177 dispatch op=22 pc=00000108 tag=3 raw_iq_imm=0000d000 rs1=0
+[F] cyc=177 fetch raw=ccc08093 pc_d=0000010c fetch_pc=00000110 mem_direct=ccc08093
+[D] cyc=178 dispatch op=8 pc=0000010c tag=4 raw_iq_imm=fffffccc rs1=1
+[F] cyc=178 fetch raw=80000c37 pc_d=00000110 fetch_pc=00000114 mem_direct=80000c37
+[C] cyc=178 CDB tag=1 val=00000104
+[R] cyc=178 COMMIT op=20 pc=00000100
+[F] cyc=180 fetch raw=0000d0b7 pc_d=00000108 fetch_pc=0000010c mem_direct=0000d0b7
+[C] cyc=180 CDB tag=3 val=0000d000
+[D] cyc=181 dispatch op=22 pc=00000108 tag=0 raw_iq_imm=0000d000 rs1=0
+[F] cyc=181 fetch raw=ccc08093 pc_d=0000010c fetch_pc=00000110 mem_direct=ccc08093
+[C] cyc=181 CDB tag=2 val=00000108
+[D] cyc=182 dispatch op=8 pc=0000010c tag=1 raw_iq_imm=fffffccc rs1=1
+[F] cyc=182 fetch raw=80000c37 pc_d=00000110 fetch_pc=00000114 mem_direct=80000c37
+[D] cyc=183 dispatch op=22 pc=00000110 tag=2 raw_iq_imm=80000000 rs1=0
+[F] cyc=183 fetch raw=fffc0c13 pc_d=00000114 fetch_pc=00000118 mem_direct=fffc0c13
+[D] cyc=184 dispatch op=8 pc=00000114 tag=3 raw_iq_imm=ffffffff rs1=24
+[F] cyc=184 fetch raw=00100493 pc_d=00000118 fetch_pc=0000011c mem_direct=00100493
+[C] cyc=184 CDB tag=0 val=0000d000
+[D] cyc=185 dispatch op=8 pc=00000118 tag=4 raw_iq_imm=00000001 rs1=0
+[F] cyc=185 fetch raw=fe9c54e3 pc_d=0000011c fetch_pc=00000120 mem_direct=fe9c54e3
+[R] cyc=185 COMMIT op=22 pc=00000108
+[D] cyc=186 dispatch op=19 pc=0000011c tag=5 raw_iq_imm=ffffffe8 rs1=24
+[F] cyc=186 fetch raw=000120b7 pc_d=00000120 fetch_pc=00000124 mem_direct=000120b7
+[C] cyc=186 CDB tag=2 val=80000000
+[D] cyc=187 dispatch op=22 pc=00000120 tag=6 raw_iq_imm=00012000 rs1=0
+[F] cyc=187 fetch raw=3ab08093 pc_d=00000124 fetch_pc=00000128 mem_direct=3ab08093
+[D] cyc=188 dispatch op=8 pc=00000124 tag=7 raw_iq_imm=000003ab rs1=1
+[F] cyc=188 fetch raw=00112423 pc_d=00000128 fetch_pc=0000012c mem_direct=00112423
+[C] cyc=188 CDB tag=4 val=00000001
+[D] cyc=189 dispatch op=15 pc=00000128 tag=8 raw_iq_imm=00000008 rs1=2
+[F] cyc=189 fetch raw=0000d0b7 pc_d=0000012c fetch_pc=00000130 mem_direct=0000d0b7
+[D] cyc=190 dispatch op=22 pc=0000012c tag=9 raw_iq_imm=0000d000 rs1=0
+[F] cyc=190 fetch raw=ccc08093 pc_d=00000130 fetch_pc=00000134 mem_direct=ccc08093
+[C] cyc=190 CDB tag=6 val=00012000
+[D] cyc=191 dispatch op=8 pc=00000130 tag=10 raw_iq_imm=fffffccc rs1=1
+[F] cyc=191 fetch raw=00100b93 pc_d=00000134 fetch_pc=00000138 mem_direct=00100b93
+[D] cyc=192 dispatch op=8 pc=00000134 tag=11 raw_iq_imm=00000001 rs1=0
+[F] cyc=192 fetch raw=80000437 pc_d=00000138 fetch_pc=0000013c mem_direct=80000437
+[C] cyc=192 CDB tag=1 val=0000cccc
+[D] cyc=193 dispatch op=22 pc=00000138 tag=12 raw_iq_imm=80000000 rs1=0
+[F] cyc=193 fetch raw=fff40413 pc_d=0000013c fetch_pc=00000140 mem_direct=fff40413
+[R] cyc=193 COMMIT op=8 pc=0000010c
+[D] cyc=194 dispatch op=8 pc=0000013c tag=13 raw_iq_imm=ffffffff rs1=8
+[F] cyc=194 fetch raw=008bd663 pc_d=00000140 fetch_pc=00000144 mem_direct=008bd663
+[C] cyc=194 CDB tag=9 val=0000d000
+[R] cyc=194 COMMIT op=22 pc=00000110
+[D] cyc=195 dispatch op=19 pc=00000140 tag=14 raw_iq_imm=0000000c rs1=23
+[F] cyc=195 fetch raw=000120b7 pc_d=00000144 fetch_pc=00000148 mem_direct=000120b7
+[D] cyc=196 dispatch op=22 pc=00000144 tag=15 raw_iq_imm=00012000 rs1=0
+[F] cyc=196 fetch raw=3ab08093 pc_d=00000148 fetch_pc=0000014c mem_direct=3ab08093
+[C] cyc=196 CDB tag=12 val=80000000
+[D] cyc=197 dispatch op=8 pc=00000148 tag=0 raw_iq_imm=000003ab rs1=1
+[F] cyc=197 fetch raw=00112623 pc_d=0000014c fetch_pc=00000150 mem_direct=00112623
+[D] cyc=198 dispatch op=15 pc=0000014c tag=1 raw_iq_imm=0000000c rs1=2
+[F] cyc=198 fetch raw=0000d0b7 pc_d=00000150 fetch_pc=00000154 mem_direct=0000d0b7
+[C] cyc=198 CDB tag=10 val=0000cccc
+[D] cyc=199 dispatch op=22 pc=00000150 tag=2 raw_iq_imm=0000d000 rs1=0
+[F] cyc=199 fetch raw=ccc08093 pc_d=00000154 fetch_pc=00000158 mem_direct=ccc08093
+[F] cyc=200 fetch raw=fff00b13 pc_d=00000158 fetch_pc=0000015c mem_direct=fff00b13
+[C] cyc=200 CDB tag=15 val=00012000
+[F] cyc=201 fetch raw=076543b7 pc_d=0000015c fetch_pc=00000160 mem_direct=076543b7
+[F] cyc=202 fetch raw=32138393 pc_d=00000160 fetch_pc=00000164 mem_direct=32138393
+[C] cyc=202 CDB tag=2 val=0000d000
+[F] cyc=203 fetch raw=007b5663 pc_d=00000164 fetch_pc=00000168 mem_direct=007b5663
+[F] cyc=204 fetch raw=000120b7 pc_d=00000168 fetch_pc=0000016c mem_direct=000120b7
+[C] cyc=204 CDB tag=0 val=000123ab
+[F] cyc=205 fetch raw=3ab08093 pc_d=0000016c fetch_pc=00000170 mem_direct=3ab08093
+[C] cyc=205 CDB tag=1 val=00000000
+[F] cyc=206 fetch raw=00112823 pc_d=00000170 fetch_pc=00000174 mem_direct=00112823
+[C] cyc=206 CDB tag=3 val=7fffffff
+[R] cyc=207 COMMIT op=8 pc=00000114
+[D] cyc=208 dispatch op=8 pc=00000154 tag=3 raw_iq_imm=fffffccc rs1=1
+[C] cyc=208 CDB tag=7 val=000123ab
+[R] cyc=208 COMMIT op=8 pc=00000118
+[D] cyc=209 dispatch op=8 pc=00000158 tag=4 raw_iq_imm=ffffffff rs1=0
+[F] cyc=209 fetch raw=4c800393 pc_d=00000174 fetch_pc=00000178 mem_direct=4c800393
+[C] cyc=209 CDB tag=5 val=00000104
+[R] cyc=209 COMMIT op=19 pc=0000011c
+[F] cyc=211 fetch raw=0240006f pc_d=00000104 fetch_pc=00000108 mem_direct=0240006f
+[D] cyc=212 dispatch op=20 pc=00000104 tag=0 raw_iq_imm=00000024 rs1=0
+[F] cyc=212 fetch raw=0000d0b7 pc_d=00000108 fetch_pc=0000010c mem_direct=0000d0b7
+[D] cyc=213 dispatch op=22 pc=00000108 tag=1 raw_iq_imm=0000d000 rs1=0
+[F] cyc=213 fetch raw=ccc08093 pc_d=0000010c fetch_pc=00000110 mem_direct=ccc08093
+[D] cyc=214 dispatch op=8 pc=0000010c tag=2 raw_iq_imm=fffffccc rs1=1
+[F] cyc=214 fetch raw=80000c37 pc_d=00000110 fetch_pc=00000114 mem_direct=80000c37
+[D] cyc=215 dispatch op=22 pc=00000110 tag=3 raw_iq_imm=80000000 rs1=0
+[F] cyc=215 fetch raw=fffc0c13 pc_d=00000114 fetch_pc=00000118 mem_direct=fffc0c13
+[C] cyc=215 CDB tag=0 val=00000108
+[R] cyc=215 COMMIT op=20 pc=00000104
+[F] cyc=217 fetch raw=00112423 pc_d=00000128 fetch_pc=0000012c mem_direct=00112423
+[D] cyc=218 dispatch op=15 pc=00000128 tag=0 raw_iq_imm=00000008 rs1=2
+[F] cyc=218 fetch raw=0000d0b7 pc_d=0000012c fetch_pc=00000130 mem_direct=0000d0b7
+[D] cyc=219 dispatch op=22 pc=0000012c tag=1 raw_iq_imm=0000d000 rs1=0
+[F] cyc=219 fetch raw=ccc08093 pc_d=00000130 fetch_pc=00000134 mem_direct=ccc08093
+[C] cyc=219 CDB tag=0 val=00000000
+[D] cyc=220 dispatch op=8 pc=00000130 tag=2 raw_iq_imm=fffffccc rs1=1
+[F] cyc=220 fetch raw=00100b93 pc_d=00000134 fetch_pc=00000138 mem_direct=00100b93
+[R] cyc=220 COMMIT op=15 pc=00000128
+[D] cyc=221 dispatch op=8 pc=00000134 tag=3 raw_iq_imm=00000001 rs1=0
+[F] cyc=221 fetch raw=80000437 pc_d=00000138 fetch_pc=0000013c mem_direct=80000437
+[D] cyc=222 dispatch op=22 pc=00000138 tag=4 raw_iq_imm=80000000 rs1=0
+[F] cyc=222 fetch raw=fff40413 pc_d=0000013c fetch_pc=00000140 mem_direct=fff40413
+[C] cyc=222 CDB tag=1 val=0000d000
+[D] cyc=223 dispatch op=8 pc=0000013c tag=5 raw_iq_imm=ffffffff rs1=8
+[F] cyc=223 fetch raw=008bd663 pc_d=00000140 fetch_pc=00000144 mem_direct=008bd663
+[R] cyc=223 COMMIT op=22 pc=0000012c
+[D] cyc=224 dispatch op=19 pc=00000140 tag=6 raw_iq_imm=0000000c rs1=23
+[F] cyc=224 fetch raw=000120b7 pc_d=00000144 fetch_pc=00000148 mem_direct=000120b7
+[C] cyc=224 CDB tag=3 val=00000001
+[D] cyc=225 dispatch op=22 pc=00000144 tag=7 raw_iq_imm=00012000 rs1=0
+[F] cyc=225 fetch raw=3ab08093 pc_d=00000148 fetch_pc=0000014c mem_direct=3ab08093
+[D] cyc=226 dispatch op=8 pc=00000148 tag=8 raw_iq_imm=000003ab rs1=1
+[F] cyc=226 fetch raw=00112623 pc_d=0000014c fetch_pc=00000150 mem_direct=00112623
+[C] cyc=226 CDB tag=2 val=0000cccc
+[D] cyc=227 dispatch op=15 pc=0000014c tag=9 raw_iq_imm=0000000c rs1=2
+[F] cyc=227 fetch raw=0000d0b7 pc_d=00000150 fetch_pc=00000154 mem_direct=0000d0b7
+[R] cyc=227 COMMIT op=8 pc=00000130
+[D] cyc=228 dispatch op=22 pc=00000150 tag=10 raw_iq_imm=0000d000 rs1=0
+[F] cyc=228 fetch raw=ccc08093 pc_d=00000154 fetch_pc=00000158 mem_direct=ccc08093
+[C] cyc=228 CDB tag=7 val=00012000
+[R] cyc=228 COMMIT op=8 pc=00000134
+[D] cyc=229 dispatch op=8 pc=00000154 tag=11 raw_iq_imm=fffffccc rs1=1
+[F] cyc=229 fetch raw=fff00b13 pc_d=00000158 fetch_pc=0000015c mem_direct=fff00b13
+[D] cyc=230 dispatch op=8 pc=00000158 tag=12 raw_iq_imm=ffffffff rs1=0
+[F] cyc=230 fetch raw=076543b7 pc_d=0000015c fetch_pc=00000160 mem_direct=076543b7
+[C] cyc=230 CDB tag=4 val=80000000
+[D] cyc=231 dispatch op=22 pc=0000015c tag=13 raw_iq_imm=07654000 rs1=0
+[F] cyc=231 fetch raw=32138393 pc_d=00000160 fetch_pc=00000164 mem_direct=32138393
+[R] cyc=231 COMMIT op=22 pc=00000138
+[D] cyc=232 dispatch op=8 pc=00000160 tag=14 raw_iq_imm=00000321 rs1=7
+[F] cyc=232 fetch raw=007b5663 pc_d=00000164 fetch_pc=00000168 mem_direct=007b5663
+[C] cyc=232 CDB tag=10 val=0000d000
+[D] cyc=233 dispatch op=19 pc=00000164 tag=15 raw_iq_imm=0000000c rs1=22
+[F] cyc=233 fetch raw=000120b7 pc_d=00000168 fetch_pc=0000016c mem_direct=000120b7
+[D] cyc=234 dispatch op=22 pc=00000168 tag=0 raw_iq_imm=00012000 rs1=0
+[F] cyc=234 fetch raw=3ab08093 pc_d=0000016c fetch_pc=00000170 mem_direct=3ab08093
+[C] cyc=234 CDB tag=5 val=7fffffff
+[D] cyc=235 dispatch op=8 pc=0000016c tag=1 raw_iq_imm=000003ab rs1=1
+[F] cyc=235 fetch raw=00112823 pc_d=00000170 fetch_pc=00000174 mem_direct=00112823
+[R] cyc=235 COMMIT op=8 pc=0000013c
+[D] cyc=236 dispatch op=15 pc=00000170 tag=2 raw_iq_imm=00000010 rs1=2
+[F] cyc=236 fetch raw=4c800393 pc_d=00000174 fetch_pc=00000178 mem_direct=4c800393
+[C] cyc=236 CDB tag=13 val=07654000
+[D] cyc=237 dispatch op=8 pc=00000174 tag=3 raw_iq_imm=000004c8 rs1=0
+[F] cyc=237 fetch raw=0000d0b7 pc_d=00000178 fetch_pc=0000017c mem_direct=0000d0b7
+[C] cyc=237 CDB tag=6 val=00000144
+[R] cyc=237 COMMIT op=19 pc=00000140
+[F] cyc=238 fetch raw=ccc08093 pc_d=0000017c fetch_pc=00000180 mem_direct=ccc08093
+[C] cyc=238 CDB tag=0 val=00012000
+[R] cyc=238 COMMIT op=22 pc=00000144
+[D] cyc=239 dispatch op=22 pc=00000178 tag=4 raw_iq_imm=0000d000 rs1=0
+[F] cyc=239 fetch raw=00001ab7 pc_d=00000180 fetch_pc=00000184 mem_direct=00001ab7
+[F] cyc=240 fetch raw=234a8a93 pc_d=00000184 fetch_pc=00000188 mem_direct=234a8a93
+[C] cyc=240 CDB tag=3 val=000004c8
+[D] cyc=241 dispatch op=8 pc=0000017c tag=5 raw_iq_imm=fffffccc rs1=1
+[F] cyc=241 fetch raw=00001337 pc_d=00000188 fetch_pc=0000018c mem_direct=00001337
+[F] cyc=242 fetch raw=80030313 pc_d=0000018c fetch_pc=00000190 mem_direct=80030313
+[C] cyc=242 CDB tag=4 val=0000d000
+[D] cyc=243 dispatch op=22 pc=00000180 tag=6 raw_iq_imm=00001000 rs1=0
+[F] cyc=243 fetch raw=006ad663 pc_d=00000190 fetch_pc=00000194 mem_direct=006ad663
+[F] cyc=244 fetch raw=000120b7 pc_d=00000194 fetch_pc=00000198 mem_direct=000120b7
+[C] cyc=244 CDB tag=1 val=000123ab
+[D] cyc=245 dispatch op=8 pc=00000184 tag=7 raw_iq_imm=00000234 rs1=21
+[F] cyc=245 fetch raw=3ab08093 pc_d=00000198 fetch_pc=0000019c mem_direct=3ab08093
+[C] cyc=245 CDB tag=2 val=00000000
+[F] cyc=246 fetch raw=0013a023 pc_d=0000019c fetch_pc=000001a0 mem_direct=0013a023
+[C] cyc=246 CDB tag=5 val=0000cccc
+[F] cyc=247 fetch raw=0000d0b7 pc_d=000001a0 fetch_pc=000001a4 mem_direct=0000d0b7
+[F] cyc=248 fetch raw=ccc08093 pc_d=000001a4 fetch_pc=000001a8 mem_direct=ccc08093
+[C] cyc=248 CDB tag=6 val=00001000
+[C] cyc=250 CDB tag=11 val=0000cccc
+[C] cyc=252 CDB tag=7 val=00001234
+[C] cyc=254 CDB tag=8 val=000123ab
+[C] cyc=255 CDB tag=9 val=00000000
+[R] cyc=255 COMMIT op=8 pc=00000148
+[D] cyc=256 dispatch op=22 pc=00000188 tag=8 raw_iq_imm=00001000 rs1=0
+[C] cyc=256 CDB tag=12 val=ffffffff
+[R] cyc=256 COMMIT op=15 pc=0000014c
+[D] cyc=257 dispatch op=8 pc=0000018c tag=9 raw_iq_imm=fffff800 rs1=6
+[F] cyc=257 fetch raw=80000a37 pc_d=000001a8 fetch_pc=000001ac mem_direct=80000a37
+[R] cyc=257 COMMIT op=22 pc=00000150
+[D] cyc=258 dispatch op=19 pc=00000190 tag=10 raw_iq_imm=0000000c rs1=21
+[F] cyc=258 fetch raw=00000293 pc_d=000001ac fetch_pc=000001b0 mem_direct=00000293
+[C] cyc=258 CDB tag=14 val=07654321
+[R] cyc=258 COMMIT op=8 pc=00000154
+[D] cyc=259 dispatch op=22 pc=00000194 tag=11 raw_iq_imm=00012000 rs1=0
+[F] cyc=259 fetch raw=005a5663 pc_d=000001b0 fetch_pc=000001b4 mem_direct=005a5663
+[R] cyc=259 COMMIT op=8 pc=00000158
+[D] cyc=260 dispatch op=8 pc=00000198 tag=12 raw_iq_imm=000003ab rs1=1
+[F] cyc=260 fetch raw=000120b7 pc_d=000001b4 fetch_pc=000001b8 mem_direct=000120b7
+[C] cyc=260 CDB tag=8 val=00001000
+[R] cyc=260 COMMIT op=22 pc=0000015c
+[D] cyc=261 dispatch op=15 pc=0000019c tag=13 raw_iq_imm=00000000 rs1=7
+[F] cyc=261 fetch raw=3ab08093 pc_d=000001b8 fetch_pc=000001bc mem_direct=3ab08093
+[C] cyc=261 CDB tag=15 val=00000168
+[R] cyc=261 COMMIT op=8 pc=00000160
+[D] cyc=262 dispatch op=22 pc=000001a0 tag=14 raw_iq_imm=0000d000 rs1=0
+[F] cyc=262 fetch raw=0013a223 pc_d=000001bc fetch_pc=000001c0 mem_direct=0013a223
+[C] cyc=262 CDB tag=11 val=00012000
+[R] cyc=262 COMMIT op=19 pc=00000164
+[D] cyc=263 dispatch op=8 pc=000001a4 tag=15 raw_iq_imm=fffffccc rs1=1
+[F] cyc=263 fetch raw=0080006f pc_d=000001c0 fetch_pc=000001c4 mem_direct=0080006f
+[R] cyc=263 COMMIT op=22 pc=00000168
+[D] cyc=264 dispatch op=22 pc=000001a8 tag=0 raw_iq_imm=80000000 rs1=0
+[F] cyc=264 fetch raw=0240006f pc_d=000001c4 fetch_pc=000001c8 mem_direct=0240006f
+[C] cyc=264 CDB tag=9 val=00000800
+[R] cyc=264 COMMIT op=8 pc=0000016c
+[D] cyc=265 dispatch op=8 pc=000001ac tag=1 raw_iq_imm=00000000 rs1=0
+[F] cyc=265 fetch raw=0000d0b7 pc_d=000001c8 fetch_pc=000001cc mem_direct=0000d0b7
+[R] cyc=265 COMMIT op=15 pc=00000170
+[D] cyc=266 dispatch op=19 pc=000001b0 tag=2 raw_iq_imm=0000000c rs1=20
+[F] cyc=266 fetch raw=ccc08093 pc_d=000001cc fetch_pc=000001d0 mem_direct=ccc08093
+[C] cyc=266 CDB tag=14 val=0000d000
+[R] cyc=266 COMMIT op=8 pc=00000174
+[D] cyc=267 dispatch op=22 pc=000001b4 tag=3 raw_iq_imm=00012000 rs1=0
+[F] cyc=267 fetch raw=fffff9b7 pc_d=000001d0 fetch_pc=000001d4 mem_direct=fffff9b7
+[C] cyc=267 CDB tag=10 val=0000019c
+[R] cyc=267 COMMIT op=22 pc=00000178
+[D] cyc=268 dispatch op=8 pc=000001b8 tag=4 raw_iq_imm=000003ab rs1=1
+[F] cyc=268 fetch raw=dcc98993 pc_d=000001d4 fetch_pc=000001d8 mem_direct=dcc98993
+[C] cyc=268 CDB tag=1 val=00000000
+[R] cyc=268 COMMIT op=8 pc=0000017c
+[D] cyc=269 dispatch op=15 pc=000001bc tag=5 raw_iq_imm=00000004 rs1=7
+[F] cyc=269 fetch raw=7ff00213 pc_d=000001d8 fetch_pc=000001dc mem_direct=7ff00213
+[R] cyc=269 COMMIT op=22 pc=00000180
+[D] cyc=270 dispatch op=20 pc=000001c0 tag=6 raw_iq_imm=00000008 rs1=0
+[F] cyc=270 fetch raw=fe49d4e3 pc_d=000001dc fetch_pc=000001e0 mem_direct=fe49d4e3
+[C] cyc=270 CDB tag=3 val=00012000
+[R] cyc=270 COMMIT op=8 pc=00000184
+[F] cyc=271 fetch raw=000120b7 pc_d=000001e0 fetch_pc=000001e4 mem_direct=000120b7
+[R] cyc=271 COMMIT op=22 pc=00000188
+[D] cyc=272 dispatch op=20 pc=000001c4 tag=7 raw_iq_imm=00000024 rs1=0
+[C] cyc=272 CDB tag=15 val=0000cccc
+[R] cyc=272 COMMIT op=8 pc=0000018c
+[D] cyc=273 dispatch op=22 pc=000001c8 tag=8 raw_iq_imm=0000d000 rs1=0
+[F] cyc=273 fetch raw=3ab08093 pc_d=000001e4 fetch_pc=000001e8 mem_direct=3ab08093
+[C] cyc=273 CDB tag=6 val=000001c4
+[R] cyc=273 COMMIT op=19 pc=00000190
+[F] cyc=275 fetch raw=0013a023 pc_d=0000019c fetch_pc=000001a0 mem_direct=0013a023
+[C] cyc=275 CDB tag=7 val=000001c8
+[D] cyc=276 dispatch op=15 pc=0000019c tag=0 raw_iq_imm=00000000 rs1=7
+[F] cyc=276 fetch raw=0000d0b7 pc_d=000001a0 fetch_pc=000001a4 mem_direct=0000d0b7
+[D] cyc=277 dispatch op=22 pc=000001a0 tag=1 raw_iq_imm=0000d000 rs1=0
+[F] cyc=277 fetch raw=ccc08093 pc_d=000001a4 fetch_pc=000001a8 mem_direct=ccc08093
+[C] cyc=277 CDB tag=0 val=00000000
+[D] cyc=278 dispatch op=8 pc=000001a4 tag=2 raw_iq_imm=fffffccc rs1=1
+[F] cyc=278 fetch raw=80000a37 pc_d=000001a8 fetch_pc=000001ac mem_direct=80000a37
+[R] cyc=278 COMMIT op=15 pc=0000019c
+[D] cyc=279 dispatch op=22 pc=000001a8 tag=3 raw_iq_imm=80000000 rs1=0
+[F] cyc=279 fetch raw=00000293 pc_d=000001ac fetch_pc=000001b0 mem_direct=00000293
+[D] cyc=280 dispatch op=8 pc=000001ac tag=4 raw_iq_imm=00000000 rs1=0
+[F] cyc=280 fetch raw=005a5663 pc_d=000001b0 fetch_pc=000001b4 mem_direct=005a5663
+[C] cyc=280 CDB tag=1 val=0000d000
+[D] cyc=281 dispatch op=19 pc=000001b0 tag=5 raw_iq_imm=0000000c rs1=20
+[F] cyc=281 fetch raw=000120b7 pc_d=000001b4 fetch_pc=000001b8 mem_direct=000120b7
+[R] cyc=281 COMMIT op=22 pc=000001a0
+[D] cyc=282 dispatch op=22 pc=000001b4 tag=6 raw_iq_imm=00012000 rs1=0
+[F] cyc=282 fetch raw=3ab08093 pc_d=000001b8 fetch_pc=000001bc mem_direct=3ab08093
+[C] cyc=282 CDB tag=3 val=80000000
+[D] cyc=283 dispatch op=8 pc=000001b8 tag=7 raw_iq_imm=000003ab rs1=1
+[F] cyc=283 fetch raw=0013a223 pc_d=000001bc fetch_pc=000001c0 mem_direct=0013a223
+[D] cyc=284 dispatch op=15 pc=000001bc tag=8 raw_iq_imm=00000004 rs1=7
+[F] cyc=284 fetch raw=0080006f pc_d=000001c0 fetch_pc=000001c4 mem_direct=0080006f
+[C] cyc=284 CDB tag=2 val=0000cccc
+[D] cyc=285 dispatch op=20 pc=000001c0 tag=9 raw_iq_imm=00000008 rs1=0
+[F] cyc=285 fetch raw=0240006f pc_d=000001c4 fetch_pc=000001c8 mem_direct=0240006f
+[R] cyc=285 COMMIT op=8 pc=000001a4
+[F] cyc=286 fetch raw=0000d0b7 pc_d=000001c8 fetch_pc=000001cc mem_direct=0000d0b7
+[C] cyc=286 CDB tag=6 val=00012000
+[R] cyc=286 COMMIT op=22 pc=000001a8
+[D] cyc=287 dispatch op=20 pc=000001c4 tag=10 raw_iq_imm=00000024 rs1=0
+[F] cyc=287 fetch raw=ccc08093 pc_d=000001cc fetch_pc=000001d0 mem_direct=ccc08093
+[D] cyc=288 dispatch op=22 pc=000001c8 tag=11 raw_iq_imm=0000d000 rs1=0
+[F] cyc=288 fetch raw=fffff9b7 pc_d=000001d0 fetch_pc=000001d4 mem_direct=fffff9b7
+[C] cyc=288 CDB tag=9 val=000001c4
+[D] cyc=289 dispatch op=8 pc=000001cc tag=12 raw_iq_imm=fffffccc rs1=1
+[F] cyc=289 fetch raw=dcc98993 pc_d=000001d4 fetch_pc=000001d8 mem_direct=dcc98993
+[C] cyc=289 CDB tag=4 val=00000000
+[D] cyc=290 dispatch op=22 pc=000001d0 tag=13 raw_iq_imm=fffff000 rs1=0
+[F] cyc=290 fetch raw=7ff00213 pc_d=000001d8 fetch_pc=000001dc mem_direct=7ff00213
+[C] cyc=290 CDB tag=10 val=000001c8
+[R] cyc=290 COMMIT op=8 pc=000001ac
+[D] cyc=291 dispatch op=8 pc=000001d4 tag=14 raw_iq_imm=fffffdcc rs1=19
+[F] cyc=291 fetch raw=fe49d4e3 pc_d=000001dc fetch_pc=000001e0 mem_direct=fe49d4e3
+[C] cyc=291 CDB tag=11 val=0000d000
+[D] cyc=292 dispatch op=8 pc=000001d8 tag=15 raw_iq_imm=000007ff rs1=0
+[F] cyc=292 fetch raw=000120b7 pc_d=000001e0 fetch_pc=000001e4 mem_direct=000120b7
+[C] cyc=292 CDB tag=5 val=000001b4
+[R] cyc=292 COMMIT op=19 pc=000001b0
+[D] cyc=293 dispatch op=19 pc=000001dc tag=0 raw_iq_imm=ffffffe8 rs1=19
+[F] cyc=293 fetch raw=3ab08093 pc_d=000001e4 fetch_pc=000001e8 mem_direct=3ab08093
+[C] cyc=293 CDB tag=13 val=fffff000
+[R] cyc=293 COMMIT op=22 pc=000001b4
+[D] cyc=294 dispatch op=22 pc=000001e0 tag=1 raw_iq_imm=00012000 rs1=0
+[F] cyc=294 fetch raw=0013a423 pc_d=000001e8 fetch_pc=000001ec mem_direct=0013a423
+[D] cyc=295 dispatch op=8 pc=000001e4 tag=2 raw_iq_imm=000003ab rs1=1
+[F] cyc=295 fetch raw=0000d0b7 pc_d=000001ec fetch_pc=000001f0 mem_direct=0000d0b7
+[C] cyc=295 CDB tag=15 val=000007ff
+[D] cyc=296 dispatch op=15 pc=000001e8 tag=3 raw_iq_imm=00000008 rs1=7
+[F] cyc=296 fetch raw=ccc08093 pc_d=000001f0 fetch_pc=000001f4 mem_direct=ccc08093
+[D] cyc=297 dispatch op=22 pc=000001ec tag=4 raw_iq_imm=0000d000 rs1=0
+[F] cyc=297 fetch raw=fff00913 pc_d=000001f4 fetch_pc=000001f8 mem_direct=fff00913
+[C] cyc=297 CDB tag=1 val=00012000
+[D] cyc=298 dispatch op=8 pc=000001f0 tag=5 raw_iq_imm=fffffccc rs1=1
+[F] cyc=298 fetch raw=fff00193 pc_d=000001f8 fetch_pc=000001fc mem_direct=fff00193
+[D] cyc=299 dispatch op=8 pc=000001f4 tag=6 raw_iq_imm=ffffffff rs1=0
+[F] cyc=299 fetch raw=00395663 pc_d=000001fc fetch_pc=00000200 mem_direct=00395663
+[C] cyc=299 CDB tag=7 val=000123ab
+[F] cyc=300 fetch raw=000120b7 pc_d=00000200 fetch_pc=00000204 mem_direct=000120b7
+[C] cyc=300 CDB tag=8 val=00000000
+[R] cyc=300 COMMIT op=8 pc=000001b8
+[D] cyc=301 dispatch op=8 pc=000001f8 tag=7 raw_iq_imm=ffffffff rs1=0
+[F] cyc=301 fetch raw=3ab08093 pc_d=00000204 fetch_pc=00000208 mem_direct=3ab08093
+[C] cyc=301 CDB tag=4 val=0000d000
+[R] cyc=301 COMMIT op=15 pc=000001bc
+[D] cyc=302 dispatch op=19 pc=000001fc tag=8 raw_iq_imm=0000000c rs1=18
+[F] cyc=302 fetch raw=0013a623 pc_d=00000208 fetch_pc=0000020c mem_direct=0013a623
+[R] cyc=302 COMMIT op=20 pc=000001c0
+[F] cyc=304 fetch raw=0000d0b7 pc_d=000001c8 fetch_pc=000001cc mem_direct=0000d0b7
+[D] cyc=305 dispatch op=22 pc=000001c8 tag=0 raw_iq_imm=0000d000 rs1=0
+[F] cyc=305 fetch raw=ccc08093 pc_d=000001cc fetch_pc=000001d0 mem_direct=ccc08093
+[D] cyc=306 dispatch op=8 pc=000001cc tag=1 raw_iq_imm=fffffccc rs1=1
+[F] cyc=306 fetch raw=fffff9b7 pc_d=000001d0 fetch_pc=000001d4 mem_direct=fffff9b7
+[D] cyc=307 dispatch op=22 pc=000001d0 tag=2 raw_iq_imm=fffff000 rs1=0
+[F] cyc=307 fetch raw=dcc98993 pc_d=000001d4 fetch_pc=000001d8 mem_direct=dcc98993
+[D] cyc=308 dispatch op=8 pc=000001d4 tag=3 raw_iq_imm=fffffdcc rs1=19
+[F] cyc=308 fetch raw=7ff00213 pc_d=000001d8 fetch_pc=000001dc mem_direct=7ff00213
+[C] cyc=308 CDB tag=0 val=0000d000
+[D] cyc=309 dispatch op=8 pc=000001d8 tag=4 raw_iq_imm=000007ff rs1=0
+[F] cyc=309 fetch raw=fe49d4e3 pc_d=000001dc fetch_pc=000001e0 mem_direct=fe49d4e3
+[R] cyc=309 COMMIT op=22 pc=000001c8
+[D] cyc=310 dispatch op=19 pc=000001dc tag=5 raw_iq_imm=ffffffe8 rs1=19
+[F] cyc=310 fetch raw=000120b7 pc_d=000001e0 fetch_pc=000001e4 mem_direct=000120b7
+[C] cyc=310 CDB tag=2 val=fffff000
+[D] cyc=311 dispatch op=22 pc=000001e0 tag=6 raw_iq_imm=00012000 rs1=0
+[F] cyc=311 fetch raw=3ab08093 pc_d=000001e4 fetch_pc=000001e8 mem_direct=3ab08093
+[D] cyc=312 dispatch op=8 pc=000001e4 tag=7 raw_iq_imm=000003ab rs1=1
+[F] cyc=312 fetch raw=0013a423 pc_d=000001e8 fetch_pc=000001ec mem_direct=0013a423
+[C] cyc=312 CDB tag=4 val=000007ff
+[D] cyc=313 dispatch op=15 pc=000001e8 tag=8 raw_iq_imm=00000008 rs1=7
+[F] cyc=313 fetch raw=0000d0b7 pc_d=000001ec fetch_pc=000001f0 mem_direct=0000d0b7
+[D] cyc=314 dispatch op=22 pc=000001ec tag=9 raw_iq_imm=0000d000 rs1=0
+[F] cyc=314 fetch raw=ccc08093 pc_d=000001f0 fetch_pc=000001f4 mem_direct=ccc08093
+[C] cyc=314 CDB tag=6 val=00012000
+[D] cyc=315 dispatch op=8 pc=000001f0 tag=10 raw_iq_imm=fffffccc rs1=1
+[F] cyc=315 fetch raw=fff00913 pc_d=000001f4 fetch_pc=000001f8 mem_direct=fff00913
+[D] cyc=316 dispatch op=8 pc=000001f4 tag=11 raw_iq_imm=ffffffff rs1=0
+[F] cyc=316 fetch raw=fff00193 pc_d=000001f8 fetch_pc=000001fc mem_direct=fff00193
+[C] cyc=316 CDB tag=1 val=0000cccc
+[D] cyc=317 dispatch op=8 pc=000001f8 tag=12 raw_iq_imm=ffffffff rs1=0
+[F] cyc=317 fetch raw=00395663 pc_d=000001fc fetch_pc=00000200 mem_direct=00395663
+[R] cyc=317 COMMIT op=8 pc=000001cc
+[D] cyc=318 dispatch op=19 pc=000001fc tag=13 raw_iq_imm=0000000c rs1=18
+[F] cyc=318 fetch raw=000120b7 pc_d=00000200 fetch_pc=00000204 mem_direct=000120b7
+[C] cyc=318 CDB tag=9 val=0000d000
+[R] cyc=318 COMMIT op=22 pc=000001d0
+[D] cyc=319 dispatch op=22 pc=00000200 tag=14 raw_iq_imm=00012000 rs1=0
+[F] cyc=319 fetch raw=3ab08093 pc_d=00000204 fetch_pc=00000208 mem_direct=3ab08093
+[D] cyc=320 dispatch op=8 pc=00000204 tag=15 raw_iq_imm=000003ab rs1=1
+[F] cyc=320 fetch raw=0013a623 pc_d=00000208 fetch_pc=0000020c mem_direct=0013a623
+[C] cyc=320 CDB tag=12 val=ffffffff
+[D] cyc=321 dispatch op=15 pc=00000208 tag=0 raw_iq_imm=0000000c rs1=7
+[F] cyc=321 fetch raw=0000d0b7 pc_d=0000020c fetch_pc=00000210 mem_direct=0000d0b7
+[D] cyc=322 dispatch op=22 pc=0000020c tag=1 raw_iq_imm=0000d000 rs1=0
+[F] cyc=322 fetch raw=ccc08093 pc_d=00000210 fetch_pc=00000214 mem_direct=ccc08093
+[C] cyc=322 CDB tag=14 val=00012000
+[D] cyc=323 dispatch op=8 pc=00000210 tag=2 raw_iq_imm=fffffccc rs1=1
+[F] cyc=323 fetch raw=80100893 pc_d=00000214 fetch_pc=00000218 mem_direct=80100893
+[F] cyc=324 fetch raw=00100113 pc_d=00000218 fetch_pc=0000021c mem_direct=00100113
+[C] cyc=324 CDB tag=10 val=0000cccc
+[F] cyc=325 fetch raw=0028d663 pc_d=0000021c fetch_pc=00000220 mem_direct=0028d663
+[F] cyc=326 fetch raw=000120b7 pc_d=00000220 fetch_pc=00000224 mem_direct=000120b7
+[C] cyc=326 CDB tag=1 val=0000d000
+[F] cyc=327 fetch raw=3ab08093 pc_d=00000224 fetch_pc=00000228 mem_direct=3ab08093
+[F] cyc=328 fetch raw=0013a823 pc_d=00000228 fetch_pc=0000022c mem_direct=0013a823
+[C] cyc=328 CDB tag=3 val=ffffedcc
+[F] cyc=329 fetch raw=4dc00193 pc_d=0000022c fetch_pc=00000230 mem_direct=4dc00193
+[R] cyc=329 COMMIT op=8 pc=000001d4
+[D] cyc=330 dispatch op=8 pc=00000214 tag=3 raw_iq_imm=fffff801 rs1=0
+[F] cyc=330 fetch raw=0000d137 pc_d=00000230 fetch_pc=00000234 mem_direct=0000d137
+[C] cyc=330 CDB tag=2 val=0000cccc
+[R] cyc=330 COMMIT op=8 pc=000001d8
+[D] cyc=331 dispatch op=8 pc=00000218 tag=4 raw_iq_imm=00000001 rs1=0
+[F] cyc=331 fetch raw=ccc10113 pc_d=00000234 fetch_pc=00000238 mem_direct=ccc10113
+[C] cyc=331 CDB tag=5 val=000001e0
+[R] cyc=331 COMMIT op=19 pc=000001dc
+[D] cyc=332 dispatch op=19 pc=0000021c tag=5 raw_iq_imm=0000000c rs1=17
+[F] cyc=332 fetch raw=00000813 pc_d=00000238 fetch_pc=0000023c mem_direct=00000813
+[C] cyc=332 CDB tag=7 val=000123ab
+[R] cyc=332 COMMIT op=22 pc=000001e0
+[D] cyc=333 dispatch op=22 pc=00000220 tag=6 raw_iq_imm=00012000 rs1=0
+[F] cyc=333 fetch raw=00000093 pc_d=0000023c fetch_pc=00000240 mem_direct=00000093
+[C] cyc=333 CDB tag=8 val=00000000
+[R] cyc=333 COMMIT op=8 pc=000001e4
+[D] cyc=334 dispatch op=8 pc=00000224 tag=7 raw_iq_imm=000003ab rs1=1
+[F] cyc=334 fetch raw=00185663 pc_d=00000240 fetch_pc=00000244 mem_direct=00185663
+[C] cyc=334 CDB tag=3 val=fffff801
+[R] cyc=334 COMMIT op=15 pc=000001e8
+[D] cyc=335 dispatch op=15 pc=00000228 tag=8 raw_iq_imm=00000010 rs1=7
+[F] cyc=335 fetch raw=00012137 pc_d=00000244 fetch_pc=00000248 mem_direct=00012137
+[R] cyc=335 COMMIT op=22 pc=000001ec
+[D] cyc=336 dispatch op=8 pc=0000022c tag=9 raw_iq_imm=000004dc rs1=0
+[F] cyc=336 fetch raw=3ab10113 pc_d=00000248 fetch_pc=0000024c mem_direct=3ab10113
+[C] cyc=336 CDB tag=6 val=00012000
+[R] cyc=336 COMMIT op=8 pc=000001f0
+[D] cyc=337 dispatch op=22 pc=00000230 tag=10 raw_iq_imm=0000d000 rs1=0
+[F] cyc=337 fetch raw=0021a023 pc_d=0000024c fetch_pc=00000250 mem_direct=0021a023
+[F] cyc=338 fetch raw=0000d0b7 pc_d=00000250 fetch_pc=00000254 mem_direct=0000d0b7
+[C] cyc=338 CDB tag=4 val=00000001
+[C] cyc=340 CDB tag=9 val=000004dc
+[C] cyc=341 CDB tag=5 val=00000220
+[C] cyc=342 CDB tag=10 val=0000d000
+[C] cyc=344 CDB tag=7 val=000123ab
+[C] cyc=345 CDB tag=8 val=00000000
+[C] cyc=346 CDB tag=11 val=ffffffff
+[R] cyc=347 COMMIT op=8 pc=000001f4
+[D] cyc=348 dispatch op=8 pc=00000234 tag=11 raw_iq_imm=fffffccc rs1=2
+[C] cyc=348 CDB tag=15 val=000123ab
+[R] cyc=348 COMMIT op=8 pc=000001f8
+[D] cyc=349 dispatch op=8 pc=00000238 tag=12 raw_iq_imm=00000000 rs1=0
+[F] cyc=349 fetch raw=ccc08093 pc_d=00000254 fetch_pc=00000258 mem_direct=ccc08093
+[C] cyc=349 CDB tag=13 val=00000208
+[R] cyc=349 COMMIT op=19 pc=000001fc
+[F] cyc=351 fetch raw=0013a623 pc_d=00000208 fetch_pc=0000020c mem_direct=0013a623
+[C] cyc=351 CDB tag=11 val=0000cccc
+[D] cyc=352 dispatch op=15 pc=00000208 tag=0 raw_iq_imm=0000000c rs1=7
+[F] cyc=352 fetch raw=0000d0b7 pc_d=0000020c fetch_pc=00000210 mem_direct=0000d0b7
+[D] cyc=353 dispatch op=22 pc=0000020c tag=1 raw_iq_imm=0000d000 rs1=0
+[F] cyc=353 fetch raw=ccc08093 pc_d=00000210 fetch_pc=00000214 mem_direct=ccc08093
+[C] cyc=353 CDB tag=0 val=00000000
+[D] cyc=354 dispatch op=8 pc=00000210 tag=2 raw_iq_imm=fffffccc rs1=1
+[F] cyc=354 fetch raw=80100893 pc_d=00000214 fetch_pc=00000218 mem_direct=80100893
+[R] cyc=354 COMMIT op=15 pc=00000208
+[D] cyc=355 dispatch op=8 pc=00000214 tag=3 raw_iq_imm=fffff801 rs1=0
+[F] cyc=355 fetch raw=00100113 pc_d=00000218 fetch_pc=0000021c mem_direct=00100113
+[D] cyc=356 dispatch op=8 pc=00000218 tag=4 raw_iq_imm=00000001 rs1=0
+[F] cyc=356 fetch raw=0028d663 pc_d=0000021c fetch_pc=00000220 mem_direct=0028d663
+[C] cyc=356 CDB tag=1 val=0000d000
+[D] cyc=357 dispatch op=19 pc=0000021c tag=5 raw_iq_imm=0000000c rs1=17
+[F] cyc=357 fetch raw=000120b7 pc_d=00000220 fetch_pc=00000224 mem_direct=000120b7
+[R] cyc=357 COMMIT op=22 pc=0000020c
+[D] cyc=358 dispatch op=22 pc=00000220 tag=6 raw_iq_imm=00012000 rs1=0
+[F] cyc=358 fetch raw=3ab08093 pc_d=00000224 fetch_pc=00000228 mem_direct=3ab08093
+[C] cyc=358 CDB tag=3 val=fffff801
+[D] cyc=359 dispatch op=8 pc=00000224 tag=7 raw_iq_imm=000003ab rs1=1
+[F] cyc=359 fetch raw=0013a823 pc_d=00000228 fetch_pc=0000022c mem_direct=0013a823
+[D] cyc=360 dispatch op=15 pc=00000228 tag=8 raw_iq_imm=00000010 rs1=7
+[F] cyc=360 fetch raw=4dc00193 pc_d=0000022c fetch_pc=00000230 mem_direct=4dc00193
+[C] cyc=360 CDB tag=2 val=0000cccc
+[D] cyc=361 dispatch op=8 pc=0000022c tag=9 raw_iq_imm=000004dc rs1=0
+[F] cyc=361 fetch raw=0000d137 pc_d=00000230 fetch_pc=00000234 mem_direct=0000d137
+[R] cyc=361 COMMIT op=8 pc=00000210
+[D] cyc=362 dispatch op=22 pc=00000230 tag=10 raw_iq_imm=0000d000 rs1=0
+[F] cyc=362 fetch raw=ccc10113 pc_d=00000234 fetch_pc=00000238 mem_direct=ccc10113
+[C] cyc=362 CDB tag=6 val=00012000
+[R] cyc=362 COMMIT op=8 pc=00000214
+[D] cyc=363 dispatch op=8 pc=00000234 tag=11 raw_iq_imm=fffffccc rs1=2
+[F] cyc=363 fetch raw=00000813 pc_d=00000238 fetch_pc=0000023c mem_direct=00000813
+[D] cyc=364 dispatch op=8 pc=00000238 tag=12 raw_iq_imm=00000000 rs1=0
+[F] cyc=364 fetch raw=00000093 pc_d=0000023c fetch_pc=00000240 mem_direct=00000093
+[C] cyc=364 CDB tag=9 val=000004dc
+[D] cyc=365 dispatch op=8 pc=0000023c tag=13 raw_iq_imm=00000000 rs1=0
+[F] cyc=365 fetch raw=00185663 pc_d=00000240 fetch_pc=00000244 mem_direct=00185663
+[D] cyc=366 dispatch op=19 pc=00000240 tag=14 raw_iq_imm=0000000c rs1=16
+[F] cyc=366 fetch raw=00012137 pc_d=00000244 fetch_pc=00000248 mem_direct=00012137
+[C] cyc=366 CDB tag=7 val=000123ab
+[D] cyc=367 dispatch op=22 pc=00000244 tag=15 raw_iq_imm=00012000 rs1=0
+[F] cyc=367 fetch raw=3ab10113 pc_d=00000248 fetch_pc=0000024c mem_direct=3ab10113
+[C] cyc=367 CDB tag=8 val=00000000
+[D] cyc=368 dispatch op=8 pc=00000248 tag=0 raw_iq_imm=000003ab rs1=2
+[F] cyc=368 fetch raw=0021a023 pc_d=0000024c fetch_pc=00000250 mem_direct=0021a023
+[C] cyc=368 CDB tag=13 val=00000000
+[D] cyc=369 dispatch op=15 pc=0000024c tag=1 raw_iq_imm=00000000 rs1=3
+[F] cyc=369 fetch raw=0000d0b7 pc_d=00000250 fetch_pc=00000254 mem_direct=0000d0b7
+[D] cyc=370 dispatch op=22 pc=00000250 tag=2 raw_iq_imm=0000d000 rs1=0
+[F] cyc=370 fetch raw=ccc08093 pc_d=00000254 fetch_pc=00000258 mem_direct=ccc08093
+[C] cyc=370 CDB tag=15 val=00012000
+[D] cyc=371 dispatch op=8 pc=00000254 tag=3 raw_iq_imm=fffffccc rs1=1
+[F] cyc=371 fetch raw=fff00793 pc_d=00000258 fetch_pc=0000025c mem_direct=fff00793
+[F] cyc=372 fetch raw=00000013 pc_d=0000025c fetch_pc=00000260 mem_direct=00000013
+[C] cyc=372 CDB tag=4 val=00000001
+[F] cyc=373 fetch raw=0007d663 pc_d=00000260 fetch_pc=00000264 mem_direct=0007d663
+[R] cyc=373 COMMIT op=8 pc=00000218
+[D] cyc=374 dispatch op=8 pc=00000258 tag=4 raw_iq_imm=ffffffff rs1=0
+[F] cyc=374 fetch raw=000120b7 pc_d=00000264 fetch_pc=00000268 mem_direct=000120b7
+[C] cyc=374 CDB tag=2 val=0000d000
+[F] cyc=375 fetch raw=3ab08093 pc_d=00000268 fetch_pc=0000026c mem_direct=3ab08093
+[C] cyc=375 CDB tag=5 val=00000220
+[R] cyc=375 COMMIT op=19 pc=0000021c
+[D] cyc=376 dispatch op=8 pc=0000025c tag=5 raw_iq_imm=00000000 rs1=0
+[F] cyc=376 fetch raw=0011a223 pc_d=0000026c fetch_pc=00000270 mem_direct=0011a223
+[C] cyc=376 CDB tag=10 val=0000d000
+[R] cyc=376 COMMIT op=22 pc=00000220
+[D] cyc=377 dispatch op=19 pc=00000260 tag=6 raw_iq_imm=0000000c rs1=15
+[F] cyc=377 fetch raw=0080006f pc_d=00000270 fetch_pc=00000274 mem_direct=0080006f
+[R] cyc=377 COMMIT op=8 pc=00000224
+[D] cyc=378 dispatch op=22 pc=00000264 tag=7 raw_iq_imm=00012000 rs1=0
+[F] cyc=378 fetch raw=0200006f pc_d=00000274 fetch_pc=00000278 mem_direct=0200006f
+[C] cyc=378 CDB tag=4 val=ffffffff
+[R] cyc=378 COMMIT op=15 pc=00000228
+[D] cyc=379 dispatch op=8 pc=00000268 tag=8 raw_iq_imm=000003ab rs1=1
+[F] cyc=379 fetch raw=0000d0b7 pc_d=00000278 fetch_pc=0000027c mem_direct=0000d0b7
+[R] cyc=379 COMMIT op=8 pc=0000022c
+[D] cyc=380 dispatch op=15 pc=0000026c tag=9 raw_iq_imm=00000004 rs1=3
+[F] cyc=380 fetch raw=ccc08093 pc_d=0000027c fetch_pc=00000280 mem_direct=ccc08093
+[C] cyc=380 CDB tag=11 val=0000cccc
+[R] cyc=380 COMMIT op=22 pc=00000230
+[D] cyc=381 dispatch op=20 pc=00000270 tag=10 raw_iq_imm=00000008 rs1=0
+[F] cyc=381 fetch raw=00100713 pc_d=00000280 fetch_pc=00000284 mem_direct=00100713
+[C] cyc=381 CDB tag=6 val=00000264
+[R] cyc=381 COMMIT op=8 pc=00000234
+[F] cyc=382 fetch raw=80100f93 pc_d=00000284 fetch_pc=00000288 mem_direct=80100f93
+[C] cyc=382 CDB tag=7 val=00012000
+[D] cyc=383 dispatch op=20 pc=00000274 tag=11 raw_iq_imm=00000020 rs1=0
+[F] cyc=383 fetch raw=fff756e3 pc_d=00000288 fetch_pc=0000028c mem_direct=fff756e3
+[F] cyc=384 fetch raw=000120b7 pc_d=0000028c fetch_pc=00000290 mem_direct=000120b7
+[C] cyc=384 CDB tag=10 val=00000274
+[F] cyc=385 fetch raw=3ab08093 pc_d=00000290 fetch_pc=00000294 mem_direct=3ab08093
+[C] cyc=385 CDB tag=3 val=0000cccc
+[F] cyc=386 fetch raw=0011a423 pc_d=00000294 fetch_pc=00000298 mem_direct=0011a423
+[C] cyc=386 CDB tag=11 val=00000278
+[C] cyc=387 CDB tag=8 val=000123ab
+[C] cyc=388 CDB tag=9 val=00000000
+[C] cyc=389 CDB tag=5 val=00000000
+[C] cyc=391 CDB tag=12 val=00000000
+[R] cyc=392 COMMIT op=8 pc=00000238
+[D] cyc=393 dispatch op=22 pc=00000278 tag=12 raw_iq_imm=0000d000 rs1=0
+[C] cyc=393 CDB tag=0 val=000123ab
+[R] cyc=393 COMMIT op=8 pc=0000023c
+[D] cyc=394 dispatch op=8 pc=0000027c tag=13 raw_iq_imm=fffffccc rs1=1
+[F] cyc=394 fetch raw=0000d0b7 pc_d=00000298 fetch_pc=0000029c mem_direct=0000d0b7
+[C] cyc=394 CDB tag=14 val=0000024c
+[R] cyc=394 COMMIT op=19 pc=00000240
+[F] cyc=396 fetch raw=0021a023 pc_d=0000024c fetch_pc=00000250 mem_direct=0021a023
+[C] cyc=396 CDB tag=12 val=0000d000
+[D] cyc=397 dispatch op=15 pc=0000024c tag=0 raw_iq_imm=00000000 rs1=3
+[F] cyc=397 fetch raw=0000d0b7 pc_d=00000250 fetch_pc=00000254 mem_direct=0000d0b7
+[D] cyc=398 dispatch op=22 pc=00000250 tag=1 raw_iq_imm=0000d000 rs1=0
+[F] cyc=398 fetch raw=ccc08093 pc_d=00000254 fetch_pc=00000258 mem_direct=ccc08093
+[C] cyc=398 CDB tag=0 val=00000000
+[D] cyc=399 dispatch op=8 pc=00000254 tag=2 raw_iq_imm=fffffccc rs1=1
+[F] cyc=399 fetch raw=fff00793 pc_d=00000258 fetch_pc=0000025c mem_direct=fff00793
+[R] cyc=399 COMMIT op=15 pc=0000024c
+[D] cyc=400 dispatch op=8 pc=00000258 tag=3 raw_iq_imm=ffffffff rs1=0
+[F] cyc=400 fetch raw=00000013 pc_d=0000025c fetch_pc=00000260 mem_direct=00000013
+[D] cyc=401 dispatch op=8 pc=0000025c tag=4 raw_iq_imm=00000000 rs1=0
+[F] cyc=401 fetch raw=0007d663 pc_d=00000260 fetch_pc=00000264 mem_direct=0007d663
+[C] cyc=401 CDB tag=1 val=0000d000
+[D] cyc=402 dispatch op=19 pc=00000260 tag=5 raw_iq_imm=0000000c rs1=15
+[F] cyc=402 fetch raw=000120b7 pc_d=00000264 fetch_pc=00000268 mem_direct=000120b7
+[R] cyc=402 COMMIT op=22 pc=00000250
+[D] cyc=403 dispatch op=22 pc=00000264 tag=6 raw_iq_imm=00012000 rs1=0
+[F] cyc=403 fetch raw=3ab08093 pc_d=00000268 fetch_pc=0000026c mem_direct=3ab08093
+[C] cyc=403 CDB tag=3 val=ffffffff
+[D] cyc=404 dispatch op=8 pc=00000268 tag=7 raw_iq_imm=000003ab rs1=1
+[F] cyc=404 fetch raw=0011a223 pc_d=0000026c fetch_pc=00000270 mem_direct=0011a223
+[D] cyc=405 dispatch op=15 pc=0000026c tag=8 raw_iq_imm=00000004 rs1=3
+[F] cyc=405 fetch raw=0080006f pc_d=00000270 fetch_pc=00000274 mem_direct=0080006f
+[C] cyc=405 CDB tag=2 val=0000cccc
+[D] cyc=406 dispatch op=20 pc=00000270 tag=9 raw_iq_imm=00000008 rs1=0
+[F] cyc=406 fetch raw=0200006f pc_d=00000274 fetch_pc=00000278 mem_direct=0200006f
+[C] cyc=406 CDB tag=5 val=00000264
+[R] cyc=406 COMMIT op=8 pc=00000254
+[D] cyc=407 dispatch op=20 pc=00000274 tag=10 raw_iq_imm=00000020 rs1=0
+[F] cyc=407 fetch raw=0000d0b7 pc_d=00000278 fetch_pc=0000027c mem_direct=0000d0b7
+[C] cyc=407 CDB tag=6 val=00012000
+[R] cyc=407 COMMIT op=8 pc=00000258
+[D] cyc=408 dispatch op=22 pc=00000278 tag=11 raw_iq_imm=0000d000 rs1=0
+[F] cyc=408 fetch raw=ccc08093 pc_d=0000027c fetch_pc=00000280 mem_direct=ccc08093
+[D] cyc=409 dispatch op=8 pc=0000027c tag=12 raw_iq_imm=fffffccc rs1=1
+[F] cyc=409 fetch raw=00100713 pc_d=00000280 fetch_pc=00000284 mem_direct=00100713
+[C] cyc=409 CDB tag=9 val=00000274
+[D] cyc=410 dispatch op=8 pc=00000280 tag=13 raw_iq_imm=00000001 rs1=0
+[F] cyc=410 fetch raw=80100f93 pc_d=00000284 fetch_pc=00000288 mem_direct=80100f93
+[C] cyc=410 CDB tag=4 val=00000000
+[D] cyc=411 dispatch op=8 pc=00000284 tag=14 raw_iq_imm=fffff801 rs1=0
+[F] cyc=411 fetch raw=fff756e3 pc_d=00000288 fetch_pc=0000028c mem_direct=fff756e3
+[C] cyc=411 CDB tag=10 val=00000278
+[R] cyc=411 COMMIT op=8 pc=0000025c
+[D] cyc=412 dispatch op=19 pc=00000288 tag=15 raw_iq_imm=ffffffec rs1=14
+[F] cyc=412 fetch raw=000120b7 pc_d=0000028c fetch_pc=00000290 mem_direct=000120b7
+[C] cyc=412 CDB tag=11 val=0000d000
+[R] cyc=412 COMMIT op=19 pc=00000260
+[D] cyc=413 dispatch op=22 pc=0000028c tag=0 raw_iq_imm=00012000 rs1=0
+[F] cyc=413 fetch raw=3ab08093 pc_d=00000290 fetch_pc=00000294 mem_direct=3ab08093
+[R] cyc=413 COMMIT op=22 pc=00000264
+[D] cyc=414 dispatch op=8 pc=00000290 tag=1 raw_iq_imm=000003ab rs1=1
+[F] cyc=414 fetch raw=0011a423 pc_d=00000294 fetch_pc=00000298 mem_direct=0011a423
+[C] cyc=414 CDB tag=14 val=fffff801
+[D] cyc=415 dispatch op=15 pc=00000294 tag=2 raw_iq_imm=00000008 rs1=3
+[F] cyc=415 fetch raw=0000d0b7 pc_d=00000298 fetch_pc=0000029c mem_direct=0000d0b7
+[D] cyc=416 dispatch op=22 pc=00000298 tag=3 raw_iq_imm=0000d000 rs1=0
+[F] cyc=416 fetch raw=ccc08093 pc_d=0000029c fetch_pc=000002a0 mem_direct=ccc08093
+[C] cyc=416 CDB tag=0 val=00012000
+[D] cyc=417 dispatch op=8 pc=0000029c tag=4 raw_iq_imm=fffffccc rs1=1
+[F] cyc=417 fetch raw=00000693 pc_d=000002a0 fetch_pc=000002a4 mem_direct=00000693
+[D] cyc=418 dispatch op=8 pc=000002a0 tag=5 raw_iq_imm=00000000 rs1=0
+[F] cyc=418 fetch raw=fff00f13 pc_d=000002a4 fetch_pc=000002a8 mem_direct=fff00f13
+[C] cyc=418 CDB tag=7 val=000123ab
+[D] cyc=419 dispatch op=8 pc=000002a4 tag=6 raw_iq_imm=ffffffff rs1=0
+[F] cyc=419 fetch raw=01e6d663 pc_d=000002a8 fetch_pc=000002ac mem_direct=01e6d663
+[C] cyc=419 CDB tag=8 val=00000000
+[R] cyc=419 COMMIT op=8 pc=00000268
+[D] cyc=420 dispatch op=19 pc=000002a8 tag=7 raw_iq_imm=0000000c rs1=13
+[F] cyc=420 fetch raw=000120b7 pc_d=000002ac fetch_pc=000002b0 mem_direct=000120b7
+[C] cyc=420 CDB tag=3 val=0000d000
+[R] cyc=420 COMMIT op=15 pc=0000026c
+[D] cyc=421 dispatch op=22 pc=000002ac tag=8 raw_iq_imm=00012000 rs1=0
+[F] cyc=421 fetch raw=3ab08093 pc_d=000002b0 fetch_pc=000002b4 mem_direct=3ab08093
+[R] cyc=421 COMMIT op=20 pc=00000270
+[F] cyc=423 fetch raw=0000d0b7 pc_d=00000278 fetch_pc=0000027c mem_direct=0000d0b7
+[D] cyc=424 dispatch op=22 pc=00000278 tag=0 raw_iq_imm=0000d000 rs1=0
+[F] cyc=424 fetch raw=ccc08093 pc_d=0000027c fetch_pc=00000280 mem_direct=ccc08093
+[D] cyc=425 dispatch op=8 pc=0000027c tag=1 raw_iq_imm=fffffccc rs1=1
+[F] cyc=425 fetch raw=00100713 pc_d=00000280 fetch_pc=00000284 mem_direct=00100713
+[D] cyc=426 dispatch op=8 pc=00000280 tag=2 raw_iq_imm=00000001 rs1=0
+[F] cyc=426 fetch raw=80100f93 pc_d=00000284 fetch_pc=00000288 mem_direct=80100f93
+[D] cyc=427 dispatch op=8 pc=00000284 tag=3 raw_iq_imm=fffff801 rs1=0
+[F] cyc=427 fetch raw=fff756e3 pc_d=00000288 fetch_pc=0000028c mem_direct=fff756e3
+[C] cyc=427 CDB tag=0 val=0000d000
+[D] cyc=428 dispatch op=19 pc=00000288 tag=4 raw_iq_imm=ffffffec rs1=14
+[F] cyc=428 fetch raw=000120b7 pc_d=0000028c fetch_pc=00000290 mem_direct=000120b7
+[R] cyc=428 COMMIT op=22 pc=00000278
+[D] cyc=429 dispatch op=22 pc=0000028c tag=5 raw_iq_imm=00012000 rs1=0
+[F] cyc=429 fetch raw=3ab08093 pc_d=00000290 fetch_pc=00000294 mem_direct=3ab08093
+[C] cyc=429 CDB tag=2 val=00000001
+[D] cyc=430 dispatch op=8 pc=00000290 tag=6 raw_iq_imm=000003ab rs1=1
+[F] cyc=430 fetch raw=0011a423 pc_d=00000294 fetch_pc=00000298 mem_direct=0011a423
+[D] cyc=431 dispatch op=15 pc=00000294 tag=7 raw_iq_imm=00000008 rs1=3
+[F] cyc=431 fetch raw=0000d0b7 pc_d=00000298 fetch_pc=0000029c mem_direct=0000d0b7
+[C] cyc=431 CDB tag=1 val=0000cccc
+[D] cyc=432 dispatch op=22 pc=00000298 tag=8 raw_iq_imm=0000d000 rs1=0
+[F] cyc=432 fetch raw=ccc08093 pc_d=0000029c fetch_pc=000002a0 mem_direct=ccc08093
+[R] cyc=432 COMMIT op=8 pc=0000027c
+[D] cyc=433 dispatch op=8 pc=0000029c tag=9 raw_iq_imm=fffffccc rs1=1
+[F] cyc=433 fetch raw=00000693 pc_d=000002a0 fetch_pc=000002a4 mem_direct=00000693
+[C] cyc=433 CDB tag=5 val=00012000
+[R] cyc=433 COMMIT op=8 pc=00000280
+[D] cyc=434 dispatch op=8 pc=000002a0 tag=10 raw_iq_imm=00000000 rs1=0
+[F] cyc=434 fetch raw=fff00f13 pc_d=000002a4 fetch_pc=000002a8 mem_direct=fff00f13
+[D] cyc=435 dispatch op=8 pc=000002a4 tag=11 raw_iq_imm=ffffffff rs1=0
+[F] cyc=435 fetch raw=01e6d663 pc_d=000002a8 fetch_pc=000002ac mem_direct=01e6d663
+[C] cyc=435 CDB tag=8 val=0000d000
+[D] cyc=436 dispatch op=19 pc=000002a8 tag=12 raw_iq_imm=0000000c rs1=13
+[F] cyc=436 fetch raw=000120b7 pc_d=000002ac fetch_pc=000002b0 mem_direct=000120b7
+[D] cyc=437 dispatch op=22 pc=000002ac tag=13 raw_iq_imm=00012000 rs1=0
+[F] cyc=437 fetch raw=3ab08093 pc_d=000002b0 fetch_pc=000002b4 mem_direct=3ab08093
+[C] cyc=437 CDB tag=10 val=00000000
+[D] cyc=438 dispatch op=8 pc=000002b0 tag=14 raw_iq_imm=000003ab rs1=1
+[F] cyc=438 fetch raw=0011a623 pc_d=000002b4 fetch_pc=000002b8 mem_direct=0011a623
+[D] cyc=439 dispatch op=15 pc=000002b4 tag=15 raw_iq_imm=0000000c rs1=3
+[F] cyc=439 fetch raw=0000d0b7 pc_d=000002b8 fetch_pc=000002bc mem_direct=0000d0b7
+[C] cyc=439 CDB tag=6 val=000123ab
+[D] cyc=440 dispatch op=22 pc=000002b8 tag=0 raw_iq_imm=0000d000 rs1=0
+[F] cyc=440 fetch raw=ccc08093 pc_d=000002bc fetch_pc=000002c0 mem_direct=ccc08093
+[C] cyc=440 CDB tag=7 val=00000000
+[D] cyc=441 dispatch op=8 pc=000002bc tag=1 raw_iq_imm=fffffccc rs1=1
+[F] cyc=441 fetch raw=7ff00613 pc_d=000002c0 fetch_pc=000002c4 mem_direct=7ff00613
+[C] cyc=441 CDB tag=13 val=00012000
+[D] cyc=442 dispatch op=8 pc=000002c0 tag=2 raw_iq_imm=000007ff rs1=0
+[F] cyc=442 fetch raw=fffffeb7 pc_d=000002c4 fetch_pc=000002c8 mem_direct=fffffeb7
+[F] cyc=443 fetch raw=dcce8e93 pc_d=000002c8 fetch_pc=000002cc mem_direct=dcce8e93
+[C] cyc=443 CDB tag=0 val=0000d000
+[F] cyc=444 fetch raw=01d65663 pc_d=000002cc fetch_pc=000002d0 mem_direct=01d65663
+[F] cyc=445 fetch raw=000120b7 pc_d=000002d0 fetch_pc=000002d4 mem_direct=000120b7
+[C] cyc=445 CDB tag=2 val=000007ff
+[F] cyc=446 fetch raw=3ab08093 pc_d=000002d4 fetch_pc=000002d8 mem_direct=3ab08093
+[F] cyc=447 fetch raw=0011a823 pc_d=000002d8 fetch_pc=000002dc mem_direct=0011a823
+[C] cyc=447 CDB tag=14 val=000123ab
+[F] cyc=448 fetch raw=4f000113 pc_d=000002dc fetch_pc=000002e0 mem_direct=4f000113
+[C] cyc=448 CDB tag=15 val=00000000
+[F] cyc=449 fetch raw=0000d0b7 pc_d=000002e0 fetch_pc=000002e4 mem_direct=0000d0b7
+[C] cyc=449 CDB tag=3 val=fffff801
+[R] cyc=450 COMMIT op=8 pc=00000284
+[D] cyc=451 dispatch op=22 pc=000002c4 tag=3 raw_iq_imm=fffff000 rs1=0
+[C] cyc=451 CDB tag=9 val=0000cccc
+[F] cyc=452 fetch raw=ccc08093 pc_d=000002e4 fetch_pc=000002e8 mem_direct=ccc08093
+[C] cyc=452 CDB tag=4 val=00000274
+[R] cyc=452 COMMIT op=19 pc=00000288
+[F] cyc=454 fetch raw=0200006f pc_d=00000274 fetch_pc=00000278 mem_direct=0200006f
+[D] cyc=455 dispatch op=20 pc=00000274 tag=0 raw_iq_imm=00000020 rs1=0
+[F] cyc=455 fetch raw=0000d0b7 pc_d=00000278 fetch_pc=0000027c mem_direct=0000d0b7
+[D] cyc=456 dispatch op=22 pc=00000278 tag=1 raw_iq_imm=0000d000 rs1=0
+[F] cyc=456 fetch raw=ccc08093 pc_d=0000027c fetch_pc=00000280 mem_direct=ccc08093
+[D] cyc=457 dispatch op=8 pc=0000027c tag=2 raw_iq_imm=fffffccc rs1=1
+[F] cyc=457 fetch raw=00100713 pc_d=00000280 fetch_pc=00000284 mem_direct=00100713
+[D] cyc=458 dispatch op=8 pc=00000280 tag=3 raw_iq_imm=00000001 rs1=0
+[F] cyc=458 fetch raw=80100f93 pc_d=00000284 fetch_pc=00000288 mem_direct=80100f93
+[C] cyc=458 CDB tag=0 val=00000278
+[R] cyc=458 COMMIT op=20 pc=00000274
+[F] cyc=460 fetch raw=0011a423 pc_d=00000294 fetch_pc=00000298 mem_direct=0011a423
+[D] cyc=461 dispatch op=15 pc=00000294 tag=0 raw_iq_imm=00000008 rs1=3
+[F] cyc=461 fetch raw=0000d0b7 pc_d=00000298 fetch_pc=0000029c mem_direct=0000d0b7
+[D] cyc=462 dispatch op=22 pc=00000298 tag=1 raw_iq_imm=0000d000 rs1=0
+[F] cyc=462 fetch raw=ccc08093 pc_d=0000029c fetch_pc=000002a0 mem_direct=ccc08093
+[C] cyc=462 CDB tag=0 val=00000000
+[D] cyc=463 dispatch op=8 pc=0000029c tag=2 raw_iq_imm=fffffccc rs1=1
+[F] cyc=463 fetch raw=00000693 pc_d=000002a0 fetch_pc=000002a4 mem_direct=00000693
+[R] cyc=463 COMMIT op=15 pc=00000294
+[D] cyc=464 dispatch op=8 pc=000002a0 tag=3 raw_iq_imm=00000000 rs1=0
+[F] cyc=464 fetch raw=fff00f13 pc_d=000002a4 fetch_pc=000002a8 mem_direct=fff00f13
+[D] cyc=465 dispatch op=8 pc=000002a4 tag=4 raw_iq_imm=ffffffff rs1=0
+[F] cyc=465 fetch raw=01e6d663 pc_d=000002a8 fetch_pc=000002ac mem_direct=01e6d663
+[C] cyc=465 CDB tag=1 val=0000d000
+[D] cyc=466 dispatch op=19 pc=000002a8 tag=5 raw_iq_imm=0000000c rs1=13
+[F] cyc=466 fetch raw=000120b7 pc_d=000002ac fetch_pc=000002b0 mem_direct=000120b7
+[R] cyc=466 COMMIT op=22 pc=00000298
+[D] cyc=467 dispatch op=22 pc=000002ac tag=6 raw_iq_imm=00012000 rs1=0
+[F] cyc=467 fetch raw=3ab08093 pc_d=000002b0 fetch_pc=000002b4 mem_direct=3ab08093
+[C] cyc=467 CDB tag=3 val=00000000
+[D] cyc=468 dispatch op=8 pc=000002b0 tag=7 raw_iq_imm=000003ab rs1=1
+[F] cyc=468 fetch raw=0011a623 pc_d=000002b4 fetch_pc=000002b8 mem_direct=0011a623
+[D] cyc=469 dispatch op=15 pc=000002b4 tag=8 raw_iq_imm=0000000c rs1=3
+[F] cyc=469 fetch raw=0000d0b7 pc_d=000002b8 fetch_pc=000002bc mem_direct=0000d0b7
+[C] cyc=469 CDB tag=2 val=0000cccc
+[D] cyc=470 dispatch op=22 pc=000002b8 tag=9 raw_iq_imm=0000d000 rs1=0
+[F] cyc=470 fetch raw=ccc08093 pc_d=000002bc fetch_pc=000002c0 mem_direct=ccc08093
+[R] cyc=470 COMMIT op=8 pc=0000029c
+[D] cyc=471 dispatch op=8 pc=000002bc tag=10 raw_iq_imm=fffffccc rs1=1
+[F] cyc=471 fetch raw=7ff00613 pc_d=000002c0 fetch_pc=000002c4 mem_direct=7ff00613
+[C] cyc=471 CDB tag=6 val=00012000
+[R] cyc=471 COMMIT op=8 pc=000002a0
+[D] cyc=472 dispatch op=8 pc=000002c0 tag=11 raw_iq_imm=000007ff rs1=0
+[F] cyc=472 fetch raw=fffffeb7 pc_d=000002c4 fetch_pc=000002c8 mem_direct=fffffeb7
+[D] cyc=473 dispatch op=22 pc=000002c4 tag=12 raw_iq_imm=fffff000 rs1=0
+[F] cyc=473 fetch raw=dcce8e93 pc_d=000002c8 fetch_pc=000002cc mem_direct=dcce8e93
+[C] cyc=473 CDB tag=9 val=0000d000
+[D] cyc=474 dispatch op=8 pc=000002c8 tag=13 raw_iq_imm=fffffdcc rs1=29
+[F] cyc=474 fetch raw=01d65663 pc_d=000002cc fetch_pc=000002d0 mem_direct=01d65663
+[D] cyc=475 dispatch op=19 pc=000002cc tag=14 raw_iq_imm=0000000c rs1=12
+[F] cyc=475 fetch raw=000120b7 pc_d=000002d0 fetch_pc=000002d4 mem_direct=000120b7
+[C] cyc=475 CDB tag=11 val=000007ff
+[D] cyc=476 dispatch op=22 pc=000002d0 tag=15 raw_iq_imm=00012000 rs1=0
+[F] cyc=476 fetch raw=3ab08093 pc_d=000002d4 fetch_pc=000002d8 mem_direct=3ab08093
+[D] cyc=477 dispatch op=8 pc=000002d4 tag=0 raw_iq_imm=000003ab rs1=1
+[F] cyc=477 fetch raw=0011a823 pc_d=000002d8 fetch_pc=000002dc mem_direct=0011a823
+[C] cyc=477 CDB tag=7 val=000123ab
+[D] cyc=478 dispatch op=15 pc=000002d8 tag=1 raw_iq_imm=00000010 rs1=3
+[F] cyc=478 fetch raw=4f000113 pc_d=000002dc fetch_pc=000002e0 mem_direct=4f000113
+[C] cyc=478 CDB tag=8 val=00000000
+[D] cyc=479 dispatch op=8 pc=000002dc tag=2 raw_iq_imm=000004f0 rs1=0
+[F] cyc=479 fetch raw=0000d0b7 pc_d=000002e0 fetch_pc=000002e4 mem_direct=0000d0b7
+[C] cyc=479 CDB tag=15 val=00012000
+[D] cyc=480 dispatch op=22 pc=000002e0 tag=3 raw_iq_imm=0000d000 rs1=0
+[F] cyc=480 fetch raw=ccc08093 pc_d=000002e4 fetch_pc=000002e8 mem_direct=ccc08093
+[F] cyc=481 fetch raw=00000593 pc_d=000002e8 fetch_pc=000002ec mem_direct=00000593
+[C] cyc=481 CDB tag=4 val=ffffffff
+[F] cyc=482 fetch raw=80000e37 pc_d=000002ec fetch_pc=000002f0 mem_direct=80000e37
+[R] cyc=482 COMMIT op=8 pc=000002a4
+[D] cyc=483 dispatch op=8 pc=000002e4 tag=4 raw_iq_imm=fffffccc rs1=1
+[F] cyc=483 fetch raw=01c5d663 pc_d=000002f0 fetch_pc=000002f4 mem_direct=01c5d663
+[C] cyc=483 CDB tag=2 val=000004f0
+[F] cyc=484 fetch raw=000120b7 pc_d=000002f4 fetch_pc=000002f8 mem_direct=000120b7
+[C] cyc=484 CDB tag=5 val=000002b4
+[R] cyc=484 COMMIT op=19 pc=000002a8
+[F] cyc=486 fetch raw=0011a623 pc_d=000002b4 fetch_pc=000002b8 mem_direct=0011a623
+[D] cyc=487 dispatch op=15 pc=000002b4 tag=0 raw_iq_imm=0000000c rs1=3
+[F] cyc=487 fetch raw=0000d0b7 pc_d=000002b8 fetch_pc=000002bc mem_direct=0000d0b7
+[D] cyc=488 dispatch op=22 pc=000002b8 tag=1 raw_iq_imm=0000d000 rs1=0
+[F] cyc=488 fetch raw=ccc08093 pc_d=000002bc fetch_pc=000002c0 mem_direct=ccc08093
+[C] cyc=488 CDB tag=0 val=00000000
+[D] cyc=489 dispatch op=8 pc=000002bc tag=2 raw_iq_imm=fffffccc rs1=1
+[F] cyc=489 fetch raw=7ff00613 pc_d=000002c0 fetch_pc=000002c4 mem_direct=7ff00613
+[R] cyc=489 COMMIT op=15 pc=000002b4
+[D] cyc=490 dispatch op=8 pc=000002c0 tag=3 raw_iq_imm=000007ff rs1=0
+[F] cyc=490 fetch raw=fffffeb7 pc_d=000002c4 fetch_pc=000002c8 mem_direct=fffffeb7
+[D] cyc=491 dispatch op=22 pc=000002c4 tag=4 raw_iq_imm=fffff000 rs1=0
+[F] cyc=491 fetch raw=dcce8e93 pc_d=000002c8 fetch_pc=000002cc mem_direct=dcce8e93
+[C] cyc=491 CDB tag=1 val=0000d000
+[D] cyc=492 dispatch op=8 pc=000002c8 tag=5 raw_iq_imm=fffffdcc rs1=29
+[F] cyc=492 fetch raw=01d65663 pc_d=000002cc fetch_pc=000002d0 mem_direct=01d65663
+[R] cyc=492 COMMIT op=22 pc=000002b8
+[D] cyc=493 dispatch op=19 pc=000002cc tag=6 raw_iq_imm=0000000c rs1=12
+[F] cyc=493 fetch raw=000120b7 pc_d=000002d0 fetch_pc=000002d4 mem_direct=000120b7
+[C] cyc=493 CDB tag=3 val=000007ff
+[D] cyc=494 dispatch op=22 pc=000002d0 tag=7 raw_iq_imm=00012000 rs1=0
+[F] cyc=494 fetch raw=3ab08093 pc_d=000002d4 fetch_pc=000002d8 mem_direct=3ab08093
+[D] cyc=495 dispatch op=8 pc=000002d4 tag=8 raw_iq_imm=000003ab rs1=1
+[F] cyc=495 fetch raw=0011a823 pc_d=000002d8 fetch_pc=000002dc mem_direct=0011a823
+[C] cyc=495 CDB tag=2 val=0000cccc
+[D] cyc=496 dispatch op=15 pc=000002d8 tag=9 raw_iq_imm=00000010 rs1=3
+[F] cyc=496 fetch raw=4f000113 pc_d=000002dc fetch_pc=000002e0 mem_direct=4f000113
+[R] cyc=496 COMMIT op=8 pc=000002bc
+[D] cyc=497 dispatch op=8 pc=000002dc tag=10 raw_iq_imm=000004f0 rs1=0
+[F] cyc=497 fetch raw=0000d0b7 pc_d=000002e0 fetch_pc=000002e4 mem_direct=0000d0b7
+[C] cyc=497 CDB tag=7 val=00012000
+[R] cyc=497 COMMIT op=8 pc=000002c0
+[D] cyc=498 dispatch op=22 pc=000002e0 tag=11 raw_iq_imm=0000d000 rs1=0
+[F] cyc=498 fetch raw=ccc08093 pc_d=000002e4 fetch_pc=000002e8 mem_direct=ccc08093
+[D] cyc=499 dispatch op=8 pc=000002e4 tag=12 raw_iq_imm=fffffccc rs1=1
+[F] cyc=499 fetch raw=00000593 pc_d=000002e8 fetch_pc=000002ec mem_direct=00000593
+[C] cyc=499 CDB tag=4 val=fffff000
+[D] cyc=500 dispatch op=8 pc=000002e8 tag=13 raw_iq_imm=00000000 rs1=0
+[F] cyc=500 fetch raw=80000e37 pc_d=000002ec fetch_pc=000002f0 mem_direct=80000e37
+[R] cyc=500 COMMIT op=22 pc=000002c4
+[D] cyc=501 dispatch op=22 pc=000002ec tag=14 raw_iq_imm=80000000 rs1=0
+[F] cyc=501 fetch raw=01c5d663 pc_d=000002f0 fetch_pc=000002f4 mem_direct=01c5d663
+[C] cyc=501 CDB tag=10 val=000004f0
+[D] cyc=502 dispatch op=19 pc=000002f0 tag=15 raw_iq_imm=0000000c rs1=11
+[F] cyc=502 fetch raw=000120b7 pc_d=000002f4 fetch_pc=000002f8 mem_direct=000120b7
+[D] cyc=503 dispatch op=22 pc=000002f4 tag=0 raw_iq_imm=00012000 rs1=0
+[F] cyc=503 fetch raw=3ab08093 pc_d=000002f8 fetch_pc=000002fc mem_direct=3ab08093
+[C] cyc=503 CDB tag=5 val=ffffedcc
+[D] cyc=504 dispatch op=8 pc=000002f8 tag=1 raw_iq_imm=000003ab rs1=1
+[F] cyc=504 fetch raw=00112023 pc_d=000002fc fetch_pc=00000300 mem_direct=00112023
+[R] cyc=504 COMMIT op=8 pc=000002c8
+[D] cyc=505 dispatch op=15 pc=000002fc tag=2 raw_iq_imm=00000000 rs1=2
+[F] cyc=505 fetch raw=0000d0b7 pc_d=00000300 fetch_pc=00000304 mem_direct=0000d0b7
+[C] cyc=505 CDB tag=13 val=00000000
+[D] cyc=506 dispatch op=22 pc=00000300 tag=3 raw_iq_imm=0000d000 rs1=0
+[F] cyc=506 fetch raw=ccc08093 pc_d=00000304 fetch_pc=00000308 mem_direct=ccc08093
+[C] cyc=506 CDB tag=6 val=000002d8
+[R] cyc=506 COMMIT op=19 pc=000002cc
+[F] cyc=508 fetch raw=0011a823 pc_d=000002d8 fetch_pc=000002dc mem_direct=0011a823
+[D] cyc=509 dispatch op=15 pc=000002d8 tag=0 raw_iq_imm=00000010 rs1=3
+[F] cyc=509 fetch raw=4f000113 pc_d=000002dc fetch_pc=000002e0 mem_direct=4f000113
+[D] cyc=510 dispatch op=8 pc=000002dc tag=1 raw_iq_imm=000004f0 rs1=0
+[F] cyc=510 fetch raw=0000d0b7 pc_d=000002e0 fetch_pc=000002e4 mem_direct=0000d0b7
+[C] cyc=510 CDB tag=0 val=00000000
+[D] cyc=511 dispatch op=22 pc=000002e0 tag=2 raw_iq_imm=0000d000 rs1=0
+[F] cyc=511 fetch raw=ccc08093 pc_d=000002e4 fetch_pc=000002e8 mem_direct=ccc08093
+[R] cyc=511 COMMIT op=15 pc=000002d8
+[D] cyc=512 dispatch op=8 pc=000002e4 tag=3 raw_iq_imm=fffffccc rs1=1
+[F] cyc=512 fetch raw=00000593 pc_d=000002e8 fetch_pc=000002ec mem_direct=00000593
+[D] cyc=513 dispatch op=8 pc=000002e8 tag=4 raw_iq_imm=00000000 rs1=0
+[F] cyc=513 fetch raw=80000e37 pc_d=000002ec fetch_pc=000002f0 mem_direct=80000e37
+[C] cyc=513 CDB tag=1 val=000004f0
+[D] cyc=514 dispatch op=22 pc=000002ec tag=5 raw_iq_imm=80000000 rs1=0
+[F] cyc=514 fetch raw=01c5d663 pc_d=000002f0 fetch_pc=000002f4 mem_direct=01c5d663
+[R] cyc=514 COMMIT op=8 pc=000002dc
+[D] cyc=515 dispatch op=19 pc=000002f0 tag=6 raw_iq_imm=0000000c rs1=11
+[F] cyc=515 fetch raw=000120b7 pc_d=000002f4 fetch_pc=000002f8 mem_direct=000120b7
+[C] cyc=515 CDB tag=2 val=0000d000
+[D] cyc=516 dispatch op=22 pc=000002f4 tag=7 raw_iq_imm=00012000 rs1=0
+[F] cyc=516 fetch raw=3ab08093 pc_d=000002f8 fetch_pc=000002fc mem_direct=3ab08093
+[R] cyc=516 COMMIT op=22 pc=000002e0
+[D] cyc=517 dispatch op=8 pc=000002f8 tag=8 raw_iq_imm=000003ab rs1=1
+[F] cyc=517 fetch raw=00112023 pc_d=000002fc fetch_pc=00000300 mem_direct=00112023
+[C] cyc=517 CDB tag=5 val=80000000
+[D] cyc=518 dispatch op=15 pc=000002fc tag=9 raw_iq_imm=00000000 rs1=2
+[F] cyc=518 fetch raw=0000d0b7 pc_d=00000300 fetch_pc=00000304 mem_direct=0000d0b7
+[D] cyc=519 dispatch op=22 pc=00000300 tag=10 raw_iq_imm=0000d000 rs1=0
+[F] cyc=519 fetch raw=ccc08093 pc_d=00000304 fetch_pc=00000308 mem_direct=ccc08093
+[C] cyc=519 CDB tag=3 val=0000cccc
+[D] cyc=520 dispatch op=8 pc=00000304 tag=11 raw_iq_imm=fffffccc rs1=1
+[F] cyc=520 fetch raw=00001537 pc_d=00000308 fetch_pc=0000030c mem_direct=00001537
+[R] cyc=520 COMMIT op=8 pc=000002e4
+[D] cyc=521 dispatch op=22 pc=00000308 tag=12 raw_iq_imm=00001000 rs1=0
+[F] cyc=521 fetch raw=80050513 pc_d=0000030c fetch_pc=00000310 mem_direct=80050513
+[C] cyc=521 CDB tag=7 val=00012000
+[D] cyc=522 dispatch op=8 pc=0000030c tag=13 raw_iq_imm=fffff800 rs1=10
+[F] cyc=522 fetch raw=00001db7 pc_d=00000310 fetch_pc=00000314 mem_direct=00001db7
+[D] cyc=523 dispatch op=22 pc=00000310 tag=14 raw_iq_imm=00001000 rs1=0
+[F] cyc=523 fetch raw=234d8d93 pc_d=00000314 fetch_pc=00000318 mem_direct=234d8d93
+[C] cyc=523 CDB tag=10 val=0000d000
+[D] cyc=524 dispatch op=8 pc=00000314 tag=15 raw_iq_imm=00000234 rs1=27
+[F] cyc=524 fetch raw=01b55663 pc_d=00000318 fetch_pc=0000031c mem_direct=01b55663
+[D] cyc=525 dispatch op=19 pc=00000318 tag=0 raw_iq_imm=0000000c rs1=10
+[F] cyc=525 fetch raw=000120b7 pc_d=0000031c fetch_pc=00000320 mem_direct=000120b7
+[C] cyc=525 CDB tag=4 val=00000000
+[D] cyc=526 dispatch op=22 pc=0000031c tag=1 raw_iq_imm=00012000 rs1=0
+[F] cyc=526 fetch raw=3ab08093 pc_d=00000320 fetch_pc=00000324 mem_direct=3ab08093
+[R] cyc=526 COMMIT op=8 pc=000002e8
+[F] cyc=527 fetch raw=00112223 pc_d=00000324 fetch_pc=00000328 mem_direct=00112223
+[C] cyc=527 CDB tag=11 val=0000cccc
+[R] cyc=527 COMMIT op=22 pc=000002ec
+[D] cyc=528 dispatch op=8 pc=00000320 tag=2 raw_iq_imm=000003ab rs1=1
+[F] cyc=528 fetch raw=0080006f pc_d=00000328 fetch_pc=0000032c mem_direct=0080006f
+[C] cyc=528 CDB tag=6 val=000002fc
+[R] cyc=528 COMMIT op=19 pc=000002f0
+[F] cyc=530 fetch raw=00112023 pc_d=000002fc fetch_pc=00000300 mem_direct=00112023
+[D] cyc=531 dispatch op=15 pc=000002fc tag=0 raw_iq_imm=00000000 rs1=2
+[F] cyc=531 fetch raw=0000d0b7 pc_d=00000300 fetch_pc=00000304 mem_direct=0000d0b7
+[D] cyc=532 dispatch op=22 pc=00000300 tag=1 raw_iq_imm=0000d000 rs1=0
+[F] cyc=532 fetch raw=ccc08093 pc_d=00000304 fetch_pc=00000308 mem_direct=ccc08093
+[C] cyc=532 CDB tag=0 val=00000000
+[D] cyc=533 dispatch op=8 pc=00000304 tag=2 raw_iq_imm=fffffccc rs1=1
+[F] cyc=533 fetch raw=00001537 pc_d=00000308 fetch_pc=0000030c mem_direct=00001537
+[R] cyc=533 COMMIT op=15 pc=000002fc
+[D] cyc=534 dispatch op=22 pc=00000308 tag=3 raw_iq_imm=00001000 rs1=0
+[F] cyc=534 fetch raw=80050513 pc_d=0000030c fetch_pc=00000310 mem_direct=80050513
+[D] cyc=535 dispatch op=8 pc=0000030c tag=4 raw_iq_imm=fffff800 rs1=10
+[F] cyc=535 fetch raw=00001db7 pc_d=00000310 fetch_pc=00000314 mem_direct=00001db7
+[C] cyc=535 CDB tag=1 val=0000d000
+[D] cyc=536 dispatch op=22 pc=00000310 tag=5 raw_iq_imm=00001000 rs1=0
+[F] cyc=536 fetch raw=234d8d93 pc_d=00000314 fetch_pc=00000318 mem_direct=234d8d93
+[R] cyc=536 COMMIT op=22 pc=00000300
+[D] cyc=537 dispatch op=8 pc=00000314 tag=6 raw_iq_imm=00000234 rs1=27
+[F] cyc=537 fetch raw=01b55663 pc_d=00000318 fetch_pc=0000031c mem_direct=01b55663
+[C] cyc=537 CDB tag=3 val=00001000
+[D] cyc=538 dispatch op=19 pc=00000318 tag=7 raw_iq_imm=0000000c rs1=10
+[F] cyc=538 fetch raw=000120b7 pc_d=0000031c fetch_pc=00000320 mem_direct=000120b7
+[D] cyc=539 dispatch op=22 pc=0000031c tag=8 raw_iq_imm=00012000 rs1=0
+[F] cyc=539 fetch raw=3ab08093 pc_d=00000320 fetch_pc=00000324 mem_direct=3ab08093
+[C] cyc=539 CDB tag=5 val=00001000
+[D] cyc=540 dispatch op=8 pc=00000320 tag=9 raw_iq_imm=000003ab rs1=1
+[F] cyc=540 fetch raw=00112223 pc_d=00000324 fetch_pc=00000328 mem_direct=00112223
+[D] cyc=541 dispatch op=15 pc=00000324 tag=10 raw_iq_imm=00000004 rs1=2
+[F] cyc=541 fetch raw=0080006f pc_d=00000328 fetch_pc=0000032c mem_direct=0080006f
+[C] cyc=541 CDB tag=2 val=0000cccc
+[D] cyc=542 dispatch op=20 pc=00000328 tag=11 raw_iq_imm=00000008 rs1=0
+[F] cyc=542 fetch raw=0240006f pc_d=0000032c fetch_pc=00000330 mem_direct=0240006f
+[R] cyc=542 COMMIT op=8 pc=00000304
+[F] cyc=543 fetch raw=0000d0b7 pc_d=00000330 fetch_pc=00000334 mem_direct=0000d0b7
+[C] cyc=543 CDB tag=8 val=00012000
+[R] cyc=543 COMMIT op=22 pc=00000308
+[D] cyc=544 dispatch op=20 pc=0000032c tag=12 raw_iq_imm=00000024 rs1=0
+[F] cyc=544 fetch raw=ccc08093 pc_d=00000334 fetch_pc=00000338 mem_direct=ccc08093
+[D] cyc=545 dispatch op=22 pc=00000330 tag=13 raw_iq_imm=0000d000 rs1=0
+[F] cyc=545 fetch raw=076544b7 pc_d=00000338 fetch_pc=0000033c mem_direct=076544b7
+[C] cyc=545 CDB tag=11 val=0000032c
+[D] cyc=546 dispatch op=8 pc=00000334 tag=14 raw_iq_imm=fffffccc rs1=1
+[F] cyc=546 fetch raw=32148493 pc_d=0000033c fetch_pc=00000340 mem_direct=32148493
+[C] cyc=546 CDB tag=4 val=00000800
+[D] cyc=547 dispatch op=22 pc=00000338 tag=15 raw_iq_imm=07654000 rs1=0
+[F] cyc=547 fetch raw=fff00d13 pc_d=00000340 fetch_pc=00000344 mem_direct=fff00d13
+[C] cyc=547 CDB tag=12 val=00000330
+[R] cyc=547 COMMIT op=8 pc=0000030c
+[D] cyc=548 dispatch op=8 pc=0000033c tag=0 raw_iq_imm=00000321 rs1=9
+[F] cyc=548 fetch raw=ffa4d4e3 pc_d=00000344 fetch_pc=00000348 mem_direct=ffa4d4e3
+[C] cyc=548 CDB tag=13 val=0000d000
+[R] cyc=548 COMMIT op=22 pc=00000310
+[D] cyc=549 dispatch op=8 pc=00000340 tag=1 raw_iq_imm=ffffffff rs1=0
+[F] cyc=549 fetch raw=000120b7 pc_d=00000348 fetch_pc=0000034c mem_direct=000120b7
+[D] cyc=550 dispatch op=19 pc=00000344 tag=2 raw_iq_imm=ffffffe8 rs1=9
+[F] cyc=550 fetch raw=3ab08093 pc_d=0000034c fetch_pc=00000350 mem_direct=3ab08093
+[C] cyc=550 CDB tag=15 val=07654000
+[D] cyc=551 dispatch op=22 pc=00000348 tag=3 raw_iq_imm=00012000 rs1=0
+[F] cyc=551 fetch raw=00112423 pc_d=00000350 fetch_pc=00000354 mem_direct=00112423
+[D] cyc=552 dispatch op=8 pc=0000034c tag=4 raw_iq_imm=000003ab rs1=1
+[F] cyc=552 fetch raw=0000d0b7 pc_d=00000354 fetch_pc=00000358 mem_direct=0000d0b7
+[C] cyc=552 CDB tag=1 val=ffffffff
+[D] cyc=553 dispatch op=15 pc=00000350 tag=5 raw_iq_imm=00000008 rs1=2
+[F] cyc=553 fetch raw=ccc08093 pc_d=00000358 fetch_pc=0000035c mem_direct=ccc08093
+[F] cyc=554 fetch raw=80000437 pc_d=0000035c fetch_pc=00000360 mem_direct=80000437
+[C] cyc=554 CDB tag=3 val=00012000
+[F] cyc=555 fetch raw=fff40413 pc_d=00000360 fetch_pc=00000364 mem_direct=fff40413
+[F] cyc=556 fetch raw=00100c93 pc_d=00000364 fetch_pc=00000368 mem_direct=00100c93
+[C] cyc=556 CDB tag=9 val=000123ab
+[F] cyc=557 fetch raw=01945663 pc_d=00000368 fetch_pc=0000036c mem_direct=01945663
+[C] cyc=557 CDB tag=10 val=00000000
+[F] cyc=558 fetch raw=000120b7 pc_d=0000036c fetch_pc=00000370 mem_direct=000120b7
+[C] cyc=558 CDB tag=14 val=0000cccc
+[F] cyc=559 fetch raw=3ab08093 pc_d=00000370 fetch_pc=00000374 mem_direct=3ab08093
+[C] cyc=560 CDB tag=6 val=00001234
+[R] cyc=561 COMMIT op=8 pc=00000314
+[D] cyc=562 dispatch op=22 pc=00000354 tag=6 raw_iq_imm=0000d000 rs1=0
+[C] cyc=562 CDB tag=0 val=07654321
+[F] cyc=563 fetch raw=00112623 pc_d=00000374 fetch_pc=00000378 mem_direct=00112623
+[C] cyc=563 CDB tag=7 val=0000031c
+[R] cyc=563 COMMIT op=19 pc=00000318
+[D] cyc=564 dispatch op=8 pc=00000358 tag=7 raw_iq_imm=fffffccc rs1=1
+[C] cyc=564 CDB tag=4 val=000123ab
+[R] cyc=564 COMMIT op=22 pc=0000031c
+[D] cyc=565 dispatch op=22 pc=0000035c tag=8 raw_iq_imm=80000000 rs1=0
+[F] cyc=565 fetch raw=0000d0b7 pc_d=00000378 fetch_pc=0000037c mem_direct=0000d0b7
+[C] cyc=565 CDB tag=2 val=0000032c
+[R] cyc=565 COMMIT op=8 pc=00000320
+[D] cyc=566 dispatch op=8 pc=00000360 tag=9 raw_iq_imm=ffffffff rs1=8
+[F] cyc=566 fetch raw=ccc08093 pc_d=0000037c fetch_pc=00000380 mem_direct=ccc08093
+[C] cyc=566 CDB tag=5 val=00000000
+[R] cyc=566 COMMIT op=15 pc=00000324
+[D] cyc=567 dispatch op=8 pc=00000364 tag=10 raw_iq_imm=00000001 rs1=0
+[F] cyc=567 fetch raw=00100393 pc_d=00000380 fetch_pc=00000384 mem_direct=00100393
+[C] cyc=567 CDB tag=6 val=0000d000
+[R] cyc=567 COMMIT op=20 pc=00000328
+[F] cyc=569 fetch raw=0000d0b7 pc_d=00000330 fetch_pc=00000334 mem_direct=0000d0b7
+[C] cyc=569 CDB tag=8 val=80000000
+[D] cyc=570 dispatch op=22 pc=00000330 tag=0 raw_iq_imm=0000d000 rs1=0
+[F] cyc=570 fetch raw=ccc08093 pc_d=00000334 fetch_pc=00000338 mem_direct=ccc08093
+[D] cyc=571 dispatch op=8 pc=00000334 tag=1 raw_iq_imm=fffffccc rs1=1
+[F] cyc=571 fetch raw=076544b7 pc_d=00000338 fetch_pc=0000033c mem_direct=076544b7
+[D] cyc=572 dispatch op=22 pc=00000338 tag=2 raw_iq_imm=07654000 rs1=0
+[F] cyc=572 fetch raw=32148493 pc_d=0000033c fetch_pc=00000340 mem_direct=32148493
+[D] cyc=573 dispatch op=8 pc=0000033c tag=3 raw_iq_imm=00000321 rs1=9
+[F] cyc=573 fetch raw=fff00d13 pc_d=00000340 fetch_pc=00000344 mem_direct=fff00d13
+[C] cyc=573 CDB tag=0 val=0000d000
+[D] cyc=574 dispatch op=8 pc=00000340 tag=4 raw_iq_imm=ffffffff rs1=0
+[F] cyc=574 fetch raw=ffa4d4e3 pc_d=00000344 fetch_pc=00000348 mem_direct=ffa4d4e3
+[R] cyc=574 COMMIT op=22 pc=00000330
+[D] cyc=575 dispatch op=19 pc=00000344 tag=5 raw_iq_imm=ffffffe8 rs1=9
+[F] cyc=575 fetch raw=000120b7 pc_d=00000348 fetch_pc=0000034c mem_direct=000120b7
+[C] cyc=575 CDB tag=2 val=07654000
+[D] cyc=576 dispatch op=22 pc=00000348 tag=6 raw_iq_imm=00012000 rs1=0
+[F] cyc=576 fetch raw=3ab08093 pc_d=0000034c fetch_pc=00000350 mem_direct=3ab08093
+[D] cyc=577 dispatch op=8 pc=0000034c tag=7 raw_iq_imm=000003ab rs1=1
+[F] cyc=577 fetch raw=00112423 pc_d=00000350 fetch_pc=00000354 mem_direct=00112423
+[C] cyc=577 CDB tag=4 val=ffffffff
+[D] cyc=578 dispatch op=15 pc=00000350 tag=8 raw_iq_imm=00000008 rs1=2
+[F] cyc=578 fetch raw=0000d0b7 pc_d=00000354 fetch_pc=00000358 mem_direct=0000d0b7
+[D] cyc=579 dispatch op=22 pc=00000354 tag=9 raw_iq_imm=0000d000 rs1=0
+[F] cyc=579 fetch raw=ccc08093 pc_d=00000358 fetch_pc=0000035c mem_direct=ccc08093
+[C] cyc=579 CDB tag=6 val=00012000
+[D] cyc=580 dispatch op=8 pc=00000358 tag=10 raw_iq_imm=fffffccc rs1=1
+[F] cyc=580 fetch raw=80000437 pc_d=0000035c fetch_pc=00000360 mem_direct=80000437
+[D] cyc=581 dispatch op=22 pc=0000035c tag=11 raw_iq_imm=80000000 rs1=0
+[F] cyc=581 fetch raw=fff40413 pc_d=00000360 fetch_pc=00000364 mem_direct=fff40413
+[C] cyc=581 CDB tag=1 val=0000cccc
+[D] cyc=582 dispatch op=8 pc=00000360 tag=12 raw_iq_imm=ffffffff rs1=8
+[F] cyc=582 fetch raw=00100c93 pc_d=00000364 fetch_pc=00000368 mem_direct=00100c93
+[R] cyc=582 COMMIT op=8 pc=00000334
+[D] cyc=583 dispatch op=8 pc=00000364 tag=13 raw_iq_imm=00000001 rs1=0
+[F] cyc=583 fetch raw=01945663 pc_d=00000368 fetch_pc=0000036c mem_direct=01945663
+[C] cyc=583 CDB tag=9 val=0000d000
+[R] cyc=583 COMMIT op=22 pc=00000338
+[D] cyc=584 dispatch op=19 pc=00000368 tag=14 raw_iq_imm=0000000c rs1=8
+[F] cyc=584 fetch raw=000120b7 pc_d=0000036c fetch_pc=00000370 mem_direct=000120b7
+[D] cyc=585 dispatch op=22 pc=0000036c tag=15 raw_iq_imm=00012000 rs1=0
+[F] cyc=585 fetch raw=3ab08093 pc_d=00000370 fetch_pc=00000374 mem_direct=3ab08093
+[C] cyc=585 CDB tag=3 val=07654321
+[D] cyc=586 dispatch op=8 pc=00000370 tag=0 raw_iq_imm=000003ab rs1=1
+[F] cyc=586 fetch raw=00112623 pc_d=00000374 fetch_pc=00000378 mem_direct=00112623
+[R] cyc=586 COMMIT op=8 pc=0000033c
+[D] cyc=587 dispatch op=15 pc=00000374 tag=1 raw_iq_imm=0000000c rs1=2
+[F] cyc=587 fetch raw=0000d0b7 pc_d=00000378 fetch_pc=0000037c mem_direct=0000d0b7
+[C] cyc=587 CDB tag=10 val=0000cccc
+[R] cyc=587 COMMIT op=8 pc=00000340
+[D] cyc=588 dispatch op=22 pc=00000378 tag=2 raw_iq_imm=0000d000 rs1=0
+[F] cyc=588 fetch raw=ccc08093 pc_d=0000037c fetch_pc=00000380 mem_direct=ccc08093
+[C] cyc=588 CDB tag=5 val=0000032c
+[R] cyc=588 COMMIT op=19 pc=00000344
+[F] cyc=590 fetch raw=0240006f pc_d=0000032c fetch_pc=00000330 mem_direct=0240006f
+[D] cyc=591 dispatch op=20 pc=0000032c tag=0 raw_iq_imm=00000024 rs1=0
+[F] cyc=591 fetch raw=0000d0b7 pc_d=00000330 fetch_pc=00000334 mem_direct=0000d0b7
+[D] cyc=592 dispatch op=22 pc=00000330 tag=1 raw_iq_imm=0000d000 rs1=0
+[F] cyc=592 fetch raw=ccc08093 pc_d=00000334 fetch_pc=00000338 mem_direct=ccc08093
+[D] cyc=593 dispatch op=8 pc=00000334 tag=2 raw_iq_imm=fffffccc rs1=1
+[F] cyc=593 fetch raw=076544b7 pc_d=00000338 fetch_pc=0000033c mem_direct=076544b7
+[D] cyc=594 dispatch op=22 pc=00000338 tag=3 raw_iq_imm=07654000 rs1=0
+[F] cyc=594 fetch raw=32148493 pc_d=0000033c fetch_pc=00000340 mem_direct=32148493
+[C] cyc=594 CDB tag=0 val=00000330
+[R] cyc=594 COMMIT op=20 pc=0000032c
+[F] cyc=596 fetch raw=00112423 pc_d=00000350 fetch_pc=00000354 mem_direct=00112423
+[D] cyc=597 dispatch op=15 pc=00000350 tag=0 raw_iq_imm=00000008 rs1=2
+[F] cyc=597 fetch raw=0000d0b7 pc_d=00000354 fetch_pc=00000358 mem_direct=0000d0b7
+[D] cyc=598 dispatch op=22 pc=00000354 tag=1 raw_iq_imm=0000d000 rs1=0
+[F] cyc=598 fetch raw=ccc08093 pc_d=00000358 fetch_pc=0000035c mem_direct=ccc08093
+[C] cyc=598 CDB tag=0 val=00000000
+[D] cyc=599 dispatch op=8 pc=00000358 tag=2 raw_iq_imm=fffffccc rs1=1
+[F] cyc=599 fetch raw=80000437 pc_d=0000035c fetch_pc=00000360 mem_direct=80000437
+[R] cyc=599 COMMIT op=15 pc=00000350
+[D] cyc=600 dispatch op=22 pc=0000035c tag=3 raw_iq_imm=80000000 rs1=0
+[F] cyc=600 fetch raw=fff40413 pc_d=00000360 fetch_pc=00000364 mem_direct=fff40413
+[D] cyc=601 dispatch op=8 pc=00000360 tag=4 raw_iq_imm=ffffffff rs1=8
+[F] cyc=601 fetch raw=00100c93 pc_d=00000364 fetch_pc=00000368 mem_direct=00100c93
+[C] cyc=601 CDB tag=1 val=0000d000
+[D] cyc=602 dispatch op=8 pc=00000364 tag=5 raw_iq_imm=00000001 rs1=0
+[F] cyc=602 fetch raw=01945663 pc_d=00000368 fetch_pc=0000036c mem_direct=01945663
+[R] cyc=602 COMMIT op=22 pc=00000354
+[D] cyc=603 dispatch op=19 pc=00000368 tag=6 raw_iq_imm=0000000c rs1=8
+[F] cyc=603 fetch raw=000120b7 pc_d=0000036c fetch_pc=00000370 mem_direct=000120b7
+[C] cyc=603 CDB tag=3 val=80000000
+[D] cyc=604 dispatch op=22 pc=0000036c tag=7 raw_iq_imm=00012000 rs1=0
+[F] cyc=604 fetch raw=3ab08093 pc_d=00000370 fetch_pc=00000374 mem_direct=3ab08093
+[D] cyc=605 dispatch op=8 pc=00000370 tag=8 raw_iq_imm=000003ab rs1=1
+[F] cyc=605 fetch raw=00112623 pc_d=00000374 fetch_pc=00000378 mem_direct=00112623
+[C] cyc=605 CDB tag=5 val=00000001
+[D] cyc=606 dispatch op=15 pc=00000374 tag=9 raw_iq_imm=0000000c rs1=2
+[F] cyc=606 fetch raw=0000d0b7 pc_d=00000378 fetch_pc=0000037c mem_direct=0000d0b7
+[D] cyc=607 dispatch op=22 pc=00000378 tag=10 raw_iq_imm=0000d000 rs1=0
+[F] cyc=607 fetch raw=ccc08093 pc_d=0000037c fetch_pc=00000380 mem_direct=ccc08093
+[C] cyc=607 CDB tag=7 val=00012000
+[D] cyc=608 dispatch op=8 pc=0000037c tag=11 raw_iq_imm=fffffccc rs1=1
+[F] cyc=608 fetch raw=00100393 pc_d=00000380 fetch_pc=00000384 mem_direct=00100393
+[D] cyc=609 dispatch op=8 pc=00000380 tag=12 raw_iq_imm=00000001 rs1=0
+[F] cyc=609 fetch raw=80000c37 pc_d=00000384 fetch_pc=00000388 mem_direct=80000c37
+[C] cyc=609 CDB tag=2 val=0000cccc
+[D] cyc=610 dispatch op=22 pc=00000384 tag=13 raw_iq_imm=80000000 rs1=0
+[F] cyc=610 fetch raw=fffc0c13 pc_d=00000388 fetch_pc=0000038c mem_direct=fffc0c13
+[R] cyc=610 COMMIT op=8 pc=00000358
+[D] cyc=611 dispatch op=8 pc=00000388 tag=14 raw_iq_imm=ffffffff rs1=24
+[F] cyc=611 fetch raw=0183d663 pc_d=0000038c fetch_pc=00000390 mem_direct=0183d663
+[C] cyc=611 CDB tag=10 val=0000d000
+[R] cyc=611 COMMIT op=22 pc=0000035c
+[D] cyc=612 dispatch op=19 pc=0000038c tag=15 raw_iq_imm=0000000c rs1=7
+[F] cyc=612 fetch raw=000120b7 pc_d=00000390 fetch_pc=00000394 mem_direct=000120b7
+[D] cyc=613 dispatch op=22 pc=00000390 tag=0 raw_iq_imm=00012000 rs1=0
+[F] cyc=613 fetch raw=3ab08093 pc_d=00000394 fetch_pc=00000398 mem_direct=3ab08093
+[C] cyc=613 CDB tag=13 val=80000000
+[D] cyc=614 dispatch op=8 pc=00000394 tag=1 raw_iq_imm=000003ab rs1=1
+[F] cyc=614 fetch raw=00112823 pc_d=00000398 fetch_pc=0000039c mem_direct=00112823
+[D] cyc=615 dispatch op=15 pc=00000398 tag=2 raw_iq_imm=00000010 rs1=2
+[F] cyc=615 fetch raw=50400393 pc_d=0000039c fetch_pc=000003a0 mem_direct=50400393
+[C] cyc=615 CDB tag=11 val=0000cccc
+[D] cyc=616 dispatch op=8 pc=0000039c tag=3 raw_iq_imm=00000504 rs1=0
+[F] cyc=616 fetch raw=0000d0b7 pc_d=000003a0 fetch_pc=000003a4 mem_direct=0000d0b7
+[F] cyc=617 fetch raw=ccc08093 pc_d=000003a4 fetch_pc=000003a8 mem_direct=ccc08093
+[C] cyc=617 CDB tag=0 val=00012000
+[F] cyc=618 fetch raw=fff00313 pc_d=000003a8 fetch_pc=000003ac mem_direct=fff00313
+[F] cyc=619 fetch raw=07654bb7 pc_d=000003ac fetch_pc=000003b0 mem_direct=07654bb7
+[C] cyc=619 CDB tag=3 val=00000504
+[F] cyc=620 fetch raw=321b8b93 pc_d=000003b0 fetch_pc=000003b4 mem_direct=321b8b93
+[F] cyc=621 fetch raw=01735663 pc_d=000003b4 fetch_pc=000003b8 mem_direct=01735663
+[C] cyc=621 CDB tag=1 val=000123ab
+[F] cyc=622 fetch raw=000120b7 pc_d=000003b8 fetch_pc=000003bc mem_direct=000120b7
+[C] cyc=622 CDB tag=2 val=00000000
+[F] cyc=623 fetch raw=3ab08093 pc_d=000003bc fetch_pc=000003c0 mem_direct=3ab08093
+[C] cyc=623 CDB tag=4 val=7fffffff
+[R] cyc=624 COMMIT op=8 pc=00000360
+[D] cyc=625 dispatch op=22 pc=000003a0 tag=4 raw_iq_imm=0000d000 rs1=0
+[C] cyc=625 CDB tag=8 val=000123ab
+[R] cyc=625 COMMIT op=8 pc=00000364
+[D] cyc=626 dispatch op=8 pc=000003a4 tag=5 raw_iq_imm=fffffccc rs1=1
+[F] cyc=626 fetch raw=0013a023 pc_d=000003c0 fetch_pc=000003c4 mem_direct=0013a023
+[C] cyc=626 CDB tag=6 val=00000374
+[R] cyc=626 COMMIT op=19 pc=00000368
+[F] cyc=628 fetch raw=00112623 pc_d=00000374 fetch_pc=00000378 mem_direct=00112623
+[D] cyc=629 dispatch op=15 pc=00000374 tag=0 raw_iq_imm=0000000c rs1=2
+[F] cyc=629 fetch raw=0000d0b7 pc_d=00000378 fetch_pc=0000037c mem_direct=0000d0b7
+[D] cyc=630 dispatch op=22 pc=00000378 tag=1 raw_iq_imm=0000d000 rs1=0
+[F] cyc=630 fetch raw=ccc08093 pc_d=0000037c fetch_pc=00000380 mem_direct=ccc08093
+[C] cyc=630 CDB tag=0 val=00000000
+[D] cyc=631 dispatch op=8 pc=0000037c tag=2 raw_iq_imm=fffffccc rs1=1
+[F] cyc=631 fetch raw=00100393 pc_d=00000380 fetch_pc=00000384 mem_direct=00100393
+[R] cyc=631 COMMIT op=15 pc=00000374
+[D] cyc=632 dispatch op=8 pc=00000380 tag=3 raw_iq_imm=00000001 rs1=0
+[F] cyc=632 fetch raw=80000c37 pc_d=00000384 fetch_pc=00000388 mem_direct=80000c37
+[D] cyc=633 dispatch op=22 pc=00000384 tag=4 raw_iq_imm=80000000 rs1=0
+[F] cyc=633 fetch raw=fffc0c13 pc_d=00000388 fetch_pc=0000038c mem_direct=fffc0c13
+[C] cyc=633 CDB tag=1 val=0000d000
+[D] cyc=634 dispatch op=8 pc=00000388 tag=5 raw_iq_imm=ffffffff rs1=24
+[F] cyc=634 fetch raw=0183d663 pc_d=0000038c fetch_pc=00000390 mem_direct=0183d663
+[R] cyc=634 COMMIT op=22 pc=00000378
+[D] cyc=635 dispatch op=19 pc=0000038c tag=6 raw_iq_imm=0000000c rs1=7
+[F] cyc=635 fetch raw=000120b7 pc_d=00000390 fetch_pc=00000394 mem_direct=000120b7
+[C] cyc=635 CDB tag=3 val=00000001
+[D] cyc=636 dispatch op=22 pc=00000390 tag=7 raw_iq_imm=00012000 rs1=0
+[F] cyc=636 fetch raw=3ab08093 pc_d=00000394 fetch_pc=00000398 mem_direct=3ab08093
+[D] cyc=637 dispatch op=8 pc=00000394 tag=8 raw_iq_imm=000003ab rs1=1
+[F] cyc=637 fetch raw=00112823 pc_d=00000398 fetch_pc=0000039c mem_direct=00112823
+[C] cyc=637 CDB tag=2 val=0000cccc
+[D] cyc=638 dispatch op=15 pc=00000398 tag=9 raw_iq_imm=00000010 rs1=2
+[F] cyc=638 fetch raw=50400393 pc_d=0000039c fetch_pc=000003a0 mem_direct=50400393
+[R] cyc=638 COMMIT op=8 pc=0000037c
+[D] cyc=639 dispatch op=8 pc=0000039c tag=10 raw_iq_imm=00000504 rs1=0
+[F] cyc=639 fetch raw=0000d0b7 pc_d=000003a0 fetch_pc=000003a4 mem_direct=0000d0b7
+[C] cyc=639 CDB tag=7 val=00012000
+[R] cyc=639 COMMIT op=8 pc=00000380
+[D] cyc=640 dispatch op=22 pc=000003a0 tag=11 raw_iq_imm=0000d000 rs1=0
+[F] cyc=640 fetch raw=ccc08093 pc_d=000003a4 fetch_pc=000003a8 mem_direct=ccc08093
+[D] cyc=641 dispatch op=8 pc=000003a4 tag=12 raw_iq_imm=fffffccc rs1=1
+[F] cyc=641 fetch raw=fff00313 pc_d=000003a8 fetch_pc=000003ac mem_direct=fff00313
+[C] cyc=641 CDB tag=4 val=80000000
+[D] cyc=642 dispatch op=8 pc=000003a8 tag=13 raw_iq_imm=ffffffff rs1=0
+[F] cyc=642 fetch raw=07654bb7 pc_d=000003ac fetch_pc=000003b0 mem_direct=07654bb7
+[R] cyc=642 COMMIT op=22 pc=00000384
+[D] cyc=643 dispatch op=22 pc=000003ac tag=14 raw_iq_imm=07654000 rs1=0
+[F] cyc=643 fetch raw=321b8b93 pc_d=000003b0 fetch_pc=000003b4 mem_direct=321b8b93
+[C] cyc=643 CDB tag=10 val=00000504
+[D] cyc=644 dispatch op=8 pc=000003b0 tag=15 raw_iq_imm=00000321 rs1=23
+[F] cyc=644 fetch raw=01735663 pc_d=000003b4 fetch_pc=000003b8 mem_direct=01735663
+[D] cyc=645 dispatch op=19 pc=000003b4 tag=0 raw_iq_imm=0000000c rs1=6
+[F] cyc=645 fetch raw=000120b7 pc_d=000003b8 fetch_pc=000003bc mem_direct=000120b7
+[C] cyc=645 CDB tag=5 val=7fffffff
+[D] cyc=646 dispatch op=22 pc=000003b8 tag=1 raw_iq_imm=00012000 rs1=0
+[F] cyc=646 fetch raw=3ab08093 pc_d=000003bc fetch_pc=000003c0 mem_direct=3ab08093
+[R] cyc=646 COMMIT op=8 pc=00000388
+[F] cyc=647 fetch raw=0013a023 pc_d=000003c0 fetch_pc=000003c4 mem_direct=0013a023
+[C] cyc=647 CDB tag=13 val=ffffffff
+[D] cyc=648 dispatch op=8 pc=000003bc tag=2 raw_iq_imm=000003ab rs1=1
+[F] cyc=648 fetch raw=0000d0b7 pc_d=000003c4 fetch_pc=000003c8 mem_direct=0000d0b7
+[C] cyc=648 CDB tag=6 val=00000390
+[R] cyc=648 COMMIT op=19 pc=0000038c
+[D] cyc=649 dispatch op=15 pc=000003c0 tag=3 raw_iq_imm=00000000 rs1=7
+[F] cyc=649 fetch raw=ccc08093 pc_d=000003c8 fetch_pc=000003cc mem_direct=ccc08093
+[C] cyc=649 CDB tag=1 val=00012000
+[R] cyc=649 COMMIT op=22 pc=00000390
+[D] cyc=650 dispatch op=22 pc=000003c4 tag=4 raw_iq_imm=0000d000 rs1=0
+[F] cyc=650 fetch raw=000012b7 pc_d=000003cc fetch_pc=000003d0 mem_direct=000012b7
+[F] cyc=651 fetch raw=23428293 pc_d=000003d0 fetch_pc=000003d4 mem_direct=23428293
+[C] cyc=651 CDB tag=11 val=0000d000
+[D] cyc=652 dispatch op=8 pc=000003c8 tag=5 raw_iq_imm=fffffccc rs1=1
+[F] cyc=652 fetch raw=00001b37 pc_d=000003d4 fetch_pc=000003d8 mem_direct=00001b37
+[F] cyc=653 fetch raw=800b0b13 pc_d=000003d8 fetch_pc=000003dc mem_direct=800b0b13
+[C] cyc=653 CDB tag=2 val=000123ab
+[D] cyc=654 dispatch op=22 pc=000003cc tag=6 raw_iq_imm=00001000 rs1=0
+[F] cyc=654 fetch raw=0162d663 pc_d=000003dc fetch_pc=000003e0 mem_direct=0162d663
+[C] cyc=654 CDB tag=3 val=00000000
+[F] cyc=655 fetch raw=000120b7 pc_d=000003e0 fetch_pc=000003e4 mem_direct=000120b7
+[C] cyc=655 CDB tag=4 val=0000d000
+[D] cyc=656 dispatch op=8 pc=000003d0 tag=7 raw_iq_imm=00000234 rs1=5
+[F] cyc=656 fetch raw=3ab08093 pc_d=000003e4 fetch_pc=000003e8 mem_direct=3ab08093
+[F] cyc=657 fetch raw=0013a223 pc_d=000003e8 fetch_pc=000003ec mem_direct=0013a223
+[C] cyc=657 CDB tag=6 val=00001000
+[F] cyc=658 fetch raw=0080006f pc_d=000003ec fetch_pc=000003f0 mem_direct=0080006f
+[F] cyc=659 fetch raw=0200006f pc_d=000003f0 fetch_pc=000003f4 mem_direct=0200006f
+[C] cyc=659 CDB tag=5 val=0000cccc
+[C] cyc=661 CDB tag=7 val=00001234
+[C] cyc=663 CDB tag=8 val=000123ab
+[C] cyc=664 CDB tag=9 val=00000000
+[R] cyc=664 COMMIT op=8 pc=00000394
+[D] cyc=665 dispatch op=22 pc=000003d4 tag=8 raw_iq_imm=00001000 rs1=0
+[C] cyc=665 CDB tag=12 val=0000cccc
+[R] cyc=665 COMMIT op=15 pc=00000398
+[D] cyc=666 dispatch op=8 pc=000003d8 tag=9 raw_iq_imm=fffff800 rs1=22
+[F] cyc=666 fetch raw=0000d0b7 pc_d=000003f4 fetch_pc=000003f8 mem_direct=0000d0b7
+[R] cyc=666 COMMIT op=8 pc=0000039c
+[D] cyc=667 dispatch op=19 pc=000003dc tag=10 raw_iq_imm=0000000c rs1=5
+[F] cyc=667 fetch raw=ccc08093 pc_d=000003f8 fetch_pc=000003fc mem_direct=ccc08093
+[C] cyc=667 CDB tag=14 val=07654000
+[R] cyc=667 COMMIT op=22 pc=000003a0
+[D] cyc=668 dispatch op=22 pc=000003e0 tag=11 raw_iq_imm=00012000 rs1=0
+[F] cyc=668 fetch raw=80000237 pc_d=000003fc fetch_pc=00000400 mem_direct=80000237
+[R] cyc=668 COMMIT op=8 pc=000003a4
+[D] cyc=669 dispatch op=8 pc=000003e4 tag=12 raw_iq_imm=000003ab rs1=1
+[F] cyc=669 fetch raw=00000a93 pc_d=00000400 fetch_pc=00000404 mem_direct=00000a93
+[C] cyc=669 CDB tag=8 val=00001000
+[R] cyc=669 COMMIT op=8 pc=000003a8
+[D] cyc=670 dispatch op=15 pc=000003e8 tag=13 raw_iq_imm=00000004 rs1=7
+[F] cyc=670 fetch raw=ff5256e3 pc_d=00000404 fetch_pc=00000408 mem_direct=ff5256e3
+[R] cyc=670 COMMIT op=22 pc=000003ac
+[F] cyc=671 fetch raw=000120b7 pc_d=00000408 fetch_pc=0000040c mem_direct=000120b7
+[C] cyc=671 CDB tag=15 val=07654321
+[R] cyc=672 COMMIT op=8 pc=000003b0
+[D] cyc=673 dispatch op=20 pc=000003ec tag=14 raw_iq_imm=00000008 rs1=0
+[C] cyc=673 CDB tag=11 val=00012000
+[F] cyc=674 fetch raw=3ab08093 pc_d=0000040c fetch_pc=00000410 mem_direct=3ab08093
+[C] cyc=674 CDB tag=0 val=000003b8
+[R] cyc=674 COMMIT op=19 pc=000003b4
+[D] cyc=675 dispatch op=20 pc=000003f0 tag=15 raw_iq_imm=00000020 rs1=0
+[C] cyc=675 CDB tag=9 val=00000800
+[R] cyc=675 COMMIT op=22 pc=000003b8
+[D] cyc=676 dispatch op=22 pc=000003f4 tag=0 raw_iq_imm=0000d000 rs1=0
+[F] cyc=676 fetch raw=0013a423 pc_d=00000410 fetch_pc=00000414 mem_direct=0013a423
+[C] cyc=676 CDB tag=14 val=000003f0
+[R] cyc=676 COMMIT op=8 pc=000003bc
+[D] cyc=677 dispatch op=8 pc=000003f8 tag=1 raw_iq_imm=fffffccc rs1=1
+[F] cyc=677 fetch raw=0000d0b7 pc_d=00000414 fetch_pc=00000418 mem_direct=0000d0b7
+[C] cyc=677 CDB tag=12 val=000123ab
+[R] cyc=677 COMMIT op=15 pc=000003c0
+[D] cyc=678 dispatch op=22 pc=000003fc tag=2 raw_iq_imm=80000000 rs1=0
+[F] cyc=678 fetch raw=ccc08093 pc_d=00000418 fetch_pc=0000041c mem_direct=ccc08093
+[C] cyc=678 CDB tag=10 val=000003e8
+[R] cyc=678 COMMIT op=22 pc=000003c4
+[D] cyc=679 dispatch op=8 pc=00000400 tag=3 raw_iq_imm=00000000 rs1=0
+[F] cyc=679 fetch raw=fffff1b7 pc_d=0000041c fetch_pc=00000420 mem_direct=fffff1b7
+[C] cyc=679 CDB tag=13 val=00000000
+[R] cyc=679 COMMIT op=8 pc=000003c8
+[D] cyc=680 dispatch op=19 pc=00000404 tag=4 raw_iq_imm=ffffffec rs1=4
+[F] cyc=680 fetch raw=dcc18193 pc_d=00000420 fetch_pc=00000424 mem_direct=dcc18193
+[C] cyc=680 CDB tag=0 val=0000d000
+[R] cyc=680 COMMIT op=22 pc=000003cc
+[D] cyc=681 dispatch op=22 pc=00000408 tag=5 raw_iq_imm=00012000 rs1=0
+[F] cyc=681 fetch raw=7ff00a13 pc_d=00000424 fetch_pc=00000428 mem_direct=7ff00a13
+[C] cyc=681 CDB tag=15 val=000003f4
+[R] cyc=681 COMMIT op=8 pc=000003d0
+[D] cyc=682 dispatch op=8 pc=0000040c tag=6 raw_iq_imm=000003ab rs1=1
+[F] cyc=682 fetch raw=0141d663 pc_d=00000428 fetch_pc=0000042c mem_direct=0141d663
+[C] cyc=682 CDB tag=2 val=80000000
+[R] cyc=682 COMMIT op=22 pc=000003d4
+[D] cyc=683 dispatch op=15 pc=00000410 tag=7 raw_iq_imm=00000008 rs1=7
+[F] cyc=683 fetch raw=000120b7 pc_d=0000042c fetch_pc=00000430 mem_direct=000120b7
+[R] cyc=683 COMMIT op=8 pc=000003d8
+[D] cyc=684 dispatch op=22 pc=00000414 tag=8 raw_iq_imm=0000d000 rs1=0
+[F] cyc=684 fetch raw=3ab08093 pc_d=00000430 fetch_pc=00000434 mem_direct=3ab08093
+[C] cyc=684 CDB tag=5 val=00012000
+[R] cyc=684 COMMIT op=19 pc=000003dc
+[F] cyc=686 fetch raw=0013a223 pc_d=000003e8 fetch_pc=000003ec mem_direct=0013a223
+[C] cyc=686 CDB tag=1 val=0000cccc
+[D] cyc=687 dispatch op=15 pc=000003e8 tag=0 raw_iq_imm=00000004 rs1=7
+[F] cyc=687 fetch raw=0080006f pc_d=000003ec fetch_pc=000003f0 mem_direct=0080006f
+[D] cyc=688 dispatch op=20 pc=000003ec tag=1 raw_iq_imm=00000008 rs1=0
+[F] cyc=688 fetch raw=0200006f pc_d=000003f0 fetch_pc=000003f4 mem_direct=0200006f
+[C] cyc=688 CDB tag=0 val=00000000
+[D] cyc=689 dispatch op=20 pc=000003f0 tag=2 raw_iq_imm=00000020 rs1=0
+[F] cyc=689 fetch raw=0000d0b7 pc_d=000003f4 fetch_pc=000003f8 mem_direct=0000d0b7
+[R] cyc=689 COMMIT op=15 pc=000003e8
+[D] cyc=690 dispatch op=22 pc=000003f4 tag=3 raw_iq_imm=0000d000 rs1=0
+[F] cyc=690 fetch raw=ccc08093 pc_d=000003f8 fetch_pc=000003fc mem_direct=ccc08093
+[D] cyc=691 dispatch op=8 pc=000003f8 tag=4 raw_iq_imm=fffffccc rs1=1
+[F] cyc=691 fetch raw=80000237 pc_d=000003fc fetch_pc=00000400 mem_direct=80000237
+[C] cyc=691 CDB tag=1 val=000003f0
+[R] cyc=691 COMMIT op=20 pc=000003ec
+[F] cyc=693 fetch raw=0000d0b7 pc_d=000003f4 fetch_pc=000003f8 mem_direct=0000d0b7
+[C] cyc=693 CDB tag=3 val=0000d000
+[D] cyc=694 dispatch op=22 pc=000003f4 tag=0 raw_iq_imm=0000d000 rs1=0
+[F] cyc=694 fetch raw=ccc08093 pc_d=000003f8 fetch_pc=000003fc mem_direct=ccc08093
+[C] cyc=694 CDB tag=2 val=000003f4
+[D] cyc=695 dispatch op=8 pc=000003f8 tag=1 raw_iq_imm=fffffccc rs1=1
+[F] cyc=695 fetch raw=80000237 pc_d=000003fc fetch_pc=00000400 mem_direct=80000237
+[D] cyc=696 dispatch op=22 pc=000003fc tag=2 raw_iq_imm=80000000 rs1=0
+[F] cyc=696 fetch raw=00000a93 pc_d=00000400 fetch_pc=00000404 mem_direct=00000a93
+[D] cyc=697 dispatch op=8 pc=00000400 tag=3 raw_iq_imm=00000000 rs1=0
+[F] cyc=697 fetch raw=ff5256e3 pc_d=00000404 fetch_pc=00000408 mem_direct=ff5256e3
+[C] cyc=697 CDB tag=0 val=0000d000
+[D] cyc=698 dispatch op=19 pc=00000404 tag=4 raw_iq_imm=ffffffec rs1=4
+[F] cyc=698 fetch raw=000120b7 pc_d=00000408 fetch_pc=0000040c mem_direct=000120b7
+[R] cyc=698 COMMIT op=22 pc=000003f4
+[D] cyc=699 dispatch op=22 pc=00000408 tag=5 raw_iq_imm=00012000 rs1=0
+[F] cyc=699 fetch raw=3ab08093 pc_d=0000040c fetch_pc=00000410 mem_direct=3ab08093
+[C] cyc=699 CDB tag=2 val=80000000
+[D] cyc=700 dispatch op=8 pc=0000040c tag=6 raw_iq_imm=000003ab rs1=1
+[F] cyc=700 fetch raw=0013a423 pc_d=00000410 fetch_pc=00000414 mem_direct=0013a423
+[D] cyc=701 dispatch op=15 pc=00000410 tag=7 raw_iq_imm=00000008 rs1=7
+[F] cyc=701 fetch raw=0000d0b7 pc_d=00000414 fetch_pc=00000418 mem_direct=0000d0b7
+[C] cyc=701 CDB tag=1 val=0000cccc
+[D] cyc=702 dispatch op=22 pc=00000414 tag=8 raw_iq_imm=0000d000 rs1=0
+[F] cyc=702 fetch raw=ccc08093 pc_d=00000418 fetch_pc=0000041c mem_direct=ccc08093
+[R] cyc=702 COMMIT op=8 pc=000003f8
+[D] cyc=703 dispatch op=8 pc=00000418 tag=9 raw_iq_imm=fffffccc rs1=1
+[F] cyc=703 fetch raw=fffff1b7 pc_d=0000041c fetch_pc=00000420 mem_direct=fffff1b7
+[C] cyc=703 CDB tag=5 val=00012000
+[R] cyc=703 COMMIT op=22 pc=000003fc
+[D] cyc=704 dispatch op=22 pc=0000041c tag=10 raw_iq_imm=fffff000 rs1=0
+[F] cyc=704 fetch raw=dcc18193 pc_d=00000420 fetch_pc=00000424 mem_direct=dcc18193
+[D] cyc=705 dispatch op=8 pc=00000420 tag=11 raw_iq_imm=fffffdcc rs1=3
+[F] cyc=705 fetch raw=7ff00a13 pc_d=00000424 fetch_pc=00000428 mem_direct=7ff00a13
+[C] cyc=705 CDB tag=8 val=0000d000
+[D] cyc=706 dispatch op=8 pc=00000424 tag=12 raw_iq_imm=000007ff rs1=0
+[F] cyc=706 fetch raw=0141d663 pc_d=00000428 fetch_pc=0000042c mem_direct=0141d663
+[D] cyc=707 dispatch op=19 pc=00000428 tag=13 raw_iq_imm=0000000c rs1=3
+[F] cyc=707 fetch raw=000120b7 pc_d=0000042c fetch_pc=00000430 mem_direct=000120b7
+[C] cyc=707 CDB tag=10 val=fffff000
+[D] cyc=708 dispatch op=22 pc=0000042c tag=14 raw_iq_imm=00012000 rs1=0
+[F] cyc=708 fetch raw=3ab08093 pc_d=00000430 fetch_pc=00000434 mem_direct=3ab08093
+[D] cyc=709 dispatch op=8 pc=00000430 tag=15 raw_iq_imm=000003ab rs1=1
+[F] cyc=709 fetch raw=0013a623 pc_d=00000434 fetch_pc=00000438 mem_direct=0013a623
+[C] cyc=709 CDB tag=12 val=000007ff
+[D] cyc=710 dispatch op=15 pc=00000434 tag=0 raw_iq_imm=0000000c rs1=7
+[F] cyc=710 fetch raw=0000d0b7 pc_d=00000438 fetch_pc=0000043c mem_direct=0000d0b7
+[D] cyc=711 dispatch op=22 pc=00000438 tag=1 raw_iq_imm=0000d000 rs1=0
+[F] cyc=711 fetch raw=ccc08093 pc_d=0000043c fetch_pc=00000440 mem_direct=ccc08093
+[C] cyc=711 CDB tag=14 val=00012000
+[D] cyc=712 dispatch op=8 pc=0000043c tag=2 raw_iq_imm=fffffccc rs1=1
+[F] cyc=712 fetch raw=fff00113 pc_d=00000440 fetch_pc=00000444 mem_direct=fff00113
+[F] cyc=713 fetch raw=fff00993 pc_d=00000444 fetch_pc=00000448 mem_direct=fff00993
+[C] cyc=713 CDB tag=6 val=000123ab
+[F] cyc=714 fetch raw=01315663 pc_d=00000448 fetch_pc=0000044c mem_direct=01315663
+[C] cyc=714 CDB tag=7 val=00000000
+[F] cyc=715 fetch raw=000120b7 pc_d=0000044c fetch_pc=00000450 mem_direct=000120b7
+[C] cyc=715 CDB tag=1 val=0000d000
+[F] cyc=716 fetch raw=3ab08093 pc_d=00000450 fetch_pc=00000454 mem_direct=3ab08093
+[F] cyc=717 fetch raw=0013a823 pc_d=00000454 fetch_pc=00000458 mem_direct=0013a823
+[C] cyc=717 CDB tag=3 val=00000000
+[F] cyc=718 fetch raw=51800193 pc_d=00000458 fetch_pc=0000045c mem_direct=51800193
+[R] cyc=718 COMMIT op=8 pc=00000400
+[D] cyc=719 dispatch op=8 pc=00000440 tag=3 raw_iq_imm=ffffffff rs1=0
+[F] cyc=719 fetch raw=0000d137 pc_d=0000045c fetch_pc=00000460 mem_direct=0000d137
+[C] cyc=719 CDB tag=2 val=0000cccc
+[F] cyc=720 fetch raw=ccc10113 pc_d=00000460 fetch_pc=00000464 mem_direct=ccc10113
+[C] cyc=720 CDB tag=4 val=00000408
+[R] cyc=720 COMMIT op=19 pc=00000404
+[D] cyc=721 dispatch op=8 pc=00000444 tag=4 raw_iq_imm=ffffffff rs1=0
+[C] cyc=721 CDB tag=9 val=0000cccc
+[R] cyc=721 COMMIT op=22 pc=00000408
+[D] cyc=722 dispatch op=19 pc=00000448 tag=5 raw_iq_imm=0000000c rs1=2
+[F] cyc=722 fetch raw=80100093 pc_d=00000464 fetch_pc=00000468 mem_direct=80100093
+[R] cyc=722 COMMIT op=8 pc=0000040c
+[D] cyc=723 dispatch op=22 pc=0000044c tag=6 raw_iq_imm=00012000 rs1=0
+[F] cyc=723 fetch raw=00100913 pc_d=00000468 fetch_pc=0000046c mem_direct=00100913
+[C] cyc=723 CDB tag=3 val=ffffffff
+[R] cyc=723 COMMIT op=15 pc=00000410
+[D] cyc=724 dispatch op=8 pc=00000450 tag=7 raw_iq_imm=000003ab rs1=1
+[F] cyc=724 fetch raw=0120d663 pc_d=0000046c fetch_pc=00000470 mem_direct=0120d663
+[R] cyc=724 COMMIT op=22 pc=00000414
+[D] cyc=725 dispatch op=15 pc=00000454 tag=8 raw_iq_imm=00000010 rs1=7
+[F] cyc=725 fetch raw=00012137 pc_d=00000470 fetch_pc=00000474 mem_direct=00012137
+[C] cyc=725 CDB tag=4 val=ffffffff
+[R] cyc=725 COMMIT op=8 pc=00000418
+[D] cyc=726 dispatch op=8 pc=00000458 tag=9 raw_iq_imm=00000518 rs1=0
+[F] cyc=726 fetch raw=3ab10113 pc_d=00000474 fetch_pc=00000478 mem_direct=3ab10113
+[R] cyc=726 COMMIT op=22 pc=0000041c
+[D] cyc=727 dispatch op=22 pc=0000045c tag=10 raw_iq_imm=0000d000 rs1=0
+[F] cyc=727 fetch raw=0021a023 pc_d=00000478 fetch_pc=0000047c mem_direct=0021a023
+[C] cyc=727 CDB tag=6 val=00012000
+[F] cyc=728 fetch raw=0000d0b7 pc_d=0000047c fetch_pc=00000480 mem_direct=0000d0b7
+[C] cyc=728 CDB tag=5 val=00000454
+[C] cyc=729 CDB tag=9 val=00000518
+[C] cyc=731 CDB tag=7 val=000123ab
+[C] cyc=732 CDB tag=8 val=00000000
+[C] cyc=733 CDB tag=10 val=0000d000
+[C] cyc=735 CDB tag=11 val=ffffedcc
+[R] cyc=736 COMMIT op=8 pc=00000420
+[D] cyc=737 dispatch op=8 pc=00000460 tag=11 raw_iq_imm=fffffccc rs1=2
+[C] cyc=737 CDB tag=15 val=000123ab
+[R] cyc=737 COMMIT op=8 pc=00000424
+[D] cyc=738 dispatch op=8 pc=00000464 tag=12 raw_iq_imm=fffff801 rs1=0
+[F] cyc=738 fetch raw=ccc08093 pc_d=00000480 fetch_pc=00000484 mem_direct=ccc08093
+[C] cyc=738 CDB tag=13 val=0000042c
+[R] cyc=738 COMMIT op=19 pc=00000428
+[D] cyc=739 dispatch op=8 pc=00000468 tag=13 raw_iq_imm=00000001 rs1=0
+[F] cyc=739 fetch raw=00000013 pc_d=00000484 fetch_pc=00000488 mem_direct=00000013
+[C] cyc=739 CDB tag=0 val=00000000
+[R] cyc=739 COMMIT op=22 pc=0000042c
+[D] cyc=740 dispatch op=19 pc=0000046c tag=14 raw_iq_imm=0000000c rs1=1
+[F] cyc=740 fetch raw=00000893 pc_d=00000488 fetch_pc=0000048c mem_direct=00000893
+[C] cyc=740 CDB tag=11 val=0000cccc
+[R] cyc=740 COMMIT op=8 pc=00000430
+[D] cyc=741 dispatch op=22 pc=00000470 tag=15 raw_iq_imm=00012000 rs1=0
+[F] cyc=741 fetch raw=01105663 pc_d=0000048c fetch_pc=00000490 mem_direct=01105663
+[R] cyc=741 COMMIT op=15 pc=00000434
+[D] cyc=742 dispatch op=8 pc=00000474 tag=0 raw_iq_imm=000003ab rs1=2
+[F] cyc=742 fetch raw=000120b7 pc_d=00000490 fetch_pc=00000494 mem_direct=000120b7
+[C] cyc=742 CDB tag=13 val=00000001
+[R] cyc=742 COMMIT op=22 pc=00000438
+[D] cyc=743 dispatch op=15 pc=00000478 tag=1 raw_iq_imm=00000000 rs1=3
+[F] cyc=743 fetch raw=3ab08093 pc_d=00000494 fetch_pc=00000498 mem_direct=3ab08093
+[R] cyc=743 COMMIT op=8 pc=0000043c
+[D] cyc=744 dispatch op=22 pc=0000047c tag=2 raw_iq_imm=0000d000 rs1=0
+[F] cyc=744 fetch raw=0011a223 pc_d=00000498 fetch_pc=0000049c mem_direct=0011a223
+[C] cyc=744 CDB tag=15 val=00012000
+[R] cyc=744 COMMIT op=8 pc=00000440
+[D] cyc=745 dispatch op=8 pc=00000480 tag=3 raw_iq_imm=fffffccc rs1=1
+[F] cyc=745 fetch raw=00000073 pc_d=0000049c fetch_pc=000004a0 mem_direct=00000073
+[R] cyc=745 COMMIT op=8 pc=00000444
+[D] cyc=746 dispatch op=8 pc=00000484 tag=4 raw_iq_imm=00000000 rs1=0
+[F] cyc=746 fetch raw=ffffffff pc_d=000004a0 fetch_pc=000004a4 mem_direct=ffffffff
+[C] cyc=746 CDB tag=12 val=fffff801
+[R] cyc=746 COMMIT op=19 pc=00000448
+[F] cyc=748 fetch raw=0013a823 pc_d=00000454 fetch_pc=00000458 mem_direct=0013a823
+[C] cyc=748 CDB tag=2 val=0000d000
+[D] cyc=749 dispatch op=15 pc=00000454 tag=0 raw_iq_imm=00000010 rs1=7
+[F] cyc=749 fetch raw=51800193 pc_d=00000458 fetch_pc=0000045c mem_direct=51800193
+[D] cyc=750 dispatch op=8 pc=00000458 tag=1 raw_iq_imm=00000518 rs1=0
+[F] cyc=750 fetch raw=0000d137 pc_d=0000045c fetch_pc=00000460 mem_direct=0000d137
+[C] cyc=750 CDB tag=0 val=00000000
+[D] cyc=751 dispatch op=22 pc=0000045c tag=2 raw_iq_imm=0000d000 rs1=0
+[F] cyc=751 fetch raw=ccc10113 pc_d=00000460 fetch_pc=00000464 mem_direct=ccc10113
+[R] cyc=751 COMMIT op=15 pc=00000454
+[D] cyc=752 dispatch op=8 pc=00000460 tag=3 raw_iq_imm=fffffccc rs1=2
+[F] cyc=752 fetch raw=80100093 pc_d=00000464 fetch_pc=00000468 mem_direct=80100093
+[D] cyc=753 dispatch op=8 pc=00000464 tag=4 raw_iq_imm=fffff801 rs1=0
+[F] cyc=753 fetch raw=00100913 pc_d=00000468 fetch_pc=0000046c mem_direct=00100913
+[C] cyc=753 CDB tag=1 val=00000518
+[D] cyc=754 dispatch op=8 pc=00000468 tag=5 raw_iq_imm=00000001 rs1=0
+[F] cyc=754 fetch raw=0120d663 pc_d=0000046c fetch_pc=00000470 mem_direct=0120d663
+[R] cyc=754 COMMIT op=8 pc=00000458
+[D] cyc=755 dispatch op=19 pc=0000046c tag=6 raw_iq_imm=0000000c rs1=1
+[F] cyc=755 fetch raw=00012137 pc_d=00000470 fetch_pc=00000474 mem_direct=00012137
+[C] cyc=755 CDB tag=2 val=0000d000
+[D] cyc=756 dispatch op=22 pc=00000470 tag=7 raw_iq_imm=00012000 rs1=0
+[F] cyc=756 fetch raw=3ab10113 pc_d=00000474 fetch_pc=00000478 mem_direct=3ab10113
+[R] cyc=756 COMMIT op=22 pc=0000045c
+[D] cyc=757 dispatch op=8 pc=00000474 tag=8 raw_iq_imm=000003ab rs1=2
+[F] cyc=757 fetch raw=0021a023 pc_d=00000478 fetch_pc=0000047c mem_direct=0021a023
+[C] cyc=757 CDB tag=5 val=00000001
+[D] cyc=758 dispatch op=15 pc=00000478 tag=9 raw_iq_imm=00000000 rs1=3
+[F] cyc=758 fetch raw=0000d0b7 pc_d=0000047c fetch_pc=00000480 mem_direct=0000d0b7
+[D] cyc=759 dispatch op=22 pc=0000047c tag=10 raw_iq_imm=0000d000 rs1=0
+[F] cyc=759 fetch raw=ccc08093 pc_d=00000480 fetch_pc=00000484 mem_direct=ccc08093
+[C] cyc=759 CDB tag=3 val=0000cccc
+[D] cyc=760 dispatch op=8 pc=00000480 tag=11 raw_iq_imm=fffffccc rs1=1
+[F] cyc=760 fetch raw=00000013 pc_d=00000484 fetch_pc=00000488 mem_direct=00000013
+[R] cyc=760 COMMIT op=8 pc=00000460
+[D] cyc=761 dispatch op=8 pc=00000484 tag=12 raw_iq_imm=00000000 rs1=0
+[F] cyc=761 fetch raw=00000893 pc_d=00000488 fetch_pc=0000048c mem_direct=00000893
+[C] cyc=761 CDB tag=7 val=00012000
+[D] cyc=762 dispatch op=8 pc=00000488 tag=13 raw_iq_imm=00000000 rs1=0
+[F] cyc=762 fetch raw=01105663 pc_d=0000048c fetch_pc=00000490 mem_direct=01105663
+[D] cyc=763 dispatch op=19 pc=0000048c tag=14 raw_iq_imm=0000000c rs1=0
+[F] cyc=763 fetch raw=000120b7 pc_d=00000490 fetch_pc=00000494 mem_direct=000120b7
+[C] cyc=763 CDB tag=10 val=0000d000
+[D] cyc=764 dispatch op=22 pc=00000490 tag=15 raw_iq_imm=00012000 rs1=0
+[F] cyc=764 fetch raw=3ab08093 pc_d=00000494 fetch_pc=00000498 mem_direct=3ab08093
+[D] cyc=765 dispatch op=8 pc=00000494 tag=0 raw_iq_imm=000003ab rs1=1
+[F] cyc=765 fetch raw=0011a223 pc_d=00000498 fetch_pc=0000049c mem_direct=0011a223
+[C] cyc=765 CDB tag=13 val=00000000
+[D] cyc=766 dispatch op=15 pc=00000498 tag=1 raw_iq_imm=00000004 rs1=3
+[F] cyc=766 fetch raw=00000073 pc_d=0000049c fetch_pc=000004a0 mem_direct=00000073
+[D] cyc=767 dispatch op=63 pc=0000049c tag=2 raw_iq_imm=00000000 rs1=0
+[F] cyc=767 fetch raw=ffffffff pc_d=000004a0 fetch_pc=000004a4 mem_direct=ffffffff
+[C] cyc=767 CDB tag=15 val=00012000
+[D] cyc=768 dispatch op=62 pc=000004a0 tag=3 raw_iq_imm=00000000 rs1=0
+[F] cyc=768 fetch raw=ffffffff pc_d=000004a4 fetch_pc=000004a8 mem_direct=ffffffff
+[C] cyc=768 CDB tag=14 val=00000498
+[F] cyc=769 fetch raw=ffffffff pc_d=000004a8 fetch_pc=000004ac mem_direct=ffffffff
+[C] cyc=769 CDB tag=11 val=0000cccc
+[F] cyc=770 fetch raw=ffffffff pc_d=000004ac fetch_pc=000004b0 mem_direct=ffffffff
+[F] cyc=771 fetch raw=ffffffff pc_d=000004b0 fetch_pc=000004b4 mem_direct=ffffffff
+[C] cyc=771 CDB tag=2 val=00000000
+[F] cyc=772 fetch raw=ffffffff pc_d=000004b4 fetch_pc=000004b8 mem_direct=ffffffff
+[F] cyc=773 fetch raw=ffffffff pc_d=000004b8 fetch_pc=000004bc mem_direct=ffffffff
+[C] cyc=773 CDB tag=3 val=00000000
+[F] cyc=774 fetch raw=ffffffff pc_d=000004bc fetch_pc=000004c0 mem_direct=ffffffff
+[F] cyc=775 fetch raw=ffffffff pc_d=000004c0 fetch_pc=000004c4 mem_direct=ffffffff
+[C] cyc=775 CDB tag=4 val=fffff801
+[R] cyc=776 COMMIT op=8 pc=00000464
+[D] cyc=777 dispatch op=62 pc=000004a4 tag=4 raw_iq_imm=00000000 rs1=0
+[C] cyc=777 CDB tag=8 val=000123ab
+[R] cyc=777 COMMIT op=8 pc=00000468
+[D] cyc=778 dispatch op=62 pc=000004a8 tag=5 raw_iq_imm=00000000 rs1=0
+[F] cyc=778 fetch raw=ffffffff pc_d=000004c4 fetch_pc=000004c8 mem_direct=ffffffff
+[C] cyc=778 CDB tag=6 val=00000470
+[R] cyc=778 COMMIT op=19 pc=0000046c
+[D] cyc=779 dispatch op=62 pc=000004ac tag=6 raw_iq_imm=00000000 rs1=0
+[F] cyc=779 fetch raw=ffffffff pc_d=000004c8 fetch_pc=000004cc mem_direct=ffffffff
+[C] cyc=779 CDB tag=9 val=00000000
+[R] cyc=779 COMMIT op=22 pc=00000470
+[D] cyc=780 dispatch op=62 pc=000004b0 tag=7 raw_iq_imm=00000000 rs1=0
+[F] cyc=780 fetch raw=ffffffff pc_d=000004cc fetch_pc=000004d0 mem_direct=ffffffff
+[C] cyc=780 CDB tag=12 val=00000000
+[R] cyc=780 COMMIT op=8 pc=00000474
+[D] cyc=781 dispatch op=62 pc=000004b4 tag=8 raw_iq_imm=00000000 rs1=0
+[F] cyc=781 fetch raw=ffffffff pc_d=000004d0 fetch_pc=000004d4 mem_direct=ffffffff
+[R] cyc=781 COMMIT op=15 pc=00000478
+[D] cyc=782 dispatch op=62 pc=000004b8 tag=9 raw_iq_imm=00000000 rs1=0
+[F] cyc=782 fetch raw=ffffffff pc_d=000004d4 fetch_pc=000004d8 mem_direct=ffffffff
+[C] cyc=782 CDB tag=4 val=00000000
+[R] cyc=782 COMMIT op=22 pc=0000047c
+[D] cyc=783 dispatch op=62 pc=000004bc tag=10 raw_iq_imm=00000000 rs1=0
+[F] cyc=783 fetch raw=ffffffff pc_d=000004d8 fetch_pc=000004dc mem_direct=ffffffff
+[R] cyc=783 COMMIT op=8 pc=00000480
+[F] cyc=784 fetch raw=ffffffff pc_d=000004dc fetch_pc=000004e0 mem_direct=ffffffff
+[C] cyc=784 CDB tag=8 val=00000000
+[R] cyc=784 COMMIT op=8 pc=00000484
+[D] cyc=785 dispatch op=62 pc=000004c0 tag=11 raw_iq_imm=00000000 rs1=0
+[R] cyc=785 COMMIT op=8 pc=00000488
+[F] cyc=786 fetch raw=ffffffff pc_d=000004e0 fetch_pc=000004e4 mem_direct=ffffffff
+[C] cyc=786 CDB tag=10 val=00000000
+[R] cyc=786 COMMIT op=19 pc=0000048c
+[F] cyc=788 fetch raw=0011a223 pc_d=00000498 fetch_pc=0000049c mem_direct=0011a223
+[C] cyc=788 CDB tag=11 val=00000000
+[D] cyc=789 dispatch op=15 pc=00000498 tag=0 raw_iq_imm=00000004 rs1=3
+[F] cyc=789 fetch raw=00000073 pc_d=0000049c fetch_pc=000004a0 mem_direct=00000073
+[D] cyc=790 dispatch op=63 pc=0000049c tag=1 raw_iq_imm=00000000 rs1=0
+[F] cyc=790 fetch raw=ffffffff pc_d=000004a0 fetch_pc=000004a4 mem_direct=ffffffff
+[C] cyc=790 CDB tag=0 val=00000000
+[D] cyc=791 dispatch op=62 pc=000004a0 tag=2 raw_iq_imm=00000000 rs1=0
+[F] cyc=791 fetch raw=ffffffff pc_d=000004a4 fetch_pc=000004a8 mem_direct=ffffffff
+[R] cyc=791 COMMIT op=15 pc=00000498
+[D] cyc=792 dispatch op=62 pc=000004a4 tag=3 raw_iq_imm=00000000 rs1=0
+[F] cyc=792 fetch raw=ffffffff pc_d=000004a8 fetch_pc=000004ac mem_direct=ffffffff
+[D] cyc=793 dispatch op=62 pc=000004a8 tag=4 raw_iq_imm=00000000 rs1=0
+[F] cyc=793 fetch raw=ffffffff pc_d=000004ac fetch_pc=000004b0 mem_direct=ffffffff
+[C] cyc=793 CDB tag=1 val=00000000
+[D] cyc=794 dispatch op=62 pc=000004ac tag=5 raw_iq_imm=00000000 rs1=0
+[F] cyc=794 fetch raw=ffffffff pc_d=000004b0 fetch_pc=000004b4 mem_direct=ffffffff
+[R] cyc=794 COMMIT op=63 pc=0000049c
+[D] cyc=795 dispatch op=62 pc=000004b0 tag=6 raw_iq_imm=00000000 rs1=0
+[F] cyc=795 fetch raw=ffffffff pc_d=000004b4 fetch_pc=000004b8 mem_direct=ffffffff
+[C] cyc=795 CDB tag=3 val=00000000
+sim_compliance.sv:159: $finish called at 8185 (1s)

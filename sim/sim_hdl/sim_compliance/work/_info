@@ -1,0 +1,579 @@
+m255
+K4
+z2
+13
+!s112 1.1
+!i10d 8192
+!i10e 25
+!i10f 100
+cModel Technology
+Z0 dZ:/Users/mohammadaliabedian/Downloads/A1_V/sim/sim_hdl/sim_compliance
+valu_int
+Z1 DXx6 sv_std 3 std 0 22 AD7iAPLo6nTIKk<N0eo=D3
+Z2 DXx4 work 10 rv32if_pkg 0 22 llFeJ?1zElalOGBdkz:103
+Z3 !s110 1778199841
+!i10b 1
+!s100 =n;fS<TO1030bfecKRNBI2
+I4JTI:i4X^ze:a9OM2[On33
+Z4 VDg1SIo80bB@j0V0VzS_@n1
+!s105 alu_unit_sv_unit
+S1
+R0
+Z5 w1777868940
+8Z:\Users\mohammadaliabedian\Downloads\A1_V\hardware\execute\int_ops\alu_unit.sv
+FZ:\Users\mohammadaliabedian\Downloads\A1_V\hardware\execute\int_ops\alu_unit.sv
+Z6 L0 20
+Z7 OV;L;10.5b;63
+r1
+!s85 0
+31
+Z8 !s108 1778199840.000000
+Z9 !s107 Z:\Users\mohammadaliabedian\Downloads\A1_V\sim\sim_hdl\sim_compliance\sim_compliance.sv|Z:\Users\mohammadaliabedian\Downloads\A1_V\hardware\core\tomasulo_core.sv|Z:\Users\mohammadaliabedian\Downloads\A1_V\hardware\core\commit_unit.sv|Z:\Users\mohammadaliabedian\Downloads\A1_V\hardware\core\dispatch.sv|Z:\Users\mohammadaliabedian\Downloads\A1_V\hardware\core\rob.sv|Z:\Users\mohammadaliabedian\Downloads\A1_V\hardware\core\rat.sv|Z:\Users\mohammadaliabedian\Downloads\A1_V\hardware\core\regfile.sv|Z:\Users\mohammadaliabedian\Downloads\A1_V\hardware\core\cdb.sv|Z:\Users\mohammadaliabedian\Downloads\A1_V\hardware\core\arbiter.sv|Z:\Users\mohammadaliabedian\Downloads\A1_V\hardware\execute\reservation_station.sv|Z:\Users\mohammadaliabedian\Downloads\A1_V\hardware\execute\fp_ops\fp_round.sv|Z:\Users\mohammadaliabedian\Downloads\A1_V\hardware\execute\fp_ops\fp_cvt.sv|Z:\Users\mohammadaliabedian\Downloads\A1_V\hardware\execute\fp_ops\fp_div.sv|Z:\Users\mohammadaliabedian\Downloads\A1_V\hardware\execute\fp_ops\fp_mul.sv|Z:\Users\mohammadaliabedian\Downloads\A1_V\hardware\execute\fp_ops\fp_add.sv|Z:\Users\mohammadaliabedian\Downloads\A1_V\hardware\execute\int_ops\branch_unit.sv|Z:\Users\mohammadaliabedian\Downloads\A1_V\hardware\execute\int_ops\alu_unit.sv|Z:\Users\mohammadaliabedian\Downloads\A1_V\hardware\execute\lsb\load_store_buffer.sv|Z:\Users\mohammadaliabedian\Downloads\A1_V\hardware\execute\lsb\data_mem.sv|Z:\Users\mohammadaliabedian\Downloads\A1_V\hardware\fetch\instr_queue.sv|Z:\Users\mohammadaliabedian\Downloads\A1_V\hardware\fetch\instr_mem.sv|Z:\Users\mohammadaliabedian\Downloads\A1_V\hardware\pkg\rv32if_pkg.sv|
+Z10 !s90 -sv|+incdir+Z:\Users\mohammadaliabedian\Downloads\A1_V\hardware\pkg|Z:\Users\mohammadaliabedian\Downloads\A1_V\hardware\pkg\rv32if_pkg.sv|Z:\Users\mohammadaliabedian\Downloads\A1_V\hardware\fetch\instr_mem.sv|Z:\Users\mohammadaliabedian\Downloads\A1_V\hardware\fetch\instr_queue.sv|Z:\Users\mohammadaliabedian\Downloads\A1_V\hardware\execute\lsb\data_mem.sv|Z:\Users\mohammadaliabedian\Downloads\A1_V\hardware\execute\lsb\load_store_buffer.sv|Z:\Users\mohammadaliabedian\Downloads\A1_V\hardware\execute\int_ops\alu_unit.sv|Z:\Users\mohammadaliabedian\Downloads\A1_V\hardware\execute\int_ops\branch_unit.sv|Z:\Users\mohammadaliabedian\Downloads\A1_V\hardware\execute\fp_ops\fp_add.sv|Z:\Users\mohammadaliabedian\Downloads\A1_V\hardware\execute\fp_ops\fp_mul.sv|Z:\Users\mohammadaliabedian\Downloads\A1_V\hardware\execute\fp_ops\fp_div.sv|Z:\Users\mohammadaliabedian\Downloads\A1_V\hardware\execute\fp_ops\fp_cvt.sv|Z:\Users\mohammadaliabedian\Downloads\A1_V\hardware\execute\fp_ops\fp_round.sv|Z:\Users\mohammadaliabedian\Downloads\A1_V\hardware\execute\reservation_station.sv|Z:\Users\mohammadaliabedian\Downloads\A1_V\hardware\core\arbiter.sv|Z:\Users\mohammadaliabedian\Downloads\A1_V\hardware\core\cdb.sv|Z:\Users\mohammadaliabedian\Downloads\A1_V\hardware\core\regfile.sv|Z:\Users\mohammadaliabedian\Downloads\A1_V\hardware\core\rat.sv|Z:\Users\mohammadaliabedian\Downloads\A1_V\hardware\core\rob.sv|Z:\Users\mohammadaliabedian\Downloads\A1_V\hardware\core\dispatch.sv|Z:\Users\mohammadaliabedian\Downloads\A1_V\hardware\core\commit_unit.sv|Z:\Users\mohammadaliabedian\Downloads\A1_V\hardware\core\tomasulo_core.sv|Z:\Users\mohammadaliabedian\Downloads\A1_V\sim\sim_hdl\sim_compliance\sim_compliance.sv|
+!i113 1
+o-sv
+Z11 !s92 -sv {+incdir+Z:\Users\mohammadaliabedian\Downloads\A1_V\hardware\pkg}
+Z12 tCvgOpt 0
+varbiter
+R1
+R3
+!i10b 1
+!s100 Wnl2S?gDUiJML@cBAH_bB2
+IRKA]AI^VfK2ESldMGl7c_2
+R4
+!s105 arbiter_sv_unit
+S1
+R0
+w1777876343
+8Z:\Users\mohammadaliabedian\Downloads\A1_V\hardware\core\arbiter.sv
+FZ:\Users\mohammadaliabedian\Downloads\A1_V\hardware\core\arbiter.sv
+L0 12
+R7
+r1
+!s85 0
+31
+R8
+R9
+R10
+!i113 1
+o-sv
+R11
+R12
+vbranch_unit
+R1
+R2
+R3
+!i10b 1
+!s100 d1K?[feFg:O3J>OKbeB<F1
+IV1KUi34]m3Z=f5WWdlnaV2
+R4
+!s105 branch_unit_sv_unit
+S1
+R0
+R5
+8Z:\Users\mohammadaliabedian\Downloads\A1_V\hardware\execute\int_ops\branch_unit.sv
+FZ:\Users\mohammadaliabedian\Downloads\A1_V\hardware\execute\int_ops\branch_unit.sv
+L0 21
+R7
+r1
+!s85 0
+31
+R8
+R9
+R10
+!i113 1
+o-sv
+R11
+R12
+vcdb
+R1
+R2
+R3
+!i10b 1
+!s100 =8[o=V8X_f9[aLIgWHdJ<1
+IKKInPB<6mlFAh:?W38cG03
+R4
+!s105 cdb_sv_unit
+S1
+R0
+w1778112923
+8Z:\Users\mohammadaliabedian\Downloads\A1_V\hardware\core\cdb.sv
+FZ:\Users\mohammadaliabedian\Downloads\A1_V\hardware\core\cdb.sv
+L0 24
+R7
+r1
+!s85 0
+31
+R8
+R9
+R10
+!i113 1
+o-sv
+R11
+R12
+vcommit_unit
+R1
+R2
+R3
+!i10b 1
+!s100 F06Q_Zm<HaKPTW9hfZQ_h1
+IbVGeB3mzo61To_X<C^@W71
+R4
+!s105 commit_unit_sv_unit
+S1
+R0
+w1778047808
+8Z:\Users\mohammadaliabedian\Downloads\A1_V\hardware\core\commit_unit.sv
+FZ:\Users\mohammadaliabedian\Downloads\A1_V\hardware\core\commit_unit.sv
+R6
+R7
+r1
+!s85 0
+31
+R8
+R9
+R10
+!i113 1
+o-sv
+R11
+R12
+vdata_mem
+R1
+R2
+R3
+!i10b 1
+!s100 QCPhH5eP86E[X4CGa1hlh1
+ICm8N^;d`QQmQWk112_lE<0
+R4
+!s105 data_mem_sv_unit
+S1
+R0
+w1778003338
+8Z:\Users\mohammadaliabedian\Downloads\A1_V\hardware\execute\lsb\data_mem.sv
+FZ:\Users\mohammadaliabedian\Downloads\A1_V\hardware\execute\lsb\data_mem.sv
+Z13 L0 17
+R7
+r1
+!s85 0
+31
+R8
+R9
+R10
+!i113 1
+o-sv
+R11
+R12
+vdispatch
+R1
+R2
+R3
+!i10b 1
+!s100 fdCE]XA;3367zzGYn4dl<0
+IAgAcC2_hm1lEk?eBIh6T@3
+R4
+!s105 dispatch_sv_unit
+S1
+R0
+w1778184724
+8Z:\Users\mohammadaliabedian\Downloads\A1_V\hardware\core\dispatch.sv
+FZ:\Users\mohammadaliabedian\Downloads\A1_V\hardware\core\dispatch.sv
+R13
+R7
+r1
+!s85 0
+31
+R8
+R9
+R10
+!i113 1
+o-sv
+R11
+R12
+vfp_add
+R1
+R2
+R3
+!i10b 1
+!s100 aFJ^3K]WESbUBCC=Sd[4d3
+ImN6?H?4]FQd;k<4z3]ec72
+R4
+!s105 fp_add_sv_unit
+S1
+R0
+w1778005056
+8Z:\Users\mohammadaliabedian\Downloads\A1_V\hardware\execute\fp_ops\fp_add.sv
+FZ:\Users\mohammadaliabedian\Downloads\A1_V\hardware\execute\fp_ops\fp_add.sv
+L0 15
+R7
+r1
+!s85 0
+31
+R8
+R9
+R10
+!i113 1
+o-sv
+R11
+R12
+vfp_cvt
+R1
+R2
+R3
+!i10b 1
+!s100 5F@DaEJ^llcZT2A^1TD7_1
+IFz2icd7DVfB86n4j;MZQ21
+R4
+!s105 fp_cvt_sv_unit
+S1
+R0
+w1778046853
+8Z:\Users\mohammadaliabedian\Downloads\A1_V\hardware\execute\fp_ops\fp_cvt.sv
+FZ:\Users\mohammadaliabedian\Downloads\A1_V\hardware\execute\fp_ops\fp_cvt.sv
+Z14 L0 18
+R7
+r1
+!s85 0
+31
+R8
+R9
+R10
+!i113 1
+o-sv
+R11
+R12
+vfp_div
+R1
+R2
+R3
+!i10b 1
+!s100 a?N4B??o_hAeKYLR5dGm01
+IQKM^;oW_n1azf2dW<B>oL3
+R4
+!s105 fp_div_sv_unit
+S1
+R0
+w1778176243
+8Z:\Users\mohammadaliabedian\Downloads\A1_V\hardware\execute\fp_ops\fp_div.sv
+FZ:\Users\mohammadaliabedian\Downloads\A1_V\hardware\execute\fp_ops\fp_div.sv
+R13
+R7
+r1
+!s85 0
+31
+R8
+R9
+R10
+!i113 1
+o-sv
+R11
+R12
+vfp_mul
+R1
+R2
+R3
+!i10b 1
+!s100 Ol0ji`k23h=@BFBQmNoDN0
+Ie3Ec1iScI7E]9f^_oHTMO0
+R4
+!s105 fp_mul_sv_unit
+S1
+R0
+w1778006528
+8Z:\Users\mohammadaliabedian\Downloads\A1_V\hardware\execute\fp_ops\fp_mul.sv
+FZ:\Users\mohammadaliabedian\Downloads\A1_V\hardware\execute\fp_ops\fp_mul.sv
+R14
+R7
+r1
+!s85 0
+31
+R8
+R9
+R10
+!i113 1
+o-sv
+R11
+R12
+vfp_round
+R1
+R2
+R3
+!i10b 1
+!s100 zI87XmL;N>k_AXTcPjnK70
+IO0dm3`]7@D8MCj8n_ceDT2
+R4
+!s105 fp_round_sv_unit
+S1
+R0
+w1778046938
+8Z:\Users\mohammadaliabedian\Downloads\A1_V\hardware\execute\fp_ops\fp_round.sv
+FZ:\Users\mohammadaliabedian\Downloads\A1_V\hardware\execute\fp_ops\fp_round.sv
+L0 28
+R7
+r1
+!s85 0
+31
+R8
+R9
+R10
+!i113 1
+o-sv
+R11
+R12
+vinstr_mem
+R1
+R2
+R3
+!i10b 1
+!s100 ihW=z2P8XcaCDFdJ<>Mm=0
+IEAm[jeND33NP4C_>YC>O>3
+R4
+!s105 instr_mem_sv_unit
+S1
+R0
+w1778003161
+8Z:\Users\mohammadaliabedian\Downloads\A1_V\hardware\fetch\instr_mem.sv
+FZ:\Users\mohammadaliabedian\Downloads\A1_V\hardware\fetch\instr_mem.sv
+R13
+R7
+r1
+!s85 0
+31
+R8
+R9
+R10
+!i113 1
+o-sv
+R11
+R12
+vinstr_queue
+R1
+R2
+R3
+!i10b 1
+!s100 P5;3g<MCMPZ<`[4ZHYJMd1
+IDBC:Il4`YXH<cg<MzN7;?1
+R4
+!s105 instr_queue_sv_unit
+S1
+R0
+w1778002732
+8Z:\Users\mohammadaliabedian\Downloads\A1_V\hardware\fetch\instr_queue.sv
+FZ:\Users\mohammadaliabedian\Downloads\A1_V\hardware\fetch\instr_queue.sv
+L0 19
+R7
+r1
+!s85 0
+31
+R8
+R9
+R10
+!i113 1
+o-sv
+R11
+R12
+vload_store_buffer
+R1
+R2
+R3
+!i10b 1
+!s100 `4HPO1dZ1PM]<HSAQOjlV2
+I[:=<ZfDUA<GDQM[`B[R;P1
+R4
+!s105 load_store_buffer_sv_unit
+S1
+R0
+w1778181174
+8Z:\Users\mohammadaliabedian\Downloads\A1_V\hardware\execute\lsb\load_store_buffer.sv
+FZ:\Users\mohammadaliabedian\Downloads\A1_V\hardware\execute\lsb\load_store_buffer.sv
+R14
+R7
+r1
+!s85 0
+31
+R8
+R9
+R10
+!i113 1
+o-sv
+R11
+R12
+vrat_table
+R1
+R2
+R3
+!i10b 1
+!s100 T48iVe^3`^TMaV:BIldj62
+Ila`V21liPG>8SX_kG37OA0
+R4
+!s105 rat_sv_unit
+S1
+R0
+w1778178197
+8Z:\Users\mohammadaliabedian\Downloads\A1_V\hardware\core\rat.sv
+FZ:\Users\mohammadaliabedian\Downloads\A1_V\hardware\core\rat.sv
+L0 30
+R7
+r1
+!s85 0
+31
+R8
+R9
+R10
+!i113 1
+o-sv
+R11
+R12
+vregfile
+R1
+R2
+R3
+!i10b 1
+!s100 chCdCX0AT6hSPoFTW?9ne3
+IIURjd`H9@1Zb3T7FiK^jh0
+R4
+!s105 regfile_sv_unit
+S1
+R0
+w1778178205
+8Z:\Users\mohammadaliabedian\Downloads\A1_V\hardware\core\regfile.sv
+FZ:\Users\mohammadaliabedian\Downloads\A1_V\hardware\core\regfile.sv
+L0 25
+R7
+r1
+!s85 0
+31
+R8
+R9
+R10
+!i113 1
+o-sv
+R11
+R12
+vreservation_station
+R1
+R2
+R3
+!i10b 1
+!s100 D@nGYDlHVm]40=E332^Y40
+Ik8N6ESz9AYR9M];Wo=Zh70
+R4
+!s105 reservation_station_sv_unit
+S1
+R0
+w1778112739
+8Z:\Users\mohammadaliabedian\Downloads\A1_V\hardware\execute\reservation_station.sv
+FZ:\Users\mohammadaliabedian\Downloads\A1_V\hardware\execute\reservation_station.sv
+L0 23
+R7
+r1
+!s85 0
+31
+R8
+R9
+R10
+!i113 1
+o-sv
+R11
+R12
+vrob_unit
+R1
+R2
+R3
+!i10b 1
+!s100 YVX^lNV1CU[^?`ik<L=]n0
+IXDO;mM4A;EmioS?HXePo`3
+R4
+!s105 rob_sv_unit
+S1
+R0
+w1778184675
+8Z:\Users\mohammadaliabedian\Downloads\A1_V\hardware\core\rob.sv
+FZ:\Users\mohammadaliabedian\Downloads\A1_V\hardware\core\rob.sv
+L0 22
+R7
+r1
+!s85 0
+31
+R8
+R9
+R10
+!i113 1
+o-sv
+R11
+R12
+Xrv32if_pkg
+R1
+R3
+!i10b 1
+!s100 J^E_=e_b9V4QbUk9hM]IH3
+IllFeJ?1zElalOGBdkz:103
+VllFeJ?1zElalOGBdkz:103
+S1
+R0
+w1777882380
+8Z:\Users\mohammadaliabedian\Downloads\A1_V\hardware\pkg\rv32if_pkg.sv
+FZ:\Users\mohammadaliabedian\Downloads\A1_V\hardware\pkg\rv32if_pkg.sv
+L0 9
+R7
+r1
+!s85 0
+31
+R8
+R9
+R10
+!i113 1
+o-sv
+R11
+R12
+vsim_compliance
+R1
+R2
+R3
+!i10b 1
+!s100 6f8YQOMlMo[ogZc774_A_0
+I5HLd0XL^aiTBMMLH6@^A=2
+R4
+!s105 sim_compliance_sv_unit
+S1
+R0
+w1778178266
+8Z:\Users\mohammadaliabedian\Downloads\A1_V\sim\sim_hdl\sim_compliance\sim_compliance.sv
+FZ:\Users\mohammadaliabedian\Downloads\A1_V\sim\sim_hdl\sim_compliance\sim_compliance.sv
+L0 14
+R7
+r1
+!s85 0
+31
+R8
+R9
+R10
+!i113 1
+o-sv
+R11
+R12
+vtomasulo_core
+R1
+R2
+R3
+!i10b 1
+!s100 hAz21k:ZMnd?aj]_nzaL;1
+I[N[1F=^XEfnRocZn<GAYK3
+R4
+!s105 tomasulo_core_sv_unit
+S1
+R0
+w1778184762
+8Z:\Users\mohammadaliabedian\Downloads\A1_V\hardware\core\tomasulo_core.sv
+FZ:\Users\mohammadaliabedian\Downloads\A1_V\hardware\core\tomasulo_core.sv
+R14
+R7
+r1
+!s85 0
+31
+R8
+R9
+R10
+!i113 1
+o-sv
+R11
+R12
