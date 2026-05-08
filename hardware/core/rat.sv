@@ -98,18 +98,28 @@ module rat_table(clk, rst_n, flush_i,
     logic [NUM_FP_REGS-1:0] f_valid; ///< Valid bits for floating-point register mappings.
     logic [TAG_W-1:0] f_tags [NUM_FP_REGS]; ///< Tags for floating-point register mappings.
 
-    // logic for dispatch lookup
-    assign x_rs1_tag_o = x_tags[x_rs1_addr_i];
-    assign x_rs1_valid_o = x_valid[x_rs1_addr_i];
+    // logic for dispatch lookup — forward-clear when commit targets this mapping
+    // this cycle, so a dispatch in the same cycle as a commit sees the register
+    // as not-in-flight and reads the commit value from the regfile bypass.
+    assign x_rs1_tag_o   = x_tags[x_rs1_addr_i];
+    assign x_rs1_valid_o = x_valid[x_rs1_addr_i] &&
+                           !(x_commit_en_i && x_commit_addr_i == x_rs1_addr_i &&
+                             x_commit_tag_i == x_tags[x_rs1_addr_i]);
 
-    assign x_rs2_tag_o = x_tags[x_rs2_addr_i];
-    assign x_rs2_valid_o = x_valid[x_rs2_addr_i];
+    assign x_rs2_tag_o   = x_tags[x_rs2_addr_i];
+    assign x_rs2_valid_o = x_valid[x_rs2_addr_i] &&
+                           !(x_commit_en_i && x_commit_addr_i == x_rs2_addr_i &&
+                             x_commit_tag_i == x_tags[x_rs2_addr_i]);
 
-    assign f_rs1_tag_o = f_tags[f_rs1_addr_i];
-    assign f_rs1_valid_o = f_valid[f_rs1_addr_i];
+    assign f_rs1_tag_o   = f_tags[f_rs1_addr_i];
+    assign f_rs1_valid_o = f_valid[f_rs1_addr_i] &&
+                           !(f_commit_en_i && f_commit_addr_i == f_rs1_addr_i &&
+                             f_commit_tag_i == f_tags[f_rs1_addr_i]);
 
-    assign f_rs2_tag_o = f_tags[f_rs2_addr_i];
-    assign f_rs2_valid_o = f_valid[f_rs2_addr_i];
+    assign f_rs2_tag_o   = f_tags[f_rs2_addr_i];
+    assign f_rs2_valid_o = f_valid[f_rs2_addr_i] &&
+                           !(f_commit_en_i && f_commit_addr_i == f_rs2_addr_i &&
+                             f_commit_tag_i == f_tags[f_rs2_addr_i]);
 
     // logic for mapping and committing
     always_ff @(posedge clk or negedge rst_n) begin 
@@ -117,8 +127,8 @@ module rat_table(clk, rst_n, flush_i,
             x_valid <= {NUM_INT_REGS{1'b0}}; // Invalidate all integer register mappings on reset or flush
             f_valid <= {NUM_FP_REGS{1'b0}}; // Invalidate all floating-point register mappings on reset or flush
 
-            x_tags <= '{default: {TAG_W{1'b0}}}; // Clear all integer register tags on reset or flush
-            f_tags <= '{default: {TAG_W{1'b0}}}; // Clear all floating-point register tags on reset or flush
+            for (int k = 0; k < NUM_INT_REGS; k++) x_tags[k] <= '0;
+            for (int k = 0; k < NUM_FP_REGS;  k++) f_tags[k] <= '0;
         end else begin  
 
             // update on commit FIRST - this ensures that if an instruction is dispatched and committed in the same cycle. 

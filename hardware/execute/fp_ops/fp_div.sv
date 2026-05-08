@@ -56,8 +56,17 @@ module fp_div(clk, rst_n, flush_i,
     // 3-bit restoring division step (combinational, unrolled)
     // Takes current partial remainder p, shift register s, divisor dv.
     // Returns next p, s, and 3 quotient bits q[2:1:0] (MSB first).
+    //
+    // Two identical copies (div3_step / div3_idle) exist because iverilog has a
+    // bug where two always_comb blocks calling the *same* automatic task share
+    // sensitivity-list state, causing an infinite delta-cycle loop.  Using
+    // separate task symbols eliminates the interference.
+    //
+    // Shift ops replace {p[22:0],s[23]} / {s[22:0],1'b0} to avoid iverilog's
+    // "sorry: constant selects" adding local p/s to the always_comb sensitivity.
+    // Explicit if/else avoids reading qbits[N] back after writing it.
     // -------------------------------------------------------------------------
-    function automatic void div3(
+    task automatic div3_step(
         input  logic [23:0] p_in,
         input  logic [23:0] s_in,
         input  logic [23:0] dv,
@@ -68,26 +77,44 @@ module fp_div(clk, rst_n, flush_i,
         logic [23:0] p, s;
         begin
             p = p_in; s = s_in;
-
-            // Bit 2 (MSB of this group)
-            p = {p[22:0], s[23]}; s = {s[22:0], 1'b0};
-            qbits[2] = (p >= dv);
-            if (qbits[2]) p = p - dv;
-
-            // Bit 1
-            p = {p[22:0], s[23]}; s = {s[22:0], 1'b0};
-            qbits[1] = (p >= dv);
-            if (qbits[1]) p = p - dv;
-
-            // Bit 0 (LSB of this group)
-            p = {p[22:0], s[23]}; s = {s[22:0], 1'b0};
-            qbits[0] = (p >= dv);
-            if (qbits[0]) p = p - dv;
-
+            p = (p << 1) | (s >> 23); s = s << 1;
+            if (p >= dv) begin qbits[2] = 1'b1; p = p - dv; end
+            else              qbits[2] = 1'b0;
+            p = (p << 1) | (s >> 23); s = s << 1;
+            if (p >= dv) begin qbits[1] = 1'b1; p = p - dv; end
+            else              qbits[1] = 1'b0;
+            p = (p << 1) | (s >> 23); s = s << 1;
+            if (p >= dv) begin qbits[0] = 1'b1; p = p - dv; end
+            else              qbits[0] = 1'b0;
             p_out = p;
             s_out = s;
         end
-    endfunction
+    endtask
+
+    task automatic div3_idle(
+        input  logic [23:0] p_in,
+        input  logic [23:0] s_in,
+        input  logic [23:0] dv,
+        output logic [23:0] p_out,
+        output logic [23:0] s_out,
+        output logic [2:0]  qbits
+    );
+        logic [23:0] p, s;
+        begin
+            p = p_in; s = s_in;
+            p = (p << 1) | (s >> 23); s = s << 1;
+            if (p >= dv) begin qbits[2] = 1'b1; p = p - dv; end
+            else              qbits[2] = 1'b0;
+            p = (p << 1) | (s >> 23); s = s << 1;
+            if (p >= dv) begin qbits[1] = 1'b1; p = p - dv; end
+            else              qbits[1] = 1'b0;
+            p = (p << 1) | (s >> 23); s = s << 1;
+            if (p >= dv) begin qbits[0] = 1'b1; p = p - dv; end
+            else              qbits[0] = 1'b0;
+            p_out = p;
+            s_out = s;
+        end
+    endtask
 
     // -------------------------------------------------------------------------
     // Combinational: next-step outputs from current registers (used in DIVIDE)
@@ -96,33 +123,30 @@ module fp_div(clk, rst_n, flush_i,
     logic [2:0]  c_qbits;
 
     always_comb begin
-        div3(s_preg, s_sreg, s_dv, c_preg, c_sreg, c_qbits);
+        div3_step(s_preg, s_sreg, s_dv, c_preg, c_sreg, c_qbits);
     end
 
     // -------------------------------------------------------------------------
     // Result packing from 24-bit quotient
     // -------------------------------------------------------------------------
     logic [DATA_W-1:0] c_result;
+    // Local vars with bit-select reads inside always_comb trigger iverilog
+    // "sorry: constant selects" -- locals get added to sensitivity and
+    // re-init to X each evaluation, causing an infinite delta-cycle loop.
+    // Fix: inline the expressions directly using module-level signals.
     always_comb begin
-        logic [9:0]  er;
-        logic [22:0] mant;
         if (s_exp[9] | (s_exp == 10'd0)) begin
             c_result = 32'h0;
         end else if (s_exp > 10'd254) begin
             c_result = {s_sign, 8'hFE, 23'h7FFFFF};
         end else if (s_qreg[23]) begin
-            er = s_exp;
-            mant = s_qreg[22:0];
-            c_result = {s_sign, er[7:0], mant};
+            c_result = {s_sign, s_exp[7:0], s_qreg[22:0]};
+        end else if (s_exp > 10'd1) begin
+            // Leading bit is 0: shift mantissa left, decrement exponent.
+            // s_exp in [2,254] so s_exp[7:0]-1 never borrows into bit 8.
+            c_result = {s_sign, s_exp[7:0] - 8'd1, {s_qreg[21:0], 1'b0}};
         end else begin
-            // Leading bit is 0 -> shift left one, decrement exponent
-            if (s_exp > 10'd1) begin
-                er = s_exp - 10'd1;
-                mant = {s_qreg[21:0], 1'b0};
-                c_result = {s_sign, er[7:0], mant};
-            end else begin
-                c_result = 32'h0;
-            end
+            c_result = 32'h0;
         end
     end
 
@@ -143,7 +167,7 @@ module fp_div(clk, rst_n, flush_i,
         c_idle_sign = rs1_i[31] ^ rs2_i[31];
         c_idle_exp  = {2'b0, ea} - {2'b0, eb} + 10'd127;
         c_idle_dv   = mb;
-        div3(24'h0, ma, mb, p0, s0, qb0);
+        div3_idle(24'h0, ma, mb, p0, s0, qb0);
         c_idle_preg = p0;
         c_idle_sreg = s0;
         c_idle_qreg = {21'h0, qb0};

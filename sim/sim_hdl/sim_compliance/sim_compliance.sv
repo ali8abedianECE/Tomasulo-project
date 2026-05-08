@@ -28,6 +28,7 @@ module sim_compliance;
     logic [PC_W-1:0]   mem_rd_addr, mem_wr_addr;
     logic [DATA_W-1:0] mem_rd_data, mem_wr_data;
     logic              mem_wr_en;
+    logic [3:0]        mem_wr_be;
     logic              iq_full, flush;
     logic [PC_W-1:0]   redirect_pc;
 
@@ -53,19 +54,24 @@ module sim_compliance;
         end
     end
 
+    // Combinational read avoids Icarus scheduling race where instr_mem's
+    // always_ff would see the post-update fetch_pc at the same posedge.
+    assign instr_raw = u_imem.mem[fetch_pc_d[11:2]];
+
     // -----------------------------------------------------------------------
     // Memory + core
     // -----------------------------------------------------------------------
     instr_mem #(.FILENAME("")) u_imem(
         .clk(clk), .pc_i(fetch_pc),
-        .instr_o(instr_raw),
+        .instr_o(),
         .write_en_i(1'b0), .write_addr_i('0), .write_data_i('0)
     );
 
     data_mem #(.FILENAME("")) u_dmem(
         .clk(clk),
         .rd_addr_i(mem_rd_addr), .rd_data_o(mem_rd_data),
-        .wr_en_i(mem_wr_en), .wr_addr_i(mem_wr_addr), .wr_data_i(mem_wr_data)
+        .wr_en_i(mem_wr_en), .wr_be_i(mem_wr_be),
+        .wr_addr_i(mem_wr_addr), .wr_data_i(mem_wr_data)
     );
 
     tomasulo_core u_core(
@@ -76,8 +82,8 @@ module sim_compliance;
         .iq_full_o(iq_full),
         .flush_o(flush), .redirect_pc_o(redirect_pc),
         .mem_rd_addr_o(mem_rd_addr), .mem_rd_data_i(mem_rd_data),
-        .mem_wr_en_o(mem_wr_en), .mem_wr_addr_o(mem_wr_addr),
-        .mem_wr_data_o(mem_wr_data)
+        .mem_wr_en_o(mem_wr_en), .mem_wr_be_o(mem_wr_be),
+        .mem_wr_addr_o(mem_wr_addr), .mem_wr_data_o(mem_wr_data)
     );
 
     // -----------------------------------------------------------------------
@@ -98,22 +104,46 @@ module sim_compliance;
     integer sig_fd, cycle_cnt;
 
     initial begin
-        if (!$value$plusargs("HEX=%s",       hex_file))  hex_file  = "program.hex";
-        if (!$value$plusargs("SIG_OUT=%s",   sig_out))   sig_out   = "out.sig";
+        if (!$value$plusargs("HEX=%s", hex_file))  hex_file  = "program.hex";
+        if (!$value$plusargs("SIG_OUT=%s",sig_out))   sig_out   = "out.sig";
         if (!$value$plusargs("SIG_BEGIN=%d", sig_begin)) sig_begin = 256;
-        if (!$value$plusargs("SIG_END=%d",   sig_end))   sig_end   = 512;
+        if (!$value$plusargs("SIG_END=%d",sig_end))   sig_end   = 512;
 
+        for (int i = 0; i < MEM_SIZE; i++) u_dmem.mem[i] = '0;
+        $display("[tb] loading hex: %s", hex_file);
         $readmemh(hex_file, u_imem.mem);
         $readmemh(hex_file, u_dmem.mem);
+        $display("[tb] hex loaded, entering reset");
 
         rst_n = 1'b0;
+        $display("[tb] rst_n=0, waiting for 4 clk edges...");
         repeat(4) @(posedge clk);
+        $display("[tb] reset done, rst_n=1");
         rst_n = 1'b1;
 
         cycle_cnt = 0;
         while (!halted && cycle_cnt < 100_000) begin
             @(posedge clk);
             cycle_cnt++;
+            if (cycle_cnt % 1000 == 0) $display("[tb] cycle %0d", cycle_cnt);
+            begin
+                if (u_core.iq_pop_w)
+                    $display("[D] cyc=%0d dispatch op=%0d pc=%08x tag=%0d raw_iq_imm=%08x rs1=%0d",
+                             cycle_cnt, u_core.iq_instr_w.op,
+                             u_core.iq_instr_w.pc, u_core.rob_alloc_tag_w,
+                             u_core.iq_instr_w.imm, u_core.iq_instr_w.rs1);
+                if (fetch_valid & ~iq_full)
+                    $display("[F] cyc=%0d fetch raw=%08x pc_d=%08x fetch_pc=%08x mem_direct=%08x",
+                             cycle_cnt, instr_raw, fetch_pc_d, fetch_pc,
+                             u_imem.mem[fetch_pc_d >> 2]);
+                if (u_core.cdb_w.valid)
+                    $display("[C] cyc=%0d CDB tag=%0d val=%08x", cycle_cnt,
+                             u_core.cdb_w.tag, u_core.cdb_w.value);
+                if (u_core.rob_commit_valid_w)
+                    $display("[R] cyc=%0d COMMIT op=%0d pc=%08x", cycle_cnt,
+                             u_core.rob_commit_entry_w.op,
+                             u_core.rob_commit_entry_w.pc);
+            end
         end
 
         if (!halted)

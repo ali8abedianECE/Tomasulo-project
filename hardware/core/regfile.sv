@@ -63,8 +63,8 @@ module regfile(clk, rst_n,
 
     always_ff @(posedge clk or negedge rst_n) begin 
         if(~rst_n) begin 
-            int_regs <= '{default: {DATA_W{1'b0}}}; // Reset integer registers to 0
-            fp_regs <= '{default: {DATA_W{1'b0}}}; // Reset floating-point registers to 0
+            for (int k = 0; k < NUM_INT_REGS; k++) int_regs[k] <= '0;
+            for (int k = 0; k < NUM_FP_REGS;  k++) fp_regs[k]  <= '0;
         end else begin
             if(x_wr_en_i) begin 
                 if(x_wr_addr_i != 0) begin // Register x0 is hardwired to zero in RISC-V
@@ -78,13 +78,16 @@ module regfile(clk, rst_n,
         end
     end 
 
-    always_comb begin 
-        x_rs1_val_o = int_regs[x_rs1_addr_i]; // Read from integer register file
-        x_rs2_val_o = int_regs[x_rs2_addr_i]; // Read from integer register file
-
-        f_rs1_val_o = fp_regs[f_rs1_addr_i]; // Read from floating-point register file
-        f_rs2_val_o = fp_regs[f_rs2_addr_i]; // Read from floating-point register file
-    end 
+    always_comb begin
+        x_rs1_val_o = (x_wr_en_i && x_wr_addr_i == x_rs1_addr_i && x_wr_addr_i != 0)
+                      ? x_wr_val_i : int_regs[x_rs1_addr_i];
+        x_rs2_val_o = (x_wr_en_i && x_wr_addr_i == x_rs2_addr_i && x_wr_addr_i != 0)
+                      ? x_wr_val_i : int_regs[x_rs2_addr_i];
+        f_rs1_val_o = (f_wr_en_i && f_wr_addr_i == f_rs1_addr_i)
+                      ? f_wr_val_i : fp_regs[f_rs1_addr_i];
+        f_rs2_val_o = (f_wr_en_i && f_wr_addr_i == f_rs2_addr_i)
+                      ? f_wr_val_i : fp_regs[f_rs2_addr_i];
+    end
 
 endmodule : regfile
 

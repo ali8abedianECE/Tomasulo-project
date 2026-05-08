@@ -45,21 +45,23 @@ module branch_unit(clk, rst_n,
     logic [PC_W-1:0] target_next; ///< Next value of the branch target, computed combinationally based on the opcode and inputs.
     logic taken_next; ///< Next value of the branch taken signal, computed combinationally based on the opcode and inputs.
     
-    always_comb begin 
+    always_comb begin
         case(op_i)
-            OP_BEQ: taken_next = (rs1_i == rs2_i);
-            OP_BNE: taken_next = (rs1_i != rs2_i);
-            OP_BLT: taken_next = ($signed(rs1_i) < $signed(rs2_i));
-            OP_BGE: taken_next = ($signed(rs1_i) >= $signed(rs2_i));
-
-            OP_JAL, OP_JALR: taken_next = 1'b1; // Unconditional jump
-            default: taken_next = 1'b0; // Not a branch instruction
+            OP_BEQ:  taken_next = (rs1_i == rs2_i);
+            OP_BNE:  taken_next = (rs1_i != rs2_i);
+            OP_BLT:  taken_next = ($signed(rs1_i) < $signed(rs2_i));
+            OP_BGE:  taken_next = ($signed(rs1_i) >= $signed(rs2_i));
+            OP_BLTU: taken_next = (rs1_i < rs2_i);
+            OP_BGEU: taken_next = (rs1_i >= rs2_i);
+            OP_JAL, OP_JALR: taken_next = 1'b1;
+            default: taken_next = 1'b0;
         endcase
     end
 
-    always_comb begin 
-        case(op_i) 
-            OP_BEQ, OP_BNE, OP_BLT, OP_BGE, OP_JAL: target_next = taken_next ? pc_i + imm_i : pc_i + 4; // PC-relative target
+    always_comb begin
+        case(op_i)
+            OP_BEQ, OP_BNE, OP_BLT, OP_BGE, OP_BLTU, OP_BGEU, OP_JAL:
+                target_next = taken_next ? pc_i + imm_i : pc_i + 4;
 
             OP_JALR: target_next = (rs1_i + imm_i) & ~1; // Register-indirect target, ensure LSB is zero
 

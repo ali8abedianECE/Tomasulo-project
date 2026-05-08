@@ -20,7 +20,7 @@ module tomasulo_core(
     fetch_valid_i, fetch_raw_i, fetch_pc_i, iq_full_o,
     flush_o, redirect_pc_o,
     mem_rd_addr_o, mem_rd_data_i,
-    mem_wr_en_o, mem_wr_addr_o, mem_wr_data_o
+    mem_wr_en_o, mem_wr_be_o, mem_wr_addr_o, mem_wr_data_o
 );
     import rv32if_pkg::*;
 
@@ -38,6 +38,7 @@ module tomasulo_core(
     output logic [PC_W-1:0]   mem_rd_addr_o;
     input  logic [DATA_W-1:0] mem_rd_data_i;
     output logic               mem_wr_en_o;
+    output logic [3:0]         mem_wr_be_o;
     output logic [PC_W-1:0]   mem_wr_addr_o;
     output logic [DATA_W-1:0] mem_wr_data_o;
 
@@ -53,8 +54,16 @@ module tomasulo_core(
             opcode = raw[6:0]; rd = raw[11:7]; funct3 = raw[14:12];
             rs1 = raw[19:15];  rs2 = raw[24:20]; funct7 = raw[31:25];
 
-            d = '{op: OP_NOP, rd: '0, rs1: '0, rs2: '0, imm: '0,
-                  rd_fp: 1'b0, rs1_fp: 1'b0, rs2_fp: 1'b0, rd_valid: 1'b0, pc: pc};
+            d.op       = OP_NOP;
+            d.rd       = '0;
+            d.rs1      = '0;
+            d.rs2      = '0;
+            d.imm      = '0;
+            d.rd_fp    = 1'b0;
+            d.rs1_fp   = 1'b0;
+            d.rs2_fp   = 1'b0;
+            d.rd_valid = 1'b0;
+            d.pc       = pc;
 
             case (opcode)
                 7'h33: begin // R-type INT
@@ -64,6 +73,7 @@ module tomasulo_core(
                         4'b0_111: d.op = OP_AND;  4'b0_110: d.op = OP_OR;
                         4'b0_100: d.op = OP_XOR;  4'b0_001: d.op = OP_SLL;
                         4'b0_101: d.op = OP_SRL;  4'b1_101: d.op = OP_SRA;
+                        4'b0_010: d.op = OP_SLT;  4'b0_011: d.op = OP_SLTU;
                         default:  d.op = OP_NOP;
                     endcase
                 end
@@ -73,28 +83,39 @@ module tomasulo_core(
                     case (funct3)
                         3'b000: d.op = OP_ADDI; 3'b111: d.op = OP_ANDI;
                         3'b110: d.op = OP_ORI;  3'b100: d.op = OP_XORI;
-                        3'b001: d.op = OP_SLLI; 3'b101: d.op = OP_SRLI;
+                        3'b001: d.op = OP_SLLI;
+                        3'b010: d.op = OP_SLTI; 3'b011: d.op = OP_SLTIU;
+                        3'b101: if (funct7[5]) d.op = OP_SRAI; else d.op = OP_SRLI;
                         default: d.op = OP_NOP;
                     endcase
                 end
-                7'h03: begin // LW
-                    if (funct3 == 3'b010) begin
-                        d.op = OP_LW; d.rd = rd; d.rs1 = rs1; d.rd_valid = 1'b1;
-                        d.imm = {{20{raw[31]}}, raw[31:20]};
-                    end
+                7'h03: begin // loads
+                    d.rd = rd; d.rs1 = rs1; d.rd_valid = 1'b1;
+                    d.imm = {{20{raw[31]}}, raw[31:20]};
+                    case (funct3)
+                        3'b010: d.op = OP_LW;
+                        3'b000: d.op = OP_LB;  3'b100: d.op = OP_LBU;
+                        3'b001: d.op = OP_LH;  3'b101: d.op = OP_LHU;
+                        default: d.op = OP_NOP;
+                    endcase
                 end
-                7'h23: begin // SW
-                    if (funct3 == 3'b010) begin
-                        d.op = OP_SW; d.rs1 = rs1; d.rs2 = rs2;
-                        d.imm = {{20{raw[31]}}, raw[31:25], raw[11:7]};
-                    end
+                7'h23: begin // stores
+                    d.rs1 = rs1; d.rs2 = rs2;
+                    d.imm = {{20{raw[31]}}, raw[31:25], raw[11:7]};
+                    case (funct3)
+                        3'b010: d.op = OP_SW;
+                        3'b000: d.op = OP_SB;
+                        3'b001: d.op = OP_SH;
+                        default: d.op = OP_NOP;
+                    endcase
                 end
                 7'h63: begin // branches
                     d.rs1 = rs1; d.rs2 = rs2;
                     d.imm = {{19{raw[31]}}, raw[31], raw[7], raw[30:25], raw[11:8], 1'b0};
                     case (funct3)
-                        3'b000: d.op = OP_BEQ; 3'b001: d.op = OP_BNE;
-                        3'b100: d.op = OP_BLT; 3'b101: d.op = OP_BGE;
+                        3'b000: d.op = OP_BEQ;  3'b001: d.op = OP_BNE;
+                        3'b100: d.op = OP_BLT;  3'b101: d.op = OP_BGE;
+                        3'b110: d.op = OP_BLTU; 3'b111: d.op = OP_BGEU;
                         default: d.op = OP_NOP;
                     endcase
                 end
@@ -110,6 +131,10 @@ module tomasulo_core(
                 end
                 7'h37: begin // LUI
                     d.op = OP_LUI; d.rd = rd; d.rd_valid = 1'b1;
+                    d.imm = {raw[31:12], 12'b0};
+                end
+                7'h17: begin // AUIPC
+                    d.op = OP_AUIPC; d.rd = rd; d.rd_valid = 1'b1;
                     d.imm = {raw[31:12], 12'b0};
                 end
                 7'h07: begin // FLW
@@ -178,6 +203,10 @@ module tomasulo_core(
     logic         rob_alloc_en_w;
     instr_t       rob_alloc_instr_w;
 
+    logic [TAG_W-1:0]  rob_lookup1_tag_w, rob_lookup2_tag_w;
+    logic              rob_lookup1_done_w, rob_lookup2_done_w;
+    logic [DATA_W-1:0] rob_lookup1_val_w,  rob_lookup2_val_w;
+
     logic         br_res_valid_w, br_res_taken_w;
     logic [TAG_W-1:0] br_res_tag_w;
     logic [PC_W-1:0]  br_res_target_w;
@@ -200,7 +229,9 @@ module tomasulo_core(
         .br_valid_i(br_res_valid_w), .br_tag_i(br_res_tag_w),
         .br_taken_i(br_res_taken_w), .br_target_i(br_res_target_w),
         .commit_en_i(commit_en_w),
-        .commit_valid_o(rob_commit_valid_w), .commit_entry_o(rob_commit_entry_w)
+        .commit_valid_o(rob_commit_valid_w), .commit_entry_o(rob_commit_entry_w),
+        .lookup1_tag_i(rob_lookup1_tag_w), .lookup1_done_o(rob_lookup1_done_w), .lookup1_val_o(rob_lookup1_val_w),
+        .lookup2_tag_i(rob_lookup2_tag_w), .lookup2_done_o(rob_lookup2_done_w), .lookup2_val_o(rob_lookup2_val_w)
     );
 
     // -------------------------------------------------------------------------
@@ -264,6 +295,9 @@ module tomasulo_core(
         .iq_valid_i(iq_valid_w), .iq_instr_i(iq_instr_w), .iq_rd_en_o(iq_pop_w),
         .rob_full_i(rob_full_w), .rob_alloc_en_o(rob_alloc_en_w),
         .rob_alloc_instr_o(rob_alloc_instr_w), .rob_alloc_tag_i(rob_alloc_tag_w),
+        .rob_lookup1_tag_o(rob_lookup1_tag_w), .rob_lookup1_done_i(rob_lookup1_done_w), .rob_lookup1_val_i(rob_lookup1_val_w),
+        .rob_lookup2_tag_o(rob_lookup2_tag_w), .rob_lookup2_done_i(rob_lookup2_done_w), .rob_lookup2_val_i(rob_lookup2_val_w),
+        .cdb_i(cdb_w),
         .x_rs1_addr_o(x_rs1_addr_w), .x_rs1_tag_i(x_rs1_tag_w), .x_rs1_valid_i(x_rs1_valid_w),
         .x_rs2_addr_o(x_rs2_addr_w), .x_rs2_tag_i(x_rs2_tag_w), .x_rs2_valid_i(x_rs2_valid_w),
         .f_rs1_addr_o(f_rs1_addr_w), .f_rs1_tag_i(f_rs1_tag_w), .f_rs1_valid_i(f_rs1_valid_w),
@@ -352,23 +386,27 @@ module tomasulo_core(
     alu_int u_alu(
         .clk(clk), .rst_n(rst_n),
         .op_i(alu_issue_entry_w.op), .valid_i(alu_issue_valid_w),
-        .tag_i(alu_issue_entry_w.rob_tag),
+        .tag_i(alu_issue_entry_w.rob_tag), .pc_i(alu_issue_entry_w.pc),
         .rs1_i(alu_issue_entry_w.rs1_val), .rs2_i(alu_issue_entry_w.rs2_val),
         .imm_i(alu_issue_entry_w.imm),
         .valid_o(alu_valid_o), .tag_o(alu_tag_o), .result_o(alu_result_o)
     );
 
     cdb_t alu_cdb;
-    assign alu_rs_fu_ready_w = ~alu_cdb.valid | fu_grant_w[0];
+    assign alu_rs_fu_ready_w = (~alu_cdb.valid | fu_grant_w[0]) & ~alu_valid_o;
 
     always_ff @(posedge clk or negedge rst_n) begin
-        if (~rst_n || flush_w)
-            alu_cdb <= '{valid: 1'b0, tag: '0, value: '0};
-        else begin
-            if (fu_grant_w[0])  begin 
+        if (~rst_n || flush_w) begin
+            alu_cdb.valid <= 1'b0;
+            alu_cdb.tag   <= '0;
+            alu_cdb.value <= '0;
+        end else begin
+            if (alu_valid_o) begin
+                alu_cdb.valid <= 1'b1;
+                alu_cdb.tag   <= alu_tag_o;
+                alu_cdb.value <= alu_result_o;
+            end else if (fu_grant_w[0]) begin
                 alu_cdb.valid <= 1'b0;
-            end else if (alu_valid_o) begin
-                alu_cdb <= '{valid: 1'b1, tag: alu_tag_o, value: alu_result_o};
             end
         end
     end
@@ -411,16 +449,20 @@ module tomasulo_core(
     wire [DATA_W-1:0] br_cdb_val = ((br_op_d == OP_JAL) || (br_op_d == OP_JALR)) ? (br_pc_d + 32'd4) : br_target_o;
 
     cdb_t br_cdb;
-    assign br_rs_fu_ready_w = ~br_cdb.valid | fu_grant_w[1];
+    assign br_rs_fu_ready_w = (~br_cdb.valid | fu_grant_w[1]) & ~br_valid_o;
 
     always_ff @(posedge clk or negedge rst_n) begin
-        if (~rst_n || flush_w) begin 
-            br_cdb <= '{valid: 1'b0, tag: '0, value: '0};
+        if (~rst_n || flush_w) begin
+            br_cdb.valid <= 1'b0;
+            br_cdb.tag   <= '0;
+            br_cdb.value <= '0;
         end else begin
-            if (fu_grant_w[1]) begin 
+            if (br_valid_o) begin
+                br_cdb.valid <= 1'b1;
+                br_cdb.tag   <= br_tag_o;
+                br_cdb.value <= br_cdb_val;
+            end else if (fu_grant_w[1]) begin
                 br_cdb.valid <= 1'b0;
-            end else if (br_valid_o) begin
-                br_cdb <= '{valid: 1'b1, tag: br_tag_o, value: br_cdb_val};
             end
         end
     end
@@ -491,9 +533,10 @@ module tomasulo_core(
         .fu_ready_o(lsb_ready_w),
         .cdb_i(cdb_w),
         .mem_rd_addr_o(mem_rd_addr_o), .mem_rd_data_i(mem_rd_data_i),
-        .mem_wr_en_o(mem_wr_en_o), .mem_wr_addr_o(mem_wr_addr_o),
-        .mem_wr_data_o(mem_wr_data_o),
+        .mem_wr_en_o(mem_wr_en_o), .mem_wr_be_o(mem_wr_be_o),
+        .mem_wr_addr_o(mem_wr_addr_o), .mem_wr_data_o(mem_wr_data_o),
         .store_commit_i(store_commit_w), .store_commit_tag_i(store_commit_tag_w),
+        .cdb_grant_i(fu_grant_w[5]),
         .cdb_valid_o(lsb_cdb_valid_w), .cdb_tag_o(lsb_cdb_tag_w),
         .cdb_value_o(lsb_cdb_value_w)
     );
@@ -521,11 +564,13 @@ module tomasulo_core(
     cdb_t fu_results [NUM_FU];
     assign fu_results[0] = alu_cdb;
     assign fu_results[1] = br_cdb;
-    assign fu_results[2] = '{valid: fp_add_cdb_valid_w, tag: fp_add_cdb_tag_w, value: fp_add_cdb_result_w};
-    assign fu_results[3] = '{valid: fp_mul_cdb_valid_w, tag: fp_mul_cdb_tag_w, value: fp_mul_cdb_result_w};
-    assign fu_results[4] = '{valid: fp_div_cdb_valid_w, tag: fp_div_cdb_tag_w, value: fp_div_cdb_result_w};
-    assign fu_results[5] = '{valid: lsb_cdb_valid_w, tag: lsb_cdb_tag_w, value: lsb_cdb_value_w};
-    assign fu_results[6] = '{valid: fp_cvt_cdb_valid_w, tag: fp_cvt_cdb_tag_w, value: fp_cvt_cdb_result_w};
+    // cdb_t is packed { tag[TAG_W-1:0]; value[DATA_W-1:0]; valid } -- tag is MSB.
+    // Concatenation must match that order: {tag, value, valid}.
+    assign fu_results[2] = {fp_add_cdb_tag_w,  fp_add_cdb_result_w, fp_add_cdb_valid_w};
+    assign fu_results[3] = {fp_mul_cdb_tag_w,  fp_mul_cdb_result_w, fp_mul_cdb_valid_w};
+    assign fu_results[4] = {fp_div_cdb_tag_w,  fp_div_cdb_result_w, fp_div_cdb_valid_w};
+    assign fu_results[5] = {lsb_cdb_tag_w,     lsb_cdb_value_w,     lsb_cdb_valid_w};
+    assign fu_results[6] = {fp_cvt_cdb_tag_w,  fp_cvt_cdb_result_w, fp_cvt_cdb_valid_w};
 
     cdb u_cdb(
         .clk(clk), .rst_n(rst_n),

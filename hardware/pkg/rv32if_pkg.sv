@@ -87,6 +87,20 @@ package rv32if_pkg;
     OP_JAL  = 6'd20, ///< rd = PC+4;  PC = PC + imm           (J-type, PC-relative)
     OP_JALR = 6'd21, ///< rd = PC+4;  PC = (rs1 + imm) & ~1   (I-type, register-indirect)
     OP_LUI  = 6'd22, ///< rd = imm << 12                       (U-type, no source registers)
+    OP_AUIPC = 6'd31, ///< rd = PC + imm  (U-type, PC-relative)
+    OP_SRAI = 6'd32, ///< rd = rs1 >>> imm[4:0] (arithmetic, I-type)
+    OP_SLT  = 6'd33, ///< rd = (rs1 <s rs2) ? 1 : 0
+    OP_SLTU = 6'd34, ///< rd = (rs1 <u rs2) ? 1 : 0
+    OP_SLTI = 6'd35, ///< rd = (rs1 <s imm) ? 1 : 0
+    OP_SLTIU = 6'd36, ///< rd = (rs1 <u imm) ? 1 : 0
+    OP_LB   = 6'd37, ///< rd = sign_ext(Mem[rs1+imm][7:0])
+    OP_LBU  = 6'd38, ///< rd = zero_ext(Mem[rs1+imm][7:0])
+    OP_LH   = 6'd39, ///< rd = sign_ext(Mem[rs1+imm][15:0])
+    OP_LHU  = 6'd40, ///< rd = zero_ext(Mem[rs1+imm][15:0])
+    OP_SB   = 6'd41, ///< Mem[rs1+imm][7:0] = rs2[7:0]
+    OP_SH   = 6'd42, ///< Mem[rs1+imm][15:0] = rs2[15:0]
+    OP_BLTU = 6'd43, ///< if rs1 <u rs2: PC += imm
+    OP_BGEU = 6'd44, ///< if rs1 >=u rs2: PC += imm
     OP_FADD_S = 6'd23, ///< fd = fs1 + fs2
     OP_FSUB_S = 6'd24, ///< fd = fs1 - fs2
     OP_FMUL_S = 6'd25, ///< fd = fs1 * fs2
@@ -190,9 +204,10 @@ package rv32if_pkg;
 
   // Helper functions
 
-  /** @brief True if @p op is a conditional branch (BEQ, BNE, BLT, BGE). */
+  /** @brief True if @p op is a conditional branch (BEQ, BNE, BLT, BGE, BLTU, BGEU). */
   function automatic logic is_branch_op(input opcode_e op);
-    return (op == OP_BEQ || op == OP_BNE || op == OP_BLT || op == OP_BGE);
+    return (op == OP_BEQ || op == OP_BNE || op == OP_BLT || op == OP_BGE ||
+            op == OP_BLTU || op == OP_BGEU);
   endfunction
 
   /** @brief True if @p op is an unconditional jump-and-link (JAL, JALR). */
@@ -200,14 +215,17 @@ package rv32if_pkg;
     return (op == OP_JAL || op == OP_JALR);
   endfunction
 
-  /** @brief True if @p op reads from memory (LW, FLW). */
+  /** @brief True if @p op reads from memory. */
   function automatic logic is_load_op(input opcode_e op);
-    return (op == OP_LW || op == OP_FLW);
+    return (op == OP_LW || op == OP_FLW ||
+            op == OP_LB || op == OP_LBU ||
+            op == OP_LH || op == OP_LHU);
   endfunction
 
-  /** @brief True if @p op writes to memory (SW, FSW). */
+  /** @brief True if @p op writes to memory. */
   function automatic logic is_store_op(input opcode_e op);
-    return (op == OP_SW || op == OP_FSW);
+    return (op == OP_SW || op == OP_FSW ||
+            op == OP_SB || op == OP_SH);
   endfunction
 
   /**

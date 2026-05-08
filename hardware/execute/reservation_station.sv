@@ -61,11 +61,15 @@ module reservation_station(clk, rst_n, flush_i,
     assign issue_idx = issue_chain[0];
     assign dispatch_idx = dispatch_chain[0];
 
-    // Ready vector and priority chains via genvar
+    // Iverilog 13 crashes on unpacked_array[index].member.
+    // Workaround for generate: assign each slot to a scalar wire, then access
+    // members on the scalar.  Workaround for always_ff: copy to a local variable.
     genvar i;
     generate
         for (i = 0; i < SIZE; i++) begin : gen_ready
-            assign ready_vec[i] = busy[i] && slots[i].rs1_ready && slots[i].rs2_ready;
+            rs_entry_t slot_w;
+            assign slot_w = slots[i];
+            assign ready_vec[i] = busy[i] && slot_w.rs1_ready && slot_w.rs2_ready;
         end
 
         // Issue: lowest ready slot (chain from high to low, slot 0 wins)
@@ -86,23 +90,25 @@ module reservation_station(clk, rst_n, flush_i,
             busy <= '0;
             for (int j = 0; j < SIZE; j++) slots[j] <= '0;
         end else begin
-            // CDB snoop: capture arriving values into waiting slots
-            if (cdb_i.valid) begin
-                for (int j = 0; j < SIZE; j++) begin
-                    if (busy[j]) begin
-                        if (!slots[j].rs1_ready && slots[j].rs1_tag == cdb_i.tag) begin
-                            slots[j].rs1_ready <= 1'b1;
-                            slots[j].rs1_val <= cdb_i.value;
-                        end
-                        if (!slots[j].rs2_ready && slots[j].rs2_tag == cdb_i.tag) begin
-                            slots[j].rs2_ready <= 1'b1;
-                            slots[j].rs2_val <= cdb_i.value;
-                        end
+            // CDB snoop: copy each slot to a local, check/update fields, write back
+            for (int j = 0; j < SIZE; j++) begin
+                rs_entry_t sj, upd;
+                sj  = slots[j];
+                upd = sj;
+                if (busy[j] && cdb_i.valid) begin
+                    if (!sj.rs1_ready && sj.rs1_tag == cdb_i.tag) begin
+                        upd.rs1_ready = 1'b1;
+                        upd.rs1_val   = cdb_i.value;
+                    end
+                    if (!sj.rs2_ready && sj.rs2_tag == cdb_i.tag) begin
+                        upd.rs2_ready = 1'b1;
+                        upd.rs2_val   = cdb_i.value;
                     end
                 end
+                slots[j] <= upd;
             end
 
-            // Dispatch: write new entry into first free slot
+            // Dispatch: write new entry into first free slot (overrides CDB loop for that slot)
             if (dispatch_valid_i && !full_o) begin
                 slots[dispatch_idx] <= dispatch_entry_i;
                 busy[dispatch_idx]  <= 1'b1;

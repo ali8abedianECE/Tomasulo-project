@@ -20,6 +20,13 @@ module dispatch(// Instruction Queue interface
                 // ROB interface allocation
                 rob_full_i, rob_alloc_en_o, rob_alloc_instr_o, rob_alloc_tag_i,
 
+                // ROB lookup for forwarding already-complete results
+                rob_lookup1_tag_o, rob_lookup1_done_i, rob_lookup1_val_i,
+                rob_lookup2_tag_o, rob_lookup2_done_i, rob_lookup2_val_i,
+
+                // CDB (for same-cycle forwarding)
+                cdb_i,
+
                 // RAT lookup for source registers
                 x_rs1_addr_o, x_rs1_tag_i, x_rs1_valid_i,
                 x_rs2_addr_o, x_rs2_tag_i, x_rs2_valid_i,
@@ -55,6 +62,18 @@ module dispatch(// Instruction Queue interface
     output logic rob_alloc_en_o;
     output instr_t rob_alloc_instr_o;
     input logic [TAG_W-1:0] rob_alloc_tag_i;
+
+    // ROB lookup for forwarding
+    output logic [TAG_W-1:0]  rob_lookup1_tag_o;
+    input  logic              rob_lookup1_done_i;
+    input  logic [DATA_W-1:0] rob_lookup1_val_i;
+
+    output logic [TAG_W-1:0]  rob_lookup2_tag_o;
+    input  logic              rob_lookup2_done_i;
+    input  logic [DATA_W-1:0] rob_lookup2_val_i;
+
+    // CDB (for same-cycle forwarding)
+    input cdb_t cdb_i;
 
     // RAT source lookups
     output logic [ARCH_W-1:0] x_rs1_addr_o;
@@ -123,30 +142,41 @@ module dispatch(// Instruction Queue interface
     assign f_rs1_addr_o = iq_instr_i.rs1;
     assign f_rs2_addr_o = iq_instr_i.rs2;
 
-    rs_entry_t entry; ///< Dispatch entry built from current IQ head.
-    logic target_full; ///< Full flag of the RS targeted by current instruction.
+    // ROB lookup tags: select the applicable RAT tag for each source
+    assign rob_lookup1_tag_o = iq_instr_i.rs1_fp ? f_rs1_tag_i : x_rs1_tag_i;
+    assign rob_lookup2_tag_o = iq_instr_i.rs2_fp ? f_rs2_tag_i : x_rs2_tag_i;
+
+    rs_entry_t entry;
+    logic target_full;
 
     // Determine which RS the current instruction targets
     always_comb begin
-        if (iq_instr_i.op inside {OP_ADD, OP_SUB, OP_AND, OP_OR,  OP_XOR,
-                                   OP_SLL, OP_SRL, OP_SRA,
-                                   OP_ADDI, OP_ANDI, OP_ORI, OP_XORI,
-                                   OP_SLLI, OP_SRLI, OP_LUI, OP_NOP, OP_HALT})
-            target_full = alu_full_i;
-        else if (iq_instr_i.op inside {OP_BEQ, OP_BNE, OP_BLT, OP_BGE, OP_JAL, OP_JALR})
-            target_full = br_full_i;
-        else if (iq_instr_i.op inside {OP_FADD_S, OP_FSUB_S})
-            target_full = fp_add_full_i;
-        else if (iq_instr_i.op == OP_FMUL_S)
-            target_full = fp_mul_full_i;
-        else if (iq_instr_i.op == OP_FDIV_S)
-            target_full = fp_div_full_i;
-        else if (iq_instr_i.op inside {OP_LW, OP_SW, OP_FLW, OP_FSW})
-            target_full = lsb_full_i;
-        else if (iq_instr_i.op inside {OP_FCVT_W_S, OP_FCVT_S_W})
-            target_full = fp_cvt_full_i;
-        else
-            target_full = 1'b0;
+        case (iq_instr_i.op)
+            OP_ADD, OP_SUB, OP_AND, OP_OR, OP_XOR,
+            OP_SLL, OP_SRL, OP_SRA,
+            OP_ADDI, OP_ANDI, OP_ORI, OP_XORI,
+            OP_SLLI, OP_SRLI, OP_SRAI,
+            OP_SLT, OP_SLTU, OP_SLTI, OP_SLTIU,
+            OP_LUI, OP_AUIPC, OP_NOP, OP_HALT:
+                target_full = alu_full_i;
+            OP_BEQ, OP_BNE, OP_BLT, OP_BGE, OP_BLTU, OP_BGEU,
+            OP_JAL, OP_JALR:
+                target_full = br_full_i;
+            OP_FADD_S, OP_FSUB_S:
+                target_full = fp_add_full_i;
+            OP_FMUL_S:
+                target_full = fp_mul_full_i;
+            OP_FDIV_S:
+                target_full = fp_div_full_i;
+            OP_LW, OP_LB, OP_LBU, OP_LH, OP_LHU,
+            OP_SW, OP_SB, OP_SH,
+            OP_FLW, OP_FSW:
+                target_full = lsb_full_i;
+            OP_FCVT_W_S, OP_FCVT_S_W:
+                target_full = fp_cvt_full_i;
+            default:
+                target_full = 1'b0;
+        endcase
     end
 
     always_comb begin
@@ -170,26 +200,50 @@ module dispatch(// Instruction Queue interface
         entry.imm = iq_instr_i.imm;
         entry.pc = iq_instr_i.pc;
 
-        // rs1: pick INT or FP RAT/regfile based on rs1_fp flag
+        // rs1: pick INT or FP; forward from ROB or CDB when already complete
         if (iq_instr_i.rs1_fp) begin
-            entry.rs1_ready = ~f_rs1_valid_i;
-            entry.rs1_val = f_rs1_val_i;
-            entry.rs1_tag = f_rs1_tag_i;
+            if (~f_rs1_valid_i) begin
+                entry.rs1_ready = 1'b1; entry.rs1_val = f_rs1_val_i; entry.rs1_tag = f_rs1_tag_i;
+            end else if (rob_lookup1_done_i) begin
+                entry.rs1_ready = 1'b1; entry.rs1_val = rob_lookup1_val_i; entry.rs1_tag = f_rs1_tag_i;
+            end else if (cdb_i.valid && cdb_i.tag == f_rs1_tag_i) begin
+                entry.rs1_ready = 1'b1; entry.rs1_val = cdb_i.value; entry.rs1_tag = f_rs1_tag_i;
+            end else begin
+                entry.rs1_ready = 1'b0; entry.rs1_val = '0; entry.rs1_tag = f_rs1_tag_i;
+            end
         end else begin
-            entry.rs1_ready = ~x_rs1_valid_i;
-            entry.rs1_val = x_rs1_val_i;
-            entry.rs1_tag = x_rs1_tag_i;
+            if (~x_rs1_valid_i) begin
+                entry.rs1_ready = 1'b1; entry.rs1_val = x_rs1_val_i; entry.rs1_tag = x_rs1_tag_i;
+            end else if (rob_lookup1_done_i) begin
+                entry.rs1_ready = 1'b1; entry.rs1_val = rob_lookup1_val_i; entry.rs1_tag = x_rs1_tag_i;
+            end else if (cdb_i.valid && cdb_i.tag == x_rs1_tag_i) begin
+                entry.rs1_ready = 1'b1; entry.rs1_val = cdb_i.value; entry.rs1_tag = x_rs1_tag_i;
+            end else begin
+                entry.rs1_ready = 1'b0; entry.rs1_val = '0; entry.rs1_tag = x_rs1_tag_i;
+            end
         end
 
-        // rs2: pick INT or FP RAT/regfile based on rs2_fp flag
+        // rs2: pick INT or FP; forward from ROB or CDB when already complete
         if (iq_instr_i.rs2_fp) begin
-            entry.rs2_ready = ~f_rs2_valid_i;
-            entry.rs2_val = f_rs2_val_i;
-            entry.rs2_tag = f_rs2_tag_i;
+            if (~f_rs2_valid_i) begin
+                entry.rs2_ready = 1'b1; entry.rs2_val = f_rs2_val_i; entry.rs2_tag = f_rs2_tag_i;
+            end else if (rob_lookup2_done_i) begin
+                entry.rs2_ready = 1'b1; entry.rs2_val = rob_lookup2_val_i; entry.rs2_tag = f_rs2_tag_i;
+            end else if (cdb_i.valid && cdb_i.tag == f_rs2_tag_i) begin
+                entry.rs2_ready = 1'b1; entry.rs2_val = cdb_i.value; entry.rs2_tag = f_rs2_tag_i;
+            end else begin
+                entry.rs2_ready = 1'b0; entry.rs2_val = '0; entry.rs2_tag = f_rs2_tag_i;
+            end
         end else begin
-            entry.rs2_ready = ~x_rs2_valid_i;
-            entry.rs2_val = x_rs2_val_i;
-            entry.rs2_tag = x_rs2_tag_i;
+            if (~x_rs2_valid_i) begin
+                entry.rs2_ready = 1'b1; entry.rs2_val = x_rs2_val_i; entry.rs2_tag = x_rs2_tag_i;
+            end else if (rob_lookup2_done_i) begin
+                entry.rs2_ready = 1'b1; entry.rs2_val = rob_lookup2_val_i; entry.rs2_tag = x_rs2_tag_i;
+            end else if (cdb_i.valid && cdb_i.tag == x_rs2_tag_i) begin
+                entry.rs2_ready = 1'b1; entry.rs2_val = cdb_i.value; entry.rs2_tag = x_rs2_tag_i;
+            end else begin
+                entry.rs2_ready = 1'b0; entry.rs2_val = '0; entry.rs2_tag = x_rs2_tag_i;
+            end
         end
 
         // --- DISPATCH ---
@@ -199,34 +253,50 @@ module dispatch(// Instruction Queue interface
             rob_alloc_instr_o = iq_instr_i;
 
             // Route to correct RS
-            if (iq_instr_i.op inside {OP_ADD, OP_SUB, OP_AND, OP_OR,  OP_XOR,
-                                       OP_SLL, OP_SRL, OP_SRA,
-                                       OP_ADDI, OP_ANDI, OP_ORI, OP_XORI,
-                                       OP_SLLI, OP_SRLI, OP_LUI, OP_NOP, OP_HALT}) begin
-                alu_valid_o = 1'b1;
-                alu_entry_o = entry;
-            end else if (iq_instr_i.op inside {OP_BEQ, OP_BNE, OP_BLT, OP_BGE, OP_JAL, OP_JALR}) begin
-                br_valid_o = 1'b1;
-                br_entry_o = entry;
-            end else if (iq_instr_i.op inside {OP_FADD_S, OP_FSUB_S}) begin
-                fp_add_valid_o = 1'b1;
-                fp_add_entry_o = entry;
-            end else if (iq_instr_i.op == OP_FMUL_S) begin
-                fp_mul_valid_o = 1'b1;
-                fp_mul_entry_o = entry;
-            end else if (iq_instr_i.op == OP_FDIV_S) begin
-                fp_div_valid_o = 1'b1;
-                fp_div_entry_o = entry;
-            end else if (iq_instr_i.op inside {OP_LW, OP_SW, OP_FLW, OP_FSW}) begin
-                lsb_valid_o = 1'b1;
-                lsb_entry_o = entry;
-            end else if (iq_instr_i.op inside {OP_FCVT_W_S, OP_FCVT_S_W}) begin
-                fp_cvt_valid_o = 1'b1;
-                fp_cvt_entry_o = entry;
-            end
+            case (iq_instr_i.op)
+                OP_ADD, OP_SUB, OP_AND, OP_OR, OP_XOR,
+                OP_SLL, OP_SRL, OP_SRA,
+                OP_ADDI, OP_ANDI, OP_ORI, OP_XORI,
+                OP_SLLI, OP_SRLI, OP_SRAI,
+                OP_SLT, OP_SLTU, OP_SLTI, OP_SLTIU,
+                OP_LUI, OP_AUIPC, OP_NOP, OP_HALT: begin
+                    alu_valid_o = 1'b1;
+                    alu_entry_o = entry;
+                end
+                OP_BEQ, OP_BNE, OP_BLT, OP_BGE, OP_BLTU, OP_BGEU,
+                OP_JAL, OP_JALR: begin
+                    br_valid_o = 1'b1;
+                    br_entry_o = entry;
+                end
+                OP_FADD_S, OP_FSUB_S: begin
+                    fp_add_valid_o = 1'b1;
+                    fp_add_entry_o = entry;
+                end
+                OP_FMUL_S: begin
+                    fp_mul_valid_o = 1'b1;
+                    fp_mul_entry_o = entry;
+                end
+                OP_FDIV_S: begin
+                    fp_div_valid_o = 1'b1;
+                    fp_div_entry_o = entry;
+                end
+                OP_LW, OP_LB, OP_LBU, OP_LH, OP_LHU,
+                OP_SW, OP_SB, OP_SH,
+                OP_FLW, OP_FSW: begin
+                    lsb_valid_o = 1'b1;
+                    lsb_entry_o = entry;
+                end
+                OP_FCVT_W_S, OP_FCVT_S_W: begin
+                    fp_cvt_valid_o = 1'b1;
+                    fp_cvt_entry_o = entry;
+                end
+                default: ;
+            endcase
 
             // --- UPDATE RAT ---
-            if (iq_instr_i.rd_valid && ~iq_instr_i.rd_fp) begin
+            // x0 is hardwired zero -- never track it in the RAT or a later
+            // reader would forward a stale computed value instead of 0.
+            if (iq_instr_i.rd_valid && ~iq_instr_i.rd_fp && (iq_instr_i.rd != '0)) begin
                 x_map_en_o  = 1'b1;
                 x_map_addr_o = iq_instr_i.rd;
                 x_map_tag_o = rob_alloc_tag_i;

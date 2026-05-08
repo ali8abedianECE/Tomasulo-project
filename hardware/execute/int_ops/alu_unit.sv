@@ -17,57 +17,55 @@
  * @param tag_o ROB tag forwarded alongside the result.
  * @param result_o Computed 32-bit result.
  */
-module alu_int(clk, rst_n, 
-           op_i, valid_i, 
-           tag_i, 
+module alu_int(clk, rst_n,
+           op_i, valid_i,
+           tag_i, pc_i,
            rs1_i, rs2_i, imm_i,
-           valid_o, 
+           valid_o,
            tag_o, result_o);
     import rv32if_pkg::*;
 
-    input logic clk; ///< Clock signal for synchronizing the ALU operations.
-    input logic rst_n; ///< Active-low reset signal.
+    input logic clk;
+    input logic rst_n;
+    input opcode_e op_i;
+    input logic valid_i;
+    input logic [TAG_W-1:0] tag_i;
+    input logic [PC_W-1:0] pc_i;
+    input logic [DATA_W-1:0] rs1_i;
+    input logic [DATA_W-1:0] rs2_i;
+    input logic [DATA_W-1:0] imm_i;
+    output logic valid_o;
+    output logic [TAG_W-1:0] tag_o;
+    output logic [DATA_W-1:0] result_o;
 
-    input opcode_e op_i; ///< Operation code indicating which ALU operation to perform.
-
-    input logic valid_i; ///< Indicates that the input operands and opcode are valid and can be processed.
-
-    input logic [TAG_W-1:0] tag_i; ///< Tag for tracking the instruction or operation associated with the inputs.
-
-    input logic [DATA_W-1:0] rs1_i; ///< First source operand (register value).
-    input logic [DATA_W-1:0] rs2_i; ///< Second source operand (register value).
-    input logic [DATA_W-1:0] imm_i; ///< Immediate value for operations that require it (e.g., ADDI).
-
-    output logic valid_o; ///< Indicates that the output result is valid and can be consumed by downstream stages.
-    output logic [TAG_W-1:0] tag_o; ///< Tag for tracking the instruction or operation associated with the output result.
-
-    output logic [DATA_W-1:0] result_o; ///< Result of the ALU operation.
-
-    logic [DATA_W-1:0] result_next; ///< Next value of the result, computed combinationally based on the opcode and inputs.
+    logic [DATA_W-1:0] result_next;
 
     always_comb begin
-        case(op_i) 
-            ///< R-type operations
-            OP_ADD: result_next = rs1_i + rs2_i;
-            OP_SUB: result_next = rs1_i - rs2_i;
-            OP_AND: result_next = rs1_i & rs2_i;
-            OP_OR: result_next = rs1_i | rs2_i;
-            OP_XOR: result_next = rs1_i ^ rs2_i;
-            OP_SLL: result_next = rs1_i << rs2_i[4:0];
-            OP_SRL: result_next = rs1_i >> rs2_i[4:0];
-            OP_SRA: result_next = $signed(rs1_i) >>> rs2_i[4:0]; // arithmetic shift right using signed shift operator
+        case(op_i)
+            OP_ADD:  result_next = rs1_i + rs2_i;
+            OP_SUB:  result_next = rs1_i - rs2_i;
+            OP_AND:  result_next = rs1_i & rs2_i;
+            OP_OR:   result_next = rs1_i | rs2_i;
+            OP_XOR:  result_next = rs1_i ^ rs2_i;
+            OP_SLL:  result_next = rs1_i << rs2_i[4:0];
+            OP_SRL:  result_next = rs1_i >> rs2_i[4:0];
+            OP_SRA:  result_next = $signed(rs1_i) >>> rs2_i[4:0];
+            OP_SLT:  result_next = ($signed(rs1_i) < $signed(rs2_i)) ? 32'd1 : 32'd0;
+            OP_SLTU: result_next = (rs1_i < rs2_i) ? 32'd1 : 32'd0;
 
-            ///< I-type operations
-            OP_ADDI: result_next = rs1_i + imm_i;
-            OP_ANDI: result_next = rs1_i & imm_i;
-            OP_ORI: result_next = rs1_i | imm_i;
-            OP_XORI: result_next = rs1_i ^ imm_i;
-            OP_SLLI: result_next = rs1_i << imm_i[4:0];
-            OP_SRLI: result_next = rs1_i >> imm_i[4:0];
+            OP_ADDI:  result_next = rs1_i + imm_i;
+            OP_ANDI:  result_next = rs1_i & imm_i;
+            OP_ORI:   result_next = rs1_i | imm_i;
+            OP_XORI:  result_next = rs1_i ^ imm_i;
+            OP_SLLI:  result_next = rs1_i << imm_i[4:0];
+            OP_SRLI:  result_next = rs1_i >> imm_i[4:0];
+            OP_SRAI:  result_next = $signed(rs1_i) >>> imm_i[4:0];
+            OP_SLTI:  result_next = ($signed(rs1_i) < $signed(imm_i)) ? 32'd1 : 32'd0;
+            OP_SLTIU: result_next = (rs1_i < imm_i) ? 32'd1 : 32'd0;
 
-            ///< U-type operations (LUI)
-            OP_LUI: result_next = imm_i; //Assumed imm_i is already shifted left by 12 in decode stage
-            default: result_next = {DATA_W{1'b0}}; // Default case for unsupported opcodes
+            OP_LUI:   result_next = imm_i;
+            OP_AUIPC: result_next = pc_i + imm_i;
+            default:  result_next = '0;
         endcase
     end
 

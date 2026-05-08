@@ -46,10 +46,13 @@ module cdb(clk, rst_n, fu_results_i, cdb_o, fu_grant_o);
     assign grant_valid = |grant_vec;
 
     // 1-hot to binary via genvar: mask each slot's index, then prefix-OR reduce
+    // Use a per-slot wire to avoid iverilog crash on fu_results_i[i].valid (array[i].member).
     genvar i;
     generate
         for (i = 0; i < NUM_FU; i++) begin : gen_terms
-            assign valid_vec[i] = fu_results_i[i].valid;
+            cdb_t fu_i_w;
+            assign fu_i_w      = fu_results_i[i];
+            assign valid_vec[i] = fu_i_w.valid;
             assign idx_terms[i] = {IDX_W{grant_vec[i]}} & IDX_W'(i);
         end
 
@@ -64,7 +67,9 @@ module cdb(clk, rst_n, fu_results_i, cdb_o, fu_grant_o);
     arbiter #(.WIDTH(NUM_FU)) u_arb(.req(valid_vec), .grant(grant_vec), .base(base));
 
     always_comb begin
-        cdb_o = '{valid: 1'b0, tag: '0, value: '0};
+        cdb_o.valid = 1'b0;
+        cdb_o.tag   = '0;
+        cdb_o.value = '0;
         if (grant_valid)
             cdb_o = fu_results_i[grant_idx];
     end
