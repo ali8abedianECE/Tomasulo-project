@@ -85,8 +85,11 @@ module reservation_station(clk, rst_n, flush_i,
         end
     endgenerate
 
-    always_ff @(posedge clk or negedge rst_n) begin
-        if (~rst_n || flush_i) begin
+    always_ff @(posedge clk) begin
+        if (~rst_n) begin
+            busy <= '0;
+            for (int j = 0; j < SIZE; j++) slots[j] <= '0;
+        end else if (flush_i) begin 
             busy <= '0;
             for (int j = 0; j < SIZE; j++) slots[j] <= '0;
         end else begin

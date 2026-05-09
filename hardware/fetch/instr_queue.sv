@@ -44,19 +44,23 @@ module instr_queue(clk, rst_n, flush_i,
     assign valid_o = (count != 0);
     assign instr_o = entries[head];
 
-    always_ff @(posedge clk or negedge rst_n) begin
-        if (~rst_n || flush_i) begin
+    always_ff @(posedge clk) begin
+        if (~rst_n) begin
             head <= '0;
             tail <= '0;
             count <= '0;
-        end else begin
+        end else if (flush_i) begin 
+			head <= '0;
+            tail <= '0;
+            count <= '0;
+		  end else begin
             if (push_en_i && !full_o) begin
                 entries[tail] <= push_instr_i;
-                tail <= tail + 1;
+                tail <= tail + 1'b1;
             end
 
             if (pop_en_i && valid_o) begin
-                head <= head + 1;
+                head <= head + 1'b1;
             end
 
             count <= count + (push_en_i & ~full_o) - (pop_en_i & valid_o);

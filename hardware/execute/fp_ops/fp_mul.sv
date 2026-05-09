@@ -130,8 +130,16 @@ module fp_mul(clk, rst_n, flush_i,
     assign cdb_tag_o = s4_tag;
     assign cdb_result_o = s4_result;
 
-    always_ff @(posedge clk or negedge rst_n) begin
-        if (~rst_n || flush_i) begin
+    always_ff @(posedge clk) begin
+        if (~rst_n) begin
+            s1_valid <= 1'b0; s1_tag <= '0; s1_zero <= 1'b0; s1_sign <= 1'b0;
+            s1_exp <= '0; s1_hh <= '0; s1_hl <= '0;
+            s1_lh <= '0; s1_ll <= '0;
+            s2_valid <= 1'b0; s2_tag <= '0; s2_zero <= 1'b0; s2_sign <= 1'b0;
+            s2_exp <= '0; s2_product <= '0;
+            s3_valid <= 1'b0; s3_tag <= '0; s3_result <= '0;
+            s4_valid <= 1'b0; s4_tag <= '0; s4_result <= '0;
+        end else if (flush_i) begin 
             s1_valid <= 1'b0; s1_tag <= '0; s1_zero <= 1'b0; s1_sign <= 1'b0;
             s1_exp <= '0; s1_hh <= '0; s1_hl <= '0;
             s1_lh <= '0; s1_ll <= '0;

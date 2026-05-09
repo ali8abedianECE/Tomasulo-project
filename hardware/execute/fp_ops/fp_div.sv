@@ -184,8 +184,18 @@ module fp_div(clk, rst_n, flush_i,
     // -------------------------------------------------------------------------
     // State machine and datapath registers
     // -------------------------------------------------------------------------
-    always_ff @(posedge clk or negedge rst_n) begin
-        if (~rst_n || flush_i) begin
+    always_ff @(posedge clk) begin
+        if (~rst_n) begin
+            state <= IDLE;
+            s_tag <= '0;
+            s_sign <= 1'b0;
+            s_exp <= '0;
+            s_dv <= '0;
+            s_preg <= '0;
+            s_sreg <= '0;
+            s_qreg <= '0;
+            s_cnt <= '0;
+        end else if (flush_i) begin 
             state <= IDLE;
             s_tag <= '0;
             s_sign <= 1'b0;

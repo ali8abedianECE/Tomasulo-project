@@ -70,7 +70,7 @@ module cpu(CLOCK_50, KEY, SW, LEDR, HEX0, HEX1, HEX2, HEX3, HEX4, HEX5);
     logic flush;
     logic [PC_W-1:0] redirect_pc;
 
-    always_ff @(posedge clk or negedge rst_n) begin
+    always_ff @(posedge clk) begin
         if (~rst_n) begin
             fetch_pc <= '0;
             fetch_pc_d <= '0;
@@ -109,7 +109,7 @@ module cpu(CLOCK_50, KEY, SW, LEDR, HEX0, HEX1, HEX2, HEX3, HEX4, HEX5);
     logic [31:0] cycle_count;
     logic        halted;
 
-    always_ff @(posedge clk or negedge rst_n) begin
+    always_ff @(posedge clk) begin
         if (~rst_n) begin
             cycle_count <= '0;
             halted <= 1'b0;

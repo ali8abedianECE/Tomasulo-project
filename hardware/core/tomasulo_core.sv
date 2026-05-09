@@ -216,9 +216,10 @@ module tomasulo_core(
     // commit_unit only needs commit_tag_i = current head index. Since rob_unit
     // exposes alloc_tag_o = tail (not head), we track head separately.
     logic [TAG_W-1:0] rob_head_reg;
-    always_ff @(posedge clk or negedge rst_n) begin
-        if (~rst_n || flush_w) rob_head_reg <= '0;
-        else if (commit_en_w && rob_commit_valid_w) rob_head_reg <= rob_head_reg + 1;
+    always_ff @(posedge clk) begin
+        if (~rst_n) rob_head_reg <= '0;
+        else if (flush_w) rob_head_reg <= '0; 
+        else if (commit_en_w && rob_commit_valid_w) rob_head_reg <= rob_head_reg + 1'b1;
     end
 
     rob_unit u_rob(
@@ -395,8 +396,12 @@ module tomasulo_core(
     cdb_t alu_cdb;
     assign alu_rs_fu_ready_w = (~alu_cdb.valid | fu_grant_w[0]) & ~alu_valid_o;
 
-    always_ff @(posedge clk or negedge rst_n) begin
-        if (~rst_n || flush_w) begin
+    always_ff @(posedge clk) begin
+        if (~rst_n) begin
+            alu_cdb.valid <= 1'b0;
+            alu_cdb.tag   <= '0;
+            alu_cdb.value <= '0;
+        end else if( flush_w ) begin 
             alu_cdb.valid <= 1'b0;
             alu_cdb.tag   <= '0;
             alu_cdb.value <= '0;
@@ -421,7 +426,7 @@ module tomasulo_core(
     // Delay op/pc by 1 cycle (branch_unit is registered) to compute PC+4
     opcode_e br_op_d;
     logic [PC_W-1:0] br_pc_d;
-    always_ff @(posedge clk or negedge rst_n) begin
+    always_ff @(posedge clk) begin
         if (~rst_n) begin 
             br_op_d <= OP_NOP; br_pc_d <= '0; 
         end else begin
@@ -451,11 +456,15 @@ module tomasulo_core(
     cdb_t br_cdb;
     assign br_rs_fu_ready_w = (~br_cdb.valid | fu_grant_w[1]) & ~br_valid_o;
 
-    always_ff @(posedge clk or negedge rst_n) begin
-        if (~rst_n || flush_w) begin
+    always_ff @(posedge clk) begin
+        if (~rst_n) begin
             br_cdb.valid <= 1'b0;
             br_cdb.tag   <= '0;
             br_cdb.value <= '0;
+        end else if (flush_w) begin 
+            br_cdb.valid <= 1'b0; 
+            br_cdb.tag <= '0; 
+            br_cdb.value <= '0; 
         end else begin
             if (br_valid_o) begin
                 br_cdb.valid <= 1'b1;

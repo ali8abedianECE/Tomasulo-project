@@ -1,0 +1,3 @@
+Warning (10268): Verilog HDL information at load_store_buffer.sv(178): always construct contains both blocking and non-blocking assignments File: C:/Users/a_abe/Downloads/Tomasulo-project/hardware/execute/lsb/load_store_buffer.sv Line: 178
+Warning (10268): Verilog HDL information at reservation_station.sv(88): always construct contains both blocking and non-blocking assignments File: C:/Users/a_abe/Downloads/Tomasulo-project/hardware/execute/reservation_station.sv Line: 88
+Warning (10268): Verilog HDL information at rob.sv(101): always construct contains both blocking and non-blocking assignments File: C:/Users/a_abe/Downloads/Tomasulo-project/hardware/core/rob.sv Line: 101

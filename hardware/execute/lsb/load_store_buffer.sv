@@ -175,8 +175,20 @@ module load_store_buffer(clk, rst_n, flush_i,
     assign cdb_tag_o   = load_pending ? load_pending_tag : sni_entry_w.rob_tag;
     assign cdb_value_o = load_pending ? load_result      : '0;
 
-    always_ff @(posedge clk or negedge rst_n) begin
-        if (~rst_n || flush_i) begin
+    always_ff @(posedge clk) begin
+        if (~rst_n) begin
+            valid <= '0;
+            store_notified <= '0;
+            head <= '0;
+            tail <= '0;
+            count <= '0;
+            load_pending <= 1'b0;
+            load_pending_tag <= '0;
+            load_pending_op <= OP_LW;
+            load_pending_byte_sel <= '0;
+            load_pending_addr_r <= '0;
+            for (int j = 0; j < LSB_SIZE; j++) entries[j] <= '0;
+        end else if (flush_i) begin 
             valid <= '0;
             store_notified <= '0;
             head <= '0;

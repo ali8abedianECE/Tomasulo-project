@@ -122,8 +122,14 @@ module rat_table(clk, rst_n, flush_i,
                              f_commit_tag_i == f_tags[f_rs2_addr_i]);
 
     // logic for mapping and committing
-    always_ff @(posedge clk or negedge rst_n) begin 
-        if(~rst_n || flush_i) begin 
+    always_ff @(posedge clk) begin 
+        if(~rst_n) begin 
+            x_valid <= {NUM_INT_REGS{1'b0}}; // Invalidate all integer register mappings on reset or flush
+            f_valid <= {NUM_FP_REGS{1'b0}}; // Invalidate all floating-point register mappings on reset or flush
+
+            for (int k = 0; k < NUM_INT_REGS; k++) x_tags[k] <= '0;
+            for (int k = 0; k < NUM_FP_REGS;  k++) f_tags[k] <= '0;
+        end else if (flush_i) begin 
             x_valid <= {NUM_INT_REGS{1'b0}}; // Invalidate all integer register mappings on reset or flush
             f_valid <= {NUM_FP_REGS{1'b0}}; // Invalidate all floating-point register mappings on reset or flush
 

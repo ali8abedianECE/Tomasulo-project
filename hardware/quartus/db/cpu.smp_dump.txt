@@ -1,0 +1,6 @@
+
+State Machine - |cpu|tomasulo_core:u_core|fp_div:u_fp_div|state
+Name state.IDLE state.DONE state.DIVIDE 
+state.IDLE 0 0 0 
+state.DIVIDE 1 0 1 
+state.DONE 1 1 0 

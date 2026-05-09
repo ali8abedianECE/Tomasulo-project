@@ -139,8 +139,11 @@ module fp_add(clk, rst_n, flush_i,
     assign cdb_tag_o = s2_tag;
     assign cdb_result_o = s2_result;
 
-    always_ff @(posedge clk or negedge rst_n) begin
-        if (~rst_n || flush_i) begin
+    always_ff @(posedge clk) begin
+        if (~rst_n) begin
+            s1_valid <= 1'b0; s1_tag <= '0; s1_result <= '0;
+            s2_valid <= 1'b0; s2_tag <= '0; s2_result <= '0;
+        end else if (flush_i) begin 
             s1_valid <= 1'b0; s1_tag <= '0; s1_result <= '0;
             s2_valid <= 1'b0; s2_tag <= '0; s2_result <= '0;
         end else if (advance) begin
