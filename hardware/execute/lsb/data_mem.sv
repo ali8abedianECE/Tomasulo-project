@@ -3,8 +3,9 @@
  *
  * MEM_SIZE x 32-bit word array. Byte addresses on both ports; two LSBs are
  * dropped to form the word index. Write takes effect on the rising edge;
- * read data is registered (one-cycle latency). Optionally pre-loaded from
- * a hex file for simulation.
+ * read data is registered (one-cycle latency). The board top level writes the
+ * selected program into this RAM before releasing the CPU from reset; simulation
+ * can optionally pre-load the array from a hex file.
  *
  * @param FILENAME Optional hex file loaded by $readmemh at sim start.
  * @param clk Rising-edge clock.
@@ -32,8 +33,16 @@ module data_mem #(parameter FILENAME = "")
     input logic [DATA_W-1:0] wr_data_i;
 
     logic [DATA_W-1:0] mem [MEM_SIZE];
+`ifndef SYNTHESIS
+    integer i;
 
-    initial if (FILENAME != "") $readmemh(FILENAME, mem);
+    initial begin
+        for (i = 0; i < MEM_SIZE; i = i + 1)
+            mem[i] = '0;
+        if (FILENAME != "")
+            $readmemh(FILENAME, mem);
+    end
+`endif
 
     always_ff @(posedge clk) begin
         if (wr_en_i) begin

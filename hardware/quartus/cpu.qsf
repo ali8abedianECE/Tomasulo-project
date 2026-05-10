@@ -47,8 +47,8 @@ set_global_assignment -name BOARD "DE1-SoC Board"
 set_global_assignment -name PARTITION_NETLIST_TYPE SOURCE -section_id Top
 set_global_assignment -name PARTITION_FITTER_PRESERVATION_LEVEL PLACEMENT_AND_ROUTING -section_id Top
 set_global_assignment -name PARTITION_COLOR 16764057 -section_id Top
-set_global_assignment -name HEX_FILE ../program.hex
 set_global_assignment -name SYSTEMVERILOG_FILE ../cpu.sv
+set_global_assignment -name SYSTEMVERILOG_FILE ../program_lib_rom.sv
 set_global_assignment -name SYSTEMVERILOG_FILE ../execute/lsb/load_store_buffer.sv
 set_global_assignment -name SYSTEMVERILOG_FILE ../execute/lsb/data_mem.sv
 set_global_assignment -name SYSTEMVERILOG_FILE ../execute/int_ops/branch_unit.sv

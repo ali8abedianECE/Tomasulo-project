@@ -10,6 +10,8 @@
 #   make fetch        Download rv32i test sources and references from GitHub
 #   make all          Build, simulate, and compare all rv32i tests
 #   make I-ADD-01     Run a single test
+#   make board-all    Build board-ready dense hex files for all supported tests
+#   make board-install TEST=I-ADD-01   Install one board image as ../../../program.hex
 #   make clean        Remove generated files
 
 SHELL := bash
@@ -19,6 +21,10 @@ REFDIR := $(SUITE)/references
 
 # ELFs, hexes, sigs go here (NOT named "work" -- ModelSim owns that name)
 OUTDIR := build
+BOARD_HEX_TOOL := python3 ./make_board_hex.py
+BOARD_PROGRAM_HEX := ../../../program.hex
+PROGRAM_LIB_TOOL := python3 ./gen_program_lib.py
+PROGRAM_LIB_OUT := ../../../hardware/program_lib_rom.sv
 
 RISCV_PREFIX ?= riscv64-unknown-elf-
 CC      := $(RISCV_PREFIX)gcc
@@ -72,9 +78,18 @@ SKIP_TESTS := I-EBREAK-01 I-ECALL-01 I-MISALIGN_JMP-01 I-MISALIGN_LDST-01
 
 TESTS := $(filter-out $(SKIP_TESTS),$(basename $(notdir $(wildcard $(SRCDIR)/I-*.S))))
 
-.PHONY: all fetch clean check-sim $(TESTS)
+.PHONY: all fetch clean check-sim board-all board-install program-lib $(TESTS)
 
 all: fetch check-sim $(addprefix $(OUTDIR)/,$(addsuffix .pass,$(TESTS)))
+
+board-all: fetch $(addprefix $(OUTDIR)/,$(addsuffix .board.hex,$(TESTS)))
+
+program-lib: board-all gen_program_lib.py
+	$(PROGRAM_LIB_TOOL) --build-dir $(OUTDIR) --output $(PROGRAM_LIB_OUT)
+
+TEST ?= I-ADD-01
+board-install: $(OUTDIR)/$(TEST).board.hex
+	cp $< $(BOARD_PROGRAM_HEX)
 
 check-sim:
 	@if [ "$(SIM)" = "none" ]; then \
@@ -113,6 +128,16 @@ $(OUTDIR)/%.elf: $(SRCDIR)/%.S | $(OUTDIR)
 
 $(OUTDIR)/%.hex: $(OUTDIR)/%.elf
 	$(OBJCOPY) -O verilog --verilog-data-width=4 $< $@
+
+$(OUTDIR)/%.board.hex: $(OUTDIR)/%.hex $(OUTDIR)/%.sig_range make_board_hex.py
+	@range="$$(cat $(OUTDIR)/$*.sig_range)"; \
+	begin_word="$${range%% *}"; \
+	end_word="$${range##* }"; \
+	$(BOARD_HEX_TOOL) \
+	    --input $(OUTDIR)/$*.hex \
+	    --output $@ \
+	    --sig-begin "$$begin_word" \
+	    --sig-end "$$end_word"
 
 # Extract begin_signature word index from ELF; derive end from reference line count.
 # This avoids the inclusive/exclusive end_signature ambiguity across test files.

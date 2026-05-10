@@ -1,10 +1,10 @@
 /**
  * @brief Synchronous instruction memory (ROM).
  *
- * MEM_SIZE x 32-bit word array initialized from a hex file at simulation
- * start. PC is a byte address - the two LSBs are dropped to form the word
- * index. Output is registered (one-cycle read latency). Write port is
- * present for testbench loading only; tie write_en_i low in normal use.
+ * MEM_SIZE x 32-bit word array. PC is a byte address - the two LSBs are
+ * dropped to form the word index. Output is registered (one-cycle read
+ * latency). The write port is used by the synthesized board-side program
+ * loader; simulation can optionally pre-load the array from a hex file.
  *
  * @param FILENAME Path to the hex file loaded by $readmemh at sim start.
  * @param clk Rising-edge clock.
@@ -31,8 +31,16 @@ module instr_mem #(parameter FILENAME = "data.txt")
     input logic [DATA_W-1:0] write_data_i;
 
     logic [DATA_W-1:0] mem [MEM_SIZE];
+`ifndef SYNTHESIS
+    integer i;
 
-    initial if (FILENAME != "") $readmemh(FILENAME, mem);
+    initial begin
+        for (i = 0; i < MEM_SIZE; i = i + 1)
+            mem[i] = '0;
+        if (FILENAME != "")
+            $readmemh(FILENAME, mem);
+    end
+`endif
 
     always_ff @(posedge clk) begin
         if (write_en_i)
