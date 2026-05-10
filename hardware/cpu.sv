@@ -8,8 +8,8 @@
  * HEX display: HEX5:HEX4 = cycle_count[23:16],
  *              HEX3:HEX2 = cycle_count[15:8],
  *              HEX1:HEX0 = cycle_count[7:0].
- * When SW[9] is high after HALT, HEX5..HEX0 instead show the low 24 bits of
- * the selected data-memory word at address {SW[8:0], 2'b00}.
+ * When KEY[1] is pressed after HALT, HEX5..HEX0 instead show the low 24 bits
+ * of the selected data-memory word at address {SW[8:0], 2'b00}.
  * LEDR[9] = halted (OP_HALT retired), LEDR[8:0] = SW[8:0].
  */
 module cpu(CLOCK_50, KEY, SW, LEDR, HEX0, HEX1, HEX2, HEX3, HEX4, HEX5);
@@ -117,7 +117,7 @@ module cpu(CLOCK_50, KEY, SW, LEDR, HEX0, HEX1, HEX2, HEX3, HEX4, HEX5);
     logic [31:0] cycle_count;
     logic        halted, halted_core;
 
-    assign mem_view_en = halted & SW[9];
+    assign mem_view_en = halted & ~KEY[1];
     assign mem_view_addr = {{(PC_W-11){1'b0}}, SW[8:0], 2'b00};
     assign mem_rd_addr = mem_view_en ? mem_view_addr : mem_rd_addr_core;
     assign hex_display_value = mem_view_en ? mem_rd_data[23:0] : cycle_count[23:0];
