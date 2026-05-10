@@ -19,6 +19,7 @@ module tomasulo_core(
     clk, rst_n,
     fetch_valid_i, fetch_raw_i, fetch_pc_i, iq_full_o,
     flush_o, redirect_pc_o,
+    halted_o,
     mem_rd_addr_o, mem_rd_data_i,
     mem_wr_en_o, mem_wr_be_o, mem_wr_addr_o, mem_wr_data_o
 );
@@ -34,6 +35,7 @@ module tomasulo_core(
 
     output logic        flush_o;
     output logic [PC_W-1:0] redirect_pc_o;
+    output logic        halted_o;
 
     output logic [PC_W-1:0]   mem_rd_addr_o;
     input  logic [DATA_W-1:0] mem_rd_data_i;
@@ -602,5 +604,7 @@ module tomasulo_core(
         .flush_o(flush_w), .redirect_pc_o(redirect_pc_o),
         .store_commit_o(store_commit_w), .store_commit_tag_o(store_commit_tag_w)
     );
+
+    assign halted_o = commit_en_w && rob_commit_valid_w && (rob_commit_entry_w.op == OP_HALT);
 
 endmodule : tomasulo_core
