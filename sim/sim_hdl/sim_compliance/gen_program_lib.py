@@ -50,6 +50,7 @@ def write_sv(path: Path, num_programs: int, total_words: int) -> None:
  * block memory instead of LAB logic. Simulation falls back to a plain memory
  * array loaded from `program_lib.hex`.
  */
+`ifdef SYNTHESIS
 module program_lib_rom(program_i, word_i, data_o);
     import rv32if_pkg::*;
 
@@ -70,7 +71,6 @@ module program_lib_rom(program_i, word_i, data_o);
             rom_addr = '0;
     end
 
-`ifdef SYNTHESIS
     wire [DATA_W-1:0] rom_q;
 
     altsyncram #(
@@ -112,13 +112,30 @@ module program_lib_rom(program_i, word_i, data_o);
     );
 
     always_comb data_o = rom_q;
+endmodule : program_lib_rom
 `else
+module program_lib_rom(program_i, word_i, data_o);
+    import rv32if_pkg::*;
+
+    localparam int NUM_PROGRAMS = {num_programs};
+    localparam int TOTAL_WORDS = {total_words};
+    localparam int LIB_ADDR_W = $clog2(TOTAL_WORDS);
+
+    input  logic [5:0] program_i;
+    input  logic [$clog2(MEM_SIZE)-1:0] word_i;
+    output logic [DATA_W-1:0] data_o;
+
+    logic [LIB_ADDR_W-1:0] rom_addr;
     logic [DATA_W-1:0] rom [0:TOTAL_WORDS-1];
-    integer i;
+
+    always_comb begin
+        if (program_i < NUM_PROGRAMS[5:0])
+            rom_addr = (program_i * MEM_SIZE) + word_i;
+        else
+            rom_addr = '0;
+    end
 
     initial begin
-        for (i = 0; i < TOTAL_WORDS; i = i + 1)
-            rom[i] = '0;
         $readmemh("hardware/program_lib.hex", rom);
     end
 
@@ -128,9 +145,9 @@ module program_lib_rom(program_i, word_i, data_o);
         else
             data_o = '0;
     end
-`endif
 
 endmodule : program_lib_rom
+`endif
 """
     path.write_text(text, encoding="ascii")
 
