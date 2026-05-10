@@ -55,20 +55,21 @@ def write_sv(path: Path, num_programs: int, total_words: int, depth: int) -> Non
  *
  * In synthesis this uses an inferred ROM backed by `program_lib.mif`, so
  * Quartus maps the program library into block memory instead of LAB logic.
- * Simulation falls back to a plain memory array loaded from `program_lib.hex`.
+ * Simulation uses the same array, loaded from `program_lib.hex`.
  */
-`ifdef SYNTHESIS
 module program_lib_rom(clk, program_i, word_i, data_o);
     import rv32if_pkg::*;
 
     localparam int NUM_PROGRAMS = {num_programs};
     localparam int TOTAL_WORDS = {total_words};
     localparam int ROM_DEPTH = {depth};
-    localparam int LIB_ADDR_W = $clog2(ROM_DEPTH);
+    localparam int PROG_SEL_W = 6;
+    localparam int WORD_IDX_W = $clog2(MEM_SIZE);
+    localparam int LIB_ADDR_W = PROG_SEL_W + WORD_IDX_W;
 
     input  logic clk;
-    input  logic [5:0] program_i;
-    input  logic [$clog2(MEM_SIZE)-1:0] word_i;
+    input  logic [PROG_SEL_W-1:0] program_i;
+    input  logic [WORD_IDX_W-1:0] word_i;
     output logic [DATA_W-1:0] data_o;
 
     logic [LIB_ADDR_W-1:0] rom_addr;
@@ -76,56 +77,26 @@ module program_lib_rom(clk, program_i, word_i, data_o);
     logic [DATA_W-1:0] rom [0:ROM_DEPTH-1];
 
     always_comb begin
-        if (program_i < NUM_PROGRAMS[5:0])
-            rom_addr = (program_i * MEM_SIZE) + word_i;
+        if (program_i < NUM_PROGRAMS[PROG_SEL_W-1:0])
+            rom_addr = {{program_i, word_i}};
         else
             rom_addr = '0;
     end
 
-    always_ff @(posedge clk) begin
-        if (program_i < NUM_PROGRAMS[5:0])
-            data_o <= rom[rom_addr];
-        else
-            data_o <= '0;
-    end
-endmodule : program_lib_rom
-`else
-module program_lib_rom(clk, program_i, word_i, data_o);
-    import rv32if_pkg::*;
-
-    localparam int NUM_PROGRAMS = {num_programs};
-    localparam int TOTAL_WORDS = {total_words};
-    localparam int ROM_DEPTH = {depth};
-    localparam int LIB_ADDR_W = $clog2(ROM_DEPTH);
-
-    input  logic clk;
-    input  logic [5:0] program_i;
-    input  logic [$clog2(MEM_SIZE)-1:0] word_i;
-    output logic [DATA_W-1:0] data_o;
-
-    logic [LIB_ADDR_W-1:0] rom_addr;
-    logic [DATA_W-1:0] rom [0:ROM_DEPTH-1];
-
-    always_comb begin
-        if (program_i < NUM_PROGRAMS[5:0])
-            rom_addr = (program_i * MEM_SIZE) + word_i;
-        else
-            rom_addr = '0;
-    end
-
+    // synthesis translate_off
     initial begin
         $readmemh("hardware/program_lib.hex", rom);
     end
+    // synthesis translate_on
 
     always_ff @(posedge clk) begin
-        if (program_i < NUM_PROGRAMS[5:0])
+        if (program_i < NUM_PROGRAMS[PROG_SEL_W-1:0])
             data_o <= rom[rom_addr];
         else
             data_o <= '0;
     end
 
 endmodule : program_lib_rom
-`endif
 """
     path.write_text(text, encoding="ascii")
 

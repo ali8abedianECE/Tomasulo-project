@@ -68,7 +68,7 @@ module cpu(CLOCK_50, KEY, SW, LEDR, HEX0, HEX1, HEX2, HEX3, HEX4, HEX5);
     logic [ADDR_W:0] load_fetch_idx;
     logic [ADDR_W-1:0] load_write_idx;
     logic load_data_valid;
-    logic [ADDR_W-1:0] lib_word_idx;
+    logic [15:0] lib_word_addr;
     logic [DATA_W-1:0] lib_word_data;
 
     logic [ADDR_W-1:0] sig_begin_word;
@@ -155,14 +155,13 @@ module cpu(CLOCK_50, KEY, SW, LEDR, HEX0, HEX1, HEX2, HEX3, HEX4, HEX5);
         endcase
     endfunction
 
-    program_lib_rom u_prog_lib(
-        .clk(clk),
-        .program_i(active_program),
-        .word_i(lib_word_idx),
-        .data_o(lib_word_data)
+    main_rom1 u_prog_lib(
+        .address(lib_word_addr),
+        .clock(clk),
+        .q(lib_word_data)
     );
 
-    assign lib_word_idx = (load_fetch_idx < MEM_SIZE) ? load_fetch_idx[ADDR_W-1:0] : '0;
+    assign lib_word_addr = {active_program, load_fetch_idx[ADDR_W-1:0]};
 
     instr_mem #(.FILENAME("")) u_imem(
         .clk(clk),
