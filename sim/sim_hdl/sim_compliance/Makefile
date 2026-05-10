@@ -25,6 +25,8 @@ BOARD_HEX_TOOL := python3 ./make_board_hex.py
 BOARD_PROGRAM_HEX := ../../../program.hex
 PROGRAM_LIB_TOOL := python3 ./gen_program_lib.py
 PROGRAM_LIB_OUT := ../../../hardware/program_lib_rom.sv
+PROGRAM_LIB_HEX := ../../../hardware/program_lib.hex
+PROGRAM_LIB_MIF := ../../../hardware/quartus/program_lib.mif
 
 RISCV_PREFIX ?= riscv64-unknown-elf-
 CC      := $(RISCV_PREFIX)gcc
@@ -85,7 +87,11 @@ all: fetch check-sim $(addprefix $(OUTDIR)/,$(addsuffix .pass,$(TESTS)))
 board-all: fetch $(addprefix $(OUTDIR)/,$(addsuffix .board.hex,$(TESTS)))
 
 program-lib: board-all gen_program_lib.py
-	$(PROGRAM_LIB_TOOL) --build-dir $(OUTDIR) --output $(PROGRAM_LIB_OUT)
+	$(PROGRAM_LIB_TOOL) \
+	    --build-dir $(OUTDIR) \
+	    --sv-out $(PROGRAM_LIB_OUT) \
+	    --hex-out $(PROGRAM_LIB_HEX) \
+	    --mif-out $(PROGRAM_LIB_MIF)
 
 TEST ?= I-ADD-01
 board-install: $(OUTDIR)/$(TEST).board.hex

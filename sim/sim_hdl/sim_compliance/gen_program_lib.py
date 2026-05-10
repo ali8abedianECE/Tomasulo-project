@@ -1,9 +1,11 @@
 #!/usr/bin/env python3
 """
-Generate a synthesizable multi-program ROM module for the FPGA top level.
+Generate the synthesized program-library assets for the FPGA top level.
 
-The generated RTL uses nested `case` statements instead of aggregate array
-initializers so older simulators and synthesis tools can parse it reliably.
+Outputs:
+  - hardware/program_lib_rom.sv     Quartus ROM wrapper with simulation fallback
+  - hardware/program_lib.hex        Dense hex image for simulation fallback
+  - hardware/quartus/program_lib.mif  Quartus memory-init file
 """
 
 from __future__ import annotations
@@ -11,77 +13,149 @@ from __future__ import annotations
 import argparse
 from pathlib import Path
 
+NUM_WORDS_PER_PROGRAM = 1024
+
 
 def load_words(path: Path) -> list[str]:
-    words = [line.strip() for line in path.read_text().splitlines() if line.strip()]
-    if len(words) != 1024:
-        raise ValueError(f"{path} has {len(words)} words, expected 1024")
+    words = [line.strip().upper() for line in path.read_text().splitlines() if line.strip()]
+    if len(words) != NUM_WORDS_PER_PROGRAM:
+        raise ValueError(f"{path} has {len(words)} words, expected {NUM_WORDS_PER_PROGRAM}")
     return words
 
 
-def emit_program_case(program_id: int, program_name: str, words: list[str]) -> str:
-    lines = [f"            6'd{program_id}: begin // {program_name}",
-             "                case (word_i)"]
+def write_hex(path: Path, words: list[str]) -> None:
+    path.write_text("\n".join(words) + "\n", encoding="ascii")
+
+
+def write_mif(path: Path, words: list[str]) -> None:
+    lines = [
+        f"DEPTH = {len(words)};",
+        "WIDTH = 32;",
+        "ADDRESS_RADIX = UNS;",
+        "DATA_RADIX = HEX;",
+        "CONTENT BEGIN",
+    ]
     for idx, word in enumerate(words):
-        lines.append(f"                    10'd{idx}: data_o = 32'h{word};")
-    lines.extend([
-        "                    default: data_o = '0;",
-        "                endcase",
-        "            end",
-    ])
-    return "\n".join(lines)
+        lines.append(f"    {idx} : {word};")
+    lines.append("END;")
+    path.write_text("\n".join(lines) + "\n", encoding="ascii")
+
+
+def write_sv(path: Path, num_programs: int, total_words: int) -> None:
+    text = f"""/**
+ * @brief Program library ROM for the DE1-SoC top level.
+ *
+ * In synthesis this instantiates an Intel `altsyncram` ROM backed by
+ * `hardware/quartus/program_lib.mif`, so Quartus maps the program library into
+ * block memory instead of LAB logic. Simulation falls back to a plain memory
+ * array loaded from `program_lib.hex`.
+ */
+module program_lib_rom(program_i, word_i, data_o);
+    import rv32if_pkg::*;
+
+    localparam int NUM_PROGRAMS = {num_programs};
+    localparam int TOTAL_WORDS = {total_words};
+    localparam int LIB_ADDR_W = $clog2(TOTAL_WORDS);
+
+    input  logic [5:0] program_i;
+    input  logic [$clog2(MEM_SIZE)-1:0] word_i;
+    output logic [DATA_W-1:0] data_o;
+
+    logic [LIB_ADDR_W-1:0] rom_addr;
+
+    always_comb begin
+        if (program_i < NUM_PROGRAMS[5:0])
+            rom_addr = (program_i * MEM_SIZE) + word_i;
+        else
+            rom_addr = '0;
+    end
+
+`ifdef SYNTHESIS
+    wire [DATA_W-1:0] rom_q;
+
+    altsyncram #(
+        .operation_mode("ROM"),
+        .width_a(DATA_W),
+        .widthad_a(LIB_ADDR_W),
+        .numwords_a(TOTAL_WORDS),
+        .outdata_reg_a("UNREGISTERED"),
+        .address_aclr_a("NONE"),
+        .outdata_aclr_a("NONE"),
+        .indata_aclr_a("NONE"),
+        .wrcontrol_aclr_a("NONE"),
+        .init_file("program_lib.mif"),
+        .intended_device_family("Cyclone V")
+    ) u_rom (
+        .clock0(1'b1),
+        .address_a(rom_addr),
+        .q_a(rom_q),
+        .aclr0(1'b0),
+        .aclr1(1'b0),
+        .address_b('0),
+        .addressstall_a(1'b0),
+        .addressstall_b(1'b0),
+        .byteena_a(1'b1),
+        .byteena_b(1'b1),
+        .clock1(1'b1),
+        .clocken0(1'b1),
+        .clocken1(1'b1),
+        .clocken2(1'b1),
+        .clocken3(1'b1),
+        .data_a('0),
+        .data_b('0),
+        .eccstatus(),
+        .q_b(),
+        .rden_a(1'b1),
+        .rden_b(1'b1),
+        .wren_a(1'b0),
+        .wren_b(1'b0)
+    );
+
+    always_comb data_o = rom_q;
+`else
+    logic [DATA_W-1:0] rom [0:TOTAL_WORDS-1];
+    integer i;
+
+    initial begin
+        for (i = 0; i < TOTAL_WORDS; i = i + 1)
+            rom[i] = '0;
+        $readmemh("hardware/program_lib.hex", rom);
+    end
+
+    always_comb begin
+        if (program_i < NUM_PROGRAMS[5:0])
+            data_o = rom[rom_addr];
+        else
+            data_o = '0;
+    end
+`endif
+
+endmodule : program_lib_rom
+"""
+    path.write_text(text, encoding="ascii")
 
 
 def main() -> int:
     parser = argparse.ArgumentParser()
     parser.add_argument("--build-dir", required=True, type=Path)
-    parser.add_argument("--output", required=True, type=Path)
+    parser.add_argument("--sv-out", required=True, type=Path)
+    parser.add_argument("--hex-out", required=True, type=Path)
+    parser.add_argument("--mif-out", required=True, type=Path)
     args = parser.parse_args()
 
     board_hexes = sorted(args.build_dir.glob("I-*.board.hex"))
     if not board_hexes:
         raise ValueError(f"no board hexes found in {args.build_dir}")
 
-    header = """/**
- * @brief Synthesizable program library ROM for the DE1-SoC top level.
- *
- * Auto-generated from the compliance suite board images. Each program image is
- * exactly 1024 words and includes the signature metadata header in words
- * 1020..1023.
- */
-module program_lib_rom(program_i, word_i, data_o);
-    import rv32if_pkg::*;
+    all_words: list[str] = []
+    for hex_path in board_hexes:
+        all_words.extend(load_words(hex_path))
 
-    input  logic [5:0] program_i;
-    input  logic [$clog2(MEM_SIZE)-1:0] word_i;
-    output logic [DATA_W-1:0] data_o;
-
-    // Program IDs:
-{program_comments}
-
-    always_comb begin
-        data_o = '0;
-        case (program_i)
-{program_cases}
-            default: data_o = '0;
-        endcase
-    end
-
-endmodule : program_lib_rom
-"""
-
-    program_comments = []
-    program_cases = []
-    for idx, hex_path in enumerate(board_hexes):
-        name = hex_path.stem.removesuffix(".board")
-        program_comments.append(f"    //   {idx:2d} -> {name}")
-        program_cases.append(emit_program_case(idx, name, load_words(hex_path)))
-
-    text = header.format(
-        program_comments="\n".join(program_comments),
-        program_cases="\n".join(program_cases),
-    )
-    args.output.write_text(text, encoding="ascii")
+    args.hex_out.parent.mkdir(parents=True, exist_ok=True)
+    args.mif_out.parent.mkdir(parents=True, exist_ok=True)
+    write_hex(args.hex_out, all_words)
+    write_mif(args.mif_out, all_words)
+    write_sv(args.sv_out, len(board_hexes), len(all_words))
     return 0
 
 
