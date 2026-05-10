@@ -1,58 +1,75 @@
 /**
  * @brief DE1-SoC top-level for the RV32IF Tomasulo processor.
  *
- * The board build does not rely on `initial`-time memory contents. Instead,
- * KEY[0] reloads the program selected by SW[5:0] from a synthesized program
- * library ROM into the writable instruction and data memories. Each program
- * image includes a signature metadata header in data-memory words 1020..1023.
- *
  * Runtime behavior:
- *   - SW[5:0] select one of the 44 supported compliance programs.
- *   - KEY[0] reloads the selected program and restarts the CPU.
- *   - HEX5..HEX0 show the cycle counter while the test is running.
- *   - After HALT, setting SW[9] enters review mode:
- *       KEY[1] marks current signature word correct and advances.
- *       KEY[2] moves back one signature word.
- *       KEY[3] marks current signature word wrong and advances.
- *       SW[8] selects which 24-bit window is shown on HEX5..HEX0:
- *         0 = bits [23:0], 1 = bits [31:8].
- *     When the review index reaches sig_word_count, HEX5..HEX0 show the
- *     correct-count summary instead of signature data. LEDR[6:0] show the
- *     running correct-count throughout review mode.
+ *   - Before reset/reload:
+ *       SW[5:0] select one of the supported compliance programs.
+ *
+ *   - Press KEY[0]:
+ *       Reloads selected program from main_rom1 into instruction/data memory
+ *       and restarts the CPU.
+ *
+ *   - While running:
+ *       HEX5..HEX0 show cycle_count[23:0].
+ *
+ *   - After HALT:
+ *       LEDR[9] = halted.
+ *
+ *   - Review mode:
+ *       Set SW[9] = 1.
+ *       SW[5:0] now select the signature word index directly.
+ *       SW[8] selects which 24-bit window is displayed:
+ *           0 = bits [23:0]
+ *           1 = bits [31:8]
+ *
+ * Debug LEDs:
+ *   LEDR[9] = halted
+ *   LEDR[8] = loading
+ *   LEDR[7] = review_mode
+ *   LEDR[6] = selected review entry valid
+ *   LEDR[5:0] = active_program while running, review index while reviewing
  */
+
 module cpu(CLOCK_50, KEY, SW, LEDR, HEX0, HEX1, HEX2, HEX3, HEX4, HEX5);
     import rv32if_pkg::*;
 
     localparam int ADDR_W = $clog2(MEM_SIZE);
     localparam int PROG_SEL_W = 6;
     localparam int NUM_PROGRAMS = 44;
+    localparam int LIB_ADDR_W = PROG_SEL_W + ADDR_W;
+
     localparam int META_BEGIN_WORD = MEM_SIZE - 3;
-    localparam int META_END_WORD = MEM_SIZE - 2;
+    localparam int META_END_WORD   = MEM_SIZE - 2;
     localparam int META_COUNT_WORD = MEM_SIZE - 1;
-    localparam int REVIEW_MAX = 64;
-    localparam int KEY_DEBOUNCE_CYCLES = 20'd1_000_000;
-    localparam int KEY_DEBOUNCE_W = $clog2(KEY_DEBOUNCE_CYCLES + 1);
 
-    localparam logic [1:0] MARK_UNKNOWN = 2'b00;
-    localparam logic [1:0] MARK_CORRECT = 2'b01;
-    localparam logic [1:0] MARK_WRONG   = 2'b10;
+    input  logic CLOCK_50;
+    input  logic [3:0] KEY;
+    input  logic [9:0] SW;
 
-    input logic CLOCK_50;
-    input logic [3:0] KEY;
-    input logic [9:0] SW;
     output logic [9:0] LEDR;
     output logic [6:0] HEX0, HEX1, HEX2, HEX3, HEX4, HEX5;
 
-    logic clk, rst_n, rst_btn_n, rst_sync_ff1;
+    logic clk;
+    logic rst_n;
+    logic rst_btn_n;
+    logic rst_sync_ff1;
     logic core_rst_n;
 
     logic [DATA_W-1:0] instr_raw;
-    logic [PC_W-1:0] mem_rd_addr_core, mem_rd_addr_mux;
-    logic [PC_W-1:0] mem_wr_addr_core, dmem_wr_addr;
+
+    logic [PC_W-1:0] mem_rd_addr_core;
+    logic [PC_W-1:0] mem_rd_addr_mux;
     logic [DATA_W-1:0] mem_rd_data;
-    logic [DATA_W-1:0] mem_wr_data_core, dmem_wr_data;
-    logic mem_wr_en_core, dmem_wr_en;
-    logic [3:0] mem_wr_be_core, dmem_wr_be;
+
+    logic [PC_W-1:0] mem_wr_addr_core;
+    logic [DATA_W-1:0] mem_wr_data_core;
+    logic mem_wr_en_core;
+    logic [3:0] mem_wr_be_core;
+
+    logic [PC_W-1:0] dmem_wr_addr;
+    logic [DATA_W-1:0] dmem_wr_data;
+    logic dmem_wr_en;
+    logic [3:0] dmem_wr_be;
 
     logic imem_wr_en;
     logic [ADDR_W-1:0] imem_wr_addr;
@@ -66,76 +83,140 @@ module cpu(CLOCK_50, KEY, SW, LEDR, HEX0, HEX1, HEX2, HEX3, HEX4, HEX5);
     logic [PC_W-1:0] redirect_pc;
 
     logic [31:0] cycle_count;
-    logic halted, halted_core;
+    logic halted;
+    logic halted_core;
 
     logic [PROG_SEL_W-1:0] active_program;
+
     logic loading;
     logic [ADDR_W:0] load_fetch_idx;
     logic [ADDR_W-1:0] load_write_idx;
     logic load_data_valid;
-    logic [15:0] lib_word_addr;
+
+    logic [LIB_ADDR_W-1:0] lib_word_addr;
     logic [DATA_W-1:0] lib_word_data;
 
     logic [ADDR_W-1:0] sig_begin_word;
     logic [ADDR_W-1:0] sig_end_word;
     logic [ADDR_W-1:0] sig_word_count;
 
-    logic review_mode, review_mode_d;
+    logic review_mode;
     logic review_active_entry;
-    logic [ADDR_W-1:0] review_index;
+    logic [ADDR_W-1:0] review_index_sw;
     logic [ADDR_W-1:0] review_word_idx;
     logic [PC_W-1:0] review_addr;
-    logic [6:0] review_correct_count;
-    logic [5:0] review_slot;
-    logic [1:0] review_marks [0:REVIEW_MAX-1];
-    logic key1_prev, key2_prev, key3_prev;
-    logic raw_key1_press, raw_key2_press, raw_key3_press;
-    logic key1_press, key2_press, key3_press;
-    logic [KEY_DEBOUNCE_W-1:0] review_key_cooldown;
+    logic [DATA_W-1:0] review_data_word;
 
     logic [23:0] hex_display_value;
-    integer review_i;
 
     assign clk = CLOCK_50;
     assign rst_btn_n = KEY[0];
+
+    // CPU is held in reset while RAMs are being loaded.
     assign core_rst_n = rst_n & ~loading;
 
+    // After halt, SW[9] enters review mode.
     assign review_mode = halted & SW[9];
-    assign review_active_entry = review_mode && (review_index < sig_word_count);
-    assign review_slot = review_index[5:0];
-    assign review_word_idx = sig_begin_word + review_index;
-    assign review_addr = {{(PC_W-ADDR_W-2){1'b0}}, review_word_idx, 2'b00};
 
-    assign raw_key1_press = key1_prev & ~KEY[1];
-    assign raw_key2_press = key2_prev & ~KEY[2];
-    assign raw_key3_press = key3_prev & ~KEY[3];
-    assign key1_press = review_mode && (review_key_cooldown == '0) && raw_key1_press;
-    assign key2_press = review_mode && (review_key_cooldown == '0) && raw_key2_press;
-    assign key3_press = review_mode && (review_key_cooldown == '0) && raw_key3_press;
+    // In review mode, SW[5:0] directly choose the signature word.
+    assign review_index_sw = {{(ADDR_W-6){1'b0}}, SW[5:0]};
 
-    assign imem_wr_en = load_data_valid;
+    assign review_active_entry = review_mode && (review_index_sw < sig_word_count);
+    assign review_word_idx = sig_begin_word + review_index_sw;
+    assign review_addr = word_to_byte_addr(review_word_idx);
+
+    // During loading, write the ROM output into both instruction memory and data memory.
+    assign imem_wr_en   = load_data_valid;
     assign imem_wr_addr = load_write_idx;
     assign imem_wr_data = lib_word_data;
 
     assign dmem_wr_en = load_data_valid ? 1'b1 : mem_wr_en_core;
     assign dmem_wr_be = load_data_valid ? 4'b1111 : mem_wr_be_core;
-    assign dmem_wr_addr = load_data_valid
-        ? {{(PC_W-ADDR_W-2){1'b0}}, load_write_idx, 2'b00}
-        : mem_wr_addr_core;
-    assign dmem_wr_data = load_data_valid ? lib_word_data : mem_wr_data_core;
 
-    assign mem_rd_addr_mux = loading ? '0 : (review_active_entry ? review_addr : mem_rd_addr_core);
+    assign dmem_wr_addr = load_data_valid
+        ? word_to_byte_addr(load_write_idx)
+        : mem_wr_addr_core;
+
+    assign dmem_wr_data = load_data_valid
+        ? lib_word_data
+        : mem_wr_data_core;
+
+    // Data memory read address mux:
+    //   - During loading: dummy address 0
+    //   - During review: selected signature word
+    //   - Otherwise: CPU data memory read address
+    assign mem_rd_addr_mux = loading
+        ? '0
+        : (review_active_entry ? review_addr : mem_rd_addr_core);
+
+    // Program library ROM address.
+    // This assumes main_rom1 stores each program as MEM_SIZE words,
+    // with address = {program_id, word_index}.
+    assign lib_word_addr = {active_program, load_fetch_idx[ADDR_W-1:0]};
 
     always_comb begin
-        if (loading)
+        if (loading) begin
+            // Shows loading progress.
+            // HEX = program number + current word index.
             hex_display_value = {8'h00, active_program, load_write_idx};
-        else if (review_mode && !review_active_entry)
-            hex_display_value = {17'd0, review_correct_count};
-        else if (review_mode)
-            hex_display_value = SW[8] ? mem_rd_data[31:8] : mem_rd_data[23:0];
-        else
+        end else if (review_mode && review_active_entry) begin
+            // Show selected signature word.
+            hex_display_value = SW[8] ? review_data_word[31:8] : review_data_word[23:0];
+        end else if (review_mode && !review_active_entry) begin
+            // Invalid review index or sig_word_count == 0.
+            // Shows EE + signature word count.
+            // If this is EE0000, your metadata count is probably zero.
+            hex_display_value = {8'hEE, 6'd0, sig_word_count};
+        end else begin
+            // Normal running display.
             hex_display_value = cycle_count[23:0];
+        end
     end
+
+    // Convert word index to byte address.
+    function automatic logic [PC_W-1:0] word_to_byte_addr(input logic [ADDR_W-1:0] word_idx);
+        logic [PC_W-1:0] addr;
+        begin
+            addr = '0;
+            addr[ADDR_W+1:2] = word_idx;
+            word_to_byte_addr = addr;
+        end
+    endfunction
+
+    function automatic logic [PROG_SEL_W-1:0] clamp_program_sel(
+        input logic [PROG_SEL_W-1:0] raw_sel
+    );
+        begin
+            if (raw_sel < NUM_PROGRAMS[PROG_SEL_W-1:0])
+                clamp_program_sel = raw_sel;
+            else
+                clamp_program_sel = '0;
+        end
+    endfunction
+
+    function automatic logic [6:0] hex_digit(input logic [3:0] n);
+        begin
+            case (n)
+                4'h0: hex_digit = 7'b1000000;
+                4'h1: hex_digit = 7'b1111001;
+                4'h2: hex_digit = 7'b0100100;
+                4'h3: hex_digit = 7'b0110000;
+                4'h4: hex_digit = 7'b0011001;
+                4'h5: hex_digit = 7'b0010010;
+                4'h6: hex_digit = 7'b0000010;
+                4'h7: hex_digit = 7'b1111000;
+                4'h8: hex_digit = 7'b0000000;
+                4'h9: hex_digit = 7'b0010000;
+                4'hA: hex_digit = 7'b0001000;
+                4'hB: hex_digit = 7'b0000011;
+                4'hC: hex_digit = 7'b1000110;
+                4'hD: hex_digit = 7'b0100001;
+                4'hE: hex_digit = 7'b0000110;
+                4'hF: hex_digit = 7'b0001110;
+                default: hex_digit = 7'b1111111;
+            endcase
+        end
+    endfunction
 
     // Asynchronous assert, synchronous deassert reset synchronizer.
     always_ff @(posedge clk or negedge rst_btn_n) begin
@@ -148,36 +229,13 @@ module cpu(CLOCK_50, KEY, SW, LEDR, HEX0, HEX1, HEX2, HEX3, HEX4, HEX5);
         end
     end
 
-    function automatic logic [PROG_SEL_W-1:0] clamp_program_sel(input logic [PROG_SEL_W-1:0] raw_sel);
-        if (raw_sel < NUM_PROGRAMS[PROG_SEL_W-1:0])
-            clamp_program_sel = raw_sel;
-        else
-            clamp_program_sel = '0;
-    endfunction
-
-    function automatic logic [6:0] hex_digit(input logic [3:0] n);
-        case (n)
-            4'h0: hex_digit = 7'b1000000; 4'h1: hex_digit = 7'b1111001;
-            4'h2: hex_digit = 7'b0100100; 4'h3: hex_digit = 7'b0110000;
-            4'h4: hex_digit = 7'b0011001; 4'h5: hex_digit = 7'b0010010;
-            4'h6: hex_digit = 7'b0000010; 4'h7: hex_digit = 7'b1111000;
-            4'h8: hex_digit = 7'b0000000; 4'h9: hex_digit = 7'b0010000;
-            4'hA: hex_digit = 7'b0001000; 4'hB: hex_digit = 7'b0000011;
-            4'hC: hex_digit = 7'b1000110; 4'hD: hex_digit = 7'b0100001;
-            4'hE: hex_digit = 7'b0000110; 4'hF: hex_digit = 7'b0001110;
-            default: hex_digit = 7'b1111111;
-        endcase
-    endfunction
-
-    main_rom1 u_prog_lib(
+    main_rom1 u_prog_lib (
         .address(lib_word_addr),
         .clock(clk),
         .q(lib_word_data)
     );
 
-    assign lib_word_addr = {active_program, load_fetch_idx[ADDR_W-1:0]};
-
-    instr_mem #(.FILENAME("")) u_imem(
+    instr_mem #(.FILENAME("")) u_imem (
         .clk(clk),
         .pc_i(fetch_pc),
         .instr_o(instr_raw),
@@ -186,7 +244,7 @@ module cpu(CLOCK_50, KEY, SW, LEDR, HEX0, HEX1, HEX2, HEX3, HEX4, HEX5);
         .write_data_i(imem_wr_data)
     );
 
-    data_mem #(.FILENAME("")) u_dmem(
+    data_mem #(.FILENAME("")) u_dmem (
         .clk(clk),
         .rd_addr_i(mem_rd_addr_mux),
         .rd_data_o(mem_rd_data),
@@ -196,21 +254,28 @@ module cpu(CLOCK_50, KEY, SW, LEDR, HEX0, HEX1, HEX2, HEX3, HEX4, HEX5);
         .wr_data_i(dmem_wr_data)
     );
 
+    // Loader:
+    // main_rom1 is assumed to be synchronous, meaning q is valid one clock
+    // after address is presented. This pipeline writes word N with data N.
     always_ff @(posedge clk) begin
         if (~rst_n) begin
-            active_program <= clamp_program_sel(SW[5:0]);
-            loading <= 1'b1;
-            load_fetch_idx <= '0;
-            load_write_idx <= '0;
+            active_program  <= clamp_program_sel(SW[5:0]);
+
+            loading         <= 1'b1;
+            load_fetch_idx  <= '0;
+            load_write_idx  <= '0;
             load_data_valid <= 1'b0;
-            sig_begin_word <= '0;
-            sig_end_word <= '0;
-            sig_word_count <= '0;
+
+            sig_begin_word  <= '0;
+            sig_end_word    <= '0;
+            sig_word_count  <= '0;
         end else if (loading) begin
             if (load_data_valid && (load_write_idx == META_BEGIN_WORD[ADDR_W-1:0]))
                 sig_begin_word <= lib_word_data[ADDR_W-1:0];
+
             if (load_data_valid && (load_write_idx == META_END_WORD[ADDR_W-1:0]))
                 sig_end_word <= lib_word_data[ADDR_W-1:0];
+
             if (load_data_valid && (load_write_idx == META_COUNT_WORD[ADDR_W-1:0]))
                 sig_word_count <= lib_word_data[ADDR_W-1:0];
 
@@ -230,6 +295,7 @@ module cpu(CLOCK_50, KEY, SW, LEDR, HEX0, HEX1, HEX2, HEX3, HEX4, HEX5);
         end
     end
 
+    // Fetch stage.
     always_ff @(posedge clk) begin
         if (~core_rst_n) begin
             fetch_pc <= '0;
@@ -241,6 +307,7 @@ module cpu(CLOCK_50, KEY, SW, LEDR, HEX0, HEX1, HEX2, HEX3, HEX4, HEX5);
             fetch_valid <= 1'b0;
         end else begin
             fetch_valid <= 1'b1;
+
             if (!iq_full) begin
                 fetch_pc <= fetch_pc + 4;
                 fetch_pc_d <= fetch_pc;
@@ -248,24 +315,30 @@ module cpu(CLOCK_50, KEY, SW, LEDR, HEX0, HEX1, HEX2, HEX3, HEX4, HEX5);
         end
     end
 
-    tomasulo_core u_core(
+    tomasulo_core u_core (
         .clk(clk),
         .rst_n(core_rst_n),
+
         .fetch_valid_i(fetch_valid & ~iq_full),
         .fetch_raw_i(instr_raw),
         .fetch_pc_i(fetch_pc_d),
         .iq_full_o(iq_full),
+
         .flush_o(flush),
         .redirect_pc_o(redirect_pc),
+
         .halted_o(halted_core),
+
         .mem_rd_addr_o(mem_rd_addr_core),
         .mem_rd_data_i(mem_rd_data),
+
         .mem_wr_en_o(mem_wr_en_core),
         .mem_wr_be_o(mem_wr_be_core),
         .mem_wr_addr_o(mem_wr_addr_core),
         .mem_wr_data_o(mem_wr_data_core)
     );
 
+    // Cycle counter and halt latch.
     always_ff @(posedge clk) begin
         if (~core_rst_n) begin
             cycle_count <= '0;
@@ -279,64 +352,22 @@ module cpu(CLOCK_50, KEY, SW, LEDR, HEX0, HEX1, HEX2, HEX3, HEX4, HEX5);
         end
     end
 
-    always_ff @(posedge clk) begin
-        if (~rst_n) begin
-            key1_prev <= 1'b1;
-            key2_prev <= 1'b1;
-            key3_prev <= 1'b1;
-            review_key_cooldown <= '0;
-        end else begin
-            key1_prev <= KEY[1];
-            key2_prev <= KEY[2];
-            key3_prev <= KEY[3];
-
-            if (review_key_cooldown != '0)
-                review_key_cooldown <= review_key_cooldown - 1'b1;
-            else if (review_mode && (raw_key1_press || raw_key2_press || raw_key3_press))
-                review_key_cooldown <= KEY_DEBOUNCE_CYCLES[KEY_DEBOUNCE_W-1:0];
-        end
-    end
-
+    // Review data capture.
+    // If data_mem has synchronous read, this is one cycle behind the switch,
+    // which is fine for HEX display.
     always_ff @(posedge clk) begin
         if (~core_rst_n) begin
-            review_index <= '0;
-            review_mode_d <= 1'b0;
-            review_correct_count <= '0;
-            for (review_i = 0; review_i < REVIEW_MAX; review_i = review_i + 1)
-                review_marks[review_i] <= MARK_UNKNOWN;
-        end else begin
-            review_mode_d <= review_mode;
-
-            if (~review_mode_d & review_mode)
-                review_index <= '0;
-
-            if (review_mode && (sig_word_count != '0)) begin
-                if (key1_press && review_active_entry) begin
-                    if (review_marks[review_slot] != MARK_CORRECT)
-                        review_correct_count <= review_correct_count + 1'b1;
-                    review_marks[review_slot] <= MARK_CORRECT;
-
-                    if ((review_index + 1'b1) <= sig_word_count)
-                        review_index <= review_index + 1'b1;
-                end else if (key2_press) begin
-                    if (review_index != '0)
-                        review_index <= review_index - 1'b1;
-                end else if (key3_press && review_active_entry) begin
-                    if (review_marks[review_slot] == MARK_CORRECT)
-                        review_correct_count <= review_correct_count - 1'b1;
-                    review_marks[review_slot] <= MARK_WRONG;
-
-                    if ((review_index + 1'b1) <= sig_word_count)
-                        review_index <= review_index + 1'b1;
-                end
-            end
+            review_data_word <= '0;
+        end else if (review_mode && review_active_entry) begin
+            review_data_word <= mem_rd_data;
         end
     end
 
     assign LEDR[9] = halted;
     assign LEDR[8] = loading;
     assign LEDR[7] = review_mode;
-    assign LEDR[6:0] = review_mode ? review_correct_count : {1'b0, active_program};
+    assign LEDR[6] = review_active_entry;
+    assign LEDR[5:0] = review_mode ? SW[5:0] : active_program;
 
     assign HEX0 = hex_digit(hex_display_value[3:0]);
     assign HEX1 = hex_digit(hex_display_value[7:4]);
