@@ -65,7 +65,10 @@ module cpu(CLOCK_50, KEY, SW, LEDR, HEX0, HEX1, HEX2, HEX3, HEX4, HEX5);
 
     logic [PROG_SEL_W-1:0] active_program;
     logic loading;
-    logic [ADDR_W-1:0] load_word_idx;
+    logic [ADDR_W:0] load_fetch_idx;
+    logic [ADDR_W-1:0] load_write_idx;
+    logic load_data_valid;
+    logic [ADDR_W-1:0] lib_word_idx;
     logic [DATA_W-1:0] lib_word_data;
 
     logic [ADDR_W-1:0] sig_begin_word;
@@ -98,22 +101,22 @@ module cpu(CLOCK_50, KEY, SW, LEDR, HEX0, HEX1, HEX2, HEX3, HEX4, HEX5);
     assign key2_press = key2_prev & ~KEY[2];
     assign key3_press = key3_prev & ~KEY[3];
 
-    assign imem_wr_en = loading;
-    assign imem_wr_addr = load_word_idx;
+    assign imem_wr_en = load_data_valid;
+    assign imem_wr_addr = load_write_idx;
     assign imem_wr_data = lib_word_data;
 
-    assign dmem_wr_en = loading ? 1'b1 : mem_wr_en_core;
-    assign dmem_wr_be = loading ? 4'b1111 : mem_wr_be_core;
-    assign dmem_wr_addr = loading
-        ? {{(PC_W-ADDR_W-2){1'b0}}, load_word_idx, 2'b00}
+    assign dmem_wr_en = load_data_valid ? 1'b1 : mem_wr_en_core;
+    assign dmem_wr_be = load_data_valid ? 4'b1111 : mem_wr_be_core;
+    assign dmem_wr_addr = load_data_valid
+        ? {{(PC_W-ADDR_W-2){1'b0}}, load_write_idx, 2'b00}
         : mem_wr_addr_core;
-    assign dmem_wr_data = loading ? lib_word_data : mem_wr_data_core;
+    assign dmem_wr_data = load_data_valid ? lib_word_data : mem_wr_data_core;
 
     assign mem_rd_addr_mux = loading ? '0 : (review_mode ? review_addr : mem_rd_addr_core);
 
     always_comb begin
         if (loading)
-            hex_display_value = {8'h00, active_program, load_word_idx};
+            hex_display_value = {8'h00, active_program, load_write_idx};
         else if (review_mode)
             hex_display_value = mem_rd_data[23:0];
         else
@@ -153,10 +156,13 @@ module cpu(CLOCK_50, KEY, SW, LEDR, HEX0, HEX1, HEX2, HEX3, HEX4, HEX5);
     endfunction
 
     program_lib_rom u_prog_lib(
+        .clk(clk),
         .program_i(active_program),
-        .word_i(load_word_idx),
+        .word_i(lib_word_idx),
         .data_o(lib_word_data)
     );
+
+    assign lib_word_idx = (load_fetch_idx < MEM_SIZE) ? load_fetch_idx[ADDR_W-1:0] : '0;
 
     instr_mem #(.FILENAME("")) u_imem(
         .clk(clk),
@@ -181,23 +187,32 @@ module cpu(CLOCK_50, KEY, SW, LEDR, HEX0, HEX1, HEX2, HEX3, HEX4, HEX5);
         if (~rst_n) begin
             active_program <= clamp_program_sel(SW[5:0]);
             loading <= 1'b1;
-            load_word_idx <= '0;
+            load_fetch_idx <= '0;
+            load_write_idx <= '0;
+            load_data_valid <= 1'b0;
             sig_begin_word <= '0;
             sig_end_word <= '0;
             sig_word_count <= '0;
         end else if (loading) begin
-            if (load_word_idx == META_BEGIN_WORD[ADDR_W-1:0])
+            if (load_data_valid && (load_write_idx == META_BEGIN_WORD[ADDR_W-1:0]))
                 sig_begin_word <= lib_word_data[ADDR_W-1:0];
-            if (load_word_idx == META_END_WORD[ADDR_W-1:0])
+            if (load_data_valid && (load_write_idx == META_END_WORD[ADDR_W-1:0]))
                 sig_end_word <= lib_word_data[ADDR_W-1:0];
-            if (load_word_idx == META_COUNT_WORD[ADDR_W-1:0])
+            if (load_data_valid && (load_write_idx == META_COUNT_WORD[ADDR_W-1:0]))
                 sig_word_count <= lib_word_data[ADDR_W-1:0];
 
-            if (load_word_idx == MEM_SIZE-1) begin
-                loading <= 1'b0;
-                load_word_idx <= '0;
+            if (!load_data_valid) begin
+                load_data_valid <= 1'b1;
+                load_write_idx <= '0;
+                load_fetch_idx <= {{ADDR_W{1'b0}}, 1'b1};
+            end else if (load_fetch_idx < MEM_SIZE) begin
+                load_write_idx <= load_fetch_idx[ADDR_W-1:0];
+                load_fetch_idx <= load_fetch_idx + 1'b1;
             end else begin
-                load_word_idx <= load_word_idx + 1'b1;
+                loading <= 1'b0;
+                load_data_valid <= 1'b0;
+                load_fetch_idx <= '0;
+                load_write_idx <= '0;
             end
         end
     end
