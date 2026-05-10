@@ -70,11 +70,8 @@ module program_lib_rom(program_i, word_i, data_o);
     always_comb data_o = rom_q;
 `else
     logic [DATA_W-1:0] rom [0:TOTAL_WORDS-1];
-    integer i;
 
     initial begin
-        for (i = 0; i < TOTAL_WORDS; i = i + 1)
-            rom[i] = '0;
         $readmemh("hardware/program_lib.hex", rom);
     end
 
