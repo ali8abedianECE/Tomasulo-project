@@ -22,6 +22,7 @@ REFDIR := $(SUITE)/references
 # ELFs, hexes, sigs go here (NOT named "work" -- ModelSim owns that name)
 OUTDIR := build
 BOARD_HEX_TOOL := python3 ./make_board_hex.py
+EXPECTED_SEQ_TOOL := python3 ./dump_expected_sequence.py
 BOARD_PROGRAM_HEX := ../../../program.hex
 PROGRAM_LIB_TOOL := python3 ./gen_program_lib.py
 PROGRAM_LIB_OUT := ../../../hardware/program_lib_rom.sv
@@ -80,11 +81,13 @@ SKIP_TESTS := I-EBREAK-01 I-ECALL-01 I-MISALIGN_JMP-01 I-MISALIGN_LDST-01
 
 TESTS := $(filter-out $(SKIP_TESTS),$(basename $(notdir $(wildcard $(SRCDIR)/I-*.S))))
 
-.PHONY: all fetch clean check-sim board-all board-install program-lib $(TESTS)
+.PHONY: all fetch clean check-sim board-all expected-all board-install program-lib $(TESTS)
 
 all: fetch check-sim $(addprefix $(OUTDIR)/,$(addsuffix .pass,$(TESTS)))
 
 board-all: fetch $(addprefix $(OUTDIR)/,$(addsuffix .board.hex,$(TESTS)))
+
+expected-all: board-all $(addprefix $(OUTDIR)/,$(addsuffix .expected.txt,$(TESTS)))
 
 program-lib: board-all gen_program_lib.py
 	$(PROGRAM_LIB_TOOL) \
@@ -144,6 +147,12 @@ $(OUTDIR)/%.board.hex: $(OUTDIR)/%.hex $(OUTDIR)/%.sig_range make_board_hex.py
 	    --output $@ \
 	    --sig-begin "$$begin_word" \
 	    --sig-end "$$end_word"
+
+$(OUTDIR)/%.expected.txt: $(OUTDIR)/%.board.hex $(REFDIR)/%.reference_output dump_expected_sequence.py
+	$(EXPECTED_SEQ_TOOL) \
+	    --board-hex $(OUTDIR)/$*.board.hex \
+	    --reference $(REFDIR)/$*.reference_output \
+	    --output $@
 
 # Extract begin_signature word index from ELF; derive end from reference line count.
 # This avoids the inclusive/exclusive end_signature ambiguity across test files.

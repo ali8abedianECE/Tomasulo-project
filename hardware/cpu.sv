@@ -14,8 +14,11 @@
  *       KEY[1] marks current signature word correct and advances.
  *       KEY[2] moves back one signature word.
  *       KEY[3] marks current signature word wrong and advances.
- *     The current signature word is shown on HEX5..HEX0, and LEDR[6:0]
- *     show the running correct-count.
+ *       SW[8] selects which 24-bit window is shown on HEX5..HEX0:
+ *         0 = bits [23:0], 1 = bits [31:8].
+ *     When the review index reaches sig_word_count, HEX5..HEX0 show the
+ *     correct-count summary instead of signature data. LEDR[6:0] show the
+ *     running correct-count throughout review mode.
  */
 module cpu(CLOCK_50, KEY, SW, LEDR, HEX0, HEX1, HEX2, HEX3, HEX4, HEX5);
     import rv32if_pkg::*;
@@ -27,6 +30,8 @@ module cpu(CLOCK_50, KEY, SW, LEDR, HEX0, HEX1, HEX2, HEX3, HEX4, HEX5);
     localparam int META_END_WORD = MEM_SIZE - 2;
     localparam int META_COUNT_WORD = MEM_SIZE - 1;
     localparam int REVIEW_MAX = 64;
+    localparam int KEY_DEBOUNCE_CYCLES = 20'd1_000_000;
+    localparam int KEY_DEBOUNCE_W = $clog2(KEY_DEBOUNCE_CYCLES + 1);
 
     localparam logic [1:0] MARK_UNKNOWN = 2'b00;
     localparam logic [1:0] MARK_CORRECT = 2'b01;
@@ -76,6 +81,7 @@ module cpu(CLOCK_50, KEY, SW, LEDR, HEX0, HEX1, HEX2, HEX3, HEX4, HEX5);
     logic [ADDR_W-1:0] sig_word_count;
 
     logic review_mode, review_mode_d;
+    logic review_active_entry;
     logic [ADDR_W-1:0] review_index;
     logic [ADDR_W-1:0] review_word_idx;
     logic [PC_W-1:0] review_addr;
@@ -83,7 +89,9 @@ module cpu(CLOCK_50, KEY, SW, LEDR, HEX0, HEX1, HEX2, HEX3, HEX4, HEX5);
     logic [5:0] review_slot;
     logic [1:0] review_marks [0:REVIEW_MAX-1];
     logic key1_prev, key2_prev, key3_prev;
+    logic raw_key1_press, raw_key2_press, raw_key3_press;
     logic key1_press, key2_press, key3_press;
+    logic [KEY_DEBOUNCE_W-1:0] review_key_cooldown;
 
     logic [23:0] hex_display_value;
     integer review_i;
@@ -93,13 +101,17 @@ module cpu(CLOCK_50, KEY, SW, LEDR, HEX0, HEX1, HEX2, HEX3, HEX4, HEX5);
     assign core_rst_n = rst_n & ~loading;
 
     assign review_mode = halted & SW[9];
+    assign review_active_entry = review_mode && (review_index < sig_word_count);
     assign review_slot = review_index[5:0];
     assign review_word_idx = sig_begin_word + review_index;
     assign review_addr = {{(PC_W-ADDR_W-2){1'b0}}, review_word_idx, 2'b00};
 
-    assign key1_press = key1_prev & ~KEY[1];
-    assign key2_press = key2_prev & ~KEY[2];
-    assign key3_press = key3_prev & ~KEY[3];
+    assign raw_key1_press = key1_prev & ~KEY[1];
+    assign raw_key2_press = key2_prev & ~KEY[2];
+    assign raw_key3_press = key3_prev & ~KEY[3];
+    assign key1_press = review_mode && (review_key_cooldown == '0) && raw_key1_press;
+    assign key2_press = review_mode && (review_key_cooldown == '0) && raw_key2_press;
+    assign key3_press = review_mode && (review_key_cooldown == '0) && raw_key3_press;
 
     assign imem_wr_en = load_data_valid;
     assign imem_wr_addr = load_write_idx;
@@ -112,13 +124,15 @@ module cpu(CLOCK_50, KEY, SW, LEDR, HEX0, HEX1, HEX2, HEX3, HEX4, HEX5);
         : mem_wr_addr_core;
     assign dmem_wr_data = load_data_valid ? lib_word_data : mem_wr_data_core;
 
-    assign mem_rd_addr_mux = loading ? '0 : (review_mode ? review_addr : mem_rd_addr_core);
+    assign mem_rd_addr_mux = loading ? '0 : (review_active_entry ? review_addr : mem_rd_addr_core);
 
     always_comb begin
         if (loading)
             hex_display_value = {8'h00, active_program, load_write_idx};
+        else if (review_mode && !review_active_entry)
+            hex_display_value = {17'd0, review_correct_count};
         else if (review_mode)
-            hex_display_value = mem_rd_data[23:0];
+            hex_display_value = SW[8] ? mem_rd_data[31:8] : mem_rd_data[23:0];
         else
             hex_display_value = cycle_count[23:0];
     end
@@ -270,10 +284,16 @@ module cpu(CLOCK_50, KEY, SW, LEDR, HEX0, HEX1, HEX2, HEX3, HEX4, HEX5);
             key1_prev <= 1'b1;
             key2_prev <= 1'b1;
             key3_prev <= 1'b1;
+            review_key_cooldown <= '0;
         end else begin
             key1_prev <= KEY[1];
             key2_prev <= KEY[2];
             key3_prev <= KEY[3];
+
+            if (review_key_cooldown != '0)
+                review_key_cooldown <= review_key_cooldown - 1'b1;
+            else if (review_mode && (raw_key1_press || raw_key2_press || raw_key3_press))
+                review_key_cooldown <= KEY_DEBOUNCE_CYCLES[KEY_DEBOUNCE_W-1:0];
         end
     end
 
@@ -291,22 +311,22 @@ module cpu(CLOCK_50, KEY, SW, LEDR, HEX0, HEX1, HEX2, HEX3, HEX4, HEX5);
                 review_index <= '0;
 
             if (review_mode && (sig_word_count != '0)) begin
-                if (key1_press) begin
+                if (key1_press && review_active_entry) begin
                     if (review_marks[review_slot] != MARK_CORRECT)
                         review_correct_count <= review_correct_count + 1'b1;
                     review_marks[review_slot] <= MARK_CORRECT;
 
-                    if ((review_index + 1'b1) < sig_word_count)
+                    if ((review_index + 1'b1) <= sig_word_count)
                         review_index <= review_index + 1'b1;
                 end else if (key2_press) begin
                     if (review_index != '0)
                         review_index <= review_index - 1'b1;
-                end else if (key3_press) begin
+                end else if (key3_press && review_active_entry) begin
                     if (review_marks[review_slot] == MARK_CORRECT)
                         review_correct_count <= review_correct_count - 1'b1;
                     review_marks[review_slot] <= MARK_WRONG;
 
-                    if ((review_index + 1'b1) < sig_word_count)
+                    if ((review_index + 1'b1) <= sig_word_count)
                         review_index <= review_index + 1'b1;
                 end
             end
