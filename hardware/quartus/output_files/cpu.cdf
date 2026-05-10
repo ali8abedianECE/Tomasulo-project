@@ -6,7 +6,7 @@ JedecChain;
 	P ActionCode(Ign)
 		Device PartName(SOCVHPS) MfrSpec(OpMask(0));
 	P ActionCode(Cfg)
-		Device PartName(5CSEMA5F31) Path("C:/Users/a_abe/Downloads/Tomasulo-project/hardware/quartus/output_files/") File("cpu.sof") MfrSpec(OpMask(1) SEC_Device(QSPI128MB) Child_OpMask(1 0));
+		Device PartName(5CSEMA5F31) Path("C:/Users/a_abe/Downloads/Tomasulo-project/hardware/quartus/output_files/") File("cpu.sof") MfrSpec(OpMask(1));
 
 ChainEnd;
 
