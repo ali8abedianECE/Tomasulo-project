@@ -254,15 +254,15 @@ module cpu(CLOCK_50, KEY, SW, LEDR, HEX0, HEX1, HEX2, HEX3, HEX4, HEX5);
         .wr_data_i(dmem_wr_data)
     );
 
-    // Loader:
-    // main_rom1 is assumed to be synchronous, meaning q is valid one clock
-    // after address is presented. This pipeline writes word N with data N.
+    logic [ADDR_W-1:0] load_fetch_idx_d; // add this with your other signal declarations
+
     always_ff @(posedge clk) begin
         if (~rst_n) begin
             active_program  <= clamp_program_sel(SW[5:0]);
 
             loading         <= 1'b1;
             load_fetch_idx  <= '0;
+            load_fetch_idx_d <= '0;
             load_write_idx  <= '0;
             load_data_valid <= 1'b0;
 
@@ -270,27 +270,34 @@ module cpu(CLOCK_50, KEY, SW, LEDR, HEX0, HEX1, HEX2, HEX3, HEX4, HEX5);
             sig_end_word    <= '0;
             sig_word_count  <= '0;
         end else if (loading) begin
-            if (load_data_valid && (load_write_idx == META_BEGIN_WORD[ADDR_W-1:0]))
+            // capture metadata using the delayed index (actual data now valid)
+            if (load_data_valid && (load_fetch_idx_d == META_BEGIN_WORD[ADDR_W-1:0]))
                 sig_begin_word <= lib_word_data[ADDR_W-1:0];
 
-            if (load_data_valid && (load_write_idx == META_END_WORD[ADDR_W-1:0]))
+            if (load_data_valid && (load_fetch_idx_d == META_END_WORD[ADDR_W-1:0]))
                 sig_end_word <= lib_word_data[ADDR_W-1:0];
 
-            if (load_data_valid && (load_write_idx == META_COUNT_WORD[ADDR_W-1:0]))
+            if (load_data_valid && (load_fetch_idx_d == META_COUNT_WORD[ADDR_W-1:0]))
                 sig_word_count <= lib_word_data[ADDR_W-1:0];
 
             if (!load_data_valid) begin
-                load_data_valid <= 1'b1;
-                load_write_idx <= '0;
-                load_fetch_idx <= {{ADDR_W{1'b0}}, 1'b1};
-            end else if (load_fetch_idx < MEM_SIZE) begin
-                load_write_idx <= load_fetch_idx[ADDR_W-1:0];
-                load_fetch_idx <= load_fetch_idx + 1'b1;
+                // first cycle: present address 0, not valid yet
+                load_data_valid  <= 1'b1;
+                load_fetch_idx   <= 1;        // next cycle will present addr 1
+                load_fetch_idx_d <= '0;       // addr 0 is what's being fetched now
+                load_write_idx   <= '0;
+            end else if (load_fetch_idx <= MEM_SIZE) begin
+                // advance fetch, delay write by one cycle
+                load_fetch_idx   <= load_fetch_idx + 1'b1;
+                load_fetch_idx_d <= load_fetch_idx[ADDR_W-1:0];
+                load_write_idx   <= load_fetch_idx_d; // data for _d is valid now
             end else begin
-                loading <= 1'b0;
+                // done
+                loading         <= 1'b0;
                 load_data_valid <= 1'b0;
-                load_fetch_idx <= '0;
-                load_write_idx <= '0;
+                load_fetch_idx  <= '0;
+                load_fetch_idx_d <= '0;
+                load_write_idx  <= '0;
             end
         end
     end
