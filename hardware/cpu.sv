@@ -210,7 +210,7 @@ module cpu(CLOCK_50, KEY, SW, LEDR, HEX0, HEX1, HEX2, HEX3, HEX4, HEX5);
 
     instr_mem #(.FILENAME("")) u_imem (
         .clk          (clk),
-        .pc_i         (fetch_pc),
+        .pc_i         (imem_read_pc),
         .instr_o      (instr_raw),
         .write_en_i   (imem_wr_en),
         .write_addr_i (imem_wr_addr),
@@ -321,10 +321,15 @@ module cpu(CLOCK_50, KEY, SW, LEDR, HEX0, HEX1, HEX2, HEX3, HEX4, HEX5);
     // -------------------------------------------------------------------------
     logic [PC_W-1:0] fetch_pc;
     logic [PC_W-1:0] fetch_pc_d;
+    logic [PC_W-1:0] imem_read_pc;
     logic fetch_valid;
     logic iq_full;
     logic flush;
     logic [PC_W-1:0] redirect_pc;
+
+    // When the IQ is full, re-present the same address so instr_raw holds the
+    // stalled instruction rather than reading one instruction ahead and losing it.
+    assign imem_read_pc = iq_full ? fetch_pc_d : fetch_pc;
 
     always_ff @(posedge clk) begin
         if (~core_rst_n) begin
